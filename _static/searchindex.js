@@ -1,0 +1,1 @@
+Search.setIndex({objects:{},terms:{featur:0,tabl:0,indic:0,instruct:0,administ:0,instal:0,guid:0,manag:0,from:0,welcom:0,sysrescu:0,aaltsi:0,section:0,technic:0,offic:0,build:0,document:0,failur:0,workstat:0,search:0,server:0,recov:0,thi:0,page:0},objtypes:{},titles:["Welcome to AAltsys Server&#8217;s Documentation!"],objnames:{},filenames:["index"]})

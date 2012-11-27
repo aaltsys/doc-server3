@@ -1,0 +1,27 @@
+
+The AAltSys Server provides secure shell (ssh) for remote administration at the command line.
+Unixes come with ssh, or this protocol can be added to Windows with the putty package.
+For that matter, putty can be added to a Linux KDE desktop with the command:
+
+|	sudo bash < <(wget https://raw.github.com/gist/1030236/putty-kde.sh -O-)
+
+Local workstations can connect to the server over ssh with the terminal command:
+
+|	ssh admin1@AAltSysServer.local.aaltsys.net
+
+The AAltSys support VPN provides connection to remote servers with a similar command:
+
+|	ssh admin1@(registration).servers.aaltsys.net
+
+From the Gnome desktop in Linux, a desktop start icon would use the following command
+to open an x-term window and run an ssh connection to a remote server:
+
+|	gnome-terminal -x ssh admin1@(registration).servers.aaltsys.net
+
+Now suppose the LTSP virtual terminal server is started on a remote server. Next, at a
+remote workstation configure an NX client session to connect on port  
+workstation opens an ssh session to the remote server with the terminal command:
+
+|	ssh -L8889:10.4.0.2:8888 admin1@(registration).servers.aaltsys.net
+
+Next, use the NX Client session on the workstation which monitors port 8889.

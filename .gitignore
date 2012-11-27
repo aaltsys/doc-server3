@@ -1,0 +1,25 @@
+# files which should not be included in any repository
+
+# editor backup files
+*~
+*/*~
+*kate-swp
+*/*kate-swp
+
+# built folder content (.html, .doc, .pdf)
+*build/*
+*/*build/*
+
+# deployment folder content
+*deploy/*
+*/*deploy/*
+
+# static folder content in subdirectories
+# *static/*
+*/*static/*
+
+# keep directories which include .gitkeep
+!.git_keep
+!*/.git_keep
+!.gitkeep
+!*/.gitkeep

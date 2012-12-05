@@ -1,111 +1,127 @@
-#####################################
+#############################
  Linux Terminal Services 
-#####################################
+#############################
 
 LTSP Virtual Server
-=====================================
+=============================
 
-A virtual machine image is provided for serving Linux Terminal desktops. When this server is configured and running, 
-the DHCP service on eth1 will boot network devices such as terminals and PCs set to PXE boot. Booted terminals will 
-have a complete Linux graphical environment equivalent to a desktop PC, but running from the server's resources.
+A virtual machine image is provided for serving Linux Terminal desktops. When 
+this server is configured and running, the DHCP service on eth1 will boot 
+network devices such as terminals and PCs set to PXE boot. Booted terminals 
+will have a complete Linux graphical environment equivalent to a desktop PC, 
+but running from the server's resources.
 
 Starting LTSP Server
-''''''''''''''''''''''''''''''
+-----------------------------
 
 #. Recreate virtual network interface **virbr1**
 #. Start LTSP in Convirt
 
 
 Possible Problems
-''''''''''''''''''''''''''''''
+-----------------------------
 
-* Is the AAltSys Server serving DHCP on eth1? If you are running within a foreign (Windows) network, probably not.
-* Was **virbr1** recreated before starting LTSP? See above.
-* ssh key mismatch between LTSP server VM and the X-client which dhcp downloads to the terminal, preventing login.
-* Zentyal DHCP configuration may be missing LTSP information. To add the information:
-*   In Zentyal, navigate to :menuselection:`Infrastructure > DHCP > Interface eth1 > Advanced options`.
-*   If ``Thin Client`` is blank, click :guilabel:`Add New`.
-*   Enter the configuration as shown in the following image, then click :guilabel:`Add`.
-*   Remember to :guilabel:`Save Changes` before exiting Zentyal.
++ Is the AAltSys Server serving DHCP on eth1? If you are running within a 
+  foreign (Windows) network, probably not.
++ Was **virbr1** recreated before starting LTSP? See above.
++ ssh key mismatch between LTSP server VM and the X-client which dhcp downloads 
+  to the terminal, preventing login.
++ Zentyal DHCP configuration may be missing LTSP information. To add the 
+  information:
 
-.. image:: images/LTSP_zentyal.png
+  + In Zentyal, navigate to :menuselection:`Infrastructure > DHCP > Interface eth1 > Advanced options`.
+  + If ``Thin Client`` is blank, click :guilabel:`Add New`.
+  + Enter the configuration as shown in the following image, then click 
+    :guilabel:`Add`.
+  + Remember to :guilabel:`Save Changes` before exiting Zentyal.
+
+    .. image:: _images/LTSP_zentyal.png
 
 DOS programs on Linux desktop
-=====================================
+=============================
 
 Installing DOS emulation
-''''''''''''''''''''''''''''''
+-----------------------------
 
 To install dosemu, display a terminal from :menuselection:`Accessories --> Terminal`.
 Then enter the commands::
 
-	sudo aptitude install dosemu xauth
-	sudo sysctl -w vm.mmap_min_addr=0
-	sudo bash < <(echo 'echo "vm.mmap_min_addr=0" >> /etc/sysctl.conf')
+  sudo aptitude install dosemu xauth
+  sudo sysctl -w vm.mmap_min_addr=0
+  sudo bash < <(echo 'echo "vm.mmap_min_addr=0" >> /etc/sysctl.conf')
 
 The DOS system can be started from :menuselection:`Applications --> System Tools --> DOS emulator`.
 
 .. Note:: **xauth** is required for remote execution over **ssh** on Ubuntu 8.04.
 
 DOS performance and video
-''''''''''''''''''''''''''''''
+-----------------------------
 
-Dosemu settings for each user may be set by editing configuration file ~/.dosemu::
+Configure Dosemu settings for each user by editing file :file:`~/.dosemu`::
 
-	nano ~/.dosemurc
+  nano ~/.dosemurc
 
 To make dosemu run faster, add a command::
 
   $_hogthreshold = (xx)
 
-where **xx** is the percentage of CPU time to devote to dosemu (defaults to 1 percent).
+where **xx** is the percentage of CPU time to devote to dosemu (defaults to 1 
+percent).
 
-To display a DOS window looking like the original DOS 640X480 EGA/VGA screen, add a command::
+To display a DOS window looking like the original DOS 640X480 EGA/VGA screen, 
+add a command::
 
-	 $_X_font = vga12x30
+  $_X_font = vga12x30
 
-The following command will change video globally for all users (but run this only once)::
+The following command will change video globally for all users (but run this 
+only once)::
 
-	sudo sed -i '/$_X_font/ a\$_X_font = vga12x30' /etc/dosemu/dosemu.conf
+  sudo sed -i '/$_X_font/ a\$_X_font = vga12x30' /etc/dosemu/dosemu.conf
 
-DOS video configurations include: ``vga, vga8x19, vga11x19, vga10x24, vga12x30, vga-cp866, and vga10x20-cp866``.
+DOS video configurations include: ``vga, vga8x19, vga11x19, vga10x24, vga12x30, 
+vga-cp866, and vga10x20-cp866``.
 
 Running Dosemu from a Script
-''''''''''''''''''''''''''''''
+-----------------------------
 
-A DOS program may be executed from the Linux command line by calling `dosemu` followed
-by the name of the DOS program (.bat, .exe, .com) to execute. If other commands are 
-required in the context of the DOS program, then a shell script may perform the complete 
-task. For example, the WARES program would change file permissions from public to private 
-when executed by a user outside of group `__USERS__`. This can be corrected by issuing 
-a `chmod` command after executing WARES. To create a shell script to include this, 
-say `wares.sh`, edit the script file with `nano ~/wares.sh`::
+A DOS program may be executed from the Linux command line by calling 
+:command:`dosemu` followed by the name of the DOS program (.bat, .exe, .com) 
+to execute. If other commands are required in the context of the DOS program, 
+then a shell script may perform the complete task. For example, the WARES 
+program would change file permissions from public to private when executed by a 
+user outside of group `__USERS__`. This can be corrected by issuing a 
+:command:`chmod` command after executing WARES. To create a shell script to 
+include this, say :file:`wares.sh`, edit the script file with 
+:command:`nano ~/wares.sh`::
 
-	dosemu C:\WARES.BAT
-	sudo chmod -R 777 /home/samba/shares/arev/*
+  dosemu C:\WARES.BAT
+  sudo chmod -R 777 /home/samba/shares/arev/*
 
-Make the shell script executable with the command, `chmod +x ~/wares.sh`. Finally, execute 
-the DOS session by typing `~/wares.sh` at the command line. 
+Make the shell script executable with the command, 
+:command:`chmod +x ~/wares.sh`. Finally, execute the DOS session by typing 
+:command:`~/wares.sh` at the command line. 
 
 Accessing Linux file shares
-''''''''''''''''''''''''''''''
+-----------------------------
 
-The dosemu command LREDIR will mount a Linux directory to a DOS drive letter. For example,::
+The dosemu command LREDIR will mount a Linux directory to a DOS drive letter. 
+For example,::
 
-	LREDIR W: LINUX\FS/home/samba/shares/arev 
-	LREDIR S: LINUX\FS/home/samba/shares/public
+  LREDIR W: LINUX\FS/home/samba/shares/arev 
+  LREDIR S: LINUX\FS/home/samba/shares/public
 
 A DOS batch file within dosemu can incorporate mount commands and DOS program 
-execution, as illustrated previously with `C:\\WARES.BAT`. To create this batch file,
-start `dosemu` and enter the file with the command `EDIT WARES.BAT`::
+execution, as illustrated previously with :file:`C:\\WARES.BAT`. To create this 
+batch file, start :program:`dosemu` and enter the file with the command 
+:command:`EDIT WARES.BAT`::
 
-	LREDIR W: LINUX\FS/home/samba/shares/arev
-	LREDIR S: LINUX\FS/home/samba/shares/public
-	W:
-	WARES.BAT WARES
+  LREDIR W: LINUX\FS/home/samba/shares/arev
+  LREDIR S: LINUX\FS/home/samba/shares/public
+  W:
+  WARES.BAT WARES
 
-Save the batch file and exit the editor with :kbd:`Alt-F,S;Alt-F,X`. Then type the
-name of the batch file to test execute it. Exit the dosemu session with the command `exitemu`.
-
+Save the batch file and exit the editor with :kbd:`Alt-F,S;Alt-F,X`. Then type 
+the name of the batch file to test execute it. Exit the dosemu session with the 
+command :command:`exitemu`.
 
 

@@ -10,12 +10,12 @@ Windows XP Control Panels
 
 |
 
-.. image:: images/network_connections.png
+.. image:: _images/network_connections.png
 
 Use the **Network Connections** panel to view and change IP settings. Workstations
 should be set to obtain IP and DNS automatically (through DHCP).
 
-.. image:: images/Internet_properties.png
+.. image:: _images/Internet_properties.png
 
 * Right-click your **Local Area Connection icon**, and choose **Properties**.
 * Click on **Internet Protocol (TCP/IP)** to highlight it.
@@ -27,7 +27,7 @@ should be set to obtain IP and DNS automatically (through DHCP).
 
 |
 
-.. image:: images/user_accounts.png
+.. image:: _images/user_accounts.png
 
 The **User Accounts** panel will view or change user full names and change 
 passwords. Actual user names are not shown in this panel and cannot be changed
@@ -38,7 +38,7 @@ here, which makes this panel less than useful.
 
 |
 
-.. image:: images/computer_name.png
+.. image:: _images/computer_name.png
 
 Use the **Computer Name** tab on the **System** control panel to view and change the
 computer name and the Workgroup or Domain settings. After changing values here,
@@ -50,7 +50,7 @@ the computer must be restarted. This panel may also be displayed by right-clicki
 
 |
 
-.. image:: images/mycomputer_manage.png
+.. image:: _images/mycomputer_manage.png
 
 Right-click **My Computer** and choose **Manage** from the options menu to see the
 system management panel. Here one can view and set a variety of system properties,
@@ -62,7 +62,7 @@ computer must be restarted.
 
 |
 
-.. image:: images/mycomputer_mapdrive.png
+.. image:: _images/mycomputer_mapdrive.png
 
 Right-click **My Computer** and choose **Map Network Drive** from the options menu to
 use the drive letter mapping utility. 
@@ -72,7 +72,7 @@ use the drive letter mapping utility.
 
 |
 
-.. image:: images/userpasswords2.png
+.. image:: _images/userpasswords2.png
 
 In the **Run** dialog, type in "CONTROL USERPASSWORDS2" and press <Enter> to display
 the Windows 2000 user account management control. Here one can view user account names

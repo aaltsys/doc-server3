@@ -24,7 +24,7 @@ Then open Zentyal by one of the following approaches:
 Go to :menuselection:`Office --> Printer Sharing`, and make sure that the
 ``Listen`` checkbox is checked for each active interface, as shown following.
 
-.. image:: images/office_45.1_printersharing.png
+.. image:: _images/office_45.1_printersharing.png
 
 .. Note:: The CUPS web interface can be displayed only in the local network.
   Therefore only local workstations or the server console can administer CUPS. 
@@ -47,18 +47,18 @@ This displays the CUPS interface.
 + In the CUPS authentication message, enter your Zentyal administrator username 
   and password.
   
-  .. image:: images/office_45.2_cups.png
+  .. image:: _images/office_45.2_cups.png
 
 + In section :guilabel:`Server`, check the boxes for 
   :guilabel:`Share printers connected to this system` and for 
   :guilabel:`Allow remote administration`. 
 + Click ``Change Settings``. These options are shown following:
 
-  .. image:: images/office_45.3_cups_server.png
+  .. image:: _images/office_45.3_cups_server.png
 
 + In section `Printers`, click :kbd:`Add Printer` to enter a new printer queue. 
 
-  .. image:: images/office_45.4_cups_printer.png
+  .. image:: _images/office_45.4_cups_printer.png
 
 Adding printers in CUPS is inherently similar to adding printers in any OS: 
 select the connection, the printer manufacturer, the printer model, and any
@@ -70,7 +70,7 @@ setup. This allows the printer queue to be used from other workstations as a
 SAMBA share. Once all printers are defined, close the CUPS tab and return to 
 Zentyal.
 
-.. image:: images/office_45.5_cups_share.png
+.. image:: _images/office_45.5_cups_share.png
 
 .. note:: We recommend that all shared printers be defined as network printers 
   shared from the server. Also, for enhanced security, these printers may be 
@@ -88,7 +88,7 @@ In the :menuselection:`Office --> Users and Groups --> User Template` section,
 either (1) change the :guilabel:`Default user quota` to :kbd:`Disabled`, or
 (2) Change the quota to :kbd:`0` (unlimited). Then click :kbd:`Change`.
 
-.. image:: images/office_41_template.png
+.. image:: _images/office_41_template.png
 
 LDAP Settings
 ==========================
@@ -100,7 +100,7 @@ In the LDAP module :guilabel:`PAM settings`:
   Authentication Module)
 + Click :kbd:`Change`.
 
-.. image:: images/office_42_ldap.png
+.. image:: _images/office_42_ldap.png
 
 On the Zentyal top bar, click ``Save Changes`` and then click the ``Save`` 
 button to record your changes.
@@ -118,12 +118,12 @@ In Zentyal, select :menuselection:`Office --> Users and Groups --> Users` on
 the menu. Use the :guilabel:`Add User` feature to add each network user on the 
 server.
 
-.. image:: images/office_39.1_adduser.png
+.. image:: _images/office_39.1_adduser.png
 
 Once all the users are added, they will all display in the users list. Note 
 that your initial administrative user is not on the list, as shown below.
 
-.. image:: images/office_39.2_users.png
+.. image:: _images/office_39.2_users.png
 
 .. hint::
 	 For file sharing users, click ``Add`` after entering names and passwords.
@@ -134,7 +134,7 @@ If any user is entered in error, click the ``Edit`` icon on the user's line.
 Then click the ``Delete user`` button to remove the user. Similarly, edit a 
 user to add or remove administration rights, or to change group memberships.
 
-.. image:: images/office_39.3_administer.png
+.. image:: _images/office_39.3_administer.png
 
 .. note:: 
 
@@ -148,19 +148,19 @@ Once all users are entered, select :menuselection:`Office --> Users and Groups
 --> Groups`. Enter a group :kbd:`users` and a group :kbd:`admins`, as shown 
 here.
 
-.. image:: images/office_40.1_addgroup.png
+.. image:: _images/office_40.1_addgroup.png
 
 Click ``Add and edit`` to complete the group information. For the ``Users`` 
 group, :kbd:`<Shift-Click>` each name in the :guilabel:`Users not in group` 
 list, and then click the :guilabel:`left-arrow` to move them to the 
 :guilabel:`Users in group` list.
 
-.. image:: images/office_40.2_groups.png
+.. image:: _images/office_40.2_groups.png
 
 In the :guilabel:`Printers` section, click the :guilabel:`Allow all priters`
 checkbox and then ``Change``, so that all users can access printers as shown.
 
-.. image:: images/office_40.3_group_printers.png
+.. image:: _images/office_40.3_group_printers.png
 
 File Sharing
 ==========================
@@ -170,14 +170,14 @@ the :guilabel:`General` tab displayed. Enter a domain (workgroup) name, a
 NetBIOS name for the server, and a description. If the server is not the 
 primary domain controller in a network, uncheck the :guilabel:`PDC` box. 
 
-.. image:: images/office_44.1_filesharing.png
+.. image:: _images/office_44.1_filesharing.png
 
 Next click on the :guilabel:`Shares` tab, and then click ``+ Add new``
 to setup new file shares. Enter a :guilabel:`share name`, a :guilabel:`share 
 path`, and a descriptive :guilabel:`comment` for a share, and then click ``Add``
 to create the share. The following image shows share ``backup`` being added.
 
-.. image:: images/office_44.2_shares_new.png
+.. image:: _images/office_44.2_shares_new.png
 
 .. note::
 	 Most file shares will be defined with :guilabel:`Share path:` 
@@ -194,7 +194,7 @@ selected group. The settings to add ``Group`` ``users`` to the
 :guilabel:`public` share with ``read and write`` permissions are illustrated 
 following.
 
-.. image:: images/office_44.3_shares_acl.png
+.. image:: _images/office_44.3_shares_acl.png
 
 Click ``Save Changes`` in the Zentyal title bar and confirm the save when all 
 shares are defined. Your file sharing server is ready for service.

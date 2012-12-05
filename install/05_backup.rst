@@ -41,7 +41,7 @@ Linux cron jobs perform backup functions. Zentyal manages cron tab entries for
 Duplicity operations. Writing backup files to external media requires entering 
 cron jobs using Webmin. An example entry for writing to DVD is shown following:
 
-.. image:: images/backup_dvdcron.png 
+.. image:: _images/backup_dvdcron.png 
 
 The software for writing DVDs may be missing from the OS. It is installed with 
 the command::
@@ -60,12 +60,12 @@ required in most situations.
 + Leave prompts ``User:`` and ``Password:`` blank
 + Fill in a schedule for full and incremental backups as shown following:
 
-.. image:: images/backup_config.png
+.. image:: _images/backup_config.png
 
 + Navigate to tab :menuselection:`Core --> Backup --> Includes and Excludes`
 + Enter Includes and Excludes as shown in the following image:
 
-.. image:: images/backup_exclude.png
+.. image:: _images/backup_exclude.png
 
 Moving Home Files to the Server
 """"""""""""""""""""""""""""""""""""""

@@ -22,7 +22,7 @@ virtual devices which then pass data off to the physical network. It may be desi
 to set up multiple virtual networks to isolate different virtual machines from 
 one another for security. To manage virtual networks:
 
-.. image:: images/convirt_server_options.png
+.. image:: _images/convirt_server_options.png
 
 + On the left menu, navigate to the server where the networks are to be managed:
 	| The default AAltSys Server is found at :menuselection:`Data Center --> AAltSys --> localhost`.
@@ -31,7 +31,7 @@ one another for security. To manage virtual networks:
 + Add new networks using the :guilabel:`(+) New` button.
 + Edit or delete existing networks with the :guilabel:`Edit` and :guilabel:`Remove` buttons.
 
-.. image:: images/convirt_server_network.png
+.. image:: _images/convirt_server_network.png
 
 Provisioning New Virtual Machines
 =================================
@@ -39,12 +39,12 @@ Provisioning New Virtual Machines
 + On the left menu, click to expand :menuselection:`Template Library`
 + Right-click the template for a new virtual machine, and select :menuselection:`Provision` from the context menu.
 
-.. image:: images/convirt_select_target.png
+.. image:: _images/convirt_select_target.png
 
 + In the :guilabel:`Select a Target Node` window, expand viewed items to show servers.
 + Select either a managed server or a server pool to provision the virtual machine on.
 
-.. image:: images/convirt_config_settings.png
+.. image:: _images/convirt_config_settings.png
 
 + The :guilabel:`Virtual Machine Config Settings` window will display.
 

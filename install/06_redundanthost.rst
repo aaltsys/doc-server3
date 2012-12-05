@@ -130,7 +130,7 @@ scheduled to run throughout the day as well, provided none of the software
 being used has problems with file locking. Settings for the cron jobs are 
 shown in the following screenshot:
 
-.. image:: images/backup_cron_primary.png
+.. image:: _images/backup_cron_primary.png
 
 Be sure to change the job **Description** and **Command** within the jobs 
 as shown in the table:
@@ -147,11 +147,11 @@ as shown in the table:
 
 Zentyal backup module general configuration is shown in the following screenshot:
 
-.. image:: images/backup_config_primary.png
+.. image:: _images/backup_config_primary.png
 
 Settings for the backup Includes and Excludes tab are also shown following:
 
-.. image:: images/backup_exclude_primary.png
+.. image:: _images/backup_exclude_primary.png
 
 Configure SSH on Backup Server
 """"""""""""""""""""""""""""""

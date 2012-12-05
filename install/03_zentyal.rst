@@ -29,7 +29,7 @@ should be checked only on servers used as network gateways.)  After activating
 modules, click on ``Save Changes`` in the top bar, and then click ``Save`` to 
 finalize the change.
 
-.. image:: images/zentyal_02_module.png
+.. image:: _images/zentyal_02_module.png
 
 General Information
 ==========================
@@ -59,7 +59,7 @@ to tell Zentyal how to backup:
 
 Below is a screen shot of these settings.
 
-.. image:: images/zentyal_04.1_backup_settings.png
+.. image:: _images/zentyal_04.1_backup_settings.png
 
 Now click the :guilabel:`Includes and Excludes` tab to tell Zentyal what
 to backup. Click `Add new` to add each of the following entries, going up
@@ -80,7 +80,7 @@ from the bottom of this list:
 Then delete any entries not on the above list, leaving the four lines 
 displayed in the following image:
 
-.. image:: images/zentyal_04.2_backup_include.png
+.. image:: _images/zentyal_04.2_backup_include.png
 
 Network Interfaces
 ==========================
@@ -100,7 +100,7 @@ Where a server is a LAN peer, only ``eth0`` should be connected. The interface
 should be set to a static IP address, and the :guilabel:`External (WAN):` box 
 must not be checked. An example of this configuration is illustrated following.
 
-.. image:: images/zentyal_07_interfaces.png
+.. image:: _images/zentyal_07_interfaces.png
 
 More details on Zentyal networking are found at :ref:`network_configuration`.
 
@@ -111,7 +111,7 @@ When ``eth0`` is an external interface configured to obtain its IP address
 through DHCP, Zentyal should configure the Internet gateway for your system as 
 the following example shows.
 
-.. image:: images/zentyal_08_gateway.png
+.. image:: _images/zentyal_08_gateway.png
 
 Network Services
 ==========================
@@ -139,7 +139,7 @@ button for ``webmin`` and add a configuration for:
 
 The resulting configuration is displayed following:
 
-.. image:: images/zentyal_11_webmin.png
+.. image:: _images/zentyal_11_webmin.png
 
 .. Tip:: Remember to click :kbd:`Change` when making configuration changes.
 
@@ -150,7 +150,7 @@ At menu selection :menuselection:`Core --> Software Management --> Settings`:
 for the setting :guilabel:`Perform automatic software updates`, choose 
 ``Enabled``, and remember to click ``Change``, as shown following.
 
-.. image:: images/zentyal_23_settings.png
+.. image:: _images/zentyal_23_settings.png
 
 .. note:: The Zentyal 3.0 :guilabel:`Gateway` menu section was formerly known 
   as :guilabel:`UTM`.
@@ -172,7 +172,7 @@ Service defined previously. Click the ``Configure rules`` link below
 
 The new rule will be positioned at the top of the list as shown following:
 
-.. image:: images/zentyal_28_packetfilter.png
+.. image:: _images/zentyal_28_packetfilter.png
 
 IDS
 ==========================
@@ -192,7 +192,7 @@ addresses for known good DNS servers. (Google DNS servers are shown here.)
 
 The following image shows the resulting DNS page:
 
-.. image:: images/zentyal_34.1_dns.png
+.. image:: _images/zentyal_34.1_dns.png
 
 .. Note:: The :guilabel:`local.aaltsys.net` domain is not checked as 
   :guilabel:`Dynamic`. This feature will be configured in the ``DHCP`` section 
@@ -239,7 +239,7 @@ Click ``Change`` to save the :guilabel:`Common options` settings. The following
 screenshot shows a DHCP configuration, where the cable modem uses IP address 
 :kbd:`192.168.1.254`.
 
-.. image:: images/zentyal_33.1_common.png
+.. image:: _images/zentyal_33.1_common.png
 
 Click the :guilabel:`Dynamic DNS Options` tab on the DHCP page, and click the 
 :guilabel:`Enabled:` checkbox, and click ``Change``. The settings on this page 
@@ -257,7 +257,7 @@ should be:
 
 The following screenshot shows :guilabel:`Dynamic DNS Options` settings:
 
-.. image:: images/zentyal_33.2_dynamic.png
+.. image:: _images/zentyal_33.2_dynamic.png
 
 Under :guilabel:`Ranges`, click ``Add new`` to add an IP address range for 
 dynamic IP assignment in your local subnet. We recommend excluding addresses 
@@ -274,7 +274,7 @@ are:
 
 Click ``Add`` to complete the change. The result is displayed following:
 
-.. image:: images/zentyal_33.3_ranges.png
+.. image:: _images/zentyal_33.3_ranges.png
 
 Save Changes
 ==========================

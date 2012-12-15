@@ -6,18 +6,19 @@ Follow this guide to setup and manage an AAltSys Server using Zentyal.
 Documentation for Zentyal itself is found at http://doc.zentyal.org/en.
 
 .. Note:: Your server is administered with Zentyal using the Firefox web 
-  browser, and other browsers may not work correctly. Specifically, Microsoft's 
-  Internet Explorer does not conform to HTML5 standards and cannot be used to 
-  administer Zentyal.
+   browser, and other browsers may not work correctly. Specifically, versions 
+   of Microsoft's Internet Explorer which do not conform to HTML5 standards 
+   cannot be used to administer Zentyal.
 
 There are thee accepted ways to access Zentyal administration:
 
 + At the server console, login to the system as the administrator, or
-+ At a local workstation, go to browser address https://__server.IP.address__, or
++ At a local workstation, go to browser address https://__server.IP.address__, 
+  or
 + At a local workstation, go to browser address https://__hostname__.
 
-Login to Zentyal using your administrator ``__username__`` and ``__password__`` 
-to perform the following initial configuration steps.
+Login to Zentyal using your administrator :kbdL`__username__` and 
+:kbd:`__password__` to perform the following initial configuration steps.
 
 Module Status
 ==========================

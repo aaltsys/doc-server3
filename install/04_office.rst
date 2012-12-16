@@ -33,7 +33,6 @@ Go to :menuselection:`Office --> Printer Sharing`, and make sure that the
   CUPS. Accept this certificate; it is perfectly safe to do so. This certificate 
   is issued from your local server for use by the server.
 
-  
 + Press :kbd:`<Ctrl-T>` to open a new browser tab.
 + Enter the web address :kbd:`https://192.168.2.241:631`
 + If required, follow your browser's instructions to add a security exception.

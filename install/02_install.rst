@@ -205,6 +205,7 @@ At :guilabel:`Choose Zentyal packages to install`, select the following modules:
   FTP
   File Sharing Service
   Firewall
+  IPsec
   Intrusion Detection System
   Layer 7 Filter
   NTP Service
@@ -317,6 +318,10 @@ relatively simple and quick, an entire article is devoted to this topic:
 
 Installing AAltSys VPN
 =============================
+
+.. note:: When installing in the AAltsys office, go to 
+   :menuselection:`Infrastructure --> DNS` and add a Forwarder on IP 
+   :kbd:`192.168.1.240`. Remove this forwarder before shipping the system.
 
 .. note:: AAltSys VPN installation is performed using sudo privileges.
 

@@ -79,6 +79,7 @@ been tested and used, even though only the most recent motherboards are still
 available in the market place. Click one of the links below to see settings 
 for a specific board.
 
+:ref:`BIOS settings for SuperMicro MBD-X9SCM-O <bios-x9scm-o>`
 :ref:`BIOS settings for ASUS P5BV-C <bios-p5bv-c>`
 
 Setting up RAID array BIOS

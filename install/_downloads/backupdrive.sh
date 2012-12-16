@@ -4,16 +4,19 @@ UUID=""
 DEVICE=""
 BLKID=""
 
-LABEL=$1
-if [[ $LABEL == "" ]] ; then
-  LABEL="BACKUP"
-fi
-
+# run this program with root privileges
 if [[ `id -u` -ne 0 ]] ; then
   echo "${HOME##*/}  -- Please run this command with sudo privileges"
   exit
 fi
 
+# use a default LABEL if none is stated
+LABEL=$1
+if [[ $LABEL == "" ]] ; then
+  LABEL="BACKUP"
+fi
+
+# Using LABEL, find device and UUID, or else exit
 BLKID=$( blkid | grep "$LABEL" )
 if [[ $BLKID != "" ]] ; then
   DEVICE=$(echo $BLKID | awk -F':' '{print $1}')
@@ -27,7 +30,7 @@ else
   exit
 fi
 
-# do the work here
+# do work here: create autofs configuration files for backup
 if [[ $UUID != "" ]] ; then
   service autofs stop
   mkdir -p /home/mnt/backup/source_config
@@ -37,6 +40,7 @@ if [[ $UUID != "" ]] ; then
   service autofs start
 fi
 
+# successful exit messages
 echo
 echo "Test your backup device with command 'ls /home/mnt/backup'."
 echo "You should see '@@EXTERNAL@@' in the directory listing."

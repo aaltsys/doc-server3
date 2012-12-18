@@ -3,22 +3,22 @@
 #############################
 
 The AAltSys Server provides robust, simple, and inexpensive options for data 
-backup. While backups can be written to DVDs for a small amount of information, 
-we recommend using an auto-mounted eSATA drive to handle large data sets.
+backup. Backups can be written to DVDs for a small amount of information, but 
+we recommend using auto-mounted USB or eSATA drives to handle large data sets. 
 
 Restoring Backups
 =============================
 
 Backups are stored in Duplicity rsync format. Duplicity is available for free 
 on Linux and Mac. The Linux version of Duplicity can execute on Windows under 
-Cygwin, and an ISO image of Duplicity encapsulated in Cygwin is being developed.
+Cygwin; an ISO image of Duplicity encapsulated in Cygwin is being developed. 
 
 .. _backup_configuration:
 
 Performing a Demand Backup
 =============================
 
-To manually perform a backup on Zentyal 2.2 (latest) run one of the following 
+To manually perform a backup on Zentyal 2.2 or later run one of the following 
 commands::
 
   sudo /usr/share/zentyal-ebackup/backup-tool --full
@@ -108,23 +108,30 @@ be useful, we would need to answer the following questions:
 + Without a working operating system, how would you restore the OS?
 
 Instead of trying to backup the server OS, we have made AAltSys Server OS 
-installation very fast and simple. In less time than it takes to perform a 
-restore, the server operating system can be imaged from DVD. Keep the AAltSys 
-install DVD handy, along with a list of any console changes to the server 
+installation relatively fast and simple. Keep the AAltSys or Zentyal install 
+DVD handy, along with a list of any console changes to the server 
 configuration.
 
 Creating a Server Clone Image
 =============================
 
 Use the CloneZilla utility disk to create a complete server image, stored on 
-your eSATA backup drive.
+your backup drive.
 
 ------------------------------
 
 .. _backup_drive_setup:
 
-eSATA Automount Drive Setup
+Automount Drive Setup
 =============================
+
+.. warning:: When using the ASUS P5BV motherboard, do not connect an external 
+   drive over eSATA for scheduled backups, as this can result in corrupted RAID 
+   arrays. (Type 1 RAID arrays connected to the SATA3 ports on SuperMicro X9SCM 
+   motherboards are safe from this problem.) Zentyal 3.0 automounts USB 
+   devices, which interferes with fuse autofs mounts for backup drives 
+   connected using USB. Install :file:`mountbackup.sh` ass described following 
+   to avoid this problem.
 
 In this example, an eSATA backup drive is configured as an extended partition 
 hard drive formatted NTFS. Since Linux does not honor file permissions on NTFS 
@@ -133,10 +140,14 @@ volumes, the backup will be readable by anyone.
 Part 1: Install autofs
 -----------------------------
 
-#. Display a terminal command line on the server console, or ``ssh`` to a server command shell.
-#. At the command prompt, type::
+Display a terminal command line on the server console, or ``ssh`` to a server 
+command shell. At the command prompt, type::
 
-     sudo apt-get install autofs ntfsprogs
+  sudo apt-get install autofs ntfsprogs
+
+For Zentyal 3.0, download :download:`this program <_downloads/mountbackup.sh>` 
+to :file:`/usr/local/bin/mountbackup.sh` and setup a cron job to execute the 
+script with root privileges every minute.
 
 Part 2. Format drive NTFS
 -----------------------------
@@ -184,8 +195,8 @@ Use the following instructions to perform this format:
 Part 3: Identify the device
 -----------------------------
 
-.. note:: Once a drive is formatted, a bash script is provided to perform Parts 
-   3 and 4 of this document. From the web browser on the server, download 
+.. note:: Once a drive is formatted, a bash script is provided to perform Part 
+   3 of this document. From the web browser on the server, download 
    :download:`this script <_downloads/backupdrive.sh>` and save it in your home
    folder. Then execute the script with the command::
 
@@ -214,9 +225,6 @@ The drive device will be discovered and then mounted to logical mount point
 
 This example shows block device ``/dev/sdc5``, UUID ``363404743404397F``, of ``TYPE="ntfs"``.
 
-Part 4: Setup auto mounting
------------------------------
-
 .. Warning:: In the following commands, replace **$UUID** with the identifier 
    **YOU OBTAINED** from the instructions in Part 3.
 
@@ -230,7 +238,7 @@ At the command prompt, type::
 
 .. hint:: Did you remember to replace $UUID with your partition identifier?
 
-Part 5: Verify drive mounting
+Part 4: Verify drive mounting
 -----------------------------
 
 Type the commands::

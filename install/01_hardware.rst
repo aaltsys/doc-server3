@@ -71,6 +71,8 @@ Connect Components
    Plug the server into an outlet on the UPS with battery backup and not just 
    line conditioning.
 
+.. _bios_setup:
+
 Set up the System BIOS
 ==================================
 
@@ -79,14 +81,32 @@ been tested and used, even though only the most recent motherboards are still
 available in the market place. Click one of the links below to see settings 
 for a specific board.
 
-:ref:`BIOS settings for SuperMicro MBD-X9SCM-O <bios-x9scm-o>`
-:ref:`BIOS settings for ASUS P5BV-C <bios-p5bv-c>`
+| :ref:`BIOS settings for SuperMicro MBD-X9SCM-O <bios-x9scm-o>`
+| :ref:`BIOS settings for ASUS P5BV-C <bios-p5bv-c>`
 
-Setting up RAID array BIOS
+Setting up RAID array
 ==================================
 
-(To be completed later)
+.. note:: The SuperMicro motherboard BIOS setup, described in the link above, 
+   includes RAID array setup. Other motherboards which permit RAID array setup 
+   without BIOS setting changes should use the instructions below.
 
-.. note:: A registration procedure is required in Linux to connect the external 
-   backup drive. This procedure cannot be performed until after the OS is 
-   installed and configured.
+#. Press :kbd:`<Ctrl-I>` multiple times to enter the :guilabel:`Intel RAID` 
+   utility.
+#. Press :kbd:`3` for :guilabel:`Reset Disks to non-RAID`. Press :kbd:`<Space>` 
+   to select disks, then press :kbd:`<Enter>` to finish the operation.
+#. Press :kbd:`1` for :guilabel:`Create RAID volume`.
+
+   #. At :guilabel:`Name:`, enter :kbd:`aaltsys <Enter>`.
+   #. At :guilabel:`RAID Level:`, press :kbd:`<Down>` to display 
+      :guilabel:`RAID1(Mirror)`.
+   #. At :guilabel:`Capacity`, press :kbd:`<Enter>` to select the entire drive. 
+   #. Respond to the :guilabel:`Create Volume` prompt with :kbd:`<Enter>`, and 
+      confirm the :guilabel:`Are you sure ...?` question with :kbd:`Y`.
+
+#. Press :kbd:`6` to :guilabel:`Exit` the RAID utility, and confirm the 
+   :guilabel:`Are you sure ...?` question with :kbd:`Y`.
+
+.. note:: The external drive setup is not described here, as a registration 
+   procedure is required in Linux to connect the external backup drive. This 
+   procedure is described later in the OS installation.

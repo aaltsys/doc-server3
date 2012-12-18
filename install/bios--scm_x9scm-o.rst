@@ -13,7 +13,8 @@ First BIOS Boot
    on the menu, press :kbd:`<Enter>` for :guilabel:`Yes`.
 #. At :menuselection:`Advanced --> Boot Feature --> Power Button Function` 
    on the menu, press :kbd:`<Space>` to select :guilabel:`4 Seconds Override`. 
-#. At :menuselection:`Advanced --> IDE/SATA Configuration`:
+#. At :menuselection:`Advanced --> IDE/SATA Configuration`,
+
    #. At :menuselection:`SATA Mode`, press :kbd:`<Space>` to select 
       :guilabel:`RAID Mode`.
    #. At :menuselection: `PCH RAID Codebase`, press :kbd:`<Space>` to select 
@@ -24,6 +25,7 @@ First BIOS Boot
       to select :guilabel:`Disabled` (should show second RAID drive).
    #. At :menuselection:`Serial ATA Port 0 --> Hot Plug`, press :kbd:`<Space>` 
       to select :guilabel:`Disabled` (should show DVD-RW drive).
+
 #. At :menuselection:`Exit --> Save Changes and Reset`, press :kbd:`<Enter>`
    to save changes, and answer the question 
    :guilabel:`Save configuration and reset?` with :kbd:`Yes`.
@@ -31,19 +33,21 @@ First BIOS Boot
 Second BIOS Boot
 =============================
 
-#. Press :kbd:`<Ctrl-I>` multiple time to enter the :guilabel:`Intel RAID` 
+#. Press :kbd:`<Ctrl-I>` multiple times to enter the :guilabel:`Intel RAID` 
    utility.
 #. Press :kbd:`3` for :guilabel:`Reset Disks to non-RAID`. Press :kbd:`<Space>` 
    to select disks, then press :kbd:`<Enter>` to finish the operation.
 #. Press :kbd:`1` for :guilabel:`Create RAID volume`.
+
    #. At :guilabel:`Name:`, enter :kbd:`aaltsys <Enter>`.
    #. At :guilabel:`RAID Level:`, press :kbd:`<Down>` to display 
       :guilabel:`RAID1(Mirror)`.
    #. At :guilabel:`Capacity`, press :kbd:`<Enter>` to select the entire drive. 
    #. Respond to the :guilabel:`Create Volume` prompt with :kbd:`<Enter>`, and 
       confirm the :guilabel:`Are you sure ...?` question with :kbd:`Y`.
+
 #. Press :kbd:`6` to :guilabel:`Exit` the RAID utility, and confirm the 
-   :guilabel:`Are you sure ...?` quesstion with :kbd:`Y`.
+   :guilabel:`Are you sure ...?` question with :kbd:`Y`.
 
 Third BIOS Boot
 =============================
@@ -73,4 +77,4 @@ drive set.
 
 ----------
 
-:ref:`RAID installation documentation <http://www.supermicro.com/manuals/other/HostRAID_ICH7R_ICH9R_ICH10R.pdf>`_
+`RAID installation documentation <http://www.supermicro.com/manuals/other/HostRAID_ICH7R_ICH9R_ICH10R.pdf>`_

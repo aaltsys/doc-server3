@@ -56,22 +56,8 @@ local LAN, connect ``eth0`` to your LAN and leave other network ports
 unconnected.
 
 Power on the computer, and enter the BIOS. Make any necessary setup changes, 
-such as boot device settings or boot order. Make sure that:
-
-  + ``SATA RAID`` is enabled, using the ``Intel`` codebase.
-  + ``Intel Virtualization Techmology`` is ``Enabled``.
-  + Booting is enabled from your DVD (CDROM) drive.
- 
-+ Save any BIOS changes and reboot.
-+ Press :kbd:`<Tab>` during boot for the POST display.
-+ If you are using mirrored drives, press :kbd:`<Ctrl-I>` to enter the 
-  :guilabel:`Intel Matrix Storage Manager`. 
-
-  .. warning:: Practically anything you do in this utility will wipe out any 
-     data on the corresponding hard disks.
-
-+ If a RAID array is present, Select :guilabel:`Reset disks to non-RAID`.
-+ Recreate an array named :kbd:`aaltsys` of type :guilabel:`RAID1`.
+such as boot device settings or boot order, as described previously in 
+:ref:`bios_setup`.
          
 Installing Zentyal
 =============================
@@ -309,13 +295,6 @@ When finished, click on :guilabel:`GO TO THE DASHBOARD`.
 To exit Zentyal, choose :guilabel:`Logout` from the Zentyal top bar, then click 
 :guilabel:`Exit`.
 
-Connect External Drive
-=============================
-
-You may choose to install an external backup drive at this point. While this is 
-relatively simple and quick, an entire article is devoted to this topic:
-:ref:`backup_drive_setup`.
-
 Installing AAltSys VPN
 =============================
 
@@ -343,6 +322,25 @@ Enter the following information when prompted::
 An upgrade to all installed packages will now be performed (10-30 minutes).
 
 When all command activity finishes, installation is complete.
+
+
+Connecting External Drive
+=============================
+
+An external drive may be connected for storing backups. Provided you have a 
+drive, formatted already with ntfs, then download this :download:`backup drive 
+configuration script <_downloads/backupdrive.sh>` and then run it with the 
+command::
+
+  sudo bash backupdrive.sh BACKUP
+
+Instructions for preparing a backup drive, formatting it for NTFS, and the 
+sequence of commands to automount the drive as used in the above script are 
+provided in the article :ref:`backup_drive_setup`.
+
+Restarting Server
+=============================
+
 Restart your server with the command::
 
   reboot <Enter>

@@ -3,7 +3,9 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to AAltsys Server 3.0 Technical's documentation!
+.. _index:
+
+Welcome to AAltsys Server 3.0 Technical documentation!
 ========================================================
 
 Contents:

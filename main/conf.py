@@ -25,7 +25,7 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = []
+extensions = ['sphinx.ext.intersphinx']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'AAltsys Server 3.0'
+project = u'AAltsys Server'
 copyright = u'2012, Gerald Lovel'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -240,3 +240,16 @@ texinfo_documents = [
 
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
+
+
+# Example configuration for intersphinx: refer to the Python standard library.
+# intersphinx_mapping = {'http://docs.python.org/': None}
+# intersphinx_mapping = {'label': ('target', 'inventory')}
+# intersphinx_mapping = {'install': ('../install', None)}
+intersphinx_mapping = {
+	'install': ('../install', '../_deploy/install/objects.inv'),
+	'workstation': ('../workstation', '../_deploy/workstation/objects.inv'),
+	'administer': ('../administer', '../_deploy/administer/objects.inv'),
+	'technical': ('../technical', '../_deploy/technical/objects.inv'),
+	'rescue': ('../rescue', '../_deploy/rescue/objects.inv'),
+}

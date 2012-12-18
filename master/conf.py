@@ -247,9 +247,9 @@ texinfo_documents = [
 # intersphinx_mapping = {'label': ('target', 'inventory')}
 # intersphinx_mapping = {'install': ('../install', None)}
 intersphinx_mapping = {
-	'install': ('../install', '../_deploy/install/objects.inv'),
-	'workstation': ('../workstation', '../_deploy/workstation/objects.inv'),
-	'administer': ('../administer', '../_deploy/administer/objects.inv'),
-	'technical': ('../technical', '../_deploy/technical/objects.inv'),
-	'rescue': ('../rescue', '../_deploy/rescue/objects.inv'),
+	'install': ('install', '../_deploy/install/objects.inv'),
+	'workstation': ('workstation', '../_deploy/workstation/objects.inv'),
+	'administer': ('administer', '../_deploy/administer/objects.inv'),
+	'technical': ('technical', '../_deploy/technical/objects.inv'),
+	'rescue': ('rescue', '../_deploy/rescue/objects.inv'),
 }

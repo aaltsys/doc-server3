@@ -16,7 +16,7 @@ Identifier Standards
 
 The following standards apply to user names, full names, and passwords:
 
-+ User names may contain only alphanumeric characters or the symbols :kbd:` . ? & + : - @`
++ User names may contain only alphanumeric characters or the symbols :kbd:`. ? & + : - @`
 + Spaces are not permitted in user names.
 + Administrative users, *"Administrator"* and *"Owner"*, should not be used for logins.
 + *"Guest"* should be disabled.

@@ -28,7 +28,8 @@ Prep WARES on the old server
   is rebuilt.)
 + Choose :menuselection:`Exit` to exit the application.
 
-Then copy the entire ATLAS directory from the old server to a flash drive or to a workstation C:\\ drive. Call if you have questions about what to copy.
+Then copy the entire ATLAS directory from the old server to a flash drive or to 
+a workstation C:\\ drive. Call if you have questions about what to copy.
 
 Install an AAltSys Server
 =============================
@@ -41,11 +42,13 @@ Configure the AAltSys Server:
 
 + In :menuselection:`File Sharing`, define the **arev** share as a directory 
   **arev** under Zentyal.
-+ Set "read/write" Access Control permissions on this share for group "Users".
++ Set "read/write" Access Control permissions on this share for group "Users"
+  (or group "fsusers").
 + At a workstation, test to see that this share is visible.
 + Map this share to drive letter **W:**.
 + Define the **public** share as a directory **public** under Zentyal.
-+ Set "read/write" Access Control permissions on this share for group "Users".
++ Set "read/write" Access Control permissions on this share for group "Users"
+  (or group "fsusers").
 + See that the share is visible, and map the share to drive letter **S:\\**.
 
 Setup WARES on the Server
@@ -54,18 +57,21 @@ Setup WARES on the Server
 Copy WARES to the Server:
 """""""""""""""""""""""""""""
 
-+	At a workstation, open the saved **ATLAS** folder, and the **AREV** folder within it.
-+	Press :kbd:`Ctrl-A` :kbd:`Ctrl-C` to select all files within the **AREV** folder.
-+	Open the drive **W:\\**, and click in the window.
-+	Press :kbd:`Ctrl-V` to paste the contents of the **AREV** folder into drive **W:\\**.
-+	Create folders **W:\\exchange**, and **W:\\export**.
-+	Copy the contents of **S:\\arev** to **W:\\**.
-+	Copy other folders in **ATLAS**, such as **CONNECT**, to **W:\**.
++ At a workstation, open the saved **ATLAS** folder, and the **AREV** folder 
+  within it.
++ Press :kbd:`Ctrl-A` :kbd:`Ctrl-C` to select all files within the **AREV** 
+  folder.
++ Open the drive **W:\\**, and click in the window.
++ Press :kbd:`Ctrl-V` to paste the contents of the **AREV** folder into drive 
+  **W:\\**.
++ Create folders **W:\\exchange** and **W:\\export**.
++ Copy the contents of **S:\\arev** to **W:\\**.
++ Copy other folders in **ATLAS**, such as **CONNECT**, to **W:\\**.
 
 Configure WARES on the Server:
 """"""""""""""""""""""""""""""""""
 
-+ Copy **W:\wares.pif** to a workstation desktop.
++ Copy **W:\WARES.pif** to a workstation desktop.
 + Double-click the **WARES.pif** icon, and log into WARES at the supervisor 
   level.
 + Select :menuselection:`Tools/Utilities/Bundle` from the menu.
@@ -95,6 +101,8 @@ Configure Workstations
 Setup a NETPRINT.BAT icon:
 """""""""""""""""""""""""""""
 
+Here is a link to download :download:`NETPRINT.BAT <_downloads/NETPRINT.BAT>`.
+
 + Right-Click on the desktop, choose :menuselection:`New --> Text document`. 
 + Change the filename to `NETPRINT.BAT` and press :kbd:`<Enter>`.
 + Right-Click on `NETPRINT.BAT`, choose :menuselection:`Edit`.
@@ -109,6 +117,8 @@ Setup a NETPRINT.BAT icon:
 Setup a NETSHARE.BAT icon:
 """""""""""""""""""""""""""""
 
+Here is a link to download :download:`NETSHARE.BAT <_downloads/NETSHARE.BAT>`.
+
 + Right-Click on the desktop, choose :menuselection:`New --> Text document`.
 + Change the filename to `NETSHARE.BAT` and press :kbd:`<Enter>`.
 + Right-Click on `NETSHARE.BAT`, choose :menuselection:`Edit`.
@@ -116,8 +126,10 @@ Setup a NETSHARE.BAT icon:
 
     NET USE W: /DELETE
     NET USE S: /DELETE
+    rem NET USE W: \\192.168.2.241\wares
     NET USE W: \\AAltSysServer\wares
     IF ERRORLEVEL 1 PAUSE
+    rem NET USE S: \\192.168.2.241\shared
     NET USE S: \\AAltSysServer\shared
     IF ERRORLEVEL 1 PAUSE
 
@@ -126,6 +138,8 @@ Setup a NETSHARE.BAT icon:
 WARES.BAT for Windows7:
 """""""""""""""""""""""""""""
 
+Here is a link to download :download:`WARES.BAT <_downloads/WARES.BAT>`. 
+
 + Display a command window on the local windows workstation.
 + Type :kbd:`EDIT W:\WARES.BAT <Enter>`.
 + Press :kbd:`<Down>,<Enter>,<Up>` to insert a blank second line.
@@ -133,13 +147,15 @@ WARES.BAT for Windows7:
 + Press :kbd:`<Alt-F>,<S>,<Alt-F>,<X>` to save and exit the editor.
 + Type `EXIT` to close the command window.
 
-..note::
-  Fixing WARES.BAT is a global change. Perform this step exactly once, not once per workstation.
+.. note:: Fixing WARES.BAT is a global change. Perform this step exactly once, 
+   not once per workstation.
 
 Copy WARES.pif to Desktop:
 """""""""""""""""""""""""""""
 
-+ Copy ``W:\WARES.pif`` to the local desktop.
+Here is a link to download :download:`WARES.PIF <_downloads/WARES.PIF>`.
+
++ Copy ``W:\WARES.PIF`` to the local desktop.
 + Right-click the icon, and choose :menuselection:`Properties`.
 + Click the :guilabel:`Program` tab.
 + At the :guilabel:`Cmd line:` prompt, specify a unique user identifier.

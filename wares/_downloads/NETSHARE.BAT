@@ -1,0 +1,9 @@
+NET USE W: /DELETE
+NET USE S: /DELETE
+rem NET USE W: \\192.168.2.241\wares
+NET USE W: \\AAltSysServer\wares
+IF ERRORLEVEL 1 PAUSE
+rem NET USE S: \\192.168.2.241\shared
+NET USE S: \\AAltSysServer\shared
+IF ERRORLEVEL 1 PAUSE
+ 

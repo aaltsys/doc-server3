@@ -250,6 +250,7 @@ intersphinx_mapping = {
 	'install': ('install', '../_deploy/install/objects.inv'),
 	'workstation': ('workstation', '../_deploy/workstation/objects.inv'),
 	'administer': ('administer', '../_deploy/administer/objects.inv'),
+	'wares': ('wares', '../_deploy/wares/objects.inv'),
 	'technical': ('technical', '../_deploy/technical/objects.inv'),
 	'rescue': ('rescue', '../_deploy/rescue/objects.inv'),
 }

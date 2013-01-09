@@ -34,7 +34,7 @@ a workstation C:\\ drive. Call if you have questions about what to copy.
 Install an AAltSys Server
 =============================
 
-Install the AAltSys Server using directions from http://aaltsys.com/learn. Add 
+Install the AAltSys Server using directions from http://servers.aaltsys.info. Add 
 to those directions the following specific instructions.
 
 Configure the AAltSys Server:
@@ -76,7 +76,7 @@ Configure WARES on the Server:
   level.
 + Select :menuselection:`Tools/Utilities/Bundle` from the menu.
 + Press :kbd:`Shift-F1` to display the :guilabel:`SetVolume` window.
-+ Enter volume name ``PATCHES<enter>``.
++ Enter volume name ``PATCHES``.
 + If the data location is ``..\PATCHES``, change it to ``.\PATCHES`` (that is, 
   remove one period).
 + Press :kbd:`F9` to save changes and :kbd:`Esc` to return to Bundle Records.
@@ -153,9 +153,9 @@ Here is a link to download :download:`WARES.BAT <_downloads/WARES.BAT>`.
 Copy WARES.pif to Desktop:
 """""""""""""""""""""""""""""
 
-Here is a link to download :download:`WARES.PIF <_downloads/WARES.PIF>`.
+Here is a link to download :download:`WARES.pif <_downloads/WARES.pif>`.
 
-+ Copy ``W:\WARES.PIF`` to the local desktop.
++ Copy ``W:\WARES.pif`` to the local desktop.
 + Right-click the icon, and choose :menuselection:`Properties`.
 + Click the :guilabel:`Program` tab.
 + At the :guilabel:`Cmd line:` prompt, specify a unique user identifier.

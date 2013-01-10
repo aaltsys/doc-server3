@@ -3,12 +3,13 @@
 #############################
 
 This basic guide describes moving **WARES** from a single user computer
-or other shared drive onto an AAltSys Server. This guide is appropriate when the 
-**WARES** copy is stored within an **ATLAS** folder. When finished, **WARES** will
-be moved to a share mounted as drive **W:\\** at each workstation.
+or other shared drive onto an AAltSys Server. This guide is appropriate when 
+the **WARES** copy is stored within an **ATLAS** folder. When finished, 
+**WARES** will be accessed from a server share mounted as drive **W:\\** at 
+each workstation.
 
 .. note:: This guide assumes that WARES patches and support files have been 
-   added to the **Public** share or drive **S:\\**. Make sure these files are 
+   added to the **Shared** share or drive **S:\\**. Make sure these files are 
    present beforehand.
 
 Prep WARES on the old server
@@ -40,13 +41,13 @@ to those directions the following specific instructions.
 Configure the AAltSys Server:
 """""""""""""""""""""""""""""
 
-+ In :menuselection:`File Sharing`, define the **arev** share as a directory 
++ In :menuselection:`File Sharing`, define the **wares** share as a directory 
   **arev** under Zentyal.
 + Set "read/write" Access Control permissions on this share for group "Users"
   (or group "fsusers").
 + At a workstation, test to see that this share is visible.
 + Map this share to drive letter **W:**.
-+ Define the **public** share as a directory **public** under Zentyal.
++ Define the **shared** share as a directory **public** under Zentyal.
 + Set "read/write" Access Control permissions on this share for group "Users"
   (or group "fsusers").
 + See that the share is visible, and map the share to drive letter **S:\\**.
@@ -57,16 +58,15 @@ Setup WARES on the Server
 Copy WARES to the Server:
 """""""""""""""""""""""""""""
 
-+ At a workstation, open the saved **ATLAS** folder, and the **AREV** folder 
-  within it.
-+ Press :kbd:`Ctrl-A` :kbd:`Ctrl-C` to select all files within the **AREV** 
-  folder.
++ At a workstation, open the saved **ATLAS** folder. If there is an **AREV** 
+  folder within **ATLAS**, open that folder.
++ Press :kbd:`<Ctrl-A> <Ctrl-C>` to select all files within the open folder.  
 + Open the drive **W:\\**, and click in the window.
-+ Press :kbd:`Ctrl-V` to paste the contents of the **AREV** folder into drive 
-  **W:\\**.
-+ Create folders **W:\\exchange** and **W:\\export**.
-+ Copy the contents of **S:\\arev** to **W:\\**.
-+ Copy other folders in **ATLAS**, such as **CONNECT**, to **W:\\**.
++ Press :kbd:`Ctrl-V` to paste the contents of the folder into drive **W:\\**. 
++ Create folders **W:\\exchange** and **W:\\export**, if missing.
++ Copy the contents of **S:\\arev** to **W:\\** (usually folder **patches**). 
++ If **ATLAS** contained an **AREV** folder, copy any other folders in 
+  **ATLAS** but not included in **AREV**, such as **CONNECT**, to **W:\\**.
 
 Configure WARES on the Server:
 """"""""""""""""""""""""""""""""""

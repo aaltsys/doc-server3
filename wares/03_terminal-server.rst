@@ -7,7 +7,7 @@ AADS Server Terminal Services
 Terminal services are required to run programs which are designed to run 
 in a desktop environment, which access local databases, and which have limited 
 graphical activity. While Windows Server products include terminal services  functionality, there is an easier way to provide this capability: 
-<AADS Server http://www.aads-worldwide.hk/index.html>_.
+`AADS Server <http://www.aads-worldwide.hk/index.html>`_.
 
 Install VPN
 =============================
@@ -98,17 +98,17 @@ Using :menuselection:`Start --> Maintenance AADServer`, display tab
 In section :guilabel:`Application`, tab 
 :guilabel:`Users, Groups, and Applications`, enter the following applications:
 
-+-----------+------------------------------------+---------------------------+
++-----------+------------------------------------+---------+-----------------+
 | Display   | Program name                       | Startup | Command         | 
 +===========+====================================+=========+=================+
 | WARES     | C:\Users\Public\WARES\WARES.pif    |         |                 |
-+-----------+------------------------------------+---------------------------+
++-----------+------------------------------------+---------+-----------------+
 | RDPPRINT  | C:\Users\Public\WARES\RDPPRINT.BAT |         |                 |
-+-----------+------------------------------------+---------------------------+
++-----------+------------------------------------+---------+-----------------+
 | NETSHARE  | C:\Users\Public\WARES\NETSHARE.BAT |         |                 |
-+-----------+------------------------------------+---------------------------+
++-----------+------------------------------------+---------+-----------------+
 | LOGOUT    |                                    |         | shutdown /l /f  | 
-+-----------+------------------------------------+---------------------------+
++-----------+------------------------------------+---------+-----------------+
 
 Customize Batch Programs
 =============================
@@ -171,5 +171,5 @@ Create a new :file:`RDPPRINT.BAT` program as follows::
   :EXIT
   
 Download the :download:`RDPPRINT.BAT <_downloads/RDPPRINT.BAT>` batch file, 
-saving it in folder :file:`C:\Users\Public`. Then edit the file as 
+saving it in folder :file:`C:\\Users\\Public\\WARES`. Then edit the file as 
 described above.

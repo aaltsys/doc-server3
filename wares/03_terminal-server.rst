@@ -69,8 +69,8 @@ Keep a record of the user passwords, or use effective hints::
 Add Program Fles
 =============================
 
-Add folder :filename:`WARES` inside :filename:`C:\Users\Public`. In the 
-:filename:`WARES` folder, add the following files (downloadable from links on 
+Add folder :file:`WARES` inside :file:`C:\Users\Public`. In the 
+:file:`WARES` folder, add the following files (downloadable from links on 
 the previous page):
 
 | WARES.pif
@@ -116,13 +116,13 @@ Customize Batch Programs
 NETSHARE.BAT
 -----------------------------
 
-Edit the :filename:`NETSHARE.BAT` program to use either the correct IP address 
+Edit the :file:`NETSHARE.BAT` program to use either the correct IP address 
 of the server or the server NETBIOS name, such as ``AAltsysServer``.
 
 RDPPRINT.BAT
 -----------------------------
 
-The default :filename:`NETPRINT.BAT` is intended to work for local printers, 
+The default :file:`NETPRINT.BAT` is intended to work for local printers, 
 and it will not work for remote users. Instead, the remote users must share 
 their printers and a table of users and shares is required:
 
@@ -139,7 +139,7 @@ their printers and a table of users and shares is required:
 +------------------+-----------------------+-------------------+--------+
 
 Substituting for {workstationIP} and {sharename} in the following script,
-Create a new :filename:`RDPPRINT.BAT` program as follows::
+Create a new :file:`RDPPRINT.BAT` program as follows::
 
   @ECHO OFF
   NET USE LPT1 /DELETE
@@ -171,5 +171,5 @@ Create a new :filename:`RDPPRINT.BAT` program as follows::
   :EXIT
   
 Download the :download:`RDPPRINT.BAT <_downloads/RDPPRINT.BAT>` batch file, 
-saving it in folder :filename:`C:\Users\Public`. Then edit the file as 
+saving it in folder :file:`C:\Users\Public`. Then edit the file as 
 described above.

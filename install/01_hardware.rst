@@ -87,6 +87,12 @@ for a specific board.
 Setting up RAID array
 ==================================
 
+.. warning:: If another Fake-RAID array BIOS has been used to configure drives,
+   the motherboard Intel Matrix RAID will not display when :kbd:`<Ctrl-I>` is 
+   pressed, and the drives cannot be reconfigured. Particularly, if an Adaptec
+   RAID array exists the drives cannot be reinstalled because the Zentyal/Ubuntu 
+   installer is not compatible with Adaptec RAID.
+
 .. note:: The SuperMicro motherboard BIOS setup, described in the link above, 
    includes RAID array setup. Other motherboards which permit RAID array setup 
    without BIOS setting changes should use the instructions below.

@@ -110,7 +110,7 @@ Here is a link to download :download:`NETPRINT.BAT <_downloads/NETPRINT.BAT>`.
 
     NET USE LPT1 /DELETE
     NET USE LPT1 \\127.0.0.1\sharename
-    IF ERRORLEVEL 1 PAUSE
+    IF %ERRORLEVEL% NEQ 0 PAUSE
 
 + Press :kbd:`<Alt-F>,<S>,<Alt-F>,<X>` to save and close.
 
@@ -127,11 +127,11 @@ Here is a link to download :download:`NETSHARE.BAT <_downloads/NETSHARE.BAT>`.
     NET USE W: /DELETE
     NET USE S: /DELETE
     rem NET USE W: \\192.168.2.241\wares
-    NET USE W: \\AAltSysServer\wares
-    IF ERRORLEVEL 1 PAUSE
     rem NET USE S: \\192.168.2.241\shared
+    NET USE W: \\AAltSysServer\wares
+    IF %ERRORLEVEL% NEQ 0 PAUSE
     NET USE S: \\AAltSysServer\shared
-    IF ERRORLEVEL 1 PAUSE
+    IF %ERRORLEVEL% NEQ 0 PAUSE
 
 + Press :kbd:`<Alt-F>,<S>,<Alt-F>,<X>` to save and close.
 

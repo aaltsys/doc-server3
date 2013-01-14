@@ -144,12 +144,12 @@ Groups
 ==========================
 
 Once all users are entered, select :menuselection:`Office --> Users and Groups 
---> Groups`. Enter a group :kbd:`users` and a group :kbd:`admins`, as shown 
+--> Groups`. Enter a group :kbd:`fsusers` and a group :kbd:`admins`, as shown 
 here.
 
 .. image:: _images/office_40.1_addgroup.png
 
-Click ``Add and edit`` to complete the group information. For the ``Users`` 
+Click ``Add and edit`` to complete the group information. For the ``fsusers`` 
 group, :kbd:`<Shift-Click>` each name in the :guilabel:`Users not in group` 
 list, and then click the :guilabel:`left-arrow` to move them to the 
 :guilabel:`Users in group` list.
@@ -189,7 +189,7 @@ the :guilabel:`Access control` button next to a share, and then click
 ``+ Add new`` to add a permission. Next to :guilabel:`User/Group`, press the 
 dropdown button and choose ``Group``, then press the dropdown to set the group 
 name. At :guilabel:`Permission`, press the dropdown and set permissions for the 
-selected group. The settings to add ``Group`` ``users`` to the 
+selected group. The settings to add ``Group`` ``fsusers`` to the 
 :guilabel:`public` share with ``read and write`` permissions are illustrated 
 following.
 

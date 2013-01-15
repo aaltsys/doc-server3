@@ -199,7 +199,7 @@ Create a new :file:`RDPPRINT.BAT` program as follows::
   :EXIT
   
 A sample batch file :download:`RDPPRINT.BAT <_downloads/RDPPRINT.BAT>` is 
-provided; download it to :file:`C:\\Users\\Public\\WARES\RDPPRINT.BAT` on the 
+provided; download it to :file:`C:\\Users\\Public\\WARES\\RDPPRINT.BAT` on the 
 TS machine. Then edit the file as described above.
 
 Authentication entries

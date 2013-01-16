@@ -93,14 +93,13 @@ Add Program Fles
 =============================
 
 Add folder :file:`WARES` inside :file:`C:\\Users\\Public`. In the 
-:file:`WARES` folder, add the following files (downloadable from links on 
-the previous page):
+:file:`WARES` folder, add the following files, downloadable from links on 
+:ref:`this page <workstation:downloads>`:
 
-| :file:`WARES.pif`
 | :file:`NETPRINT.BAT`
 | :file:`NETSHARE.BAT`
 | :file:`WARES.BAT`
-| :file:`PATCHES` (folder)
+| :file:`WARES.pif`
 
 Install AADS Server
 =============================

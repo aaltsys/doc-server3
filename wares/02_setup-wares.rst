@@ -6,13 +6,13 @@
 
 This basic guide describes moving **WARES** from a single user computer
 or other shared drive onto an AAltSys Server. This guide is appropriate when 
-the **WARES** copy is stored within an **ATLAS** folder. When finished, 
-**WARES** will be accessed from a server share mounted as drive **W:\\** at 
+the **WARES** copy is stored within an :file:`ATLAS` folder. When finished, 
+**WARES** will be accessed from a server share mounted as drive :file:`W:\\` at 
 each workstation.
 
 .. note:: This guide assumes that WARES patches and support files have been 
-   added to the **Shared** share or drive **S:\\**. Make sure these files are 
-   present beforehand.
+   added to the **Shared** share or drive :file:`S:\\`. Make sure these files 
+   are present beforehand.
 
 Prep WARES on the old server
 =============================
@@ -37,8 +37,8 @@ a workstation C:\\ drive. Call if you have questions about what to copy.
 Install an AAltSys Server
 =============================
 
-Install the AAltSys Server using directions from :ref:`<install:index>`. Add 
-to those directions the following specific instructions.
+Use directions from :ref:`Install an AAltSys Server <install:index>`. Add to 
+those directions the following specific instructions.
 
 Configure the AAltSys Server
 -----------------------------
@@ -100,4 +100,4 @@ Configure Workstations
 Prepare each workstation to run WARES using the directions in the 
 :ref:`Workstation manual section <workstation:index>`. Batch program files may 
 be added to workstation desktops to map printers and network drives, as 
-explained in article :ref:`<workstation:netuse>`.
+explained in article :ref:`DOS and NET USE <workstation:netuse>`.

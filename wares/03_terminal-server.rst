@@ -133,8 +133,9 @@ Setup Applications
   :guilabel:`Application`. 
 + In section :guilabel:`Application control mode`, tab :guilabel:`Mode`, choose 
   :guilabel:`Default a user sees a complete desktop`. 
-+ In section :guilabel:`Application`, tab :guilabel:`Users, Groups, and Applications`, 
-  enter the following programs and assign them to group **WARES**.:
++ In section :guilabel:`Application`, tab 
+  :guilabel:`Users, Groups, and Applications`, 
+  enter the following programs and assign them to group **WARES**:
   
   +-----------+------------------------------------+---------+-----------------+
   | Display   | Program name                       | Startup | Command         | 

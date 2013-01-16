@@ -294,5 +294,4 @@ intersphinx_mapping = {
 	'administer': ('administer', '../_deploy/administer/objects.inv'),
 	'technical': ('technical', '../_deploy/technical/objects.inv'),
 	'rescue': ('rescue', '../_deploy/rescue/objects.inv'),
-	'master': ('master', '../_deploy/master/objects.inv'),
 }

@@ -37,6 +37,9 @@ We recommend using the
 Install Hamachi on the terminal services computer and setup a new Hamachi 
 network hosted on this TS machine.
 
+.. note:: Try `remobo <http://www.remobo.com/howto>`_ as an alternative to 
+   the Hamachi VPN.
+
 Setup Users
 =============================
 

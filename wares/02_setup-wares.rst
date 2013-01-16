@@ -1,3 +1,5 @@
+.. _setup-wares:
+
 #############################
  Move WARES to AAltSys Server
 #############################

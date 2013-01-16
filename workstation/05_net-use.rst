@@ -104,6 +104,17 @@ folder when the active directory of the command is on another device. These
 issues can be addressed through the following two-part workarounds, which can 
 be applied to all versions of Windows.
 
+Installing Virtual Mode
+-----------------------------
+
+Use `Microsoft's guide to installing Windows Virtual PC and XP Mode 
+<http://windows.microsoft.com/en-US/windows7/install-and-use-windows-xp-mode-in-windows-7#section_3>`
+to set up your Windows 7 Professional, Enterprise, or Ultimate edition with 
+this free download feature.
+
+.. tip:: Display the actual installation directions by clicking the blue 
+   :guilabel:`Show all` title text.
+
 Copy Batch Programs to C:\\
 -----------------------------
 

@@ -95,3 +95,11 @@ The following procedure allows user names, full names, and passwords to be viewe
   
 .. warning:: *If the chosen user is not logged in the button will say* :guilabel:`Reset password...` *instead, but please do not.*
 
+.. note:: Multiuser Mac OSX is possible with the following steps:
+
+   + Install Vine VNC Server
+   + Login as the user to be shared
+   + Start (click) the Vine Server program. Set option to start on login
+   + Switch user to background
+   + At remote workstation, connect to Mac user with a VNC client program
+

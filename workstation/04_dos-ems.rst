@@ -1,8 +1,10 @@
-.. _dos-ems:
-
 #############################
 DOS Programs and EMS
 #############################
+
+Some DOS programs, including WARES, use an EMS (Expanded Memory System) driver 
+to access paged memory. Generally, EMS works on most computers until something 
+disables it. This article is all about these somethings.
 
 .. note:: The WARES for DOS program has a built-in test for working EMS. Menu 
    selection :menuselection:`Access --> Tourguide` will display either a list 
@@ -10,15 +12,11 @@ DOS Programs and EMS
    work in Windows XP, but the test for EMS functioning is reliable. Otherwise, 
    Microsoft's OS does not in any way indicate when EMS is disabled.
 
-Some DOS programs, including WARES, use an EMS (Expanded Memory System) driver 
-to access paged memory. Generally, EMS works on most computers until something 
-disables it. This article is all about these somethings.
-
 Operating System EMS Problems
 =============================
 
 Problems in the Windows operating system or associated software cause most EMS 
-issues. This section itemizes the most common of these problems.
+issues. This section itemizes the common causes of these problems.
 
 KB2724197 and EMS
 -----------------------------
@@ -33,8 +31,8 @@ following directions:
 #. In the :guilabel:`System Properties` window, display tab 
    :guilabel:`Automatic Updates`.
 #. Change settings from :guilabel:`Automatic` to 
-   :guilabel:`Download Updates for me ... ,` then click buttons :button:`Apply` 
-   and :button:`OK`.
+   :guilabel:`Download Updates for me ... `, then click buttons :guilabel:`Apply` 
+   and :guilabel:`OK`.
    
    .. Note:: Computers which are on an Active Directory domain cannot change 
       this setting. If the :guilabel:`Automatic` selection is grayed out, 
@@ -46,32 +44,32 @@ following directions:
 #. Scroll to the bottom of the list, maybe just above `Windows XP Service Pack 3`.
 #. Click on item :guilabel:`Security Update KB2724197` from 10/10/12, which 
    will expand the entry.
-#. In the detailed display, click the :button:`Remove` button, then click
-   :button:`Next` to perform the remove operation.
-#. When the selection is removed, click :button:`Finish` to complete and 
+#. In the detailed display, click the :guilabel:`Remove` button, then click
+   :guilabel:`Next` to perform the remove operation.
+#. When the selection is removed, click :guilabel:`Finish` to complete and 
    restart Windows.
-   
+
 DOS programs such as WARES will work correctly when this security update is 
 removed, but new Windows security updates will not be installed. Follow this 
-next set of directionss to re-enable automatic updates:
+next set of directions to re-enable automatic updates: 
 
 #. Open menu selection :menuselection:`Start --> Microsoft Update` or 
-   :menuselection:`Start --> Windows Update`.
-#. Click the :button:`Custom` button.
+   :menuselection:`Start --> Windows Update`. 
+#. Click the :guilabel:`Custom` button.
 #. On the list of :guilabel:`High Priority Updates`, find 
-   :option:`Security Update for Windows XP (KB2724197)`.
-#. Uncheck the checkbox next to :option:`KB2724197`.
-#. Click the :button:`plus` sign to expand the item display, and check the box 
-   :option:`Don't show this update again`.
+   :guilabel:`Security Update for Windows XP (KB2724197)`.
+#. Uncheck the checkbox next to :guilabel:`KB2724197`.
+#. Click the :guilabel:`plus` sign to expand the item display, and check the box 
+   :guilabel:`Don't show this update again`.
 #. Click :menuselection:`Install Updates` on the left menu to install other 
-   updates, But choose to :option:`Restart Later`.
+   updates, But choose to :guilabel:`Restart Later`.
 #. Close :guilabel:`Microsoft Update`.
 #. From the :guilabel:`Start` menu, <right-click> :guilabel:`My Computer` and 
    choose :menuselection:`Properties`.
 #. In the :guilabel:`System Properties` window, display tab 
    :guilabel:`Automatic Updates`.
 #. Change settings from :guilabel:`Download Updates for me ...` to 
-   :guilabel:`Automatic`, then click buttons :button:`Apply`, and :button:`OK`.
+   :guilabel:`Automatic`, then click buttons :guilabel:`Apply`, and :guilabel:`OK`.
 #. If other updates were installed, restart Windows.
 
 Using .lnk instead of .pif
@@ -109,7 +107,7 @@ Windows Vista
 -----------------------------
 
 Microsoft removed support for EMS in Vista, but Windows 7 added EMS support 
-back. If you are using Vista, get a better operating system -- or use 
+back. If you are using Vista, get a better operating system, or else use 
 :program:`EMS Magic`, described below.
 
 Hardware Drivers and EMS
@@ -144,6 +142,8 @@ add-in component boards. Possible targets for this approach are:
 * Disable on-board network port (NIC), add in a network card or USB port
 * Disable on-board video, add in a video card
 
+.. _ems-magic:
+
 Replacing Microsoft's EMS
 =============================
 
@@ -158,5 +158,5 @@ Other References
 =============================
 
 EMS is a notorious category of Microsoft issues. 
-`This web page http://www.columbia.edu/~em36/wpdos/emsxp.html>`_ supporting 
-WordPerfect for DOS illustrates another response to the issues discussed above.
+`This web page <http://www.columbia.edu/~em36/wpdos/emsxp.html>`_ supporting 
+WordPerfect for DOS illustrates another response to the issues discussed above. 

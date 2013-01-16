@@ -92,7 +92,7 @@ Copy WARES.pif to Desktop:
 #. At the :guilabel:`Cmd line:` prompt, specify a unique user identifier.
    (This entry should read, :command:`W:\WARES.BAT USERxx` where ``xx`` is 
    between 00 and 09.)
-#. Click :button:`Apply` and :button:`OK`.
+#. Click :guilabel:`Apply` and :guilabel:`OK`.
 
 64-bit Windows Virtual Mode
 =============================

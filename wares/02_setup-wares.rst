@@ -35,7 +35,7 @@ a workstation C:\\ drive. Call if you have questions about what to copy.
 Install an AAltSys Server
 =============================
 
-Install the AAltSys Server using directions from :ref:`<install:index>. Add 
+Install the AAltSys Server using directions from :ref:`<install:index>`. Add 
 to those directions the following specific instructions.
 
 Configure the AAltSys Server

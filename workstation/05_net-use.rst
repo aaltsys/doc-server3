@@ -138,7 +138,7 @@ Copy Batch Programs to C:\\
 Call Batch Programs on C:\\
 -----------------------------
 
-Windows may refuse to execute ``%USERPROFILE%\\DESKTOP\\NETPRINT.BAT``, 
+Windows may refuse to execute :file:`%USERPROFILE%\\DESKTOP\\NETPRINT.BAT`, 
 particularly if the program is called from Virtual Mode. In that case, relocate
 the program to drive :file:`C:\\` as described previously. Then call it from 
 there, as follows:
@@ -160,3 +160,6 @@ there, as follows:
 
 #. Press :kbd:`<Alt-F>,<S>,<Alt-F>,<X>` to save and exit the editor.
 #. Type :kbd:`EXIT` to close the command window.
+
+This revised :download:`WARES.BAT <_downloads/WARES.BAT>` may be downloaded as 
+mentioned above.

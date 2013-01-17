@@ -6,15 +6,15 @@
 
 DOS and some Windows applications rely on device mapping techniques to talk to 
 network fileshares and other services. A mapping associates a Windows host and
-device name with a local virtual hardware device specification using (I believe 
-Novell's) :command:`NET USE` commands.
+device name with a local virtual hardware device specification using 
+:command:`NET USE` commands.
 
 While the :command:`NET USE` command includes a method of remembering mappings, 
 Windows has a corresponding habit of forgetting mappings at inopportune times. 
 Consequently script files should be created to execute mappings from desktop 
 icons.
 
-The following instructions are written in to work for both Windows XP and 
+The following instructions are intended to work in both Windows XP and 
 Windows 7. Testing was performed on Professional editions only.
 
 .. _downloads:
@@ -25,10 +25,10 @@ Download links
 Batch programs mentioned in this article may be downloaded from the following 
 links:
 
-+ Download :download:`NETPRINT.BAT <_downloads/NETPRINT.BAT>`.
-+ Download :download:`NETSHARE.BAT <_downloads/NETSHARE.BAT>`.
-+ Download :download:`WARES.BAT <_downloads/WARES.BAT>`. 
-+ Download :download:`WARES.pif <_downloads/WARES.pif>`.
++ :download:`Download NETPRINT.BAT <_downloads/NETPRINT.BAT>`.
++ :download:`Download NETSHARE.BAT <_downloads/NETSHARE.BAT>`.
++ :download:`Download WARES.BAT <_downloads/WARES.BAT>`. 
++ :download:`Download WARES.pif <_downloads/WARES.pif>`.
 
 Configure 32-bit Windows
 =============================
@@ -37,7 +37,7 @@ Configure 32-bit Windows
    32-bit editions only. WARES cannot run natively on a 64-bit operating 
    system, and so the Windows virtual mode is required. In virtual mode, it is 
    not possible to call a desktop batch file with the ``%USERPROFILE%`` syntax 
-   as described in the section on modifying `WARES.BAT for Windows 7`.
+   as described in section :ref:`win7-waresbat`.
 
 Setup a NETPRINT.BAT icon:
 -----------------------------
@@ -70,13 +70,15 @@ Setup a NETSHARE.BAT icon:
 
 #. Press :kbd:`<Alt-F>,<S>,<Alt-F>,<X>` to save and close.
 
-WARES.BAT for Windows7:
+.. _win7-waresbat:
+
+WARES.BAT for Windows 7:
 -----------------------------
 
 #. Display a command window on the local windows workstation.
 #. Type :kbd:`EDIT W:\\WARES.BAT`, and press :kbd:`<Enter>`.
 #. Press :kbd:`<Down>,<Enter>,<Up>` to insert a blank second line.
-#. Type :command:`CALL "%USERPROFILE%\\DESKTOP\\NETPRINT.BAT"`.
+#. Type :kbd:`CALL "%USERPROFILE%\\DESKTOP\\NETPRINT.BAT"`.
 #. Press :kbd:`<Alt-F>,<S>,<Alt-F>,<X>` to save and exit the editor.
 #. Type :kbd:`EXIT` to close the command window.
 
@@ -86,13 +88,13 @@ WARES.BAT for Windows7:
 Copy WARES.pif to Desktop:
 -----------------------------
 
-#. Copy :file:`W:\WARES.pif` to the local desktop.
+#. Copy :file:`W:\\WARES.pif` to the local desktop.
 #. Right-click the icon, and choose :menuselection:`Properties`.
 #. Click the :guilabel:`Program` tab.
 #. At the :guilabel:`Cmd line:` prompt, specify a unique user identifier.
-   (This entry should read, :command:`W:\WARES.BAT USERxx` where ``xx`` is 
+   (This entry should read, :kbd:`W:\\WARES.BAT USERxx` where ``xx`` is 
    between 00 and 09.)
-#. Click :guilabel:`Apply` and :guilabel:`OK`.
+#. Click buttons :guilabel:`Apply` and :guilabel:`OK`.
 
 64-bit Windows Virtual Mode
 =============================
@@ -107,8 +109,7 @@ be applied to all versions of Windows.
 Installing Virtual Mode
 -----------------------------
 
-Use `Microsoft's guide to installing Windows Virtual PC and XP Mode 
-<http://windows.microsoft.com/en-US/windows7/install-and-use-windows-xp-mode-in-windows-7#section_3>`
+Use `Microsoft's guide to installing Windows Virtual PC and XP Mode <http://windows.microsoft.com/en-US/windows7/install-and-use-windows-xp-mode-in-windows-7#section_3>`_
 to set up your Windows 7 Professional, Enterprise, or Ultimate edition with 
 this free download feature.
 
@@ -137,7 +138,7 @@ Copy Batch Programs to C:\\
 Call Batch Programs on C:\\
 -----------------------------
 
-Windows may refuse to execute :program:`%USERPROFILE%\\DESKTOP\\NETPRINT.BAT`, 
+Windows may refuse to execute ``%USERPROFILE%\\DESKTOP\\NETPRINT.BAT``, 
 particularly if the program is called from Virtual Mode. In that case, relocate
 the program to drive :file:`C:\\` as described previously. Then call it from 
 there, as follows:

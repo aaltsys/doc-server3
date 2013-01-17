@@ -1,9 +1,9 @@
-#####################################
- Important Workstation Control Panels
-#####################################
+#############################
+Workstation Control Panels
+#############################
 
 Windows XP Control Panels
-=========================
+=============================
 
 :menuselection:`Control Panel --> Network Connections`
 ------------------------------------------------------

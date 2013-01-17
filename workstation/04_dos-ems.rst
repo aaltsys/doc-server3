@@ -6,13 +6,14 @@ DOS Programs and EMS
 
 Some DOS programs, including WARES, use an EMS (Expanded Memory System) driver 
 to access paged memory. Generally, EMS works on most computers until something 
-disables it. This article is all about these somethings.
+disables it. This article is all about disabling somethings.
 
 .. note:: The WARES for DOS program has a built-in test for working EMS. Menu 
    selection :menuselection:`Access --> Tourguide` will display either a list 
    of tours or a message to reconfigure CONFIG.SYS. Reconfiguration does not 
-   work in Windows XP, but the test for EMS functioning is reliable. Otherwise, 
-   Microsoft's OS does not in any way indicate when EMS is disabled.
+   work in Windows XP, so do not answer :kbd:`Yes` to this message, but the 
+   test for EMS functioning is reliable. Otherwise, Microsoft's OS does not in 
+   any way indicate when EMS is disabled.
 
 Operating System EMS Problems
 =============================
@@ -33,8 +34,8 @@ following directions:
 #. In the :guilabel:`System Properties` window, display tab 
    :guilabel:`Automatic Updates`.
 #. Change settings from :guilabel:`Automatic` to 
-   :guilabel:`Download Updates for me ... `, then click buttons :guilabel:`Apply` 
-   and :guilabel:`OK`.
+   :guilabel:`Download Updates for me ... `, then click buttons 
+   :guilabel:`Apply` and :guilabel:`OK`.
    
    .. Note:: Computers which are on an Active Directory domain cannot change 
       this setting. If the :guilabel:`Automatic` selection is grayed out, 
@@ -42,8 +43,9 @@ following directions:
       
 #. From the :guilabel:`Start` menu, open :guilabel:`Control Panel`, then open
    :guilabel:`Add or Remove Programs`. 
-#. Click the :guilabel:`Show Updates` checkbox and wait for the list to update.
-#. Scroll to the bottom of the list, maybe just above `Windows XP Service Pack 3`.
+#. Click the :guilabel:`Show Updates` checkbox and wait for the list to update. 
+#. Scroll to the bottom of the list, maybe just above 
+   `Windows XP Service Pack 3`.
 #. Click on item :guilabel:`Security Update KB2724197` from 10/10/12, which 
    will expand the entry.
 #. In the detailed display, click the :guilabel:`Remove` button, then click
@@ -61,8 +63,8 @@ next set of directions to re-enable automatic updates:
 #. On the list of :guilabel:`High Priority Updates`, find 
    :guilabel:`Security Update for Windows XP (KB2724197)`.
 #. Uncheck the checkbox next to :guilabel:`KB2724197`.
-#. Click the :guilabel:`plus` sign to expand the item display, and check the box 
-   :guilabel:`Don't show this update again`.
+#. Click the :guilabel:`plus` sign to expand the item display, and check the 
+   box :guilabel:`Don't show this update again`.
 #. Click :menuselection:`Install Updates` on the left menu to install other 
    updates, But choose to :guilabel:`Restart Later`.
 #. Close :guilabel:`Microsoft Update`.
@@ -71,7 +73,8 @@ next set of directions to re-enable automatic updates:
 #. In the :guilabel:`System Properties` window, display tab 
    :guilabel:`Automatic Updates`.
 #. Change settings from :guilabel:`Download Updates for me ...` to 
-   :guilabel:`Automatic`, then click buttons :guilabel:`Apply`, and :guilabel:`OK`.
+   :guilabel:`Automatic`, then click buttons :guilabel:`Apply`, and 
+   :guilabel:`OK`.
 #. If other updates were installed, restart Windows.
 
 Using .lnk instead of .pif
@@ -83,8 +86,8 @@ Sometimes this start file gets lost, or is replaced with a link or batch file.
 Windows XP supports using :file:`.pif` files, but it lacks a way to create 
 these files to start with. 
 
-Download `this WARES.pif file <_downloads/WARES.pif>` and modify it as required 
-if your :file:`.pif` is missing. 
+Download `this WARES.pif file <_downloads/WARES.pif>`_ and modify it as 
+required if your :file:`.pif` is missing. 
 
 But how do you know if you are missing your :file:`.pif`? Good question, since 
 Windows never shows the :file:`.pif` file extension. <Right-click> your start 
@@ -159,6 +162,5 @@ for DOS programs when nothing else works.
 Other References
 =============================
 
-EMS is a notorious category of Microsoft issues. 
 `This web page <http://www.columbia.edu/~em36/wpdos/emsxp.html>`_ supporting 
-WordPerfect for DOS illustrates another response to the issues discussed above. 
+WordPerfect for DOS is another source of information on EMS issues. 

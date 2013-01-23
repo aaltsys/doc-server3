@@ -4,25 +4,32 @@
 AAD Server Terminal Services
 #############################
 
-When remote workstations require access to a program, Terminal Services may be 
-necessary. This is a decent solution for programs which are designed to run in 
-a desktop environment, which access local databases, and which have limited 
-graphical activity. While Windows Server products include terminal services 
-functionality, there is an easier way to provide TS capability: 
-`AADServer <http://www.aads-worldwide.hk/index.html>`_.
+Multiuser Terminal Services is a Windows feature which allows remote 
+workstations access to programs on a central computer system. Terminal Services 
+is necessary when centralized computer programs which run in a desktop 
+environment and which access local databases must be used at remote locations. 
+
+Frequently, the reason for remote TS capability is to share a DOS or 32-bit 
+Windows program such as WARES. Microsoft offers multiuser Terminal Services in 
+their 64-bit Advanced Server Operating Systems. DOS and 32-bit Windows programs 
+are incompatible with 64-bit Windows, so a different solution is required.
 
 TS Host Machine
 =============================
 
-Windows Terminal Services is only available as a 64-bit Operating System 
-feature. Frequently, the reason for remote TS capability is to share a DOS or 
-32-bit Windows program such as WARES. Therefore a separate network station 
-running Windows 7 32-bit is required for TS. We recommend Atom-powered netbook 
-or notebook with 2 Gb RAM for this use, since this guarantees the operating 
-system is 32-bit, and a battery backup for power is built into the computer. 
+An add-on program, `AADServer <http://www.aads-worldwide.hk/index.html>`_, is 
+available for Windows XP or Windows 7, in both 32-bit and 64-bit versions, and 
+can be used in small offices or enterprise domain environments. This program 
+has many features which make it an excellent remote access software solution.
 
-Upgrade the operating system to Windows 7 Professional, as this is required for 
-serving RDP sessions.
+On the hardware side, an adjunct server machine is required in an office to 
+host terminal sessions on the AADServer. We suggest using an Atom-powered 
+netbook with 2 Gb RAM for this purpose. The Atom processor requires a 32-bit 
+operating system, and a battery backup for power is built into the computer. 
+
+Most netbooks ship with Windows Home Starter Edition as an operating system. 
+Microsoft supplies RDP server functionality only in Professional and Ultimate 
+editions. Upgrade the netbook operating system to Windows 7 Professional.
 
 .. warning:: After registering Windows and upgrading, remove any bloatware 
    which includes nag screens such as "update your virus software now." If 
@@ -32,12 +39,13 @@ serving RDP sessions.
 Install VPN
 =============================
 
-We recommend using the 
-`Logmein/Hamachi VPN <https://secure.logmein.com/products/hamachi/>`_. 
+Secure access across the Internet requires a Virtual Private Network service, 
+or VPN. `Logmein/Hamachi VPN <https://secure.logmein.com/products/hamachi/>`_ 
+provides free hosting services with very little client configuration. 
 Install Hamachi on the terminal services computer and setup a new Hamachi 
 network hosted on this TS machine.
 
-.. note:: Try `remobo <http://www.remobo.com/howto>`_ as an alternative to 
+.. note:: `Remobo <http://www.remobo.com/howto>`_ is a possible alternative to 
    the Hamachi VPN.
 
 Setup Users
@@ -116,9 +124,9 @@ are capable of Windows domain authentication.
    upgrade rather than removing and installing the software. Otherwise, any 
    existing configuration information will be lost.
    
-.. warning:: When AADServer small system version is installed on a computer 
-   which belongs to a windows domain, domain registration will be eliminated. 
-   Install AADServer Enterprise only on domain machines.
+.. warning:: If a computer belongs to a windows domain, installing AADServer 
+   small system version will remove the domain registration. Install only the
+   Enterprise edition of AADServer on domain member machines.
 
 Setup Applications
 =============================

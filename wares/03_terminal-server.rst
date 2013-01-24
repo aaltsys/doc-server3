@@ -145,17 +145,17 @@ Setup Applications
   :guilabel:`Users, Groups, and Applications`, 
   enter the following programs and assign them to group **WARES**:
   
-  +-----------+------------------------------------+---------+-----------------+
-  | Display   | Program name                       | Startup | Command         | 
-  +===========+====================================+=========+=================+
-  | WARES     | C:\Users\Public\WARES\WARES.pif    |         |                 |
-  +-----------+------------------------------------+---------+-----------------+
-  | RDPPRINT  | C:\Users\Public\WARES\RDPPRINT.BAT |         |                 |
-  +-----------+------------------------------------+---------+-----------------+
-  | NETSHARE  | C:\Users\Public\WARES\NETSHARE.BAT |         |                 |
-  +-----------+------------------------------------+---------+-----------------+
-  | LOGOUT    |                                    |         | shutdown /l /f  | 
-  +-----------+------------------------------------+---------+-----------------+
+  +-----------+----------------------------------------+---------+-----------------+
+  | Display   | Program name                           | Startup | Command         | 
+  +===========+========================================+=========+=================+
+  | WARES     | C:\\Users\\Public\\WARES\\WARES.pif    |         |                 |
+  +-----------+----------------------------------------+---------+-----------------+
+  | RDPPRINT  | C:\\Users\\Public\\WARES\\RDPPRINT.BAT |         |                 |
+  +-----------+----------------------------------------+---------+-----------------+
+  | NETSHARE  | C:\\Users\\Public\\WARES\\NETSHARE.BAT |         |                 |
+  +-----------+----------------------------------------+---------+-----------------+
+  | LOGOUT    |                                        |         | shutdown /l /f  | 
+  +-----------+----------------------------------------+---------+-----------------+
 
 .. note:: Application windows on remote machines may not be sized to display 
    correctly. We suggest logging into the application for each user, and sizing 

@@ -29,7 +29,8 @@ Possible Problems
 + Zentyal DHCP configuration may be missing LTSP information. To add the 
   information:
 
-  + In Zentyal, navigate to :menuselection:`Infrastructure > DHCP > Interface eth1 > Advanced options`.
+  + In Zentyal, navigate to 
+    :menuselection:`Infrastructure > DHCP > Interface eth1 > Advanced options`.
   + If ``Thin Client`` is blank, click :guilabel:`Add New`.
   + Enter the configuration as shown in the following image, then click 
     :guilabel:`Add`.
@@ -43,16 +44,18 @@ DOS programs on Linux desktop
 Installing DOS emulation
 -----------------------------
 
-To install dosemu, display a terminal from :menuselection:`Accessories --> Terminal`.
-Then enter the commands::
+Display a terminal from :menuselection:`Accessories --> Terminal`. Then 
+install DOSEMU with the commands::
 
   sudo aptitude install dosemu xauth
   sudo sysctl -w vm.mmap_min_addr=0
   sudo bash < <(echo 'echo "vm.mmap_min_addr=0" >> /etc/sysctl.conf')
 
-The DOS system can be started from :menuselection:`Applications --> System Tools --> DOS emulator`.
+The DOS system can be started from 
+:menuselection:`Applications --> System Tools --> DOS emulator`.
 
-.. Note:: **xauth** is required for remote execution over **ssh** on Ubuntu 8.04.
+.. Note:: **xauth** is required for remote execution over **ssh** on Ubuntu 
+   8.04.
 
 DOS performance and video
 -----------------------------
@@ -78,8 +81,8 @@ only once)::
 
   sudo sed -i '/$_X_font/ a\$_X_font = vga12x30' /etc/dosemu/dosemu.conf
 
-DOS video configurations include: ``vga, vga8x19, vga11x19, vga10x24, vga12x30, 
-vga-cp866, and vga10x20-cp866``.
+DOS video configurations include: 
+``vga, vga8x19, vga11x19, vga10x24, vga12x30, vga-cp866, and vga10x20-cp866``. 
 
 Running Dosemu from a Script
 -----------------------------
@@ -124,4 +127,9 @@ Save the batch file and exit the editor with :kbd:`Alt-F,S;Alt-F,X`. Then type
 the name of the batch file to test execute it. Exit the dosemu session with the 
 command :command:`exitemu`.
 
+Keyboard Capture
+'''''''''''''''''''''''''''''
 
+Press :kbd:`<Shift-Ctrl-Alt-K>` to switch into and out of keygrab mode in 
+DOSEMU. The :kbd:`<Shift>` is required in KDE, optional in Gnome and maybe
+other desktops.

@@ -17,7 +17,7 @@ There are thee accepted ways to access Zentyal administration:
   or
 + At a local workstation, go to browser address https://__hostname__.
 
-Login to Zentyal using your administrator :kbdL`__username__` and 
+Login to Zentyal using your administrator :kbd:`__username__` and 
 :kbd:`__password__` to perform the following initial configuration steps.
 
 Module Status

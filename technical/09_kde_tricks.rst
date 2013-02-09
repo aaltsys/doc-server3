@@ -40,7 +40,7 @@ Apple Keyboard function keys
 
 On recent KDE desktops (11.04+), issue the commands::
 
-  sudo sed -i "s#exit 0#echo 2 > /sys/module/hid_apple/parameters/fnmode\n\nexit0#" /etc/rc.local
+  sudo sed -i "$ s#exit 0#echo 2 > /sys/module/hid_apple/parameters/fnmode\n\nexit 0#" /etc/rc.local
   echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
 
 Your Apple Aluminum keyboard will work correctly in all programs.

@@ -1,7 +1,7 @@
-.. _xpunlimited:
+.. _aad-server:
 
 #############################
-AAD Server Terminal Services
+AADServer Terminal Services
 #############################
 
 Multiuser Terminal Services is a Windows feature which allows remote 

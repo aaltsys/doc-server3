@@ -213,6 +213,12 @@ A sample batch file :download:`RDPPRINT.BAT <_downloads/RDPPRINT.BAT>` is
 provided; download it to :file:`C:\\Users\\Public\\WARES\\RDPPRINT.BAT` on the 
 TS machine. Then edit the file as described above.
 
+.. rubric:: References
+
++  http://www.techrepublic.com/blog/window-on-windows/how-do-i-copy-shortcuts-to-the-all-users-folders-in-vista-or-windows-7/1857
+
+----
+
 Authentication entries
 =============================
 

@@ -51,7 +51,7 @@ network hosted on this TS machine.
 Setup Users
 =============================
 
-:kbd:`<Right-Click>` on :menuselection:`Start --> Computer`, choose 
+<Right-Click> on :menuselection:`Start --> Computer`, choose 
 :menuselection:`Manage`. 
 
 Under :guilabel:`Local Users and Groups`, open :guilabel:`Groups`. Add a group 
@@ -137,25 +137,25 @@ Setup Applications
    <Right-click> on :guilabel:`Maintenance AADServer`, and choose 
    :menuselection:`Pin to start menu`.
 
-+ Using :menuselection:`Start --> Maintenance AADServer`, display tab 
-  :guilabel:`Application`. 
-+ In section :guilabel:`Application control mode`, tab :guilabel:`Mode`, choose 
-  :guilabel:`Default a user sees a complete desktop`. 
-+ In section :guilabel:`Application`, tab 
-  :guilabel:`Users, Groups, and Applications`, 
-  enter the following programs and assign them to group **WARES**:
++  Using :menuselection:`Start --> Maintenance AADServer`, display tab 
+   :guilabel:`Application`. 
++  In section :guilabel:`Application control mode`, tab :guilabel:`Mode`, choose 
+   :guilabel:`Default a user sees a complete desktop`. 
++  In section :guilabel:`Application`, tab 
+   :guilabel:`Users, Groups, and Applications`, 
+   enter the following programs and assign them to group **WARES**:
   
-  +-----------+----------------------------------------+---------+-----------------+
-  | Display   | Program name                           | Startup | Command         | 
-  +===========+========================================+=========+=================+
-  | WARES     | C:\\Users\\Public\\WARES\\WARES.pif    |         |                 |
-  +-----------+----------------------------------------+---------+-----------------+
-  | RDPPRINT  | C:\\Users\\Public\\WARES\\RDPPRINT.BAT |         |                 |
-  +-----------+----------------------------------------+---------+-----------------+
-  | NETSHARE  | C:\\Users\\Public\\WARES\\NETSHARE.BAT |         |                 |
-  +-----------+----------------------------------------+---------+-----------------+
-  | LOGOUT    |                                        |         | shutdown /l /f  | 
-  +-----------+----------------------------------------+---------+-----------------+
+   +-----------+----------------------------------------+---------+-----------------+
+   | Display   | Program name                           | Startup | Command         | 
+   +===========+========================================+=========+=================+
+   | WARES     | C:\\Users\\Public\\WARES\\WARES.pif    |         |                 |
+   +-----------+----------------------------------------+---------+-----------------+
+   | RDPPRINT  | C:\\Users\\Public\\WARES\\RDPPRINT.BAT |         |                 |
+   +-----------+----------------------------------------+---------+-----------------+
+   | NETSHARE  | C:\\Users\\Public\\WARES\\NETSHARE.BAT |         |                 |
+   +-----------+----------------------------------------+---------+-----------------+
+   | LOGOUT    |                                        |         | shutdown /l /f  | 
+   +-----------+----------------------------------------+---------+-----------------+
 
 .. note:: Application windows on remote machines may not be sized to display 
    correctly. We suggest logging into the application for each user, and sizing 
@@ -186,28 +186,28 @@ this information is provided in the authentication section following.
 Substituting for {workstationIP} and {sharename} in the following script,
 Create a new :file:`RDPPRINT.BAT` program as follows::
 
-  @ECHO OFF
-  NET USE LPT1 /DELETE
-  rem NET USE LPT2 /DELETE
-  :USER00
-  IF NOT $%USERNAME%$ == $USER00$ GOTO USER01
-  @ECHO ON
-  NET USE LPT1 \\{workstationIP}\{sharename} /PERSISTENT:YES
-  IF %ERRORLEVEL% NEQ 0 PAUSE
-  GOTO EXIT
-  :USER01
-  IF NOT $%USERNAME%$ == $USER01$ GOTO USER02
-  @ECHO ON
-  NET USE LPT1 \\{workstationIP}\{sharename} /PERSISTENT:YES
-  IF %ERRORLEVEL% NEQ 0 PAUSE
-  GOTO EXIT
-  :USER02
-  ...
-  :USER09
-  @ECHO ON
-  NET USE LPT1 \\{workstationIP}\{sharename} /PERSISTENT:YES
-  IF %ERRORLEVEL% NEQ 0 PAUSE
-  :EXIT
+   @ECHO OFF
+   NET USE LPT1 /DELETE
+   rem NET USE LPT2 /DELETE
+   :USER00
+   IF NOT $%USERNAME%$ == $USER00$ GOTO USER01
+   @ECHO ON
+   NET USE LPT1 \\{workstationIP}\{sharename} /PERSISTENT:YES
+   IF %ERRORLEVEL% NEQ 0 PAUSE
+   GOTO EXIT
+   :USER01
+   IF NOT $%USERNAME%$ == $USER01$ GOTO USER02
+   @ECHO ON
+   NET USE LPT1 \\{workstationIP}\{sharename} /PERSISTENT:YES
+   IF %ERRORLEVEL% NEQ 0 PAUSE
+   GOTO EXIT
+   :USER02
+   ...
+   :USER09
+   @ECHO ON
+   NET USE LPT1 \\{workstationIP}\{sharename} /PERSISTENT:YES
+   IF %ERRORLEVEL% NEQ 0 PAUSE
+   :EXIT
   
 A sample batch file :download:`RDPPRINT.BAT <_downloads/RDPPRINT.BAT>` is 
 provided; download it to :file:`C:\\Users\\Public\\WARES\\RDPPRINT.BAT` on the 
@@ -229,72 +229,70 @@ Windows Registration:
 
 ::
 
-  Registration number: ______________________________
+   Registration number: ______________________________
 
 Hamachi VPN
 -----------------------------
 
 ::
 
-  Networkname: ______________________________
-     Password: ______________________________
+   Networkname: ______________________________
+      Password: ______________________________
 
 AADServer License
 -----------------------------
 
 ::
 
-  Registration username: ______________________________
-         License number: ______________________________
+   Registration username: ______________________________
+          License number: ______________________________
 
      
 TS usernames and passwords
 -----------------------------
 
-::
 
-  +----------------------+--------------------+-------------------+
-  | Function             | Username           | Password          |
-  +======================+====================+===================+
-  | System Installer     | (this information is never published)  |                   
-  +----------------------+--------------------+-------------------+
-  | Site Administrator   |                    |                   |
-  +----------------------+--------------------+-------------------+
-  | Hamachi VPN Startup  |                    |                   |
-  +----------------------+--------------------+-------------------+
-  | WARES User           | USER00 ... USER09  |                   |
-  +----------------------+--------------------+-------------------+
+   +----------------------+--------------------+-------------------+
+   | Function             | Username           | Password          |
+   +======================+====================+===================+
+   | System Installer     | (this information is never published)  |                   
+   +----------------------+--------------------+-------------------+
+   | Site Administrator   |                    |                   |
+   +----------------------+--------------------+-------------------+
+   | Hamachi VPN Startup  |                    |                   |
+   +----------------------+--------------------+-------------------+ 
+   | WARES User           | USER00 ... USER09  |                   |
+   +----------------------+--------------------+-------------------+
 
-``RDPPRINT.BAT`` information
+RDPPRINT.BAT information
 -----------------------------
 
-::
 
-  +-------------+-------------------+-------------------+---------------+--------+
-  | WARES login | Workstation name  | Hamachi VPN IP    | Printer share | Device |
-  +=============+===================+===================+===============+========+
-  | USER00      |                   |                   |               | LPT1   |
-  +-------------+-------------------+-------------------+---------------+--------+
-  | USER01      |                   |                   |               | LPT1   |
-  +-------------+-------------------+-------------------+---------------+--------+
-  | USER02      |                   |                   |               | LPT1   |
-  +-------------+-------------------+-------------------+---------------+--------+
-  | USER03      |                   |                   |               | LPT1   |
-  +-------------+-------------------+-------------------+---------------+--------+
-  | USER04      |                   |                   |               | LPT1   |
-  +-------------+-------------------+-------------------+---------------+--------+
-  | USER05      |                   |                   |               | LPT1   |
-  +-------------+-------------------+-------------------+---------------+--------+
-  | USER06      |                   |                   |               | LPT1   |
-  +-------------+-------------------+-------------------+---------------+--------+
-  | USER07      |                   |                   |               | LPT1   |
-  +-------------+-------------------+-------------------+---------------+--------+
-  | USER08      |                   |                   |               | LPT1   |
-  +-------------+-------------------+-------------------+---------------+--------+
-  | USER09      |                   |                   |               | LPT1   |
-  +-------------+-------------------+-------------------+---------------+--------+
-  | EXAMPLE     | DEVELOPER         | 25.50.50.50       | Laserjet      | LPT1   |
-  +-------------+-------------------+-------------------+---------------+--------+
+   +-------------+-------------------+-------------------+---------------+--------+
+   | WARES login | Workstation name  | Hamachi VPN IP    | Printer share | Device |
+   +=============+===================+===================+===============+========+
+   | USER00      |                   |                   |               | LPT1   |
+   +-------------+-------------------+-------------------+---------------+--------+
+   | USER01      |                   |                   |               | LPT1   |
+   +-------------+-------------------+-------------------+---------------+--------+
+   | USER02      |                   |                   |               | LPT1   |
+   +-------------+-------------------+-------------------+---------------+--------+
+   | USER03      |                   |                   |               | LPT1   |
+   +-------------+-------------------+-------------------+---------------+--------+
+   | USER04      |                   |                   |               | LPT1   |
+   +-------------+-------------------+-------------------+---------------+--------+
+   | USER05      |                   |                   |               | LPT1   |
+   +-------------+-------------------+-------------------+---------------+--------+
+   | USER06      |                   |                   |               | LPT1   |
+   +-------------+-------------------+-------------------+---------------+--------+
+   | USER07      |                   |                   |               | LPT1   |
+   +-------------+-------------------+-------------------+---------------+--------+
+   | USER08      |                   |                   |               | LPT1   |
+   +-------------+-------------------+-------------------+---------------+--------+
+   | USER09      |                   |                   |               | LPT1   |
+   +-------------+-------------------+-------------------+---------------+--------+
+   | EXAMPLE     | DEVELOPER         | 25.50.50.50       | Laserjet      | LPT1   |
+   +-------------+-------------------+-------------------+---------------+--------+ 
 
 .. note:: It would be a good idea to ghost a drive image from this installation 
    once complete, so that recovery from an OS failure would be possible.

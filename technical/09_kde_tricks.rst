@@ -19,6 +19,11 @@ handler with the command::
 
   sudo bash < <(wget https://raw.github.com/gist/1030236/putty-kde.sh -O-)
 
+Alternatively, click :download:`this download link <_downloads/putty-kde.sh>` 
+to download the script file and run it with the command::
+
+  sudo bash putty-kde.sh
+  
 Avoiding VIM
 =============================
 

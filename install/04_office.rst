@@ -74,16 +74,6 @@ Zentyal.
    shared from the server. Also, for enhanced security, these printers may be 
    connected on the WAN side of the network and then accessed by LAN computers 
    through server queues.
-
-Updating the Printer List
------------------------------
-   
-The list of printers in Zentyal may be out of date, and not show current models. 
-Updating the printer list involves adding a PPA from launchpad::
-
-   apt-add-repository ppa:hplip-isv/ppa
-   apt-get update
-   apt-get install upgrade
   
 --------------------------
 

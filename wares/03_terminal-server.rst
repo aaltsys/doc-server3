@@ -104,8 +104,8 @@ Add Program Fles
 =============================
 
 Add folder :file:`WARES` inside :file:`C:\\Users\\Public`. In the 
-:file:`WARES` folder, add the following files, downloadable from links on 
-:ref:`this page <workstation:downloads>`:
+:file:`WARES` folder, add the following files, downloadable from links at 
+:ref:`workstation:downloads`:
 
 | :file:`NETPRINT.BAT`
 | :file:`NETSHARE.BAT`

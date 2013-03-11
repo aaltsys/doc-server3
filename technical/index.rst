@@ -5,7 +5,7 @@
 
 .. _index:
 
-Welcome to AAltsys Server 3.0 Technical documentation!
+AAltsys Server 3.0 Technical Documentation
 ========================================================
 
 Contents:

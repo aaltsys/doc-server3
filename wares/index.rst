@@ -5,7 +5,7 @@
 
 .. _index:   
    
-Welcome to WARES Server documentation!
+WARES Server Configuration Documents
 =========================================
 
 Contents:

@@ -5,7 +5,7 @@
 
 .. _index:
 
-Welcome to AAltsys Server 3.0 Installation documentation!
+AAltsys Server 3.0 Installation Guide
 ===========================================================
 
 Contents:

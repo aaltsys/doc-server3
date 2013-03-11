@@ -5,7 +5,7 @@
 
 .. _index:
 
-Welcome to AAltsys Server 3.0 Workstation documentation!
+AAltsys 3.0 Workstation Configuration Topics
 ==========================================================
 
 Contents:

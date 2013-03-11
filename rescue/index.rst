@@ -5,7 +5,7 @@
 
 .. _index:
 
-Welcome to AAltsys Server 3.0 Rescue's documentation!
+Using SysRescue Utilities
 =====================================================
 
 Contents:

@@ -5,7 +5,7 @@
 
 .. _index:
 
-Welcome to AAltsys Server 3.0 Administration's documentation!
+AAltsys Server 3.0 Administration Guide
 =============================================================
 
 Contents:

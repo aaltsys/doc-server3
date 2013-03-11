@@ -28,7 +28,8 @@ type :kbd:`cmd` in the :guilabel:`Search` box, then press :kbd:`<Enter>`. To
 run :program:`cmd.exe` as administrator, <right-click> the program name and 
 select :menuselection:`Run as Administrator` from the menu.
 
-Following are selected commands which may be helpful in reviewing settings and  diagnosing installation problems.
+Following are selected commands which may be helpful in reviewing settings and 
+diagnosing installation problems. [#]_
 
 Networking
 -----------------------------
@@ -125,3 +126,9 @@ chown / chmod
     folders, subdirectories, and sub files*
   | ``chmod -R 777 ./*`` -- *makes all files have read, write, and execute 
     permissions set for all users*
+    
+----------
+
+.. rubric:: Footnotes
+
+.. [#] `Windows commands <http://ss64.com/nt/>`_

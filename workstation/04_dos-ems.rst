@@ -26,8 +26,9 @@ KB2724197 and EMS
 
 Microsoft security patch KB2724197 for Windows XP from 10/9/2012 is intended to 
 prevent improper memory assignment in programs run by an authenticated local 
-user (meaning you, of course). Generally this patch should be removed using the 
-following directions:
+user (meaning you, of course). Generally this patch should be removed or else 
+the :program:`EMS Magic` program described below must be used to provide EMS. 
+Follow the directions below to remove KB2724197 from Windows XP:
 
 #. From the :guilabel:`Start` menu, <right-click> :guilabel:`My Computer` and 
    choose :menuselection:`Properties`.
@@ -136,7 +137,7 @@ Some of these items might be:
 
 * Legacy USB support
 * Boot from Network
-* Video BIOS Driver
+* On-board Video BIOS Driver
 
 Systemboard circuitry
 -----------------------------
@@ -147,17 +148,77 @@ add-in component boards. Possible targets for this approach are:
 * Disable on-board network port (NIC), add in a network card or USB port
 * Disable on-board video, add in a video card
 
+CONFIG.NT
+-----------------------------
+
+On Windows XP, the system directory :file:`C:\Windows\System32` should contain
+files :file:`CONFIG.NT` and :file:`AUTOEXEC.NT`. On some computers, EMS is 
+specifically prohibited by settings in these files. Edit file 
+:file:`C:\Windows\System32\CONFIG.NT`, and delete any lines which start with 
+``FILES`` or ``EMM``. Then add the following two lines at the bottom of the 
+file::
+
+   FILES=100
+   EMM=RAM
+
+This could possibly get EMS to work on a system, but as they say of diet pills,
+"results may vary." I have seen this work exactly once.
+
 .. _ems-magic:
 
-Replacing Microsoft's EMS
+Replacing Microsoft EMS
 =============================
 
 Microsoft's implementation of EMS in Windows uses the Upper Memory area. For 
-computers which are incompatible with this, an EMS replacement which uses 
-main memory is available from `EMS Magic <http://www.emsmagic.com/>`_.
+computers which are incompatible with this, an EMS replacement which emulates 
+EMS using XMS is available from `EMS Magic <http://www.emsmagic.com/>`_.
 EMS Magic claims to work on Vista, and also to work on computers which have
-the notorious KB2724197 patch applied. Therefore this program `may` enable EMS 
-for DOS programs when nothing else works.
+the notorious KB2724197 patch applied. Therefore this program can enable EMS 
+for DOS programs when nothing else works. EMS Magic is commercial software, and
+it is well worth the U.S. $25.00 price if you need it.
+
+After installing EMS Magic on a workstation, specific settings must be changed 
+in both the :file:`WARES.pif` program start file and the :file:`WARES.BAT` 
+execution control file. These changes are illustrated below:
+
+WARES.BAT
+-----------------------------
+
+The :file:`WARES.BAT` execution file is found in your :file:`ATLAS` folder. The 
+path to this file should be either: :file:`C:\ATLAS\WARES.BAT` on single-user 
+systems, or :file:`W:\ATLAS\WARES.BAT` on multiuser servers.
+
+Change :file:`WARES.BAT` to call :program:`EMSMAGIC` as shown below::
+
+   ...
+   
+   :MAIN
+   IF NOT "%EMSMAGIC%"=="" EMSMAGIC /RAM=4096
+   IF $%1$==$$ GOTO UNAME
+   IF EXIST %1.INI SET AREV=%1.INI
+   IF NOT EXIST %1.INI SET AREV=DEFAULT.INI
+   ...
+
+Make this setting change once for all users sharing a WARES system, as the batch
+file is global. 
+   
+WARES.pif
+-----------------------------
+
+.. sidebar:: WARES.pif Properties Memory tab
+
+   .. image:: _images/wares-pif.png
+
+By default, Extended (XMS) Memory may be disabled in the :file:`WARES.pif` file. 
+To enable XMS for EMSmagic at a particular workstation, <Right-Click> the 
+desktop :file:`WARES` icon and choose :menuselection:`Properties`. In the 
+Properties window, click on the :guilabel:`Memory` Tab. At the entry for 
+:guilabel:`Extended (XMS) memory`, set the total to the highest amount allowed,
+as shown in the sidebar image. Then click buttons :guilabel:`Apply` and 
+:guilabel:`OK` to save your changes. 
+
+The :file:`WARES.pif` start icon must be updated at each workstation which has 
+EMS memory problems.
 
 Other References
 =============================

@@ -25,9 +25,9 @@ Download links
 Batch programs mentioned in this article may be downloaded from the following 
 links:
 
-+ :download:`Download NETPRINT.BAT <_downloads/NETPRINT.BAT>`.
-+ :download:`Download NETSHARE.BAT <_downloads/NETSHARE.BAT>`.
-+ :download:`Download WARES.BAT <_downloads/WARES.BAT>`. 
++ :download:`Download NETPRINT.BAT <_downloads/netprint.bat>`.
++ :download:`Download NETSHARE.BAT <_downloads/netshare.bat>`.
++ :download:`Download WARES.BAT <_downloads/wares.bat>`. 
 + :download:`Download WARES.pif <_downloads/WARES.pif>`.
 
 Configure 32-bit Windows
@@ -49,7 +49,7 @@ Setup a NETPRINT.BAT icon:
 
      NET USE LPT1 /DELETE
      NET USE LPT1 \\127.0.0.1\sharename
-     IF %ERRORLEVEL% NEQ 0 PAUSE
+     IF NOT %ERRORLEVEL%==0 PAUSE
 
 #. Press :kbd:`<Alt-F>,<S>,<Alt-F>,<X>` to save and close.
 
@@ -62,9 +62,9 @@ Setup a NETSHARE.BAT icon:
 #. Enter share mapping commands, for example::
 
      NET USE W: /DELETE
-     NET USE S: /DELETE
      NET USE W: \\AAltSysServer\wares
      IF %ERRORLEVEL% NEQ 0 PAUSE
+     NET USE S: /DELETE
      NET USE S: \\AAltSysServer\shared
      IF %ERRORLEVEL% NEQ 0 PAUSE
 
@@ -148,18 +148,21 @@ there, as follows:
 #. Press :kbd:`<Down>,<Enter>,<Up>` to insert a blank second line.
 #. Type in the following series of commands::
 
-     @ECHO OFF
-     IF NOT EXIST "%USERPROFILE%\Desktop\NETPRINT.BAT" GOTO DRIVE_C
-     CALL "%USERPROFILE%\Desktop\NETPRINT.BAT"
-     GOTO ENDPRINT
-     :DRIVE_C
-     C:
-     IF EXIST C:\NETPRINT.BAT CALL C:\NETPRINT.BAT
-     :ENDPRINT
-     W:
-
+      IF NOT EXIST "%USERPROFILE%\DESKTOP\NETPRINT.BAT" GOTO DRIVE_C
+      CALL "%USERPROFILE%\DESKTOP\NETPRINT.BAT"
+      GOTO ENDPRINT
+      :DRIVE_C
+      IF NOT EXIST %SYSTEMDRIVE%\NETPRINT.BAT GOTO ENDPRINT
+      %SYSTEMDRIVE%
+      CALL \NETPRINT.BAT
+      IF $%2$==$$ W:
+      %2
+      :ENDPRINT
+      
 #. Press :kbd:`<Alt-F>,<S>,<Alt-F>,<X>` to save and exit the editor.
 #. Type :kbd:`EXIT` to close the command window.
 
-This revised :download:`WARES.BAT <_downloads/WARES.BAT>` may be downloaded as 
-mentioned above.
+This revised :download:`WARES.BAT <_downloads/wares.bat>` may be downloaded as 
+mentioned above. The revised WARES.BAT and WARES.pif files downloaded here are 
+also intended to work with EMSmagic to provide EMS for Dell and other computers 
+with designed-in incompatibility.

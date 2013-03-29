@@ -151,10 +151,10 @@ add-in component boards. Possible targets for this approach are:
 CONFIG.NT
 -----------------------------
 
-On Windows XP, the system directory :file:`C:\Windows\System32` should contain
+On Windows XP, the system directory :file:`C:\\Windows\\System32` should contain
 files :file:`CONFIG.NT` and :file:`AUTOEXEC.NT`. On some computers, EMS is 
 specifically prohibited by settings in these files. Edit file 
-:file:`C:\Windows\System32\CONFIG.NT`, and delete any lines which start with 
+:file:`C:\\Windows\\System32\\CONFIG.NT`, and delete any lines which start with 
 ``FILES`` or ``EMM``. Then add the following two lines at the bottom of the 
 file::
 
@@ -185,8 +185,8 @@ WARES.BAT
 -----------------------------
 
 The :file:`WARES.BAT` execution file is found in your :file:`ATLAS` folder. The 
-path to this file should be either: :file:`C:\ATLAS\WARES.BAT` on single-user 
-systems, or :file:`W:\ATLAS\WARES.BAT` on multiuser servers.
+path to this file should be either: :file:`C:\\ATLAS\\WARES.BAT` on single-user 
+systems, or :file:`W:\\ATLAS\\WARES.BAT` on multiuser servers.
 
 Change :file:`WARES.BAT` to call :program:`EMSMAGIC` as shown below::
 

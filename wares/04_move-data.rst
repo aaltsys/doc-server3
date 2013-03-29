@@ -38,19 +38,19 @@ Prepare WARES volumes
    for each data set which will be moved to the server. The following table 
    shows example selections for creating these volumes:
   
-   +---------------------+---------------+------------------+--------------+
-   | Source Volume       | System Path   | Volume to create | Discard/Keep |
-   +=====================+===============+==================+==============+
-   | .\UPDATE\WARES\DEMO | WARES\BLDG_1  | WARES.BLDG_1     | Discard      |
-   +---------------------+---------------+------------------+--------------+
-   | .\UPDATE\WARES\DEMO | WARES\BLDG_2  | WARES.BLDG_2     | Discard      |
-   +---------------------+---------------+------------------+--------------+
-   | .\UPDATE\WARES\DEMO | WARES\BLDG_11 | WARES.BLDG_11    | Discard      |
-   +---------------------+---------------+------------------+--------------+
-   | .\UPDATE\WARES\DEMO | WARES\DEAD_1  | WARES.DEAD_1     | Discard      |
-   +---------------------+---------------+------------------+--------------+
-   | .\UPDATE\WARES\DEMO | WARES\DEAD_2  | WARES.DEAD_2     | Discard      |
-   +---------------------+---------------+------------------+--------------+
+   +------------------------+----------------+------------------+--------------+
+   | Source Volume          | System Path    | Volume to create | Discard/Keep |
+   +========================+================+==================+==============+
+   | .\\UPDATE\\WARES\\DEMO | WARES\\BLDG_1  | WARES.BLDG_1     | Discard      |
+   +------------------------+----------------+------------------+--------------+
+   | .\\UPDATE\\WARES\\DEMO | WARES\\BLDG_2  | WARES.BLDG_2     | Discard      |
+   +------------------------+----------------+------------------+--------------+
+   | .\\UPDATE\\WARES\\DEMO | WARES\\BLDG_11 | WARES.BLDG_11    | Discard      |
+   +------------------------+----------------+------------------+--------------+
+   | .\\UPDATE\\WARES\\DEMO | WARES\\DEAD_1  | WARES.DEAD_1     | Discard      |
+   +------------------------+----------------+------------------+--------------+
+   | .\\UPDATE\\WARES\\DEMO | WARES\\DEAD_2  | WARES.DEAD_2     | Discard      |
+   +------------------------+----------------+------------------+--------------+
 
 .. note:: The :guilabel:`Source Volume` default value should start with just one 
    period. If it starts with two, then fix the default as follows:
@@ -62,7 +62,7 @@ Prepare WARES volumes
 
 .. note:: If desired, the DISPLAY list of WARES volumes may be edited at 
    :menuselection:`Tools --> Define --> Popups`. Enter :guilabel:`Filename` 
-   :file:`APP\_POPUPS` and :guilabel:`Popup Name` :file:`ACCESS`.
+   :file:`APP_POPUPS` and :guilabel:`Popup Name` :file:`ACCESS`.
 
 .. _copy-data:
 

@@ -96,11 +96,11 @@ when the computer boots. Set user **STARTUP** to login at boot as follows:
 
 #. From the start menu, run :program:`NETPLWIZ` administration utility 
    (Windows 7) or :program:`control userpasswords2` (Windows XP).
-#. Uncheck the box for :guilabel:`Users must eneter a username and password to 
+#. Uncheck the box for :guilabel:`Users must enter a username and password to 
    use this computer`, and then click button :guilabel:`Apply`.
 #. In the resulting :guilabel:`Automatically log on` dialog, Enter user name 
    :kbd:`STARTUP`, the user's password, confirm the password, and then click 
-   :guilabel:`OK`.
+   :guilabel:`OK`. Click :guilabel:`OK` again to close the main control panel.
 #. Login as user **STARTUP**. Copy the Hamachi start file into the user's start 
    menu folder, :menuselection:`Start --> All Programs --> Startup`.
 #. Reboot the computer to verify that user **STARTUP** logs in automatically and 

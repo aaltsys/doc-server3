@@ -92,10 +92,19 @@ password for all such users.
 +-----------+--------------------+------------------------------------+
 
 Unless the VPN is run as a service, a user must login and launch the VPN 
-when the computer boots. Set user **STARTUP** to login at boot using the 
-:program:`NETPLWIZ` Windows administration utility. When logged in as user 
-**STARTUP**, copy the Hamachi start file into the user's start menu folder 
-:menuselection:`Start --> All Programs --> Startup`.
+when the computer boots. Set user **STARTUP** to login at boot as follows:
+
+#. From the start menu, run :program:`NETPLWIZ` administration utility 
+   (Windows 7) or :program:`control userpasswords2` (Windows XP).
+#. Uncheck the box for :guilabel:`Users must eneter a username and password to 
+   use this computer`, and then click button :guilabel:`Apply`.
+#. In the resulting :guilabel:`Automatically log on` dialog, Enter user name 
+   :kbd:`STARTUP`, the user's password, confirm the password, and then click 
+   :guilabel:`OK`.
+#. Login as user **STARTUP**. Copy the Hamachi start file into the user's start 
+   menu folder, :menuselection:`Start --> All Programs --> Startup`.
+#. Reboot the computer to verify that user **STARTUP** logs in automatically and 
+   that the Hamachi VPN is started.
 
 .. note:: The **STARTUP** login deducts one user from the available user count 
    of :program:`AADServer`.
@@ -133,7 +142,7 @@ Setup Applications
 
 .. note:: The AADServer is administered from a separate application which is 
    added to the Windows control panel and the Start menu. The site administrator 
-   should make this application always accessible form the start menu:
+   should make this application always accessible from the start menu:
    <Right-click> on :guilabel:`Maintenance AADServer`, and choose 
    :menuselection:`Pin to start menu`.
 
@@ -157,6 +166,9 @@ Setup Applications
    | LOGOUT    |                                        |         | shutdown /l /f  | 
    +-----------+----------------------------------------+---------+-----------------+
 
+.. note:: The path :file:`C:\\Users\\Public` on Windows 7 replaced the folder 
+   :file:`C:\\Documents and Settings\\All Users\\Desktop` used by Windows XP.
+   
 .. note:: Application windows on remote machines may not be sized to display 
    correctly. We suggest logging into the application for each user, and sizing 
    the application window before accessing the TS user from remote. DOS program 

@@ -225,8 +225,17 @@ The drive device will be discovered and then mounted to logical mount point
 
 This example shows block device ``/dev/sdc5``, UUID ``363404743404397F``, of ``TYPE="ntfs"``.
 
-.. Warning:: In the following commands, replace **$UUID** with the identifier 
+.. warning:: In the following commands, replace **$UUID** with the identifier 
    **YOU OBTAINED** from the instructions in Part 3.
+
+.. note:: 
+   The output above shows `LABEL="HD-HSQ"`. If desired, change the volume label 
+   with the command::
+   
+     sudo ntfslabel {block_device} {new_label}
+   
+   For example, the command :command:`sudo ntfslabel /dev/sdc5 BACKUP` would 
+   change the label from `HD-HSQ` to `BACKUP` in the previous output.
 
 At the command prompt, type::
 

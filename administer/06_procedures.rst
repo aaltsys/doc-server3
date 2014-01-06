@@ -18,3 +18,15 @@ The locales information was updated with the following console commands::
 
 This procedure was developed from the following support document:
 https://help.ubuntu.com/community/Locale/#Changing_settings_permanently
+
+Removing Old Kernels
+-----------------------------
+
+Use ssh to access a server, and check the disk allocation::
+
+   dh -a
+
+If the primary boot disk is full, or nearly so, then there may be too many Linux 
+kernel images stored on it. Clear old images with the command::
+
+   dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt-get -y purge

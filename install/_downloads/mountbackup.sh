@@ -1,5 +1,6 @@
 #! /usr/bin/bash
 # Unmount automounted USB-connected BACKUP drives for autofs to remount
+# Program should run from cron job with root privileges
 
 # look for drive mounted from USB:
 MPOINT=$( echo $( mount | grep '\/media\/' ) )

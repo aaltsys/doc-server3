@@ -130,7 +130,7 @@ Automount Drive Setup
    arrays. (Type 1 RAID arrays connected to the SATA3 ports on SuperMicro X9SCM 
    motherboards are safe from this problem.) Zentyal 3.0 automounts USB 
    devices, which interferes with fuse autofs mounts for backup drives 
-   connected using USB. Install :file:`mountbackup.sh` ass described following 
+   connected using USB. Install :file:`mountbackup.sh` as described following 
    to avoid this problem.
 
 In this example, an eSATA backup drive is configured as an extended partition 
@@ -200,7 +200,7 @@ Part 3: Identify the device
    :download:`this script <_downloads/backupdrive.sh>` and save it in your home
    folder. Then execute the script with the command::
 
-      sudo bash backupdrive.sh BACKUP
+      bash backupdrive.sh BACKUP
 
 The drive device will be discovered and then mounted to logical mount point 
 ``/home/mnt/backup``.

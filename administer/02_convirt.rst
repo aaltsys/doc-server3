@@ -36,34 +36,34 @@ one another for security. To manage virtual networks:
 Provisioning New Virtual Machines
 =================================
 
-+ On the left menu, click to expand :menuselection:`Template Library`
-+ Right-click the template for a new virtual machine, and select :menuselection:`Provision` from the context menu.
++  On the left menu, click to expand :menuselection:`Template Library`
++  Right-click the template for a new virtual machine, and select :menuselection:`Provision` from the context menu.
 
 .. image:: _images/convirt_select_target.png
 
-+ In the :guilabel:`Select a Target Node` window, expand viewed items to show servers.
-+ Select either a managed server or a server pool to provision the virtual machine on.
++  In the :guilabel:`Select a Target Node` window, expand viewed items to show servers.
++  Select either a managed server or a server pool to provision the virtual machine on.
 
 .. image:: _images/convirt_config_settings.png
 
-+ The :guilabel:`Virtual Machine Config Settings` window will display.
++  The :guilabel:`Virtual Machine Config Settings` window will display.
 
- - Enter a name for the virtual machine in the :guilabel:`VM` field. *(Example: WebServer)*
- - Specify the amount of memory (RAM) available to the virtual machine in megabytes. *(Example: 512)*
- - Specify the number of virtual processors available to the virtual machine.
- - Specify details of the operating system to be installed in the virtual machine.
-	.. Note::
-		Convirt allows any amount of memory and any number of processors to be assigned.
-		Take care not to exceed the physical limits of the hardware.
- 	
-+ Click :guilabel:`Storage` to specify the physical CD-ROM device on the server:
-	| (If an ISO image has been copied to the server it can be used by editing VM Device *hdc:cdrom*.)
- 
-+ Click :guilabel:`Networks` and specify machine connections to virtual networks.
-+ Click :guilabel:`Boot Params` and specify advanced boot parameters for the system.
-+ Click :guilabel:`Miscellaneous` for advanced virtual machine settings (not described).
-+ Click :guilabel:`Template Parameters` for additional system settings (not described):
-	| Specify *hda_disk_size* to set the virtual hard disk drive size in megabytes.
+      +  Enter a name for the virtual machine in the :guilabel:`VM` field. *(Example: WebServer)*
+      + Specify the amount of memory (RAM) available to the virtual machine in megabytes. *(Example: 512)*
+      + Specify the number of virtual processors available to the virtual machine.
+      + Specify details of the operating system to be installed in the virtual machine.
 
-+ Click :guilabel:`OK` to complete the VM specification and begin installation.
+   .. Note::
+      Convirt allows any amount of memory and any number of processors to be assigned.
+      Take care not to exceed the physical limits of the hardware.
+
++  Click :guilabel:`Storage` to specify the physical CD-ROM device on the server:
+   (If an ISO image has been copied to the server it can be used by editing VM 
+   Device *hdc:cdrom*.)
++  Click :guilabel:`Networks` and specify machine connections to virtual networks.
++  Click :guilabel:`Boot Params` and specify advanced boot parameters for the system.
++  Click :guilabel:`Miscellaneous` for advanced virtual machine settings (not described).
++  Click :guilabel:`Template Parameters` for additional system settings (not described):
+   Specify *hda_disk_size* to set the virtual hard disk drive size in megabytes.
++  Click :guilabel:`OK` to complete the VM specification and begin installation.
  

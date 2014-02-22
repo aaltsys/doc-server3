@@ -1,7 +1,7 @@
 .. _bios-p5bv-c:
 
 #############################
- ASUS P5BV-C bios settings
+ ASUS P5BV-C BIOS Settings
 #############################
 
 Main

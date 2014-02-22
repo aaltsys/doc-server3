@@ -283,3 +283,12 @@ epub_copyright = u'2012, Gerald Lovel'
 
 # Allow duplicate toc entries.
 #epub_tocdup = True
+
+# Example configuration for intersphinx: refer to the Python standard library.
+
+intersphinx_mapping = {
+  'resources': ('../resources', '../_deploy/resources/objects.inv'),
+  'install': ('../install', '../_deploy/install/objects.inv'),
+  'administer': ('../administer', '../_deploy/administer/objects.inv'),
+  'workstation': ('../workstation', '../_deploy/workstation/objects.inv'),
+}

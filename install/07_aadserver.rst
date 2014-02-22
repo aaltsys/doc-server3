@@ -1,4 +1,4 @@
-.. _aad-server:
+.. _aadserver:
 
 #############################
 AADServer Terminal Services

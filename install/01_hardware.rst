@@ -1,91 +1,157 @@
 .. _hardware:
 
-###########################
+#############################
  Reference Hardware System
-###########################
+#############################
 
-The Zentyal Install DVD requires a multi-core 64-bit CPU with hardware virtualization
-extensions. This still leaves a lot of room for motherboard selection, disk controller, 
-RAID configuration, BIOS settings, and so forth. To save effort through simplicity, 
-a reference hardware system is described which can be purchased from a single vendor 
-and assembled in under two hours.
+Zentyal Server software, based on Ubuntu server, can run on a wide variety of
+hardware. But to take advantage of all the capabilities recommended in this 
+guide, the server hardware should include the following features:
 
-Hardware Components
-====================
+*  Multi-core processor with hardware virtualization extensions
+*  From 4 Gb to 16 Gb of RAM
+*  Motherboard with integrated RAID support using SATA-3
+*  2 gigabit ethernet ports
+*  External eSATA, USB 3.0, or other high-speed data interface
 
-This reference hardware list builds a tower server for stand-alone installation, with 
-a build cost of about $1000.00 including tax and shipping as purchased from NewEgg.   
+There is still a lot of room for motherboard selection, disk controller, 
+RAID configuration, BIOS settings, and so forth. Two approaches to meeting these 
+requirements are presented in this guide: an off-the-peg mini-server, and 
+bespoke hardware for a desktop server providing the same functionality.
 
-+-----+--------------+-----------------+---------------------------------------+
-| Qty | Product      | NewEgg Number   | Description                           |
-+=====+==============+=================+=======================================+	
-|   1 | ATX CASE     | N82E16811154098 | ABS ATX Mid-tower Case (APEX Vortex)  |
-+-----+--------------+-----------------+---------------------------------------+
-|   2 | POWER SUPPLY | N82E16817182022 | 450W ATX (Rosewill Stallion)          |
-+-----+--------------+-----------------+---------------------------------------+
-|   1 | CONNECTOR    | N82E16812816067 | SATA to eSATA Bracket (Nippon Labs)   |
-+-----+--------------+-----------------+---------------------------------------+
-|   1 | DVD-RW       | N82E16827136254 | CD/DVD Burner Black (LG)              |
-+-----+--------------+-----------------+---------------------------------------+
-|   2 | HARD DRIVE   | N82E16822136769 | 500GB 7200 RPM (WD Caviar WD5000AAKX) |
-+-----+--------------+-----------------+---------------------------------------+
-|   1 | MOTHERBOARD  | N82E16813182254 | Micro ATX (SUPERMICRO MBD-X9SCM-O)    |
-+-----+--------------+-----------------+---------------------------------------+
-|   2 | SDRAM        | N82E16820139077 | DDR3 SDRAM KVR1333D3E9S/4G (Kingston) |
-+-----+--------------+-----------------+---------------------------------------+
-|   1 | PROCESSOR    | N82E16819115084 | Intel Xeon E3-1220 BX80623E31220      |
-+-----+--------------+-----------------+---------------------------------------+
+Regardless of the type of server, a compatible keyboard, video monitor, and 
+mouse are required when installing a server. These items could be removed after 
+installation for security purposes, since Zentyal is administered through a web 
+browser.
 
-Additional hardware is required for a complete network installation.
+Beyond a server, additional components are required to build a complete office 
+network. The following items are required regardless of the type of server used:
 
-+-----+--------------+-----------------+---------------------------------------+
-| Qty | Product      | NewEgg Number   | Description                           |
-+=====+==============+=================+=======================================+	
-|   1 | UPS          | N82E16842102048 | CyberPower CP1350AVRLCD 1350VA 900W UP|
-+-----+--------------+-----------------+---------------------------------------+
-|   2 | NETWK SWITCH | N82E16833127082 | D-Link DGS-2208 10/100/1000Mbps 8-Port| 
-+-----+--------------+-----------------+---------------------------------------+
-|   1 | BACKUP DRIVE | N82E16822165097 | 1 TB External eSATA/USB (Buffalo)     |
-+-----+--------------+-----------------+---------------------------------------+
++-----+----------------+-------------------------------------------------------+
+| Qty | Product        | Description                                           |
++=====+================+=======================================================+	
+|   1 | UPS            | CyberPower CP1350AVRLCD 1350VA 900W UP                |
++-----+----------------+-------------------------------------------------------+
+|   2 | NETWORK SWITCH | D-Link DGS-2208 10/100/1000Mbps 8-Port switch         | 
++-----+----------------+-------------------------------------------------------+
+|   1 | BACKUP DRIVE   | 1 TB External drive with eSATA or USB 3.0 interface   |
++-----+----------------+-------------------------------------------------------+
 
-.. tip:: The preceding build list does not include a VGA monitor, USB keyboard, 
-   and USB mouse. These components are required when installing and configuring 
-   a server, but may be removed (for security reasons) once the server is 
-   installed.
+Off-the-Peg Server
+=============================
+
+We recommend the Apple Mac mini Server for off-the-shelf prebuilt systems. The 
+Apple server has several advantages:
+
+*  Availability: Mac mini Server is a standard stock item in all Apple stores.
+*  Service: Apple store Genius Bar service (carry-in) is highly regarded.
+*  Convenience: Eliminating custom assembly reduces installation effort.
+*  Efficiency: Mac Server draws less power than alternatives.
+*  Reliability: The mini's low component count reduces failure.
+*  Functionality: A Mac can be repurposed as a workstation without losing value.
+*  Price: The Mac mini Server costs significantly less than competing products.
+
+Reference Hardware List
+-----------------------------
+
++-----+------------------+------------------------------------------------------+ 
+| Qty | Product          | Description                                          | 
++=====+==================+======================================================+ 
+|   1 | MAC MINI SERVER  || Intel quad-core i7 processor, 4 Gb RAM              |  
+|     |                  || 2 X 1-Tb hard drive, Intel HD Graphics 4000         |
+|     |                  || HDMI port, Thunderbolt MiniDisplay port options     | 
+|     |                  || Firewire 800, 4 X USB 3.0, 1 X 10-Gbps Thunderbolt  | 
+|     |                  || SDXC card slot, Audio In-Out, IR receiver           | 
+|     |                  || 1 Gigabit Ethernet, 802.11n Wireless, Bluetooth 4.0 | 
++-----+------------------+------------------------------------------------------+ 
+|   2 | 16GB RAM UPGRADE | 2 X 8-Gb 204-pin SODIMM DDR3 PC3-16000               | 
++-----+------------------+------------------------------------------------------+ 
+|   1 | SUPERDRIVE       | APPLE CD/DVD/DVD-RW alternative to USB or SDXC card  | 
++-----+------------------+------------------------------------------------------+ 
+|   1 | ETHERNET ADAPTER | TRENDnet USB 3.0 to Gigabit Ethernet Adapter         | 
++-----+------------------+------------------------------------------------------+ 
+
+Drive setup
+-----------------------------
+
+(RAID configuration goes here)
+
+Build instructions
+-----------------------------
+
+The Mac mini Server comes with Apple's OS X system installed. We recommend 
+repartitioning the drives and installing Zentyal without removing OS X. For this
+section, follow the procedures from article :ref:`technical:macserver`.
+
+Bespoke Hardware Server
+=============================
+
+This reference hardware list builds a tower server for stand-alone installation, 
+with components costing about $1000.00 including taxes and shipping as purchased 
+from NewEgg. (Last updated in March 2013.) 
+
+Reference Hardware List
+-----------------------------
+
++-----+--------------+--------------------------------------------------------+
+| Qty | Product      |  Description                                           |
++=====+==============+========================================================+	
+|   1 | ATX CASE     | ABS ATX Mid-tower Case (APEX Vortex)                   |
++-----+--------------+--------------------------------------------------------+
+|   2 | POWER SUPPLY | 450W ATX (Rosewill Stallion)                           |
++-----+--------------+--------------------------------------------------------+
+|   1 | CONNECTOR    | SATA to eSATA Bracket (Nippon Labs)                    |
++-----+--------------+--------------------------------------------------------+
+|   1 | DVD-RW       | CD/DVD Burner Black (LG)                               |
++-----+--------------+--------------------------------------------------------+
+|   2 | HARD DRIVE   | 500GB 7200 RPM (WD Caviar WD5000AAKX)                  |
++-----+--------------+--------------------------------------------------------+
+|   1 | MOTHERBOARD  | Micro ATX (SUPERMICRO MBD-X9SCM-O)                     |
++-----+--------------+--------------------------------------------------------+
+|   2 | SDRAM        | DDR3 SDRAM KVR1333D3E9S/4G (Kingston)                  |
++-----+--------------+--------------------------------------------------------+
+|   1 | PROCESSOR    | Intel Xeon E3-1220 BX80623E31220                       |
++-----+--------------+--------------------------------------------------------+
+
+Build Instructions
+-----------------------------
+
+You should not attempt to build a computer if you do not know how to. Seriously, 
+reading this guide could not possibly create a computer technician. If you 
+require a pre-built system then order the computer fully installed, as described 
+previously.
 
 Connect Components
-====================
+-----------------------------
 
-+ Connect an Ethernet cable from your WAN router or gateway into eth0 (in the 
-  reference system, this would be the add-in card).
-+ Plug an Ethernet cable from your LAN data switch into eth1 (the upper network 
-  port on the motherboard of the reference system).
-+ Plug in a USB mouse and a USB keyboard.
-+ Connect a VGA monitor cable to the VGA connector (server motherboards 
-  generally do not support video other than VGA).
-+ Connect the external backup drive using either an eSATA cable or a USB cable. 
-+ Plug a power cord from your Uninterruptible Power Supply (UPS) to the back of 
-  the server.
+*  Connect an Ethernet cable from your WAN router or gateway into eth0.
+*  Plug an Ethernet cable from your LAN data switch into eth1.
+*  Plug in a USB mouse and a USB keyboard.
+*  Connect a VGA monitor cable to the VGA connector. (Server motherboards 
+   generally do not support video other than VGA; the Mac mini uses HDMI.)
+*  Connect the external backup drive using a USB 3.0 cable. 
+*  Plug a power cord from your Uninterruptible Power Supply (UPS) to the back 
+   of the server.
 
-.. warning:: Make sure the battery inside the UPS is actually connected. 
-   Plug the server into an outlet on the UPS with battery backup and not just 
-   line conditioning.
+.. warning:: 
+   Make sure the battery inside the UPS is actually connected. Plug the server 
+   into an outlet on the UPS with battery backup and not just line conditioning.
 
 .. _bios_setup:
 
-Set up the System BIOS
-==================================
+System BIOS Settings
+-----------------------------
 
 System BIOS settings are available for motherboard configurations which have 
 been tested and used, even though only the most recent motherboards are still 
 available in the market place. Click one of the links below to see settings 
 for a specific board.
 
-| :ref:`BIOS settings for SuperMicro MBD-X9SCM-O <bios-x9scm-o>`
-| :ref:`BIOS settings for ASUS P5BV-C <bios-p5bv-c>`
+| :ref:`resources:bios-x9scm-o`
+| :ref:`resources:bios-p5bv-c`
 
-Setting up RAID array
-==================================
+RAID array Setup
+-----------------------------
 
 .. warning:: If another Fake-RAID array BIOS has been used to configure drives,
    the motherboard Intel Matrix RAID will not display when :kbd:`<Ctrl-I>` is 

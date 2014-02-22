@@ -1,7 +1,7 @@
 .. _bios-x9scm-o:
 
 #############################
- SuperMicro X9SCM-O BIOS
+SuperMicro MBD-X9SCM-O BIOS
 #############################
 
 First BIOS Boot

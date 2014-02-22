@@ -158,7 +158,7 @@ Edit rEFInd configuration
 
 Repeat these instructions until desired results are achieved. 
 
-.. hint:: 
+.. tip:: 
    Save a copy of :file:`refind.conf` in your :file:`~/Documents`
    folder, as updates to Mac OS X will wipe out the EFI configuration.
 

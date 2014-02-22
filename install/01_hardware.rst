@@ -81,7 +81,7 @@ Build instructions
 
 The Mac mini Server comes with Apple's OS X system installed. We recommend 
 repartitioning the drives and installing Zentyal without removing OS X. For this
-section, follow the procedures from article :ref:`technical:macserver`.
+section, follow the procedures from article :ref:`resources:macserver`.
 
 Bespoke Hardware Server
 =============================

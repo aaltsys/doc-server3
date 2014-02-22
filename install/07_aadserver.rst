@@ -114,7 +114,7 @@ Add Program Fles
 
 Add folder :file:`WARES` inside :file:`C:\\Users\\Public`. In the 
 :file:`WARES` folder, add the following files, downloadable from links at 
-:ref:`workstation:downloads`:
+`DOS WARES Resources <http://doswares.aaltsys.info/resources/_downloads>`_:
 
 | :file:`NETPRINT.BAT`
 | :file:`NETSHARE.BAT`
@@ -221,7 +221,7 @@ Create a new :file:`RDPPRINT.BAT` program as follows::
    IF %ERRORLEVEL% NEQ 0 PAUSE
    :EXIT
   
-A sample batch file :download:`RDPPRINT.BAT <_downloads/RDPPRINT.BAT>` is 
+A sample batch file :download:`RDPPRINT.BAT <_downloads/rdpprint.bat>` is 
 provided; download it to :file:`C:\\Users\\Public\\WARES\\RDPPRINT.BAT` on the 
 TS machine. Then edit the file as described above.
 

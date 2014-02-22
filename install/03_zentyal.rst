@@ -103,7 +103,7 @@ must not be checked. An example of this configuration is illustrated following.
 
 .. image:: _images/zentyal_07_interfaces.png
 
-More details on Zentyal networking are found at :ref:`network_configuration`.
+More details on Zentyal networking are found at :ref:`resources:network`.
 
 Network Gateway
 ==========================

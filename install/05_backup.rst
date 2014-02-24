@@ -21,13 +21,13 @@ Performing a Demand Backup
 To manually perform a backup on Zentyal 2.2 or later run one of the following 
 commands::
 
-  sudo /usr/share/zentyal-ebackup/backup-tool --full
-  sudo /usr/share/zentyal-ebackup/backup-tool --incremental
+   sudo /usr/share/zentyal-ebackup/backup-tool --full
+   sudo /usr/share/zentyal-ebackup/backup-tool --incremental
 
 To manually perform a backup on Zentyal 2.0 (older) run one of these commands::
 
-  sudo /usr/share/ebox-ebackup/ebox-remote-ebackup --full
-  sudo /usr/share/ebox-ebackup/ebox-remote-ebackup --incremental
+   sudo /usr/share/ebox-ebackup/ebox-remote-ebackup --full
+   sudo /usr/share/ebox-ebackup/ebox-remote-ebackup --incremental
 
 Backup Configuration
 =============================
@@ -35,7 +35,7 @@ Backup Configuration
 Backups are written inside of the **/home** directory. The directory for backups 
 is created with the terminal command::
 
-  sudo mkdir -p /home/mnt/backup/source_config
+   sudo mkdir -p /home/mnt/backup/source_config
 
 Linux cron jobs perform backup functions. Zentyal manages cron tab entries for 
 Duplicity operations. Writing backup files to external media requires entering 
@@ -46,7 +46,7 @@ cron jobs using Webmin. An example entry for writing to DVD is shown following:
 The software for writing DVDs may be missing from the OS. It is installed with 
 the command::
 
-  sudo apt-get install dvd+rw-tools
+   sudo apt-get install dvd+rw-tools
 
 Configure Zentyal
 -----------------------------
@@ -144,7 +144,7 @@ Part 1: Install autofs [#]_
 Display a terminal command line on the server console, or ``ssh`` to a server 
 command shell. At the command prompt, type::
 
-  sudo apt-get install autofs ntfsprogs
+   sudo apt-get install autofs ntfsprogs
 
 For Zentyal 3.0, download :download:`this program <_downloads/mountbackup.sh>` 
 to :file:`/usr/local/bin/mountbackup.sh` and setup a cron job to execute the 
@@ -165,30 +165,30 @@ Use the following instructions to perform this format:
 
 #. Identify the device to format::
 
-      ls -al /dev/sd*
+     ls -al /dev/sd*
 
 #. If mounted, unmount the drive volume with one of the following commands::
 
-      sudo service autofs stop (for an automounted drive).
-      sudo umount /dev/sdc (For a standard mount point). 
+     sudo service autofs stop (for an automounted drive).
+     sudo umount /dev/sdc (For a standard mount point). 
 
 #. Verify the device is unmounted::
 
-      mount
+     mount
 
 #. Use **fdisk** to remove partitions, create a fresh partition, set type to 7
    (NTFS/HPFS):: 
 
-      sudo fdisk /dev/sdc
-      u
-      c
-      n,p,<Enter>,<Enter>
-      t,7
-      w
+     sudo fdisk /dev/sdc
+     u
+     c
+     n,p,<Enter>,<Enter>
+     t,7
+     w
 
 #. Format the new partition NTFS, label it BACKUP::
 
-      sudo mkntfs -L BACKUP -f /dev/sdc1
+     sudo mkntfs -L BACKUP -f /dev/sdc1
 
 .. warning:: Creating a new drive partition changes the UUID for the drive 
    mount. When a drive has been automounted in the past, partitioning  must be 
@@ -202,7 +202,7 @@ Part 3: Identify the device
    :download:`this script <_downloads/backupdrive.sh>` and save it in your home
    folder. Then execute the script with the command::
 
-      bash backupdrive.sh BACKUP
+     bash backupdrive.sh BACKUP
 
 The drive device will be discovered and then mounted to logical mount point 
 ``/home/mnt/backup``.
@@ -214,18 +214,19 @@ The drive device will be discovered and then mounted to logical mount point
 
 #. Output similar to the following will be displayed::
 
-    /dev/sda1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
-    /dev/sda5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
-    /dev/sda6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
-    /dev/sdb1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
-    /dev/sdb5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
-    /dev/sdb6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
-    /dev/mapper/ddf1_aaltsys1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
-    /dev/mapper/ddf1_aaltsys5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
-    /dev/mapper/ddf1_aaltsys6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
-    /dev/sdc5: LABEL="HD-HSQ" UUID="363404743404397F" TYPE="ntfs"
+     /dev/sda1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
+     /dev/sda5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
+     /dev/sda6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
+     /dev/sdb1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
+     /dev/sdb5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
+     /dev/sdb6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
+     /dev/mapper/ddf1_aaltsys1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
+     /dev/mapper/ddf1_aaltsys5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
+     /dev/mapper/ddf1_aaltsys6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
+     /dev/sdc5: LABEL="HD-HSQ" UUID="363404743404397F" TYPE="ntfs"
 
-This example shows block device ``/dev/sdc5``, UUID ``363404743404397F``, of ``TYPE="ntfs"``.
+This example shows block device ``/dev/sdc5``, UUID ``363404743404397F``, of 
+``TYPE="ntfs"``.
 
 .. warning:: In the following commands, replace **$UUID** with the identifier 
    **YOU OBTAINED** from the instructions in Part 3.
@@ -241,11 +242,11 @@ This example shows block device ``/dev/sdc5``, UUID ``363404743404397F``, of ``T
 
 At the command prompt, type::
 
-  sudo service autofs stop
-  sudo mkdir -p /home/mnt/backup/source_config
-  sudo bash < <(echo 'echo "/-  /etc/auto.backup  --timeout=30 --ghost" >> /etc/auto.master')
-  sudo bash < <(echo 'echo "/home/mnt/backup  -fstype=auto,sync  :/dev/disk/by-uuid/$UUID" >> /etc/auto.home_mnt')
-  sudo service autofs start
+   sudo service autofs stop
+   sudo mkdir -p /home/mnt/backup/source_config
+   sudo bash < <(echo 'echo "/-  /etc/auto.backup  --timeout=30 --ghost" >> /etc/auto.master')
+   sudo bash < <(echo 'echo "/home/mnt/backup  -fstype=auto,sync  :/dev/disk/by-uuid/$UUID" >> /etc/auto.home_mnt')
+   sudo service autofs start
 
 .. hint:: Did you remember to replace $UUID with your partition identifier?
 
@@ -254,8 +255,8 @@ Part 4: Verify drive mounting
 
 Type the commands::
 
-  ls /home/mnt/backup
-  touch /home/mnt/backup/@@external@@
+   ls /home/mnt/backup
+   touch /home/mnt/backup/@@external@@
 
 .. Note:: This procedure created a file directory on the local drive as well as 
    the target directory on the external drive. When the external drive is 

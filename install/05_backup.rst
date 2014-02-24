@@ -55,15 +55,16 @@ Backups are managed in Zentyal. From the universe of potential configurations,
 the following arrangement is suggested to provide the flexibility and capability 
 required in most situations.
 
-+ Open Zentyal, and navigate to tab :menuselection:`Core --> Backup --> Configuration and Status`
-+ Set the backup path to :kbd:`/home/mnt/backup`
-+ Leave prompts ``User:`` and ``Password:`` blank
-+ Fill in a schedule for full and incremental backups as shown following:
+*  Open Zentyal, and navigate to tab 
+   :menuselection:`Core --> Backup --> Configuration and Status`
+*  Set the backup path to :kbd:`/home/mnt/backup`
+*  Leave prompts ``User:`` and ``Password:`` blank
+*  Fill in a schedule for full and incremental backups as shown following:
 
 .. image:: _images/backup_config.png
 
-+ Navigate to tab :menuselection:`Core --> Backup --> Includes and Excludes`
-+ Enter Includes and Excludes as shown in the following image:
+*  Navigate to tab :menuselection:`Core --> Backup --> Includes and Excludes`
+*  Enter Includes and Excludes as shown in the following image:
 
 .. image:: _images/backup_exclude.png
 
@@ -92,11 +93,11 @@ as described in the following table:
 What Is Backed Up
 -----------------------------
 
-+ Server configuration data, eBox Database 
-+ Printer configuration data, /etc/cups
-+ Virtual machine images, /home/convirt
-+ Shared files, /home/samba/shares/...
-+ Home directories, /home/$USER...
+*  Server configuration data, eBox Database 
+*  Printer configuration data, /etc/cups
+*  Virtual machine images, /home/convirt
+*  Shared files, /home/samba/shares/...
+*  Home directories, /home/$USER...
 
 What Is Not Backed Up
 -----------------------------
@@ -104,8 +105,8 @@ What Is Not Backed Up
 The base operating system of the server is not backed up. For an OS backup to 
 be useful, we would need to answer the following questions:
 
-+ How can you backup the operating system when it is running?
-+ Without a working operating system, how would you restore the OS?
+*  How can you backup the operating system when it is running?
+*  Without a working operating system, how would you restore the OS?
 
 Instead of trying to backup the server OS, we have made AAltSys Server OS 
 installation relatively fast and simple. Keep the AAltSys or Zentyal install 
@@ -137,7 +138,7 @@ In this example, an eSATA backup drive is configured as an extended partition
 hard drive formatted NTFS. Since Linux does not honor file permissions on NTFS 
 volumes, the backup will be readable by anyone.
 
-Part 1: Install autofs
+Part 1: Install autofs [#]_
 -----------------------------
 
 Display a terminal command line on the server console, or ``ssh`` to a server 
@@ -147,7 +148,7 @@ command shell. At the command prompt, type::
 
 For Zentyal 3.0, download :download:`this program <_downloads/mountbackup.sh>` 
 to :file:`/usr/local/bin/mountbackup.sh` and setup a cron job to execute the 
-script with root privileges every minute.
+script with root privileges every minute. [#]_
 
 Part 2. Format drive NTFS
 -----------------------------
@@ -164,29 +165,30 @@ Use the following instructions to perform this format:
 
 #. Identify the device to format::
 
-     ls -al /dev/sd*
+      ls -al /dev/sd*
 
 #. If mounted, unmount the drive volume with one of the following commands::
 
-     sudo service autofs stop (for an automounted drive).
-     sudo umount /dev/sdc (For a standard mount point). 
+      sudo service autofs stop (for an automounted drive).
+      sudo umount /dev/sdc (For a standard mount point). 
 
 #. Verify the device is unmounted::
 
-     mount
+      mount
 
-#. Use **fdisk** to remove partitions, create a fresh partition, set type to 7 (NTFS/HPFS):: 
+#. Use **fdisk** to remove partitions, create a fresh partition, set type to 7
+   (NTFS/HPFS):: 
 
-     sudo fdisk /dev/sdc
-     u
-     c
-     n,p,<Enter>,<Enter>
-     t,7
-     w
+      sudo fdisk /dev/sdc
+      u
+      c
+      n,p,<Enter>,<Enter>
+      t,7
+      w
 
 #. Format the new partition NTFS, label it BACKUP::
 
-    sudo mkntfs -L BACKUP -f /dev/sdc1
+      sudo mkntfs -L BACKUP -f /dev/sdc1
 
 .. warning:: Creating a new drive partition changes the UUID for the drive 
    mount. When a drive has been automounted in the past, partitioning  must be 
@@ -241,8 +243,8 @@ At the command prompt, type::
 
   sudo service autofs stop
   sudo mkdir -p /home/mnt/backup/source_config
-  sudo bash < <(echo 'echo "/home/mnt  /etc/auto.home_mnt  --timeout=30 --ghost" >> /etc/auto.master')
-  sudo bash < <(echo 'echo "backup  -fstype=auto,sync  :/dev/disk/by-uuid/$UUID" >> /etc/auto.home_mnt')
+  sudo bash < <(echo 'echo "/-  /etc/auto.backup  --timeout=30 --ghost" >> /etc/auto.master')
+  sudo bash < <(echo 'echo "/home/mnt/backup  -fstype=auto,sync  :/dev/disk/by-uuid/$UUID" >> /etc/auto.home_mnt')
   sudo service autofs start
 
 .. hint:: Did you remember to replace $UUID with your partition identifier?
@@ -268,5 +270,13 @@ to 60 before disconnecting the drive. When a drive will remain disconnected,
 autofs interferes with using the underlying file system of the system drive.
 Reconfigure autofs to ignore the file system mount point as follows::
 
-	 sudo sed -i '$d' /etc/auto.master
-	 sudo service autofs restart
+   sudo sed -i '$d' /etc/auto.master
+   sudo service autofs restart
+
+-----------------------------
+
+.. rubric:: Footnotes
+
+.. [#] https://help.ubuntu.com/community/Autofs
+
+.. [#] https://help.ubuntu.com/community/Mount/USB

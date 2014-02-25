@@ -245,7 +245,7 @@ At the command prompt, type::
    sudo service autofs stop
    sudo mkdir -p /home/mnt/backup/source_config
    sudo bash < <(echo 'echo "/-  /etc/auto.backup  --timeout=30 --ghost" >> /etc/auto.master')
-   sudo bash < <(echo 'echo "/home/mnt/backup  -fstype=auto,sync  :/dev/disk/by-uuid/$UUID" >> /etc/auto.home_mnt')
+   sudo bash < <(echo 'echo "/home/mnt/backup  -fstype=auto,sync  :/dev/disk/by-uuid/$UUID" >> /etc/auto.backup')
    sudo service autofs start
 
 .. hint:: Did you remember to replace $UUID with your partition identifier?

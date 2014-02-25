@@ -126,13 +126,14 @@ your backup drive.
 Automount Drive Setup
 =============================
 
-.. warning:: When using the ASUS P5BV motherboard, do not connect an external 
+.. warning:: 
+   (1) When using the ASUS P5BV motherboard, do not connect an external 
    drive over eSATA for scheduled backups, as this can result in corrupted RAID 
    arrays. (Type 1 RAID arrays connected to the SATA3 ports on SuperMicro X9SCM 
-   motherboards are safe from this problem.) Zentyal 3.0 automounts USB 
-   devices, which interferes with fuse autofs mounts for backup drives 
-   connected using USB. Install :file:`mountbackup.sh` as described following 
-   to avoid this problem.
+   motherboards are safe from this problem.) 
+   
+   (2) Zentyal 3.0 and later automounts USB devices, which interferes with fuse 
+   autofs mounts for backup drives connected using USB. 
 
 In this example, an eSATA backup drive is configured as an extended partition 
 hard drive formatted NTFS. Since Linux does not honor file permissions on NTFS 
@@ -145,10 +146,6 @@ Display a terminal command line on the server console, or ``ssh`` to a server
 command shell. At the command prompt, type::
 
    sudo apt-get install autofs ntfsprogs
-
-For Zentyal 3.0, download :download:`this program <_downloads/mountbackup.sh>` 
-to :file:`/usr/local/bin/mountbackup.sh` and setup a cron job to execute the 
-script with root privileges every minute. [#]_
 
 Part 2. Format drive NTFS
 -----------------------------
@@ -172,6 +169,15 @@ Use the following instructions to perform this format:
      sudo service autofs stop (for an automounted drive).
      sudo umount /dev/sdc (For a standard mount point). 
 
+.. note::
+   For Zentyal 3.0 and later, modify the udev rules to prevent USB drives from 
+   automounting. [#]_
+   
+   ::
+      sudo bash < <(echo 'echo "SUBSYSTEM==\"usb\", ENV{UDISKS_AUTO}=\"0\"" >> /etc/udev/rules.d/85-no-automount.rules')
+      sudo service udev restart
+
+     
 #. Verify the device is unmounted::
 
      mount
@@ -197,15 +203,15 @@ Use the following instructions to perform this format:
 Part 3: Identify the device
 -----------------------------
 
-.. note:: Once a drive is formatted, a bash script is provided to perform Part 
-   3 of this document. From the web browser on the server, download 
+.. note:: Once a drive is formatted, a bash script is provided to perform Parts 
+   2 and 3 of this document. From the web browser on the server, download 
    :download:`this script <_downloads/backupdrive.sh>` and save it in your home
    folder. Then execute the script with the command::
 
      bash backupdrive.sh BACKUP
 
 The drive device will be discovered and then mounted to logical mount point 
-``/home/mnt/backup``.
+``/home/mnt/backup``. [#]_
 
 #. Plug in the hot-pluggable device on a **USB** port (eSATA is risky).
 #. At the command prompt, type::
@@ -279,5 +285,7 @@ Reconfigure autofs to ignore the file system mount point as follows::
 .. rubric:: Footnotes
 
 .. [#] https://help.ubuntu.com/community/Autofs
+
+.. [#] http://unix.stackexchange.com/questions/85061/automount-not-disabling-in-ubuntu-12-04-or-13-04
 
 .. [#] https://help.ubuntu.com/community/Mount/USB

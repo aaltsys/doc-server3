@@ -34,7 +34,11 @@ sudo bash << SCRIPT
 
    # Install autofs if missing
    apt-get -y install autofs
- 
+   
+   # Add udev rule to prevent automounting of USB devices
+   bash < <(echo 'echo "SUBSYSTEM==\"usb\", ENV{UDISKS_AUTO}=\"0\"" >> /etc/udev/rules.d/85-no-automount.rules')
+   service udev restart
+   
    # do work here: create autofs configuration files for backup
    if [ $UUID!="" ] ; then
       service autofs stop
@@ -46,7 +50,7 @@ sudo bash << SCRIPT
    fi
  
    # exit messages to demonstrate success
-   echo -e "\e[1;35mThe following directory listing should show '@@EXTERNAL@@':"
+   echo -e "\e[1;35mCommand "ls -al /home/mnt/backup/@@*" should show '@@EXTERNAL@@':"
    ls -al /home/mnt/backup/@@*
    echo -e "\e[0m"
  

@@ -205,10 +205,12 @@ Part 3: Identify the device
 
 .. note:: Once a drive is formatted, a bash script is provided to perform Parts 
    2 and 3 of this document. From the web browser on the server, download 
-   :download:`this script <_downloads/backupdrive.sh>` and save it in your home
-   folder. Then execute the script with the command::
+   :download:`this script <_downloads/backupdrive.sh>` and save it 
+   in your home folder. Then execute the script with the commands::
 
-     bash backupdrive.sh BACKUP
+      cd ~/Downloads
+      bash backupdrive.sh BACKUP
+      rm backupdrive.sh
 
 The drive device will be discovered and then mounted to logical mount point 
 ``/home/mnt/backup``. [#]_

@@ -1,0 +1,23 @@
+Zentyal 2.2 Update 6.22.13
+=============================
+
+There is an error in Zentyal which causes networking to stop working. 
+
+This error can be diagnosed by going to the zentyal dashboard and checking the status of the DHCP module and seeing that it is "stopped" (if it is running, you may want to restart it and wait a minute to see if it changes to stopped).
+
+The fix:
+sudo nano /etc/apparmor.d/usr.sbin.dhcpd3
+- add the line "network packet raw," below "network packet packet,"
+sudo nano /usr/share/ebox/stubs/dhcp/apparmor-dhcp.profile.mas
+(add the same line)
+
+restart apparmor:
+sudo /etc/init.d/apparmor restart
+
+restart the DHCP module in zentyal dashboard
+(or in terminal: sudo /etc/init.d/ebox dhcp restart)
+
+if the above does not work, reboot the server.
+
+Check to confirm that the status of the DHCP module in Zentyal dashboard is now "running" and not "stopped".
+ 

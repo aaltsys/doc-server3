@@ -120,9 +120,10 @@ Install Linux from USB
 
 #. While restarting the Mac, hold down the :kbd:`alt/option` key to choose the 
    boot device, in this case, the USB drive.
-#. In the free space created previously, use manual partitioning option to 
+#. Use manual partitioning option, and in the free space created previously, 
    create a 4 Gb swap partition and an install partition of type ``ext4`` 
    mounted as ``/``.
+#. Continue with Linux installation in the newly-created partitions.
 #. Reboot when installation is finished, removing the USB flash drive. The 
    :program:`rEFInd` boot selector should now contain options to boot Linux.
 
@@ -139,22 +140,22 @@ Diagnose rEFInd behavior
 -----------------------------
 
 #. Restart the server, and press :kbd:`right-arrow` in :program:`rEFInd` to stop
-   boot
-#. Write down each main boot option to decide which should be displayed
+   boot.
+#. Write down each main boot option to decide which should be displayed.
 #. Determine configuration options to change. [#]_
 
 Edit rEFInd configuration
 -----------------------------
 
-#. Start a terminal from :menuselection:`Launchpad --> Other --> Terminal`
+#. Start a terminal from :menuselection:`Launchpad --> Other --> Terminal`.
 #. Edit the :program:`rEFInd` configuration file with the command::
    
       sudo nano /efi/refind/refind.conf
    
-   and enter your password when prompted
+   and enter your password when prompted.
 #. Modify the configuration options as desired, then press :kbd:`control-X` to
-   save changes
-#. Exit all programs and restart the server to test the new configuration
+   save changes.
+#. Exit all programs and restart the server to test the new configuration.
 
 Repeat these instructions until desired results are achieved. 
 

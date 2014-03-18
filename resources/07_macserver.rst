@@ -7,7 +7,7 @@ Dual-Booting Mac Servers
 An alternative to the large desktop tower server configuration is the Mac Mini 
 Server. This computer provides about every feature required for Zentyal except 
 for an optical drive, unnecessary when using USB drives for installation, and 
-additional ethernet ports for gateway server operation.
+additional ethernet ports for gateway server operation. [#]_
 
 Requirements
 =============================
@@ -26,6 +26,10 @@ Software
 *  rEFInd boot manager for Mac [#]_ 
 *  Current Mac OS X
 *  Linux with EFI stub loader support, such as Ubuntu 12.10 and later
+
+.. note::
+   Earlier Linux kernel, before 3.3.0, can be installed as documented in this
+   footnote. [#]_
 
 Make a Linux installer USB
 =============================
@@ -108,12 +112,17 @@ Make free space on drive
 Install rEFInd software
 -----------------------------
 
-#. Download the rEFInd software from http://www.rodsbooks.com/refind/getting.html
-#. Open a terminal session, and change directory to the Downloads folder, and
-   install the software::
+#. Download the binary zip of rEFInd software from 
+   http://www.rodsbooks.com/refind/getting.html.
+#. Open a terminal session, and change directory to the Downloads folder.
+#. Unzip the rEFInd download:: 
 
-      cd ~/Downloads/refind <Tab> <Enter>
-      ./install.sh
+      unzip refind <Tab> <Enter>
+
+#. install the software::
+
+      cd refind <Tab> <Enter>
+      ./install.sh --alldrivers
  
 Install Linux from USB
 -----------------------------
@@ -198,6 +207,11 @@ The efi directory is cleared and rewritten when updating Mac OS X. Keep program
 ------
 
 .. rubric:: Footnotes
+
+.. [#] See http://www.macminiserver.com/ for more information on the Mac mini 
+   Server.
+
+.. [#] https://help.ubuntu.com/community/MactelSupportTeam/AppleIntelInstallation
 
 .. [#] http://www.apple.com/mac-mini/server/ 
 

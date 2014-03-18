@@ -149,6 +149,8 @@ for a specific board.
 
 | :ref:`resources:bios-x9scm-o`
 | :ref:`resources:bios-p5bv-c`
+| :ref:`resources:bios-955x7aa`
+| :ref:`resources:bios-fi90hd`
 
 RAID array Setup
 -----------------------------

@@ -33,7 +33,7 @@ echo -e "\e[1;31m Authentication required \e[0m"
 sudo bash << SCRIPT
 
    # Install autofs if missing
-   apt-get -y install autofs
+   apt-get -y install autofs ntfs-3g
    
    # Add udev rule to prevent automounting of USB devices
    bash < <(echo 'echo "SUBSYSTEM==\"usb\", ENV{UDISKS_AUTO}=\"0\"" >> /etc/udev/rules.d/85-no-automount.rules')
@@ -47,6 +47,7 @@ sudo bash << SCRIPT
       echo "/-  /etc/auto.backup  --timeout=30 --ghost" > /etc/auto.master
       echo "/home/mnt/backup  -fstype=auto,sync  :/dev/disk/by-uuid/$UUID" > /etc/auto.backup
       service autofs start
+      wait 10s
    fi
  
    # exit messages to demonstrate success

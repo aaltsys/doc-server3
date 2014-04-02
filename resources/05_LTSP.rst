@@ -76,10 +76,9 @@ add a command::
 
   $_X_font = vga12x30
 
-The following command will change video globally for all users (but run this 
-only once)::
+The following command will change video globally for all users::
 
-  sudo sed -i '/$_X_font/ a\$_X_font = vga12x30' /etc/dosemu/dosemu.conf
+  sudo sed -ie '/$_X_font/c\$_X_font = vga12x30' /etc/dosemu/dosemu.conf
 
 DOS video configurations include: 
 ``vga, vga8x19, vga11x19, vga10x24, vga12x30, vga-cp866, and vga10x20-cp866``. 

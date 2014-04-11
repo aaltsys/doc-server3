@@ -114,7 +114,7 @@ Add Program Fles
 
 Add folder :file:`WARES` inside :file:`C:\\Users\\Public`. In the 
 :file:`WARES` folder, add the following files, downloadable from links at 
-`DOS WARES Resources <http://doswares.aaltsys.info/resources/_downloads>`_:
+`DOS WARES Resources <http://doswares.aaltsys.info/resources/>`_:
 
 | :file:`NETPRINT.BAT`
 | :file:`NETSHARE.BAT`

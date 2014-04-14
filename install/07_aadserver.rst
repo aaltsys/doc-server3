@@ -236,33 +236,25 @@ Authentication entries
 
 Keep a record of this information in a safe place.
 
-Windows Registration:
+Windows registration:
 -----------------------------
 
 ::
 
-   Registration number: ______________________________
+   Installation License number: ______________________________
+   Professional Upgrade number: ______________________________
 
-Hamachi VPN
+Windows station information:
 -----------------------------
 
 ::
 
-   Networkname: ______________________________
-      Password: ______________________________
+   Workstation name: ______________________________
+          Workgroup: ______________________________
+     Windows domain: ______________________________
 
-AADServer License
------------------------------
-
-::
-
-   Registration username: ______________________________
-          License number: ______________________________
-
-     
 TS usernames and passwords
 -----------------------------
-
 
    +----------------------+--------------------+-------------------+
    | Function             | Username           | Password          |
@@ -276,9 +268,25 @@ TS usernames and passwords
    | WARES User           | USER00 ... USER09  |                   |
    +----------------------+--------------------+-------------------+
 
-RDPPRINT.BAT information
+AADServer license
 -----------------------------
 
+::
+
+   Registration username: ______________________________
+          License number: ______________________________
+
+Hamachi VPN
+-----------------------------
+
+::
+
+    Hamachi IP: ______________________________
+   Networkname: ______________________________
+      Password: ______________________________
+
+RDPPRINT.BAT information
+-----------------------------
 
    +-----------+------------------+-------------------+---------------+--------+
    | login ID  | Workstation name | Hamachi VPN IP    | Printer share | Device |
@@ -306,5 +314,6 @@ RDPPRINT.BAT information
    | EXAMPLE   | DEVELOPER        | 25.50.50.50       | Laserjet      | LPT1   |
    +-----------+------------------+-------------------+---------------+--------+ 
 
-.. note:: It would be a good idea to ghost a drive image from this installation 
+.. note:: 
+   It would be a good idea to ghost a drive image from this installation 
    once complete, so that recovery from an OS failure would be possible.

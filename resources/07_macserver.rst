@@ -28,10 +28,10 @@ Software
 *  Linux with EFI stub loader support, such as Ubuntu 12.10 and later
 
 .. note::
-   Earlier Linux kernel, before 3.3.0, can be installed as documented in this
+   Earlier Linux kernels, before 3.3.0, can be installed as documented in this
    footnote. [#]_
 
-Make a Linux installer USB
+Make a Linux installer 
 =============================
 
 .. note:: This section is based on official Ubuntu documentation [#]_
@@ -53,7 +53,7 @@ Prepare Linux disk image
 .. note::
    For the terminal phobic, the following instructions could replace the
    preceding command:
-   
+ 
    #. Open a :program:`Finder` window, and display the :file:`Downloads` folder
    #. Right-Click the ``{linux.iso}`` image file, and choose 
       :menuselection:`Open With --> Disk Utility`
@@ -62,6 +62,17 @@ Prepare Linux disk image
    #. In the :guilabel:`Convert` dialog, use the default name and location 
       :file:`Documents`, and click :guilabel:`Save` to write 
       ``{linux.dmg}`` (The :file:`.dmg` extension is added automatically.)
+
+Either create a DVD using the Apple Superdrive or write the install image to a 
+USB drive, using one of the following instruction sections.
+
+Copy Linux image to DVD
+-----------------------------
+
+#. Open :program:`Disk Utility` from :menuselection:`Launchpad --> Other`
+#. Click the {linux.dmg} file in the left panel, then click :guilabel:`Burn` 
+   from the icon bar
+#. Insert a DVD in the Superdrive and click :guilabel:`Burn` to continue
 
 Copy Linux image to USB
 -----------------------------
@@ -99,16 +110,6 @@ Copy Linux image to USB
 Install rEFInd and Linux
 =============================
 
-Make free space on drive
------------------------------
-
-#. Open :menuselection:`Launchpad --> Other --> Disk Utility`
-#. Choose a media drive to repartition, and select :menuselection:`Partition`
-   from the dialog border menu
-#. Drag the resize control to change the partition size, then click 
-   :guilabel:`Apply`
-#. Wait for the resize operation to complete
-
 Install rEFInd software
 -----------------------------
 
@@ -123,15 +124,32 @@ Install rEFInd software
 
       cd refind <Tab> <Enter>
       ./install.sh --alldrivers
- 
+
+Make free space on drive
+-----------------------------
+
+#. Open :menuselection:`Launchpad --> Other --> Disk Utility`
+#. Choose a media drive to repartition, and select :menuselection:`Partition`
+   from the dialog border menu. We recommend installing on /dev/disk02
+#. Remove Apple HFS data partitions on the drive, leaving only the EFI partition 
+   and the remainder as free space. 
+
 Install Linux from USB
 -----------------------------
 
-#. While restarting the Mac, hold down the :kbd:`alt/option` key to choose the 
-   boot device, in this case, the USB drive.
+.. note::
+   These instructions create a multi-boot machine based on the Mac mini Server.
+   Please refer to separate Zentyal server installation instructions for a 
+   detailed procedure specific to that operating system.
+
+#. Restart the Mac, holding down the :kbd:`alt/option` key to choose the 
+   boot device, either the USB drive or the Superdrive.
+#. Choose the boot media, which Apple humorously displays as "Windows".
+#. Boot the Linux installation, select the installation language, and then 
+   choose to install by :menuselection:`(expert mode)`.
 #. Use manual partitioning option, and in the free space created previously, 
-   create a 4 Gb swap partition and an install partition of type ``ext4`` 
-   mounted as ``/``.
+   first create an 8 Gb swap partition and then an install partition of type 
+   ``ext4`` mounted as ``/``.
 #. Continue with Linux installation in the newly-created partitions.
 #. Reboot when installation is finished, removing the USB flash drive. The 
    :program:`rEFInd` boot selector should now contain options to boot Linux.

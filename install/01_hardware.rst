@@ -74,14 +74,20 @@ Reference Hardware List
 Drive setup
 -----------------------------
 
-(RAID configuration goes here)
+The move from BIOS to EFI and UEFI has meant the end of BIOS RAID configuration. 
+The Mac mini Server uses EFI and RAID configuration would occur in the OS. We 
+recommend retaining the Mac OS X on :file:`/dev/sda`, and reformatting device
+:file:`/dev/sdb` for Zentyal Linux, performing this setup while installing the 
+operating system.
 
 Build instructions
 -----------------------------
 
-The Mac mini Server comes with Apple's OS X system installed. We recommend 
-repartitioning the drives and installing Zentyal without removing OS X. For this
-section, follow the procedures from article :ref:`resources:macserver`.
+Follow the procedures from article :ref:`resources:macserver` to install the 
+rEFInd EFI boot manager and prepare the Mac mini Server for OS installation.
+
+.. warning::
+   If you are installing a Mac mini Server, ignore the rest of this article.
 
 Bespoke Hardware Server
 =============================

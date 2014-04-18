@@ -1,7 +1,7 @@
 .. _aadserver:
 
 #############################
-AADServer Terminal Services
+ AADServer Terminal Services
 #############################
 
 Multiuser Terminal Services is a Windows feature which allows remote 

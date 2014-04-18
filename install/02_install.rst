@@ -4,6 +4,12 @@
  Installation Instructions
 #############################
 
+.. note::
+   The PC portion of these instructions wa written using Zentyal versions 
+   from 2.0 through 3.3. Only the most current version of Zentyal is actually 
+   supported, and so some of the directions may be out of order or wrong.
+   Mac instructions were written based on Zentyal 3.4, current as of 4/1/2014.
+
 Purpose and Requirements
 =============================
 
@@ -12,22 +18,22 @@ office server which may then be registered for support with the AAltSys VPN.
 
 Before starting this procedure, you should have the following information::
 
-   __Domain__:              __________________________________
-   __Hostname__:            __________________________________ (__server__)
-   __Username__:            __________________________________ (admin1)
-   __Password__:            __________________________________
-   __Registration number__: __________________________________
-   __Activation code__:     __________________________________
-   __Administrator email__: __________________________________
+   {Domain}:              __________________________________
+   {Hostname}:            __________________________________ (____server)
+   {Username}:            __________________________________ (admin1)
+   {Password}:            __________________________________
+   {Registration number}: __________________________________
+   {Activation code}:     __________________________________
+   {Administrator email}: __________________________________
 
 For servers used as LAN peers instead of network gateways, additional 
 information is required::
 
-   __Static IP address__:   __________________________________
-   __Netmask__:             __________________________________
-   __Gateway__:             __________________________________
-   __DNS server1__:         __________________________________
-   __DNS server2__:         __________________________________
+   {Static IP address}:   __________________________________
+   {Netmask}:             __________________________________
+   {Gateway}:             __________________________________
+   {DNS server1}:         __________________________________
+   {DNS server2}:         __________________________________
 
 Recommended Hardware
 =============================
@@ -36,7 +42,7 @@ Minimum server hardware requirements start with a multicore processor capable
 of virtualization. Other requirements are as follows:
 
 *  Dual Core x64 Processor with Virtualization *(either Intel VT-x or AMD-V)*
-*  2 Gb RAM, *minimum*
+*  4 Gb RAM, *minimum*
 *  80 Gb Hard Disk Drive, *minimum*
 *  Gigabit Ethernet Adapter
 *  DVD-ROM Drive, *required for installation*
@@ -64,57 +70,74 @@ Installing Zentyal
 
 Boot the server from the Zentyal Install DVD.  
 
-.. tip:: A function key press such as :kbd:`[F8]` or :kbd:`[F12]` may be 
-   required to select the boot device.
+.. tip:: 
+   A function key press such as :kbd:`[F8]` or :kbd:`[F12]`, or holding down 
+   :kbd:`alt/option` on the Mac mini Server, may be required to select the boot 
+   device.
+
+Installer options
+-----------------------------
 
 *  Press :kbd:`<Enter>` at selection :menuselection:`English` to choose the 
    installer language default: ``English``.
 *  **Choose the second option on the Installation menu**, 
    :guilabel:`Install Zentyal (expert mode)`.
-*  Press :kbd:`<Enter>` to select :menuselection:`English` as the system
-   language, ``English``.
-*  Press :kbd:`<Enter>` to select :menuselection:`United States` or choose 
-   another :guilabel:`Country, territory or area:`. 
-*  Press :kbd:`<Enter>` for the default :guilabel:`<No>` at the question, 
-   :guilabel:`Detect keyboard layout?`
-  
-.. note:: Zentyal 2.2 keyboard instructions:
+*  Make the following selections, or press :kbd:`<Enter>` for defaults:
+   
+   +----------------------+-----------------+---------------------------------+
+   | Selection name       | Default         | Suggested action                |
+   +======================+=================+=================================+
+   | Language             | English         | press :kbd:`<Enter>`            |
+   +----------------------+-----------------+---------------------------------+
+   | Country              | United States   | press :kbd:`<Enter>`            |
+   +----------------------+-----------------+---------------------------------+
+   | Detect keyboard      | No              | press :kbd:`<Enter>`            |
+   +----------------------+-----------------+---------------------------------+
+   | Country of keyboard  | English (US)    | press :kbd:`<Enter>`            |
+   +----------------------+-----------------+---------------------------------+
+   | Keyboard layout      | English (US)    || press :kbd:`<Enter>` or,       |
+   |                      |                 || select ``English (Macintosh)`` |
+   +----------------------+-----------------+---------------------------------+
 
-   * Press :kbd:`<Enter>` to use the default :guilabel:`US keymap`, or select 
-     your local keymap.
-   * Press :kbd:`<Enter>` to accept a generic keyboard, or choose your exact 
-     keyboard from the subsequent list.
-  
-*  Press :kbd:`<Enter>` to use the :menuselection:`English US` country of origin 
-   for the keyboard, or select your country of origin.
-*  Press :kbd:`<Enter>` to use the default :menuselection:`English US` keyboard 
-   layout, or select your local keyboard.
-*  Press :kbd:`<Enter>` to select :menuselection:`eth0: ...` as your 
-   :guilabel:`Primary Network Interface`.
+Configure the Network
+-----------------------------
+
+*  Choose the Primary Network Interface, enter the fully-qualified host name, 
+   and setup the site administrator user.
+    
+   .. warning:: Use your site domain and hostname in the following entry, not 
+      ":kbd:`{hostname}`" and ":kbd:`{domain}`". **domain** and **hostname** 
+      cannot be changed on fully configured systems.
+
+   +-----------------------------+---------------------------------------------+
+   | Selection prompt            | Recommended entry or action                 |
+   +=============================+=============================================+
+   | Primary Network Interface   || either :menuselection:`eth0: ...` (PC)     |
+   |                             || or :menuselection:`something ...` (Mac)    |
+   +-----------------------------+---------------------------------------------+
+   | Hostname:                   || either :kbd:`{servername}.{domain}.local`  |
+   |                             || or :kbd:`{servername}.local.aaltsys.net`   |
+   +-----------------------------+---------------------------------------------+
+   | Administrator username      | :kbd:`admin1` (if registering with AAltsys) |
+   +-----------------------------+---------------------------------------------+
+   | Password                    | :kbd:`{password}`                           |
+   +-----------------------------+---------------------------------------------+
 *  The network should configure using DHCP. If DHCP does not work, fix your 
    network connection.
+
+Configure the Clock
+-----------------------------
   
-   .. warning:: Use your site domain and hostname in the following entry, not 
-      ":kbd:`__domain__`" and ":kbd:`__hostname__`". Once the system is 
-      configured the **domain** and **hostname** cannot be changed.
-  
-*  **Enter** :kbd:`__hostname__.__domain__.aaltsys.net` **as the fully qualified 
-   :guilabel:`Hostname:`**, then press :kbd:`<Tab>,<Enter>` to 
-   :guilabel:`<Continue>`. 
+*  Verify that the displayed timezone, such as ``America/Chicago``, is correct
+   for your physical location. Otherwise, enter :kbd:`No` to pick your timezone 
+   from a list.
 
-*  Zentyal 3.0: **Enter an administrator name** such as :kbd:`admin1` at 
-   :guilabel:`Username for your accout`, then press :kbd:`<Tab>,<Enter>` to 
-   :guilabel:`<Continue>`. 
-*  Zentyal 3.0: **Enter an administrator password**, then press 
-   :kbd:`<Tab>,<Enter>`.
-*  Zentyal 3.0: **Reenter the password**, followed by :kbd:`<Tab>,<Enter>`. 
-*  Zentyal 3.0: If necessary, press :kbd:`<Tab>` to accept the weak password.
+.. warning::
+   Here, follow either **PC** or **Mac** instructions depending on hardware.
 
-.. Note:: In the next step, if the default timezone is blank then pick your 
-   timezone location from the list.
+Partition disks (PC)
+-----------------------------
 
-*  Press :kbd:`<Enter>` for the default timezone at the prompt 
-   :guilabel:`Is this timezone correct?`.
 *  Press :kbd:`<Enter>` to accept :guilabel:`<Yes>` at prompt 
    :guilabel:`Activate serial ATA RAID devices?`.
 *  Press :kbd:`<Enter>` to use the :guilabel:`partitioning method`, 
@@ -132,22 +155,6 @@ Boot the server from the Zentyal Install DVD.
 Please wait as disk partitioning and initial file transfers take place 
 (5-10 minutes).
 
-.. Note:: Zentyal 2.2 administrator username and password instructions.
-
-   *  **Enter** :kbd:`AAltsys Administrator <Enter>` **for the prompt,** 
-      :guilabel:`Full name for the new user`.
-   *  **Enter** :kbd:`__username__ <Enter>` **at the prompt,** 
-      :guilabel:`Username for your account`.
-   *  **Enter** :kbd:`__password__ <Enter>` **at the prompt,** 
-      :guilabel:`Choose a password for the new user`.
-   *  **Enter** :kbd:`__password__ <Enter>` **at the prompt,** 
-      :guilabel:`Re-enter password to verify`.
-   *  **Press** :kbd:`<Tab> <Tab> <Enter>` **to answer** :guilabel:`<Yes>` at 
-      the prompt :guilabel:`Use weak password?`
-
-*  Press :kbd:`<Tab><Enter>` to continue at the entry 
-   :guilabel:`HTTP proxy information (blank for none)`.
-
 Installation of downloadable components begins at this point (5-20 minutes). 
 
 .. tip:: Zentyal 3.0: Actual drive mapper information is taken from the 
@@ -162,186 +169,52 @@ Installation of downloadable components begins at this point (5-20 minutes).
 *  Press :kbd:`<Enter>` at :guilabel:`<Continue>`. The initial installation is 
    complete.
 
-First Boot Configuration
-=============================
-
-On first boot, the Zentyal desktop loads Firefox and opens the local server 
-administration console. First, in Firefox 
-:menuselection:`Edit --> Preferences --> Security`, uncheck item 
-:guilabel:`Remember passwords for sites`. Then login to Zentyal for the first 
-boot configuration::
-
-   :guilabel:`Username:`  :kbd:`__username__`
-   :guilabel:`Password:`  :kbd:`__password__`
-
-.. NOTE:: Following section titles correspond to items on the Zentyal 
-   :guilabel:`Initial Steps` menu, at the left of the Zentyal pages.
-
-Package Selection:
+Partition disks (Mac)
 -----------------------------
 
-At :guilabel:`Choose Zentyal packages to install`, select the following modules::
+*  If asked to :guilabel:`unmount partitions that are in use`, answer :kbd:`No`.
+*  Select :guilabel:`Partitioning method` as :kbd:`Manual`.
+*  Partition drive :guilabel:`SCSI2 (0.0.0) (sdb)` for installation, leaving the 
+   EFI partition and then adding a swap partition followed by an OS partition
+   as shown following:
+   
+   +---------+--------------+---------------+-------------------+-----------+
+   | Area    | Size         | Type          | Label             | Mount as  |
+   +=========+==============+===============+===================+===========+
+   |         |      3.1 MB  | FREE SPACE    |                   |           |
+   +---------+--------------+---------------+-------------------+-----------+
+   | #1      |    209.7 MB  | EFI boot      | EFI system p ...  |           |
+   +---------+--------------+---------------+-------------------+-----------+
+   |         |      1.0 MB  | FREE SPACE    |                   |           |
+   +---------+--------------+---------------+-------------------+-----------+
+   | #2      |     10.0 GB  | swap          |                   | swap      |
+   +---------+--------------+---------------+-------------------+-----------+
+   | #3      |    990.0 GB  | ext4          | ZENTYAL           | /         |
+   +---------+--------------+---------------+-------------------+-----------+
+   |         |    728.6 KB  | FREE SPACE    |                   |           |
+   +---------+--------------+---------------+-------------------+-----------+
+   
+   .. note::
+      The ``ZENTYAL`` partition does not have to be set :kbd:`bootable`, as 
+      :program:`rEFInd` will act as boot manager.
 
-   Backup
-   Bandwidth Monitor
-   Certification Authority
-   DHCP Service
-   DNS Service
-   FTP
-   Firewall
-   IPsec
-   Intrusion Detection System
-   Layer 7 Filter
-   NTP Service
-   Network Configuration
-   Printer Sharing Service
-   RADIUS
-   Traffic Shaping
-   UPS Management (Zentyal 3.0)
-   Users and Groups
-   VPN Service
+*  Select :guilabel:`Finish partitioning and write changes to disk`. Then answer 
+   the following questions:
+   
+   +-----------------------------------------------------+--------------------+
+   | Question                                            | Answer             |
+   +=====================================================+====================+
+   | create a separate partition for boot loader code?   | <No>               |
+   +-----------------------------------------------------+--------------------+
+   | Write the changes to disks?                         | <Yes>              |
+   +-----------------------------------------------------+--------------------+
+   | Proceed installation without graphical environment? | <No>               |
+   +-----------------------------------------------------+--------------------+
+   | HTTP proxy information (blank for none):            | (blank) <Continue> |
+   +-----------------------------------------------------+--------------------+
+   | Device for boot loader installation:                | (blank) <Continue> |
+   +-----------------------------------------------------+--------------------+
+   | Is the system clock set to UTC?                     | <Yes>              |
+   +-----------------------------------------------------+--------------------+
 
-Click :guilabel:`Install`.
-
-Confirmation:
------------------------------
-
-On the :Guilabel:`Confirmation` page, click :guilabel:`OK`.
-
-Installation:
------------------------------
-
-Packages will be downloaded and installed now (10-30 minutes).
-
-Initial Configuration:
-=============================
-
-.. warning:: At :guilabel:`Initial configuration wizard`, do not click 
-   :guilabel:`SKIP` or :guilabel:`NEXT`.
-
-Network Interfaces
------------------------------
-
-.. note:: There are two principal installation types for an AAltsys server: as 
-   a network gateway server, or as a LAN peer server. Follow one of the columns 
-   below, either the right-hand side or the left.
-
-*  Check the :guilabel:`Configure interface types` radio buttons according to 
-   your installation type.
-*  Click :kbd:`NEXT` to continue.
-
-+---------------------------------------+-+----------------------------------------+
-| NETWORK GATEWAY SERVER                | | LAN PEER SERVER                        |
-+=======================================+=+========================================+
-| **Configure Interface Types:**        | | **Configure Interface types:**         |
-+---------------------------------------+-+----------------------------------------+
-| eth0 --> ``External``                 | | eth0 --> ``Internal``                  |
-+---------------------------------------+-+----------------------------------------+
-| eth1 --> ``Internal``                 | | eth1 --> ``Internal``                  |
-+---------------------------------------+-+----------------------------------------+
-
-*  Click :guilabel:`Next`.
-
-+---------------------------------------+-+----------------------------------------+
-| NETWORK GATEWAY SERVER                | | LAN PEER SERVER                        |
-+=======================================+=+========================================+
-| **Configure network for external ...**| | **Configure network for external ...** |
-+---------------------------------------+-+----------------------------------------+
-| eth0 --> ``DHCP``                     | | eth0 --> ``static``                    |
-+---------------------------------------+-+----------------------------------------+
-|                                       | | IP address --> ``__nnn.nnn.nnn.nnn__`` |
-+---------------------------------------+-+----------------------------------------+
-|                                       | | Netmask --> ``__255.nnn.nnn.0__``      |
-+---------------------------------------+-+----------------------------------------+
-|                                       | | Gateway --> ``__nnn.nnn.nnn.nnn__``    |
-+---------------------------------------+-+----------------------------------------+
-|                                       | | DNS server1 --> ``__8.8.8.8__``?       |
-+---------------------------------------+-+----------------------------------------+
-|                                       | | DNS server2 --> ``__8.8.4.4__``?       |
-+---------------------------------------+-+----------------------------------------+
-+---------------------------------------+-+----------------------------------------+
-| eth1 --> ``Static``                   | | eth1 --> ``Don't Configure``           |
-+---------------------------------------+-+----------------------------------------+
-| IP address --> ``192.168.2.241``      | |                                        |
-+---------------------------------------+-+----------------------------------------+
-| Netmask --> ``255.255.255.0``         | |                                        |
-+---------------------------------------+-+----------------------------------------+
-
-*  Click :guilabel:`Next`.
-
-.. Note:: Zentyal 2.2: 
-
-   *  At :guilabel:`Select the type of the server`, choose 
-      :guilabel:`Standalone Server`.
-   *  Click :guilabel:`Finish`.
-   *  Click :guilabel:`Save Changes`.
-
-*  Zentyal 3.0: At :guilabel:`Host domain name`, accept the default name
-   :guilabel:`__domain__.aaltsys.net`.
-*  Click :guilabel:`NEXT`.
-*  At :guilabel:`Initial configuration wizard`, click :guilabel:`FINISH`. (To 
-   avoid registering, you may need to click :guilabel:`SKIP` and then 
-   :guilabel:`FINISH`.)
-
-Saving Changes
-------------------------------
-
-Packages will be configured now (1-5 minutes).
-
-When finished, click on :guilabel:`GO TO THE DASHBOARD`.
-
-To exit Zentyal, choose :guilabel:`Logout` from the Zentyal top bar, then click 
-:guilabel:`Exit`.
-
-Connecting External Drive
-=============================
-
-An external drive may be connected for storing backups. Provided you have a 
-drive, formatted already with ntfs, then download this 
-:download:`backup drive configuration script <_downloads/backupdrive.sh>` and 
-then run it with the commands::
-
-   cd ~/Downloads
-   bash backupdrive.sh BACKUP
-   rm backupdrive.sh
-
-.. note::
-   Instructions for preparing a backup drive, formatting it for NTFS, and the 
-   sequence of commands to automount the drive as used in the above script are 
-   provided in the article :ref:`backup_drive_setup`.
-
-Installing AAltSys VPN
-=============================
-
-*  Download this :download:`registration script <_downloads/aas.sh>`
-
-*  Double-click the :guilabel:`Console` icon from the server desktop.
-
-*  Type the following commands in the exact case shown::
-
-      cd ~/Downloads
-      bash aas.sh
-      rm aas.sh
-
-*  Type in your :kbd:`__password__`.When prompted for it. 
-  
-*  Additional packages may be installed now (10-20 minutes).
-
-*  Enter the following information when prompted::
-
-      Registration number: ________________________________
-      Activation code:     ________________________________
-      email address:       ________________________________
-
-An upgrade to all installed packages will be performed, taking 10-30 minutes. 
-When all command activity finishes and installation is complete, the server 
-should restart.
-
-Restarting Server
-=============================
-
-From a console terminal window, restart your server with the command::
-
-   sudo reboot <Enter>
-
-Congratulations. Your AAltSys server is ready for local configuration.
+When the installation finishes, remove the install media and reboot the system.

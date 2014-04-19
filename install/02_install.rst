@@ -105,18 +105,18 @@ Configure the Network
 *  Choose the Primary Network Interface, enter the fully-qualified host name, 
    and setup the site administrator user.
     
-   .. warning:: Use your site domain and hostname in the following entry, not 
-      ":kbd:`{hostname}`" and ":kbd:`{domain}`". **domain** and **hostname** 
+   .. warning:: Use your site hostname and domain in the following entry, not 
+      ":kbd:`{hostname}`" and ":kbd:`{domain}`". **hostname** and **domain** 
       cannot be changed on fully configured systems.
 
    +-----------------------------+---------------------------------------------+
    | Selection prompt            | Recommended entry or action                 |
    +=============================+=============================================+
-   | Primary Network Interface   || either :menuselection:`eth0: ...` (PC)     |
-   |                             || or :menuselection:`something ...` (Mac)    |
+   | Primary Network Interface   | :menuselection:`eth0: ...` (PC)             |
    +-----------------------------+---------------------------------------------+
-   | Hostname:                   || either :kbd:`{servername}.{domain}.local`  |
-   |                             || or :kbd:`{servername}.local.aaltsys.net`   |
+   | Hostname:                   || either :kbd:`{hostname}.local`             |
+   |                             || or :kbd:`{hostname}.local.{domain}`        |
+   |                             || or :kbd:`{hostname}.local.aaltsys.net`     |
    +-----------------------------+---------------------------------------------+
    | Administrator username      | :kbd:`admin1` (if registering with AAltsys) |
    +-----------------------------+---------------------------------------------+
@@ -132,89 +132,93 @@ Configure the Clock
    for your physical location. Otherwise, enter :kbd:`No` to pick your timezone 
    from a list.
 
-.. warning::
-   Here, follow either **PC** or **Mac** instructions depending on hardware.
-
-Partition disks (PC)
+Partition disks (BIOS RAID)
 -----------------------------
 
-*  Press :kbd:`<Enter>` to accept :guilabel:`<Yes>` at prompt 
-   :guilabel:`Activate serial ATA RAID devices?`.
-*  Press :kbd:`<Enter>` to use the :guilabel:`partitioning method`, 
-   :guilabel:`Guided -- use entire disk`.
+.. warning::
+   For **Mac**, skip this section and continue at :ref:`partition-mac`. These 
+   instructions apply to custom-built PCs with BIOS RAID on the motherboard.
 
-   .. warning:: Due to an installation bug in Zentyal 3.0, you must write down 
-      the ATA RAID identifier, :guilabel:`isw_----------_aaltsys`, for later 
-      reentry. 
+*  Answer the following questions:
 
-*  Press :kbd:`<Enter>` to :guilabel:`select the disk to partition`, 
-   :menuselection:`Serial ATA RAID, isw_xxxxxxxxxxx_aaltsys (mirror) ...`.
-*  **Press** :kbd:`<Tab> <Enter>` **to select** :guilabel:`<Yes>` **at the 
-   question,** :guilabel:`Write the changes to disks?`
+   +--------------------------------------+------------------------------------+
+   | Installation prompt                  | Response                           |
+   +======================================+====================================+
+   | Activate serial ATA RAID devices?    | <Yes>                              |
+   +--------------------------------------+------------------------------------+
+   | Partitioning method                  | Guided -- use entire disk          |
+   +--------------------------------------+------------------------------------+
+   | select the disk to partition         | Serial ATA RAID, isw_..._aaltsys   |
+   +--------------------------------------+------------------------------------+
+   | ... partition for boot loader code?  | <Yes>                              |
+   +--------------------------------------+------------------------------------+
+   | Write the changes to disks?          | <Yes>                              |
+   +--------------------------------------+------------------------------------+
+   
+   .. warning:: When installing Zentyal 3.0, a bug makes it necessary to write 
+      down the ATA RAID identifier, :guilabel:`isw_----------_aaltsys`, for 
+      later reentry. 
 
-Please wait as disk partitioning and initial file transfers take place 
-(5-10 minutes).
-
-Installation of downloadable components begins at this point (5-20 minutes). 
-
-.. tip:: Zentyal 3.0: Actual drive mapper information is taken from the 
-   previous warning. The following prompt for boot loader installation occurs 
-   on initial installs to blank drives only, not on reinstalls to used drives.
-
-*  Zentyal 3.0: **Enter** :kbd:`/dev/mapper/isw_----------_aaltsys <Tab><Enter>` 
-   at :guilabel:`Device for boot loader installation:`. 
-*  Press :kbd:`<Enter>` for :guilabel:`<Yes>` at the message, 
-   :guilabel:`Is the system clock set to UTC?`
-*  Remove the CD from the drive when the tray opens.
-*  Press :kbd:`<Enter>` at :guilabel:`<Continue>`. The initial installation is 
-   complete.
+.. _partition-mac: 
 
 Partition disks (Mac)
 -----------------------------
 
 *  If asked to :guilabel:`unmount partitions that are in use`, answer :kbd:`No`.
 *  Select :guilabel:`Partitioning method` as :kbd:`Manual`.
-*  Partition drive :guilabel:`SCSI2 (0.0.0) (sdb)` for installation, leaving the 
-   EFI partition and then adding a swap partition followed by an OS partition
-   as shown following:
+*  Partition drive :guilabel:`SCSI2 (0.0.0) (sdb)` for installation, creating 
+   partitions for EFI boot, swap, and ext4 ZENTYAL as shown following:
    
-   +---------+--------------+---------------+-------------------+-----------+
-   | Area    | Size         | Type          | Label             | Mount as  |
-   +=========+==============+===============+===================+===========+
-   |         |      3.1 MB  | FREE SPACE    |                   |           |
-   +---------+--------------+---------------+-------------------+-----------+
-   | #1      |    209.7 MB  | EFI boot      | EFI system p ...  |           |
-   +---------+--------------+---------------+-------------------+-----------+
-   |         |      1.0 MB  | FREE SPACE    |                   |           |
-   +---------+--------------+---------------+-------------------+-----------+
-   | #2      |     10.0 GB  | swap          |                   | swap      |
-   +---------+--------------+---------------+-------------------+-----------+
-   | #3      |    990.0 GB  | ext4          | ZENTYAL           | /         |
-   +---------+--------------+---------------+-------------------+-----------+
-   |         |    728.6 KB  | FREE SPACE    |                   |           |
-   +---------+--------------+---------------+-------------------+-----------+
+   +---------+------------+-------+---------------+-------------------+-------+
+   | Area    | Size       | Flags | Type          | Label             | Mount |
+   +=========+============+=======+===============+===================+=======+
+   |         |    1.0 MB  |       | FREE SPACE    |                   |       |
+   +---------+------------+-------+---------------+-------------------+-------+
+   | #1      |  209.7 MB  | B  F  | EFIboot       | EFI system p ...  |       |
+   +---------+------------+-------+---------------+-------------------+-------+
+   | #2      |   10.0 GB  |    F  | swap          |                   | swap  |
+   +---------+------------+-------+---------------+-------------------+-------+
+   | #3      |  990.0 GB  |    F  | ext4          | ZENTYAL           | /     |
+   +---------+------------+-------+---------------+-------------------+-------+
+   |         |  728.6 KB  |       | FREE SPACE    |                   |       |
+   +---------+------------+-------+---------------+-------------------+-------+
    
    .. note::
       The ``ZENTYAL`` partition does not have to be set :kbd:`bootable`, as 
-      :program:`rEFInd` will act as boot manager.
+      :program:`rEFInd` will act as boot manager. An empty EFIboot partition is
+      maintained for possibly restoring the drive to OS X.
 
-*  Select :guilabel:`Finish partitioning and write changes to disk`. Then answer 
-   the following questions:
-   
-   +-----------------------------------------------------+--------------------+
-   | Question                                            | Answer             |
-   +=====================================================+====================+
-   | create a separate partition for boot loader code?   | <No>               |
-   +-----------------------------------------------------+--------------------+
-   | Write the changes to disks?                         | <Yes>              |
-   +-----------------------------------------------------+--------------------+
-   | Proceed installation without graphical environment? | <No>               |
-   +-----------------------------------------------------+--------------------+
-   | HTTP proxy information (blank for none):            | (blank) <Continue> |
-   +-----------------------------------------------------+--------------------+
-   | Device for boot loader installation:                | (blank) <Continue> |
-   +-----------------------------------------------------+--------------------+
-   | Is the system clock set to UTC?                     | <Yes>              |
-   +-----------------------------------------------------+--------------------+
+*  Select :guilabel:`Finish partitioning and write changes to disk`. 
 
-When the installation finishes, remove the install media and reboot the system.
+   .. note::
+      Zentyal wants to use Grub in place of Apple's EFI boot partition, and so a
+      question appears regarding a "separate partition for boot loader code". 
+
+*  At the prompt :guilabel:`Go back to the menu and correct this problem?`, 
+   enter :kbd:`<No>`.
+
+Finish Installation
+=============================
+
+Answer these questions, each of which involves installation activity:
+
+.. warning::
+   For Zentyal 3.0, question :guilabel:`Device for boot loader installation:`
+   must be answered with :kbd:`/dev/mapper/isw_----------_aaltsys <Tab><Enter>`.
+
++-----------------------------------------------------+--------------------+
+| Question                                            | Answer             |
++=====================================================+====================+
+| Write the changes to disks?                         | <Yes>              |
++-----------------------------------------------------+--------------------+
+| Proceed installation without graphical environment? | <No>               |
++-----------------------------------------------------+--------------------+
+| HTTP proxy information (blank for none):            | (blank) <Continue> |
++-----------------------------------------------------+--------------------+
+| Device for boot loader installation:                | (blank) <Continue> |
++-----------------------------------------------------+--------------------+
+| Is the system clock set to UTC?                     | <Yes>              |
++-----------------------------------------------------+--------------------+
+
+When the installation finishes, remove the install media and press 
+:kbd:`<enter>` to reboot the system.

@@ -1,1 +1,1 @@
-vpn-fix.sh
+../../resources/_downloads/vpn-fix.sh

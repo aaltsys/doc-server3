@@ -1,1 +1,1 @@
-../../../registration/registration.sh
+../../resources/_downloads/registration.sh

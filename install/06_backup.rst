@@ -8,7 +8,7 @@ The AAltSys Server provides robust, simple, and inexpensive options for data
 backup. Backups can be written to DVDs for a small amount of information, but 
 we recommend using auto-mounted USB or eSATA drives to handle large data sets. 
 For instructions on preparing (an external) drive for storing backups, refer to
-article :ref:`resources/backupdrive`.
+article :ref:`../resources/backupdrive`.
 
 Restoring Backups
 =============================

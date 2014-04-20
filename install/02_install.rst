@@ -148,16 +148,16 @@ Partition disks (BIOS RAID)
    +--------------------------------------+------------------------------------+
    | Partitioning method                  | Guided -- use entire disk          |
    +--------------------------------------+------------------------------------+
-   | select the disk to partition         | Serial ATA RAID, isw_ ... _aaltsys |
+   | select the disk to partition         | Serial ATA RAID, isw_-----_aaltsys |
    +--------------------------------------+------------------------------------+
    | ... partition for boot loader code?  | <Yes>                              |
    +--------------------------------------+------------------------------------+
    | Write the changes to disks?          | <Yes>                              |
    +--------------------------------------+------------------------------------+
    
-   .. warning:: When installing Zentyal 3.0, a bug makes it necessary to write 
-      down the ATA RAID identifier, :guilabel:`isw_----------_aaltsys`, for 
-      later reentry. 
+   .. warning:: 
+      When installing Zentyal 3.0, a bug makes it necessary to write down the
+      ATA RAID identifier, :guilabel:`isw_----------_aaltsys`, for later use. 
 
 .. _partition-mac: 
 

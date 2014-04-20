@@ -94,10 +94,10 @@ Network Interfaces
    | Netmask --> ``255.255.255.0``        | |                                      |
    +--------------------------------------+-+--------------------------------------+
    
-      .. note::
+   .. note::
       Interfaces are configured according to the server function. For more 
-      explanation of network setup, see :ref:`resources/network`. During initial 
-      setup, use DHCP to configure network interfaces for a LAN peer server.
+      explanation of network setup, see :ref:`../resources/network`. During 
+      initial setup, use DHCP to configure a LAN peer server network interface.
    
 *  Click :guilabel:`Next`
 *  The :guilabel:`Host domain name` prompt displays the domain name from the 
@@ -122,7 +122,7 @@ Connecting External Drive
 
 An external drive should be connected for storing backups, such as the Passport
 1.0 Tb portable drive with USB 3.0 interface. Follow instructions in article 
-:ref:`resources/backupdrive` to partition, format, and configure this drive.
+:ref:`../resources/backupdrive` to partition, format, and configure this drive.
 
 Installing AAltSys VPN
 =============================

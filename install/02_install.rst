@@ -148,7 +148,7 @@ Partition disks (BIOS RAID)
    +--------------------------------------+------------------------------------+
    | Partitioning method                  | Guided -- use entire disk          |
    +--------------------------------------+------------------------------------+
-   | select the disk to partition         | Serial ATA RAID, isw_-----_aaltsys |
+   | select the disk to partition         | Serial ATA RAID, isw-------aaltsys |
    +--------------------------------------+------------------------------------+
    | ... partition for boot loader code?  | <Yes>                              |
    +--------------------------------------+------------------------------------+

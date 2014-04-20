@@ -1,7 +1,8 @@
 .. _backupdrive:
 
+#############################
 Automount Drive Setup
-=============================
+#############################
 
 .. warning:: 
    (1) Connecting external drives over eSATA for scheduled backups can result in 

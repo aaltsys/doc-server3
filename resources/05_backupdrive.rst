@@ -19,8 +19,8 @@ volumes, the backup will be readable by anyone.
 Part 1: Install autofs [#]_
 -----------------------------
 
-Display a terminal command line on the server console, or ``ssh`` to a server 
-command shell. At the command prompt, type::
+Display a terminal command line on the server console, or :command:`ssh` to a 
+server command shell. At the command prompt, type::
 
    sudo apt-get install autofs ntfsprogs
 

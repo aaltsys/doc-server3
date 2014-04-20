@@ -47,7 +47,7 @@ of virtualization. Other requirements are as follows:
 *  Gigabit Ethernet Adapter
 *  DVD-ROM Drive, *required for installation*
 
-Our recommended hardware configuration is provided in :doc:`01_hardware`. 
+Our recommended hardware configuration is provided in :ref:`hardware`. 
 
 Hardware Configuration
 =============================

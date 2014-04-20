@@ -93,7 +93,8 @@ Network Interfaces
    +--------------------------------------+-+--------------------------------------+
    | Netmask --> ``255.255.255.0``        | |                                      |
    +--------------------------------------+-+--------------------------------------+
-   .. note::
+   
+      .. note::
       Interfaces are configured according to the server function. For more 
       explanation of network setup, see :ref:`resources/network`. During initial 
       setup, use DHCP to configure network interfaces for a LAN peer server.

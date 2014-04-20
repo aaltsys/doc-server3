@@ -178,7 +178,7 @@ commands::
 	 rebooting.
 
 For instructions on setting up an external backup drive, see 
-:ref:`backup_drive_setup`.
+:ref:`backup`.
 
 Configuring a Backup Server
 =================================

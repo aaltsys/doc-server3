@@ -6,13 +6,13 @@ Automount Drive Setup
 
 .. warning:: 
    (1) Connecting external drives over eSATA for scheduled backups can result in 
-   corrupted RAID arrays on some  motherboards which do not isolate SATA 
+   corrupted RAID arrays on some  motherboards which do not organize SATA ports
    based on boot status.
    
    (2) Zentyal 3.0 through 3.3 automounts USB devices, which interferes with 
    fuse autofs mounts for backup drives connected using USB. 
 
-In this example, an eSATA backup drive is configured as an extended partition 
+In this example, a backup drive is configured as an extended partition 
 hard drive formatted NTFS. Since Linux does not honor file permissions on NTFS 
 volumes, the backup will be readable by anyone.
 
@@ -22,7 +22,7 @@ Part 1: Install autofs [#]_
 Display a terminal command line on the server console, or :command:`ssh` to a 
 server command shell. At the command prompt, type::
 
-   sudo apt-get install autofs ntfsprogs
+   sudo apt-get install autofs ntfsprogs ntfs-3g
 
 Part 2. Format drive NTFS
 -----------------------------
@@ -31,37 +31,39 @@ A drive must be formatted before use. We recommend NTFS file system for the
 external backup drive, as then it can be read from either Linux or Windows. 
 Use the following instructions to perform this format:
 
-.. Warning:: These instructions assume that the external drive is device 
+.. Warning:: 
+   These instructions assume that the external drive is device 
    **sdc**, and you are using data partition **sdc1**. Verify this, or replace 
    **sdc1** in the following instructions with the correct parameter for your 
    specific system. All instructions are intended to be executed at a terminal 
    command prompt.
 
-#. Identify the device to format::
-
+#. Identify the device, format, and mount status using the following commands::
+   
      ls -al /dev/sd*
+     sudo blkid
+     mount -l
 
 #. If mounted, unmount the drive volume with one of the following commands::
-
+   
      sudo service autofs stop (for an automounted drive).
      sudo umount /dev/sdc (For a standard mount point). 
 
 .. note::
-   For Zentyal 3.0 and later, modify the udev rules to prevent USB drives from 
-   automounting. [#]_
+   For Zentyal 3.0 through 3.3, modify the udev rules to prevent USB drives from 
+   automounting. [#]_ :
    
-   ::
       sudo bash < <(echo 'echo "SUBSYSTEM==\"usb\", ENV{UDISKS_AUTO}=\"0\"" >> /etc/udev/rules.d/85-no-automount.rules')
       sudo service udev restart
 
      
 #. Verify the device is unmounted::
-
-     mount
+   
+     mount -l
 
 #. Use **fdisk** to remove partitions, create a fresh partition, set type to 7
    (NTFS/HPFS):: 
-
+   
      sudo fdisk /dev/sdc
      u
      c
@@ -70,17 +72,19 @@ Use the following instructions to perform this format:
      w
 
 #. Format the new partition NTFS, label it BACKUP::
-
+   
      sudo mkntfs -L BACKUP -f /dev/sdc1
 
-.. warning:: Creating a new drive partition changes the UUID for the drive 
+.. warning:: 
+   Creating a new drive partition changes the UUID for the drive 
    mount. When a drive has been automounted in the past, partitioning  must be 
    followed by the automount steps below before autofs can mount the drive.
 
 Part 3: Identify the device
 -----------------------------
 
-.. note:: Once a drive is formatted, a bash script is provided to perform Parts 
+.. note:: 
+   Once a drive is formatted, a bash script is provided to perform Parts 
    2 and 3 of this document. From the web browser on the server, download 
    :download:`this script <_downloads/backupdrive.sh>` and save it 
    in your home folder. Then execute the script with the commands::
@@ -113,7 +117,8 @@ The drive device will be discovered and then mounted to logical mount point
 This example shows block device ``/dev/sdc5``, UUID ``363404743404397F``, of 
 ``TYPE="ntfs"``.
 
-.. warning:: In the following commands, replace **$UUID** with the identifier 
+.. warning:: 
+   In the following commands, replace **$UUID** with the identifier 
    **YOU OBTAINED** from the instructions in Part 3.
 
 .. note:: 
@@ -133,7 +138,8 @@ At the command prompt, type::
    sudo bash < <(echo 'echo "/home/mnt/backup  -fstype=auto,sync  :/dev/disk/by-uuid/$UUID" >> /etc/auto.backup')
    sudo service autofs start
 
-.. hint:: Did you remember to replace $UUID with your partition identifier?
+.. hint:: 
+   Did you remember to replace $UUID with your partition identifier?
 
 Part 4: Verify drive mounting
 -----------------------------
@@ -143,7 +149,8 @@ Type the commands::
    ls /home/mnt/backup
    touch /home/mnt/backup/@@external@@
 
-.. Note:: This procedure created a file directory on the local drive as well as 
+.. Note:: 
+   This procedure created a file directory on the local drive as well as 
    the target directory on the external drive. When the external drive is 
    disconnected, turned off, or failed, the file ``@@external@@`` will not 
    display with the command ``ls /home/mnt/backup/@@*``.

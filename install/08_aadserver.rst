@@ -1,7 +1,7 @@
 .. _aadserver:
 
 #############################
- AADServer Terminal Services
+AAD Server Terminal Services
 #############################
 
 Multiuser Terminal Services is a Windows feature which allows remote 
@@ -31,7 +31,8 @@ Most netbooks ship with Windows Home Starter Edition as an operating system.
 Microsoft supplies RDP server functionality only in Professional and Ultimate 
 editions. Upgrade the netbook operating system to Windows 7 Professional.
 
-.. warning:: After registering Windows and upgrading, remove any bloatware 
+.. warning:: 
+   After registering Windows and upgrading, remove any bloatware 
    which includes nag screens such as "update your virus software now." If 
    nag screens open for a remote user with program execution restrictions,
    the remote session may hang.
@@ -45,8 +46,8 @@ provides free hosting services with very little client configuration.
 Install Hamachi on the terminal services computer and setup a new Hamachi 
 network hosted on this TS machine.
 
-.. note:: `Remobo <http://www.remobo.com/howto>`_ is a possible alternative to 
-   the Hamachi VPN.
+.. note:: 
+   `Remobo <http://www.remobo.com/howto>`_ may be an alternative to Hamachi VPN.
 
 Setup Users
 =============================
@@ -106,7 +107,8 @@ when the computer boots. Set user **STARTUP** to login at boot as follows:
 #. Reboot the computer to verify that user **STARTUP** logs in automatically and 
    that the Hamachi VPN is started.
 
-.. note:: The **STARTUP** login deducts one user from the available user count 
+.. note:: 
+   The **STARTUP** login deducts one user from the available user count 
    of :program:`AADServer`.
 
 Add Program Fles
@@ -129,18 +131,21 @@ download an appropriate copy of the server software. For WARES remote access,
 we recommend the 10 user small system package unless all remote workstations 
 are capable of Windows domain authentication.
 
-.. warning:: When changing versions of AADServer, always choose to perform an 
+.. warning:: 
+   When changing versions of AADServer, always choose to perform an 
    upgrade rather than removing and installing the software. Otherwise, any 
    existing configuration information will be lost.
    
-.. warning:: If a computer belongs to a windows domain, installing AADServer 
+.. warning:: 
+   If a computer belongs to a windows domain, installing AADServer 
    small system version will remove the domain registration. Install only the
    Enterprise edition of AADServer on domain member machines.
 
 Setup Applications
 =============================
 
-.. note:: The AADServer is administered from a separate application which is 
+.. note:: 
+   The AADServer is administered from a separate application which is 
    added to the Windows control panel and the Start menu. The site administrator 
    should make this application always accessible from the start menu:
    <Right-click> on :guilabel:`Maintenance AADServer`, and choose 
@@ -166,10 +171,12 @@ Setup Applications
    | LOGOUT    |                                        |         | shutdown /l /f  | 
    +-----------+----------------------------------------+---------+-----------------+
 
-.. note:: The path :file:`C:\\Users\\Public` on Windows 7 replaced the folder 
+.. note:: 
+   The path :file:`C:\\Users\\Public` on Windows 7 replaced the folder 
    :file:`C:\\Documents and Settings\\All Users\\Desktop` used by Windows XP.
    
-.. note:: Application windows on remote machines may not be sized to display 
+.. note:: 
+   Application windows on remote machines may not be sized to display 
    correctly. We suggest logging into the application for each user, and sizing 
    the application window before accessing the TS user from remote. DOS program 
    windows are resized by clicking the menu icon on the top left of the title 
@@ -268,7 +275,7 @@ TS usernames and passwords
    | WARES User           | USER00 ... USER09  |                   |
    +----------------------+--------------------+-------------------+
 
-AADServer license
+AAD Server license
 -----------------------------
 
 ::

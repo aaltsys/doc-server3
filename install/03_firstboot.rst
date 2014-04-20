@@ -29,15 +29,15 @@ At :guilabel:`Choose Zentyal packages to install`, select the following modules:
    FTP
    Firewall
    IPsec
-   Intrusion Detection System
+   Intrusion Prevention System
    Layer 7 Filter
    NTP Service
    Network Configuration
    Printer Sharing Service
    RADIUS
    Traffic Shaping
-   UPS Management (Zentyal 3.0)
-   Users and Groups
+   UPS Management
+   Users and Computers
    VPN Service
 
 Click :guilabel:`Install`.
@@ -61,66 +61,50 @@ Initial Configuration:
 Network Interfaces
 -----------------------------
 
-.. note:: There are two principal installation types for an AAltsys server: as 
-   a network gateway server, or as a LAN peer server. Follow one of the columns 
-   below, either the right-hand side or the left.
-
 *  Check the :guilabel:`Configure interface types` radio buttons according to 
-   your installation type.
-*  Click :kbd:`NEXT` to continue.
+   your server type:
+   
+   +--------------------------------------+-+--------------------------------------+
+   | NETWORK GATEWAY SERVER               | | LAN PEER SERVER                      |
+   +======================================+=+======================================+
+   | **Configure Interface Types:**       | | **Configure Interface types:**       |
+   +--------------------------------------+-+--------------------------------------+
+   | eth0 --> ``External``                | | eth0 --> ``Internal``                |
+   +--------------------------------------+-+--------------------------------------+
+   | eth1 --> ``Internal``                | |                                      |
+   +--------------------------------------+-+--------------------------------------+
 
-+---------------------------------------+-+----------------------------------------+
-| NETWORK GATEWAY SERVER                | | LAN PEER SERVER                        |
-+=======================================+=+========================================+
-| **Configure Interface Types:**        | | **Configure Interface types:**         |
-+---------------------------------------+-+----------------------------------------+
-| eth0 --> ``External``                 | | eth0 --> ``Internal``                  |
-+---------------------------------------+-+----------------------------------------+
-| eth1 --> ``Internal``                 | | eth1 --> ``Internal``                  |
-+---------------------------------------+-+----------------------------------------+
-
-*  Click :guilabel:`Next`.
-
-+---------------------------------------+-+----------------------------------------+
-| NETWORK GATEWAY SERVER                | | LAN PEER SERVER                        |
-+=======================================+=+========================================+
-| **Configure network for external ...**| | **Configure network for external ...** |
-+---------------------------------------+-+----------------------------------------+
-| eth0 --> ``DHCP``                     | | eth0 --> ``static``                    |
-+---------------------------------------+-+----------------------------------------+
-|                                       | | IP address --> ``__nnn.nnn.nnn.nnn__`` |
-+---------------------------------------+-+----------------------------------------+
-|                                       | | Netmask --> ``__255.nnn.nnn.0__``      |
-+---------------------------------------+-+----------------------------------------+
-|                                       | | Gateway --> ``__nnn.nnn.nnn.nnn__``    |
-+---------------------------------------+-+----------------------------------------+
-|                                       | | DNS server1 --> ``__8.8.8.8__``?       |
-+---------------------------------------+-+----------------------------------------+
-|                                       | | DNS server2 --> ``__8.8.4.4__``?       |
-+---------------------------------------+-+----------------------------------------+
-+---------------------------------------+-+----------------------------------------+
-| eth1 --> ``Static``                   | | eth1 --> ``Don't Configure``           |
-+---------------------------------------+-+----------------------------------------+
-| IP address --> ``192.168.2.241``      | |                                        |
-+---------------------------------------+-+----------------------------------------+
-| Netmask --> ``255.255.255.0``         | |                                        |
-+---------------------------------------+-+----------------------------------------+
-
-*  Click :guilabel:`Next`.
-
-.. Note:: Zentyal 2.2: 
-
-   *  At :guilabel:`Select the type of the server`, choose 
-      :guilabel:`Standalone Server`.
-   *  Click :guilabel:`Finish`.
-   *  Click :guilabel:`Save Changes`.
-
-*  Zentyal 3.0: At :guilabel:`Host domain name`, accept the default name
-   :guilabel:`__domain__.aaltsys.net`.
+*  Click :guilabel:`Next`
+*  Configure network internal and external interfaces as shown below:
+   
+   +--------------------------------------+-+--------------------------------------+
+   | NETWORK GATEWAY SERVER               | | LAN PEER SERVER                      |
+   +======================================+=+======================================+
+   | **Configure network for external...**| |                                      |
+   +--------------------------------------+-+--------------------------------------+
+   | eth0 --> ``DHCP``                    | |                                      |
+   +--------------------------------------+-+--------------------------------------+
+   +--------------------------------------+-+--------------------------------------+
+   | **Configure network for internal...**| | **Configure network for internal...**|
+   +--------------------------------------+-+--------------------------------------+
+   | eth0 --> ``Static``                  | | eth0 --> ``DHCP``                    |
+   +--------------------------------------+-+--------------------------------------+
+   | IP address --> ``192.1658.2.241``    | |                                      |
+   +--------------------------------------+-+--------------------------------------+
+   | Netmask --> ``255.255.255.0``        | |                                      |
+   +--------------------------------------+-+--------------------------------------+
+   .. note::
+      Interfaces are configured according to the server function. For more 
+      explanation of network setup, see :ref:`resources/network`. During initial 
+      setup, use DHCP to configure network interfaces for a LAN peer server.
+   
+*  Click :guilabel:`Next`
+*  The :guilabel:`Host domain name` prompt displays the domain name from the 
+   initial installation, such as :guilabel:`local.aaltsys.net`.
 *  Click :guilabel:`NEXT`.
-*  At :guilabel:`Initial configuration wizard`, click :guilabel:`FINISH`. (To 
-   avoid registering, you may need to click :guilabel:`SKIP` and then 
-   :guilabel:`FINISH`.)
+*  Register the server with Zentyal. An existing account ``admin1@aaltsys.com`` 
+   with the default password exists for this purpose.
+*  At :guilabel:`Initial configuration wizard`, click :guilabel:`FINISH`.
 
 Saving Changes
 ------------------------------
@@ -135,19 +119,9 @@ To exit Zentyal, choose :guilabel:`Logout` from the Zentyal top bar, then click
 Connecting External Drive
 =============================
 
-An external drive may be connected for storing backups. Provided you have a 
-drive, formatted already with ntfs, then download this 
-:download:`backup drive configuration script <_downloads/backupdrive.sh>` and 
-then run it with the commands::
-
-   cd ~/Downloads
-   bash backupdrive.sh BACKUP
-   rm backupdrive.sh
-
-.. note::
-   Instructions for preparing a backup drive, formatting it for NTFS, and the 
-   sequence of commands to automount the drive as used in the above script are 
-   provided in the article :ref:`backup_drive_setup`.
+An external drive should be connected for storing backups, such as the Passport
+1.0 Tb portable drive with USB 3.0 interface. Follow instructions in article 
+:ref:`resources/backupdrive` to partition, format, and configure this drive.
 
 Installing AAltSys VPN
 =============================

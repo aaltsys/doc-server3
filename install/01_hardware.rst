@@ -64,11 +64,12 @@ Reference Hardware List
 |     |                  || SDXC card slot, Audio In-Out, IR receiver           | 
 |     |                  || 1 Gigabit Ethernet, 802.11n Wireless, Bluetooth 4.0 | 
 +-----+------------------+------------------------------------------------------+ 
-|   2 | 16GB RAM UPGRADE | 2 X 8-Gb 204-pin SODIMM DDR3 PC3-16000               | 
+|   1 | RAM UPGRADE      | 1 or 2 X 8-Gb 204-pin SODIMM DDR3 PC3-16000          | 
++-----+------------------+------------------------------------------------------+ 
+|   1 | ETHERNET ADAPTER || Apple Thunderbolt to Gigabit Ethernet Adapter, or   | 
+|     |                  || TRENDnet USB 3.0 to Gigabit Ethernet Adapter        |
 +-----+------------------+------------------------------------------------------+ 
 |   1 | SUPERDRIVE       | APPLE CD/DVD/DVD-RW alternative to USB or SDXC card  | 
-+-----+------------------+------------------------------------------------------+ 
-|   1 | ETHERNET ADAPTER | TRENDnet USB 3.0 to Gigabit Ethernet Adapter         | 
 +-----+------------------+------------------------------------------------------+ 
 
 Drive setup
@@ -84,7 +85,7 @@ Build instructions
 -----------------------------
 
 Follow the procedures from article :ref:`resources:macserver` to install the 
-rEFInd EFI boot manager and prepare the Mac mini Server for OS installation.
+rEFInd EFI boot manager and prepare the Mac mini Server to install Zentyal.
 
 .. warning::
    If you are installing a Mac mini Server, ignore the rest of this article.

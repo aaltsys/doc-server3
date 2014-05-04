@@ -36,14 +36,26 @@ Make a Linux installer
 
 .. note:: This section is based on official Ubuntu documentation [#]_
 
-Prepare Linux disk image
------------------------------
-
 .. tip:: 
    Throughout this section, replace the token ``{linux.iso}`` with the
    actual download filename of the Linux being installed.
 
-#. Download a Linux install ``{linux.iso}`` disk image
+Download a Linux install ``{linux.iso}`` disk image, then either:
+
+*  Burn the image to a DVD using the Apple Superdrive, or
+*  Convert the image to a bootable USB image and write it to a USB drive.
+
+Copy Linux image to DVD
+-----------------------------
+
+#. Open :program:`Disk Utility` from :menuselection:`Launchpad --> Other`
+#. Click the {linux.iso} file in the left panel, then click :guilabel:`Burn` 
+   from the icon bar
+#. Insert a DVD in the Superdrive and click :guilabel:`Burn` to continue
+
+Prepare bootable USB image
+-----------------------------
+
 #. Select :menuselection:`Launchpad --> Other --> Terminal` to open a terminal
 #. Convert the downloaded ``{linux.iso}`` to a mac disk image with the 
    command::
@@ -62,17 +74,6 @@ Prepare Linux disk image
    #. In the :guilabel:`Convert` dialog, use the default name and location 
       :file:`Documents`, and click :guilabel:`Save` to write 
       ``{linux.dmg}`` (The :file:`.dmg` extension is added automatically.)
-
-Either create a DVD using the Apple Superdrive or write the install image to a 
-USB drive, using one of the following instruction sections.
-
-Copy Linux image to DVD
------------------------------
-
-#. Open :program:`Disk Utility` from :menuselection:`Launchpad --> Other`
-#. Click the {linux.dmg} file in the left panel, then click :guilabel:`Burn` 
-   from the icon bar
-#. Insert a DVD in the Superdrive and click :guilabel:`Burn` to continue
 
 Copy Linux image to USB
 -----------------------------
@@ -130,7 +131,8 @@ Make free space on drive
 
 #. Open :menuselection:`Launchpad --> Other --> Disk Utility`
 #. Choose a media drive to repartition, and select :menuselection:`Partition`
-   from the dialog border menu. We recommend installing on /dev/disk02
+   from the dialog border menu. We recommend installing on /dev/disk02, aka
+   "Recovery HD"
 #. Remove Apple HFS data partitions on the drive, leaving only the EFI partition 
    and the remainder as free space. 
 
@@ -144,15 +146,20 @@ Install Linux from USB
 
 #. Restart the Mac, holding down the :kbd:`alt/option` key to choose the 
    boot device, either the USB drive or the Superdrive.
-#. Choose the boot media, which Apple humorously displays as "Windows".
+#. Choose the boot media, which Apple humorously refers to as "Windows".
 #. Boot the Linux installation, select the installation language, and then 
    choose to install by :menuselection:`(expert mode)`.
 #. Use manual partitioning option, and in the free space created previously, 
    first create an 8 Gb swap partition and then an install partition of type 
    ``ext4`` mounted as ``/``.
 #. Continue with Linux installation in the newly-created partitions.
-#. Reboot when installation is finished, removing the USB flash drive. The 
-   :program:`rEFInd` boot selector should now contain options to boot Linux.
+#. Reboot when installation is finished, removing the USB flash drive or media. 
+   The :program:`rEFInd` boot selector should now contain options to boot Linux.
+
+.. note::
+   Either Linux will ask for a location to install the Grub boot loader, or a 
+   boot loader installation error will be thrown at the end of the install. 
+   Grub is not needed because we are using :program:`rEFInd` to manage booting.
 
 Configure rEFInd
 =============================
@@ -200,12 +207,12 @@ providing a ``Mac OS X`` boot option. The configuration options used were::
 
    timeout 5
    use_graphics_for osx, linux
-   dont_scan_volumes "Backup"
+   dont_scan_volumes "Backup", "Recovery HD"
    dont_scan_dirs EFI/ubuntu
    dont_scan_files shim.efi, MokManager.efi
    scan_all_linux_kernels
    max_tags 2
-   default_selection "generic.efi.signed"
+   default_selection "vmlinuz"
 
 Restoring rEFInd installation
 =============================

@@ -127,7 +127,7 @@ An external drive should be connected for storing backups, such as the Passport
 Installing AAltSys VPN
 =============================
 
-*  Download this :download:`registration script <_downloads/aas.sh>`
+*  Download this :download:`registration script <../resources/_downloads/aas.sh>`
 
 *  Double-click the :guilabel:`Console` icon from the server desktop.
 

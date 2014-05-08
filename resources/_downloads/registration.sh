@@ -4,15 +4,6 @@ echo "Register and configure AAltsys openVPN client"
 
 if [[ $EUID -ne 0 ]] ; then echo -e "\e[1;31m try again using sudo \e[0m" ; exit 1 ; fi
 
-# webmin
-if [ ! -d '/etc/webmin' ] ; then
-   echo "Installing Webmin"
-   wget http://www.webmin.com/download/deb/webmin-current.deb -O /tmp/webmin.deb
-   dpkg -i /tmp/webmin.deb
-   apt-get -y -f install
-   rm /tmp/webmin.deb
-fi
-
 # Install ruby-full and openvpn if missing
 APT=0
 PKGS="ruby-full openvpn"
@@ -26,14 +17,16 @@ do
    fi
 done
 
-wget https://raw.github.com/aaltsys/doc-servers/master/resources/registration.rb -O /tmp/reg.rb
+# wget https://raw.github.com/aaltsys/registration/master/registration.rb -O /tmp/reg.rb
+wget https://raw.github.com/aaltsys/doc-servers/master/resources/_downloads/registration.rb -O /tmp/reg.rb
 /usr/bin/ruby /tmp/reg.rb
 rm /tmp/reg.rb
 echo "Press enter to continue..."
 read
 
 # create default script variables for aaltsysvpn
-echo 'echo "AUTOSTART=\"aaltsys\"" > /etc/default/aaltsysvpn'
+# bash < <(echo 'echo "AUTOSTART=\"aaltsys\"" > /etc/default/aaltsysvpn')
+echo "AUTOSTART=\"aaltsys\"" > /etc/default/aaltsysvpn
 # create boot init script for aaltsysvpn (copied from openvpn script)
 cp /etc/init.d/openvpn /etc/init.d/aaltsysvpn
 # edit script to point to aaltsysvpn default script variables
@@ -46,6 +39,15 @@ mv /etc/openvpn/client.conf /etc/openvpn/aaltsys.conf
 invoke-rc.d aaltsysvpn start
 
 mkdir -p /home/mnt/backup/source_config
+
+# webmin
+if [ ! -d '/etc/webmin' ] ; then
+   echo "Installing Webmin"
+   wget http://www.webmin.com/download/deb/webmin-current.deb -O /tmp/webmin.deb
+   dpkg -i /tmp/webmin.deb
+   apt-get -y -f install
+   rm /tmp/webmin.deb
+fi
 
 # add-apt-repository ppa:hplip-isv/ppa
 # hplip and other utilities
@@ -61,11 +63,10 @@ do
    fi
 done
 
-apt-get -y -f install
-
 if [ $APT -ne 0 ] 
 then
    echo -e  "\e[1;31m Updating system packages, this may take a while \e[0m"
+   apt-get -y -f install
    apt-get -y update && apt-get -y dist-upgrade
 fi
 

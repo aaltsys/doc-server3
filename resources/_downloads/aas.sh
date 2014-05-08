@@ -1,1 +1,1 @@
-../../../registration/registration.sh
+./registration.sh

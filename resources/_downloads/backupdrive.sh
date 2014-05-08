@@ -33,7 +33,7 @@ fi
 
 # Install autofs and ntfs support if missing
 APT=0
-PKGS="autofs ntfs-3g"
+PKGS="autofs ntfs-3g nfs-common smbfs"
 for i in $PKGS
 do
    dpkg -s $i > null
@@ -45,8 +45,8 @@ do
 done
 
 if [ $APT -ne 0 ] ; then
-   echo -e  "\e[1;31m Updating system packages, this may take a while \e[0m"
-   apt-get -y update && apt-get -y upgrade
+   echo -e  "\e[1;31m Updating system package indexes \e[0m"
+   apt-get -y update && apt-get -y -f install
 fi
   
 # Add udev rule to prevent automounting of USB devices

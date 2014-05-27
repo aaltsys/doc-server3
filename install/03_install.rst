@@ -5,10 +5,10 @@
 #############################
 
 .. note::
-   The PC portion of these instructions wa written using Zentyal versions 
-   from 2.0 through 3.3. Only the most current version of Zentyal is actually 
-   supported, and so some of the directions may be out of order or wrong.
-   Mac instructions were written based on Zentyal 3.4, current as of 4/1/2014.
+   Only the most current version of Zentyal is supported. Some directions may be 
+   out of order or wrong, haaving been written based on previous Zentyal 
+   versions. Mac instructions were written based on Zentyal 3.4, current as of 
+   4/1/2014.
 
 Purpose and Requirements
 =============================
@@ -61,14 +61,10 @@ to your local LAN. If your server will operate only as a file server on a
 local LAN, connect ``eth0`` to your LAN and leave other network ports 
 unconnected.
 
-Power on the computer, and enter the BIOS. Make any necessary setup changes, 
-such as boot device settings or boot order, as described previously in 
-:ref:`bios_setup`.
-
 Installing Zentyal
 =============================
 
-Boot the server from the Zentyal Install DVD.  
+Power on the computer, and boot from the Zentyal Install DVD. 
 
 .. tip:: 
    A function key press such as :kbd:`[F8]` or :kbd:`[F12]`, or holding down 

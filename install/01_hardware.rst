@@ -1,193 +1,218 @@
 .. _hardware:
 
 #############################
- Reference Hardware System
+Mac mini Server Hardware
 #############################
 
-Zentyal Server software, based on Ubuntu server, can run on a wide variety of
-hardware. But to take advantage of all the capabilities recommended in this 
-guide, the server hardware should include the following features:
+.. note::
+   Apple products are available at any Apple store. All products described here 
+   including Apple hardware are sold by and shipped from Amazon. Return policies 
+   and product warranties may differ from in-store purchases for Apple products.
 
-*  Multi-core processor with hardware virtualization extensions
-*  From 4 Gb to 16 Gb of RAM
-*  Motherboard with integrated RAID support using SATA-3
-*  2 gigabit ethernet ports
-*  External eSATA, USB 3.0, or other high-speed data interface
+Apple's Mac mini Server provides a highly integrated CPU. As provided by AAltsys 
+Technology, the hardware specifications for an Apple mac Mini server are:
 
-There is still a lot of room for motherboard selection, disk controller, 
-RAID configuration, BIOS settings, and so forth. Two approaches to meeting these 
-requirements are presented in this guide: an off-the-peg mini-server, and 
-bespoke hardware for a desktop server providing the same functionality.
++-----+------------------+-----------------------------------------------------+ 
+| Qty | Product          | Description                                         | 
++=====+==================+=====================================================+ 
+|   1 | MAC MINI SERVER  || Intel quad-core i7 processor, 4 Gb RAM             |  
+|     |                  || 2 X 1-Tb hard drive, Intel HD Graphics 4000        |
+|     |                  || HDMI port, Thunderbolt MiniDisplay port options    | 
+|     |                  || Firewire 800, 4 X USB 3.0, 1 X 10-Gbps Thunderbolt | 
+|     |                  || SDXC card slot, Audio In-Out, IR receiver          | 
+|     |                  || 1 Gb Ethernet, 802.11n Wireless, Bluetooth 4.0     | 
++-----+------------------+-----------------------------------------------------+ 
+|   1 | 8 Gb RAM UPGRADE | 1 X 8-Gb 204-pin SODIMM DDR3 PC3-16000              | 
++-----+------------------+-----------------------------------------------------+ 
+|   1 | ETHERNET ADAPTER | Apple Thunderbolt to Gigabit Ethernet Adapter       | 
++-----+------------------+-----------------------------------------------------+ 
+|   1 | MYPASSPORT DRIVE | WD Ultra 1 Tb USB 3.0 external drive for backup     | 
++-----+------------------+-----------------------------------------------------+ 
 
-Regardless of the type of server, a compatible keyboard, video monitor, and 
-mouse are required when installing a server. These items could be removed after 
-installation for security purposes, since Zentyal is administered through a web 
-browser.
+Additional components are required for a headless server installation, and 
+console components are needed while installing operating system software:
 
-Beyond a server, additional components are required to build a complete office 
-network. The following items are required regardless of the type of server used:
++-----+------------------+-----------------------------------------------------+ 
+| Qty | Product          | Description of Required Installation Components     | 
++=====+==================+=====================================================+ 
+|   1 | CABLE MODEM      | WAN: an ISP's broadband connection to the Internet  |
++-----+------------------+-----------------------------------------------------+ 
+|   2 | NETWORK SWITCH   | LAN: NETGEAR GS108NA ProSafe 8-Port Gigabit Switch  | 
++-----+------------------+-----------------------------------------------------+
+|   1 | UPS              | CyberPower CP1350AVRLCD Series UPS 1350VA 810W      |
++-----+------------------+-----------------------------------------------------+ 
 
-+-----+----------------+-------------------------------------------------------+
-| Qty | Product        | Description                                           |
-+=====+================+=======================================================+	
-|   1 | UPS            | CyberPower CP1350AVRLCD 1350VA 900W UP                |
-+-----+----------------+-------------------------------------------------------+
-|   2 | NETWORK SWITCH | D-Link DGS-2208 10/100/1000Mbps 8-Port switch         | 
-+-----+----------------+-------------------------------------------------------+
-|   1 | BACKUP DRIVE   | 1 TB External drive with eSATA or USB 3.0 interface   |
-+-----+----------------+-------------------------------------------------------+
++-----+------------------+-----------------------------------------------------+ 
+| Qty | Product          | Description of Console Components                   | 
++=====+==================+=====================================================+ 
+|   1 | HDMI/DVI MONITOR | ASUS VE248H 24-Inch LED Monitor with Speakers       |
++-----+------------------+-----------------------------------------------------+
+|   1 | USB KEYBOARD     | Apple MB110LL/B Keyboard w/ Numeric Keypad (White)  | 
++-----+------------------+-----------------------------------------------------+ 
+|   1 | USB MOUSE        | AmazonBasics 3-Button USB Wired Mouse (Black)       |
++-----+------------------+-----------------------------------------------------+ 
+|   1 | USB SUPERDRIVE   || APPLE CD-RW/DVD-RW alternative to USB or SDXC card |
+|     |                  || (used during OS installation only)                 |
++-----+------------------+-----------------------------------------------------+ 
 
-Off-the-Peg Server
+.. note::
+   #. The Mac mini Server comes with video connectors for HDMI and DVI, but not 
+      VGA, and no display cable is included. Provide a combination of cable and 
+      display compatible with HDMI or DVI. 
+   #. The server requires USB keyboard and mouse; not PS/2 style devices.
+   #. The Apple Superdrive works with Apple devices only. Other brands or types 
+      of USB optical drives are not recognized by Apple servers.
+
+-----------------------------
+
+.. connectserver:
+
+#############################
+Mac mini Server Connections
+#############################
+
+.. image:: _images/macmini_MD389LLA.png
+
+The connector side of the Mac mini Server is illustrated above. Plug up cable 
+connectors as follows:
+
++------------------+--------------------+--------------------------------------+
+| Connector        | Cable              | Provided                             |
++==================+====================+======================================+
+| Power supply     | white power cable  | Special power cable included         |
++------------------+--------------------+--------------------------------------+
+| Gigabit Ethernet | Ethernet to LAN    |                                      |
++------------------+--------------------+--------------------------------------+
+| Firewire         | (unconnected)      |                                      |
++------------------+--------------------+--------------------------------------+
+| HDMI             | HDMI to monitor    | HDMI-to-DVI converter included       |
++------------------+--------------------+--------------------------------------+
+| Thunderbolt      | Ethernet to WAN    | Thunderbolt-to-Ethernet adapter      |
++------------------+--------------------+--------------------------------------+
+| USB 3.0          | USB backup device  | MyPassport 1 Tb external drive       |
++------------------+--------------------+--------------------------------------+
+| USB 3.0          | USB Keyboard       |                                      |
++------------------+--------------------+--------------------------------------+ 
+| USB 3.0          | USB Mouse          |                                      |
++------------------+--------------------+--------------------------------------+ 
+
+AALtsys Technology servers which use the Zentyal operating system on Apple 
+server hardware may be installed and managed "headless," meaning that the 
+monitor, keyboard, and mouse are not required. If compatible console devices are
+not available at a site, then a computer on the LAN can manage the server from 
+the browser once the server is connected and powered up.
+
+Manage the server from a LAN workstation as follows:
+
+#. Connect the network as described above, then power up the server.
+#. Restart a LAN computer, obtaining IP and DNS automatically through DHCP.
+#. Launch either Chrome or Firefox browser. Internet Explorer will not work.
+#. Enter address https://192.168.2.241 in the browser. Accept the server's 
+   self-signed certificate.
+#. Login to the server management program using the provided credentials.
+
+-----------------------------
+
+.. _upgradeserver:
+
+#############################
+Upgrading a Zentyal Server 
+#############################
+
+Configuration databases and file permissions on older versions of Zentyal may 
+not be compatible with newer Zentyal releases. Upgrade older servers using the 
+following instructions.
+
+Copy shares from old server
 =============================
 
-We recommend the Apple Mac mini Server for off-the-shelf prebuilt systems. The 
-Apple server has several advantages:
+At a workstation, use the command line to create directories for each server 
+share, and then copy the shared files into the new local directories. Open the 
+command line by clicking :guilabel:`Start` and entering :kbd:`cmd.exe` in the
+the search window, then selecting :program:`cmd.exe` from the search results.
 
-*  Availability: Mac mini Server is a standard stock item in all Apple stores.
-*  Service: Apple store Genius Bar service (carry-in) is highly regarded.
-*  Convenience: Eliminating custom assembly reduces installation effort.
-*  Efficiency: Mac Server draws less power than alternatives.
-*  Reliability: The mini's low component count reduces failure.
-*  Functionality: A Mac can be repurposed as a workstation without losing value.
-*  Price: The Mac mini Server costs significantly less than competing products.
+Copy files from share :file:`\\\\AAltsysserver\\shared`, mapped to drive 
+:file:`S:`, by typing the commands::
 
-Reference Hardware List
------------------------------
+   md \shared
+   cd \shared
+   xcopy S:\*.* . /s/e
 
-+-----+------------------+------------------------------------------------------+ 
-| Qty | Product          | Description                                          | 
-+=====+==================+======================================================+ 
-|   1 | MAC MINI SERVER  || Intel quad-core i7 processor, 4 Gb RAM              |  
-|     |                  || 2 X 1-Tb hard drive, Intel HD Graphics 4000         |
-|     |                  || HDMI port, Thunderbolt MiniDisplay port options     | 
-|     |                  || Firewire 800, 4 X USB 3.0, 1 X 10-Gbps Thunderbolt  | 
-|     |                  || SDXC card slot, Audio In-Out, IR receiver           | 
-|     |                  || 1 Gigabit Ethernet, 802.11n Wireless, Bluetooth 4.0 | 
-+-----+------------------+------------------------------------------------------+ 
-|   1 | RAM UPGRADE      | 1 or 2 X 8-Gb 204-pin SODIMM DDR3 PC3-16000          | 
-+-----+------------------+------------------------------------------------------+ 
-|   1 | ETHERNET ADAPTER || Apple Thunderbolt to Gigabit Ethernet Adapter, or   | 
-|     |                  || TRENDnet USB 3.0 to Gigabit Ethernet Adapter        |
-+-----+------------------+------------------------------------------------------+ 
-|   1 | SUPERDRIVE       | APPLE CD/DVD/DVD-RW alternative to USB or SDXC card  | 
-+-----+------------------+------------------------------------------------------+ 
+Use the preceding commands as a template for copying other server shares to a 
+workstation. For example, copy a user's server private home directory, mapped to 
+drive :file:`H:`, by replacing :file:`shared` with :file:`home` and :file:`S:` 
+with :file:`H:` in the preceding commands.
 
-Drive setup
------------------------------
-
-The move from BIOS to EFI and UEFI has meant the end of BIOS RAID configuration. 
-The Mac mini Server uses EFI and RAID configuration would occur in the OS. We 
-recommend retaining the Mac OS X on :file:`/dev/sda`, and reformatting device
-:file:`/dev/sdb` for Zentyal Linux, performing this setup while installing the 
-operating system.
-
-Build instructions
------------------------------
-
-Follow the procedures from article :ref:`resources:macserver` to install the 
-rEFInd EFI boot manager and prepare the Mac mini Server to install Zentyal.
-
-.. warning::
-   If you are installing a Mac mini Server, ignore the rest of this article.
-
-Bespoke Hardware Server
+Swap to new server
 =============================
 
-This reference hardware list builds a tower server for stand-alone installation, 
-with components costing about $1000.00 including taxes and shipping as purchased 
-from NewEgg. (Last updated in March 2013.) 
+Shutdown and disconnect the old server, then connect the new server using the 
+diagram shown previously. Then power on the new server, and access its 
+administration at https://192.168.2.241 from a workstation web browser.
 
-Reference Hardware List
+Enter office configuration 
+=============================
+
+Use the instructions at :ref:`installoffice` to configure file sharing, 
+printers, and users and groups.
+
+Copy shares to new server
+=============================
+
+For each share directory saved on a workstation, first map the share to its 
+corresponding drive letter. In Windows 7, shares are mapped to drives by opening 
+:guilabel:`Computer`, pressing :kbd:`[F10]` to display the menu, and selecting 
+:menuselection:`Tools --> Map Network Drive`. 
+
+.. note::
+   Download script :download:`NETSHARE.BAT <_downloads/netshare.bat>` to the 
+   workstation desktop as an alternative to mapping drives. Then edit the batch
+   script to reference the new server, and run the script to map drives. 
+
+After mapping a share to a drive letter, open the command line, then use the 
+following commands to copy the share files back to the server, remembering to 
+replace :file:`S:` and :file:`shared` with the respective share drive letter and 
+directory name for a share::
+
+   cd \shared
+   xcopy . S:\ /s/e
+
 -----------------------------
 
-+-----+--------------+--------------------------------------------------------+
-| Qty | Product      |  Description                                           |
-+=====+==============+========================================================+	
-|   1 | ATX CASE     | ABS ATX Mid-tower Case (APEX Vortex)                   |
-+-----+--------------+--------------------------------------------------------+
-|   2 | POWER SUPPLY | 450W ATX (Rosewill Stallion)                           |
-+-----+--------------+--------------------------------------------------------+
-|   1 | CONNECTOR    | SATA to eSATA Bracket (Nippon Labs)                    |
-+-----+--------------+--------------------------------------------------------+
-|   1 | DVD-RW       | CD/DVD Burner Black (LG)                               |
-+-----+--------------+--------------------------------------------------------+
-|   2 | HARD DRIVE   | 500GB 7200 RPM (WD Caviar WD5000AAKX)                  |
-+-----+--------------+--------------------------------------------------------+
-|   1 | MOTHERBOARD  | Micro ATX (SUPERMICRO MBD-X9SCM-O)                     |
-+-----+--------------+--------------------------------------------------------+
-|   2 | SDRAM        | DDR3 SDRAM KVR1333D3E9S/4G (Kingston)                  |
-+-----+--------------+--------------------------------------------------------+
-|   1 | PROCESSOR    | Intel Xeon E3-1220 BX80623E31220                       |
-+-----+--------------+--------------------------------------------------------+
+.. _replaceserver:
 
-Build Instructions
------------------------------
+#############################
+Replacing a Current Server
+#############################
 
-You should not attempt to build a computer if you do not know how to. Seriously, 
-reading this guide could not possibly create a computer technician. If you 
-require a pre-built system then order the computer fully installed, as described 
-previously.
+Backup the Old Server
+=============================
 
-Connect Components
------------------------------
+To backup the server configuration only, login to Zentyal, and from menu 
+selection :menuselection:`CORE --> System --> Import/Export Configuration`, 
+:guilabel:`Backup the Current State`. Then Select the new configuration file 
+from the :guilabel:`Backups list`, and download it to a workstation for transfer 
+to the replacement system. _[#]
 
-*  Connect an Ethernet cable from your WAN router or gateway into eth0.
-*  Plug an Ethernet cable from your LAN data switch into eth1.
-*  Plug in a USB mouse and a USB keyboard.
-*  Connect a VGA monitor cable to the VGA connector. (Server motherboards 
-   generally do not support video other than VGA; the Mac mini uses HDMI.)
-*  Connect the external backup drive using a USB 3.0 cable. 
-*  Plug a power cord from your Uninterruptible Power Supply (UPS) to the back 
-   of the server.
+Zentyal does not provide a program option or document a command for performing a 
+demand backup. Backup all user data along with the server configuration at menu 
+selection :menuselection:`CORE --> System --> Backup`, by setting a new time for 
+a full backup to happen starting on the next hour.
 
-.. warning:: 
-   Make sure the battery inside the UPS is actually connected. Plug the server 
-   into an outlet on the UPS with battery backup and not just line conditioning.
+Install the New Server
+=============================
 
-.. _bios_setup:
+Use the 
 
-System BIOS Settings
------------------------------
+Connect the old backup drive
 
-System BIOS settings are available for motherboard configurations which have 
-been tested and used, even though only the most recent motherboards are still 
-available in the market place. Click one of the links below to see settings 
-for a specific board.
+In Zentyal, run a system configuration restore
 
-| :ref:`resources:bios-x9scm-o`
-| :ref:`resources:bios-p5bv-c`
-| :ref:`resources:bios-955x7aa`
-| :ref:`resources:bios-fi90hd`
+In Zentyal, run a system data restore
 
-RAID array Setup
------------------------------
+----------
 
-.. warning:: If another Fake-RAID array BIOS has been used to configure drives,
-   the motherboard Intel Matrix RAID will not display when :kbd:`<Ctrl-I>` is 
-   pressed, and the drives cannot be reconfigured. Particularly, if an Adaptec
-   RAID array exists the drives cannot be reinstalled because the Zentyal/Ubuntu 
-   installer is not compatible with Adaptec RAID.
+.. rubric: Footnotes
 
-.. note:: The SuperMicro motherboard BIOS setup, described in the link above, 
-   includes RAID array setup. Other motherboards which permit RAID array setup 
-   without BIOS setting changes should use the instructions below.
+[#]. <Zentyal backup procedures documentation `http://doc.zentyal.org/en/backup.html`>_.
 
-#. Press :kbd:`<Ctrl-I>` multiple times to enter the :guilabel:`Intel RAID` 
-   utility.
-#. Press :kbd:`3` for :guilabel:`Reset Disks to non-RAID`. Press :kbd:`<Space>` 
-   to select disks, then press :kbd:`<Enter>` to finish the operation.
-#. Press :kbd:`1` for :guilabel:`Create RAID volume`.
-
-   #. At :guilabel:`Name:`, enter :kbd:`aaltsys <Enter>`.
-   #. At :guilabel:`RAID Level:`, press :kbd:`<Down>` to display 
-      :guilabel:`RAID1(Mirror)`.
-   #. At :guilabel:`Capacity`, press :kbd:`<Enter>` to select the entire drive. 
-   #. Respond to the :guilabel:`Create Volume` prompt with :kbd:`<Enter>`, and 
-      confirm the :guilabel:`Are you sure ...?` question with :kbd:`Y`.
-
-#. Press :kbd:`6` to :guilabel:`Exit` the RAID utility, and confirm the 
-   :guilabel:`Are you sure ...?` question with :kbd:`Y`.
-
-.. note:: The external drive setup is not described here, as a registration 
-   procedure is required in Linux to connect the external backup drive. This 
-   procedure is described later in the OS installation.

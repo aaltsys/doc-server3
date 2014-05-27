@@ -1,0 +1,100 @@
+.. _bespokeserver:
+
+#############################
+Bespoke Hardware Server
+#############################
+
+This reference hardware list builds a tower server for stand-alone installation, 
+with components costing about $1000.00 including taxes and shipping as purchased 
+from NewEgg. (Last updated in March 2013.) 
+
+Reference Hardware List
+=============================
+
++-----+--------------+--------------------------------------------------------+
+| Qty | Product      |  Description                                           |
++=====+==============+========================================================+	
+|   1 | ATX CASE     | ABS ATX Mid-tower Case (APEX Vortex)                   |
++-----+--------------+--------------------------------------------------------+
+|   2 | POWER SUPPLY | 450W ATX (Rosewill Stallion)                           |
++-----+--------------+--------------------------------------------------------+
+|   1 | CONNECTOR    | SATA to eSATA Bracket (Nippon Labs)                    |
++-----+--------------+--------------------------------------------------------+
+|   1 | DVD-RW       | CD/DVD Burner Black (LG)                               |
++-----+--------------+--------------------------------------------------------+
+|   2 | HARD DRIVE   | 500GB 7200 RPM (WD Caviar WD5000AAKX)                  |
++-----+--------------+--------------------------------------------------------+
+|   1 | MOTHERBOARD  | Micro ATX (SUPERMICRO MBD-X9SCM-O)                     |
++-----+--------------+--------------------------------------------------------+
+|   2 | SDRAM        | DDR3 SDRAM KVR1333D3E9S/4G (Kingston)                  |
++-----+--------------+--------------------------------------------------------+
+|   1 | PROCESSOR    | Intel Xeon E3-1220 BX80623E31220                       |
++-----+--------------+--------------------------------------------------------+
+
+Build Instructions
+=============================
+
+You should not attempt to build a computer if you do not know how to. Seriously, 
+reading this guide could not possibly create a computer technician. If you 
+require a pre-built system then order the computer fully installed, as described 
+in the main guide.
+
+Connect Components
+=============================
+
+*  Connect an Ethernet cable from your WAN router or gateway into eth0.
+*  Plug an Ethernet cable from your LAN data switch into eth1.
+*  Plug in a USB mouse and a USB keyboard.
+*  Connect a VGA monitor cable to the VGA connector. (Server motherboards 
+   generally do not support video other than VGA; the Mac mini uses HDMI.)
+*  Connect the external backup drive using a USB 3.0 cable. 
+*  Plug a power cord from your Uninterruptible Power Supply (UPS) to the back 
+   of the server.
+
+.. warning:: 
+   Make sure the battery inside the UPS is actually connected. Plug the server 
+   into an outlet on the UPS with battery backup and not just line conditioning.
+
+.. _bios_setup:
+
+System BIOS Settings
+=============================
+
+System BIOS settings are available for motherboard configurations which have 
+been tested and used, even though only the most recent motherboards are still 
+available in the market place. Click one of the links below to see settings 
+for a specific board.
+
+| :ref:`resources:bios-x9scm-o`
+| :ref:`resources:bios-p5bv-c`
+| :ref:`resources:bios-955x7aa`
+| :ref:`resources:bios-fi90hd`
+
+RAID array Setup
+=============================
+
+.. warning:: If another Fake-RAID array BIOS has been used to configure drives,
+   the motherboard Intel Matrix RAID will not display when :kbd:`<Ctrl-I>` is 
+   pressed, and the drives cannot be reconfigured. Particularly, if an Adaptec
+   RAID array exists the drives cannot be reinstalled because the Zentyal/Ubuntu 
+   installer is not compatible with Adaptec RAID.
+
+.. note:: The SuperMicro motherboard BIOS setup, described in the link above, 
+   includes RAID array setup. Other motherboards which permit RAID array setup 
+   without BIOS setting changes should use the instructions below.
+
+#. Press :kbd:`<Ctrl-I>` multiple times to enter the :guilabel:`Intel RAID` 
+   utility.
+#. Press :kbd:`3` for :guilabel:`Reset Disks to non-RAID`. Press :kbd:`<Space>` 
+   to select disks, then press :kbd:`<Enter>` to finish the operation.
+#. Press :kbd:`1` for :guilabel:`Create RAID volume`.
+
+   #. At :guilabel:`Name:`, enter :kbd:`aaltsys <Enter>`.
+   #. At :guilabel:`RAID Level:`, press :kbd:`<Down>` to display 
+      :guilabel:`RAID1(Mirror)`.
+   #. At :guilabel:`Capacity`, press :kbd:`<Enter>` to select the entire drive. 
+   #. Respond to the :guilabel:`Create Volume` prompt with :kbd:`<Enter>`, and 
+      confirm the :guilabel:`Are you sure ...?` question with :kbd:`Y`.
+
+#. Press :kbd:`6` to :guilabel:`Exit` the RAID utility, and confirm the 
+   :guilabel:`Are you sure ...?` question with :kbd:`Y`.

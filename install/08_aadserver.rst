@@ -228,9 +228,9 @@ Create a new :file:`RDPPRINT.BAT` program as follows::
    IF %ERRORLEVEL% NEQ 0 PAUSE
    :EXIT
   
-A sample batch file :download:`RDPPRINT.BAT <_downloads/rdpprint.bat>` is 
-provided; download it to :file:`C:\\Users\\Public\\WARES\\RDPPRINT.BAT` on the 
-TS machine. Then edit the file as described above.
+Sample batch file :download:`RDPPRINT.BAT <_downloads/rdpprint.bat>` 
+is provided; download it to :file:`C:\\Users\\Public\\WARES\\RDPPRINT.BAT` on 
+the TS machine. Then edit the file as described above.
 
 .. rubric:: References
 

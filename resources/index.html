@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AAltsys Server 3.0 Technical Documentation &mdash; AAltsys Server 3.0 Technical 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Technical 3.0 documentation" href="#" />
+    <link rel="next" title="Printing With Zentyal" href="01_printing.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="01_printing.html" title="Printing With Zentyal"
+             accesskey="N">next</a></li>
+        <li><a href="#">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AAltsys Server 3.0 Technical Documentation</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="01_printing.html"
+                        title="next chapter">Printing With Zentyal</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="aaltsys-server-3-0-technical-documentation">
+<span id="index"></span><h1>AAltsys Server 3.0 Technical Documentation<a class="headerlink" href="#aaltsys-server-3-0-technical-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="01_printing.html">Printing With Zentyal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_printing.html#hplip">HPLIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_printing.html#hp-printer-commands">HP Printer Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_printing.html#cups">CUPS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02_filesharing.html">Mounting Network File Systems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_filesharing.html#using-sshfs-file-shares-in-linux">Using sshfs File Shares in Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_filesharing.html#mounting-file-shares-in-windows">Mounting File Shares in Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_filesharing.html#server-sshfs-configuration">Server SSHFS Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03_secureshell.html">Remote Secure Shell Sessions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03_secureshell.html#command-line-usage">Command line usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_secureshell.html#gnome-terminal">Gnome terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_secureshell.html#redirecting-ssh-to-putty">Redirecting SSH to PuTTY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_secureshell.html#fixing-changed-ssh-keys">Fixing Changed SSH Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_secureshell.html#fixing-x11-forwarding-zentyal">Fixing X11 Forwarding Zentyal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_secureshell.html#accessing-servers-over-ssh">Accessing Servers over SSH</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04_network.html">Server Network Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04_network.html#connecting-interfaces">Connecting Interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_network.html#the-aaltsys-server">The AAltsys Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_network.html#zentyal-module-configuration">Zentyal Module Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_network.html#static-ip">Static IP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_network.html#dynamic-ip-dhcp">Dynamic IP (DHCP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_network.html#console-networking-commands">Console Networking Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05_backupdrive.html">Automount Drive Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05_backupdrive.html#part-1-install-autofs">Part 1: Install autofs </a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_backupdrive.html#part-2-format-drive-ntfs">Part 2. Format drive NTFS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_backupdrive.html#part-3-identify-the-device">Part 3: Identify the device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_backupdrive.html#part-4-verify-drive-mounting">Part 4: Verify drive mounting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_backupdrive.html#disconnect-automounted-drive">Disconnect automounted drive</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="09_udevmount.html">Mounting Devices with udev</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="09_udevmount.html#esata-hot-mount-drive-setup">eSATA hot-mount drive setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_udevmount.html#disconnect-hot-mounted-drive">Disconnect hot-mounted drive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="09_udevmount.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="10_legacy.html">Earlier Server Versions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="10_legacy.html#aaltsys-server-10-07">AAltSys Server 10.07</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="11_upgrade.html">Upgrade Server to AAltSysServer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="11_upgrade.html#typographical-conventions">Typographical Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_upgrade.html#change-network-driver-in-arev">Change Network Driver in AREV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_upgrade.html#backup-wares-and-fileshares">Backup WARES and Fileshares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_upgrade.html#install-new-os-on-old-hardware">Install New OS on Old Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_upgrade.html#configure-new-server-os">Configure New Server OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_upgrade.html#shutdown-server-and-upgrade-hardware">Shutdown Server and Upgrade Hardware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="11_upgrade.html#restart-server-and-workstations">Restart Server and Workstations</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="01_printing.html" title="Printing With Zentyal"
+             >next</a></li>
+        <li><a href="#">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

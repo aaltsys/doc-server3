@@ -1,0 +1,542 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Server Network Setup &mdash; AAltsys Server 3.0 Technical 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Technical 3.0 documentation" href="index.html" />
+    <link rel="next" title="Automount Drive Setup" href="05_backupdrive.html" />
+    <link rel="prev" title="Remote Secure Shell Sessions" href="03_secureshell.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="05_backupdrive.html" title="Automount Drive Setup"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="03_secureshell.html" title="Remote Secure Shell Sessions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Server Network Setup</a><ul>
+<li><a class="reference internal" href="#connecting-interfaces">Connecting Interfaces</a></li>
+<li><a class="reference internal" href="#the-aaltsys-server">The AAltsys Server</a></li>
+<li><a class="reference internal" href="#zentyal-module-configuration">Zentyal Module Configuration</a></li>
+<li><a class="reference internal" href="#static-ip">Static IP</a><ul>
+<li><a class="reference internal" href="#eth0-ip-should-be-static-when">eth0 IP should be static when</a></li>
+<li><a class="reference internal" href="#change-ip-from-dhcp-to-static">Change IP from DHCP to static</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dynamic-ip-dhcp">Dynamic IP (DHCP)</a><ul>
+<li><a class="reference internal" href="#change-ip-from-static-to-dhcp">Change IP from static to DHCP</a></li>
+<li><a class="reference internal" href="#set-static-gateway-with-dhcp">Set Static Gateway with DHCP</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#console-networking-commands">Console Networking Commands</a><ul>
+<li><a class="reference internal" href="#ifconfig">ifconfig</a></li>
+<li><a class="reference internal" href="#ping">ping</a></li>
+<li><a class="reference internal" href="#ip">ip</a></li>
+<li><a class="reference internal" href="#dhclient">dhclient</a></li>
+<li><a class="reference internal" href="#route">route</a></li>
+<li><a class="reference internal" href="#dig">dig</a></li>
+<li><a class="reference internal" href="#nslookup">nslookup</a></li>
+<li><a class="reference internal" href="#ebox">eBox</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="03_secureshell.html"
+                        title="previous chapter">Remote Secure Shell Sessions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="05_backupdrive.html"
+                        title="next chapter">Automount Drive Setup</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/04_network.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="server-network-setup">
+<span id="network"></span><h1>Server Network Setup<a class="headerlink" href="#server-network-setup" title="Permalink to this headline">¶</a></h1>
+<p>Network interfaces are assigned to either internal LAN or external WAN gateway
+roles, and they are configured either by DHCP or through static settings. The
+AAltsys Server uses either one or two network interfaces, with assigned roles
+and configuration settings based on interface connections. The first, or primary
+network interface on a system is assigned to device <tt class="docutils literal"><span class="pre">eth0</span></tt>, and an additional,
+or secondary interface will be <tt class="docutils literal"><span class="pre">eth1</span></tt>.</p>
+<p>Servers with two interfaces may act as gateway computers, routing traffic
+between an external WAN or the Internet and a local network or LAN. Servers with
+only one network interface can only act as peers on a LAN. WAN connections are
+preferrably configured using DHCP, while LAN connections need to be statically
+set. By convention, gateway connections use the primary interface and local
+connections use the secondary interface on gateway computers.</p>
+<p>This set of conventions allows us to describe how network interfaces should be
+configured in general, as shown in the following table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="49%" />
+<col width="1%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Gateway Server</th>
+<th class="head">&nbsp;</th>
+<th class="head">Local Peer Server</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Primary Interface</strong> device <em>eth0</em></td>
+<td>&nbsp;</td>
+<td><strong>Primary Interface</strong> device <em>eth0</em></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><strong>Connection</strong> External <em>WAN</em></td>
+<td>&nbsp;</td>
+<td><strong>Connection</strong> Internal <em>LAN</em></td>
+</tr>
+<tr class="row-odd"><td><strong>Configuration</strong> set using <em>DHCP</em></td>
+<td>&nbsp;</td>
+<td><strong>Configuration</strong> set using <em>Static</em></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>IP address &#8211;&gt; <em>nnn.nnn.nnn.nnn</em></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Netmask &#8211;&gt; <em>255.nnn.nnn.0</em></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Gateway &#8211;&gt; <em>nnn.nnn.nnn.nnn</em></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>DNS server1 &#8211;&gt; <em>8.8.8.8</em></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>DNS server2 &#8211;&gt; <em>8.8.4.4</em></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><strong>Secondary Interface</strong> device <em>eth1</em></td>
+<td>&nbsp;</td>
+<td>(Missing or unconfigured)</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td><strong>Connection</strong> Internal <em>LAN</em></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><strong>Configuration</strong> set <em>Static</em></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>IP address &#8211;&gt; <em>192.168.2.241</em></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>Netmask &#8211;&gt; <em>255.255.255.0</em></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Gateway &#8211;&gt; <em>(assigned eth0)</em></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>DNS servers &#8211;&gt; <em>(assigned eth0)</em></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="connecting-interfaces">
+<h2>Connecting Interfaces<a class="headerlink" href="#connecting-interfaces" title="Permalink to this headline">¶</a></h2>
+<p>If two Ethernet adapters are used: connect the primary interface to an Internet
+gateway such as a cable or DSL modem, and connect the secondary interface to a
+local area network (LAN) switch which connects workstations and printers.</p>
+<p>If one Ethernet adapter is used: connect the primary interface to a local area
+network (LAN) switch which connects workstations and printers. Connect a router
+between the LAN switch and an Internet gateway.</p>
+</div>
+<div class="section" id="the-aaltsys-server">
+<h2>The AAltsys Server<a class="headerlink" href="#the-aaltsys-server" title="Permalink to this headline">¶</a></h2>
+<p>The AAltSys Server is configured to operate as an Internet gateway by default,
+as this allows the server to provide gateway and security functions. Where the
+server creates a new network behind a cable modem or DSL line which includes a
+DHCP service, the server can be installed with no configuration changes.</p>
+<p>Installing an AAltSys server within an existing network requires changing the
+configuration of both of the server network interfaces. The primary interface
+must be changed from <em>External</em> to <em>Internal</em> and from set via <em>DHCP</em> to set
+<em>Static</em>. The secondary interface must be disabled.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Changes to network configuration in a server should be performed only when
+no users are active. User network connections will be interrupted when the
+configuration is saved.</p>
+</div>
+</div>
+<div class="section" id="zentyal-module-configuration">
+<h2>Zentyal Module Configuration<a class="headerlink" href="#zentyal-module-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The Zentyal installer asks about network interface configuration in two steps.
+First check the <em class="guilabel">Configure interface types</em> radio buttons according to
+your server type, and then click <em class="guilabel">Next</em>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="49%" />
+<col width="1%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">NETWORK GATEWAY SERVER</th>
+<th class="head">&nbsp;</th>
+<th class="head">LAN PEER SERVER</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Configure Interface Types:</strong></td>
+<td>&nbsp;</td>
+<td><strong>Configure Interface types:</strong></td>
+</tr>
+<tr class="row-odd"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">External</span></tt></td>
+<td>&nbsp;</td>
+<td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">Internal</span></tt></td>
+</tr>
+<tr class="row-even"><td>eth1 &#8211;&gt; <tt class="docutils literal"><span class="pre">Internal</span></tt></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>Next configure the network internal and external interfaces according to the
+server function. During initial setup, use DHCP to configure network interfaces
+for a LAN peer server.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="49%" />
+<col width="1%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">NETWORK GATEWAY SERVER</th>
+<th class="head">&nbsp;</th>
+<th class="head">LAN PEER SERVER</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Configure network for external...</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">DHCP</span></tt></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><strong>Configure network for internal...</strong></td>
+<td>&nbsp;</td>
+<td><strong>Configure network for internal...</strong></td>
+</tr>
+<tr class="row-even"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">Static</span></tt></td>
+<td>&nbsp;</td>
+<td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">DHCP</span></tt></td>
+</tr>
+<tr class="row-odd"><td>IP address &#8211;&gt; <tt class="docutils literal"><span class="pre">192.1658.2.241</span></tt></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Netmask &#8211;&gt; <tt class="docutils literal"><span class="pre">255.255.255.0</span></tt></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Existing LANs may use differing internal IP ranges and settings. When
+integrating a server into an existing LAN, the IP settings for the server
+must be changed on site. Initial ethernet settings for LAN peer servers, set
+by <em>DHCP</em>, must be changed to <em>Static</em> during module configuration and then
+reset to match local LAN requirements.</p>
+</div>
+</div>
+<div class="section" id="static-ip">
+<h2>Static IP<a class="headerlink" href="#static-ip" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="eth0-ip-should-be-static-when">
+<h3>eth0 IP should be static when<a class="headerlink" href="#eth0-ip-should-be-static-when" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The WAN gateway does not provide DHCP</li>
+<li>DHCP results from the WAN gateway do not permit the server to access the
+Internet</li>
+<li>The server has a public IP for eth0 assigned by the ISP</li>
+<li>A local subnet is connected to the server on eth0, and eth1 is not used</li>
+</ul>
+</div>
+<div class="section" id="change-ip-from-dhcp-to-static">
+<h3>Change IP from DHCP to static<a class="headerlink" href="#change-ip-from-dhcp-to-static" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Connect a network switch to eth1 and plug a workstation into the switch.</p>
+</li>
+<li><p class="first">Set the workstation to obtain its address automatically, i.e., through DHCP.</p>
+</li>
+<li><p class="first">Use commands <strong class="command">ipconfig /release</strong> and <strong class="command">ipconfig /renew</strong>,
+or else reboot the workstation to obtain an address.</p>
+</li>
+<li><p class="first">Open the workstation web browser, and enter one of the following addresses:</p>
+<div class="highlight-python"><pre>https://aaltsysserver
+https://192.168.2.241</pre>
+</div>
+</li>
+<li><p class="first">Login to Zentyal (eBox) using an administrator name and password.</p>
+</li>
+<li><p class="first">Select <em class="menuselection">Core ‣ Network ‣ Interfaces</em> from the left side
+menu.</p>
+<ol class="arabic simple">
+<li>On the <em class="guilabel">eth0</em> tab:</li>
+<li>Change Method to <tt class="kbd docutils literal"><span class="pre">Static</span></tt></li>
+<li>Enter your static IP address in <tt class="kbd docutils literal"><span class="pre">IP</span> <span class="pre">Address</span></tt></li>
+<li>Select your subnet mask in <tt class="kbd docutils literal"><span class="pre">Netmask</span></tt> (255.255.255.0 or similar)</li>
+<li>Click <tt class="kbd docutils literal"><span class="pre">Change</span></tt></li>
+</ol>
+</li>
+<li><p class="first">Navigate to <em class="menuselection">Core ‣ Network ‣ Gateways</em>.</p>
+<ol class="arabic simple">
+<li>Select <em class="guilabel">(+) Add New</em></li>
+<li>Enter a descriptive name</li>
+<li>In IP Address, enter the WAN router gateway address</li>
+<li>Select eth0 in <em class="guilabel">Interface</em></li>
+<li>Check the <tt class="kbd docutils literal"><span class="pre">Default</span></tt> box</li>
+<li>Click <tt class="kbd docutils literal"><span class="pre">Add</span></tt></li>
+</ol>
+</li>
+<li><p class="first">Click <tt class="kbd docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></tt> in the Zentyal title bar, and then <tt class="kbd docutils literal"><span class="pre">Save</span></tt>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="dynamic-ip-dhcp">
+<h2>Dynamic IP (DHCP)<a class="headerlink" href="#dynamic-ip-dhcp" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="change-ip-from-static-to-dhcp">
+<h3>Change IP from static to DHCP<a class="headerlink" href="#change-ip-from-static-to-dhcp" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Connect a workstation to the server through a switch on eth1.</p>
+</li>
+<li><p class="first">Obtain an IP address for the workstation using DHCP.</p>
+</li>
+<li><p class="first">Open your web browser, and enter one of the following addresses:</p>
+<div class="highlight-python"><pre>https://aaltsysserver/
+https://192.168.2.241/</pre>
+</div>
+</li>
+<li><p class="first">Login to Zentyal using an administrator name and password.</p>
+</li>
+<li><p class="first">Navigate to <em class="menuselection">Core ‣ Network ‣ Gateways</em>.</p>
+<ul class="simple">
+<li>Click <tt class="kbd docutils literal"><span class="pre">Delete</span></tt> (Trash Can) next to the gateway entry</li>
+</ul>
+</li>
+<li><p class="first">Navigate to <em class="menuselection">Core ‣ Network ‣ Interfaces ‣ eth0</em>.</p>
+<ul class="simple">
+<li>Change <em class="guilabel">Method</em> to <tt class="kbd docutils literal"><span class="pre">DHCP</span></tt></li>
+<li>Click <tt class="kbd docutils literal"><span class="pre">Change</span></tt></li>
+</ul>
+</li>
+<li><p class="first">Click <em class="guilabel">Save Changes</em> on the Zentyal title bar, and then click
+<tt class="kbd docutils literal"><span class="pre">Save</span></tt>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="set-static-gateway-with-dhcp">
+<h3>Set Static Gateway with DHCP<a class="headerlink" href="#set-static-gateway-with-dhcp" title="Permalink to this headline">¶</a></h3>
+<div class="sidebar">
+<p class="first sidebar-title">Programming fix, Zentyal 1.5&#8211;2.0.
+To allow a static gateway setting when eth0 uses DHCP:</p>
+<blockquote class="last">
+<div><ul>
+<li><p class="first">Open a console on the server</p>
+</li>
+<li><p class="first">Login <tt class="docutils literal"><span class="pre">__Administrator__</span></tt>, <tt class="docutils literal"><span class="pre">__Password__</span></tt>.</p>
+</li>
+<li><p class="first">Enter the command:</p>
+<div class="highlight-python"><pre>sudo nano -w /usr/share/perl5/EBox/Network/Model/GatewayTable.pm</pre>
+</div>
+</li>
+<li><p class="first">Press <tt class="kbd docutils literal"><span class="pre">Ctrl-w</span></tt>, search for <tt class="docutils literal"><span class="pre">gatewayReachable</span></tt>.</p>
+</li>
+<li><p class="first">Comment the line, adding <tt class="docutils literal"><span class="pre">#</span></tt> in front:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># $network-&gt;gatewayReachable($params{&#39;ip&#39;}, &#39;LaunchException&#39;);</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Press <tt class="kbd docutils literal"><span class="pre">Ctrl-x</span></tt> to exit and save.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<ul class="simple">
+<li>Login to Zentyal at a workstation or the server.</li>
+<li>Fix Zentyal 1.5 through 2.0 as per the sidebar.</li>
+<li>Navigate to <em class="menuselection">Core ‣ Network ‣ Gateways</em>.</li>
+<li>Click <em class="guilabel">(+) Add</em> next to the gateway entry:<ul>
+<li>Enter the gateway IP address</li>
+<li>Select Interface <tt class="kbd docutils literal"><span class="pre">eth0</span></tt></li>
+<li>Check the box for <tt class="kbd docutils literal"><span class="pre">Default</span></tt></li>
+</ul>
+</li>
+<li><em class="guilabel">Save Changes</em> in the Zentyal title bar, and click <tt class="kbd docutils literal"><span class="pre">Save</span></tt>.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="console-networking-commands">
+<h2>Console Networking Commands<a class="headerlink" href="#console-networking-commands" title="Permalink to this headline">¶</a></h2>
+<p>Use the following commands from a login at the server console or through ssh to
+check the server&#8217;s network configuration.</p>
+<div class="section" id="ifconfig">
+<h3>ifconfig<a class="headerlink" href="#ifconfig" title="Permalink to this headline">¶</a></h3>
+<p>Use the <strong class="command">ifconfig</strong> command to display IP settings for the server&#8217;s
+devices:</p>
+<div class="highlight-python"><pre>ifconfig eth0
+ifconfig eth1</pre>
+</div>
+<ul class="simple">
+<li><strong>eth0</strong> settings should be either obtained through DHCP or set statically</li>
+<li><strong>eth1</strong> should be set to 192.168.2.241</li>
+</ul>
+</div>
+<div class="section" id="ping">
+<h3>ping<a class="headerlink" href="#ping" title="Permalink to this headline">¶</a></h3>
+<p>Use this command to test network connectivity:</p>
+<div class="highlight-python"><pre>ping 192.168.2.241
+ping (IP for eth0)
+ping (IP for Gateway)
+ping (IP for DNS)
+ping www.google.com</pre>
+</div>
+</div>
+<div class="section" id="ip">
+<h3>ip<a class="headerlink" href="#ip" title="Permalink to this headline">¶</a></h3>
+<p>Use <strong class="command">ip</strong> to display network configuration, for instance:</p>
+<div class="highlight-python"><pre>ip route ls table default</pre>
+</div>
+<p>(Should return &#8220;default via 123.456.789.012 dev eth0,&#8221; or other gateway ip)</p>
+</div>
+<div class="section" id="dhclient">
+<h3>dhclient<a class="headerlink" href="#dhclient" title="Permalink to this headline">¶</a></h3>
+<p>Use this command to obtain an ip and identify the gateway:</p>
+<div class="highlight-python"><pre>sudo dhclient eth0</pre>
+</div>
+</div>
+<div class="section" id="route">
+<h3>route<a class="headerlink" href="#route" title="Permalink to this headline">¶</a></h3>
+<p>Use this command to set a gateway to the Internet:</p>
+<div class="highlight-python"><pre>sudo route add default gw 123.456.789.012</pre>
+</div>
+</div>
+<div class="section" id="dig">
+<h3>dig<a class="headerlink" href="#dig" title="Permalink to this headline">¶</a></h3>
+<p>Use <strong class="command">dig</strong> to find DNS name servers:</p>
+<div class="highlight-python"><pre>dig 192.168.1.254
+dig comcast.net</pre>
+</div>
+</div>
+<div class="section" id="nslookup">
+<h3>nslookup<a class="headerlink" href="#nslookup" title="Permalink to this headline">¶</a></h3>
+<p>Use <strong class="command">nslookup</strong> to find results returned from DNS servers:</p>
+<div class="highlight-python"><pre>nslookup aaltsys.info
+nslookup -query=hinfo fb.com</pre>
+</div>
+</div>
+<div class="section" id="ebox">
+<h3>eBox<a class="headerlink" href="#ebox" title="Permalink to this headline">¶</a></h3>
+<p>Use this command only when no workstations are logged in:</p>
+<div class="highlight-python"><pre>sudo invoke-rc.d ebox restart</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="05_backupdrive.html" title="Automount Drive Setup"
+             >next</a></li>
+        <li class="right" >
+          <a href="03_secureshell.html" title="Remote Secure Shell Sessions"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

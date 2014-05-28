@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuring EDI Communication &mdash; AAltsys Derver 3.0 Administration 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Derver 3.0 Administration 3.0 documentation" href="index.html" />
+    <link rel="prev" title="Fixing locales:" href="06_procedures.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_procedures.html" title="Fixing locales:"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">AAltsys Derver 3.0 Administration 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuring EDI Communication</a><ul>
+<li><a class="reference internal" href="#schedule-exchange-in-webmin">Schedule Exchange in Webmin</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="06_procedures.html"
+                        title="previous chapter">Fixing locales:</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/07_ediconfig.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuring-edi-communication">
+<span id="ediconfig"></span><h1>Configuring EDI Communication<a class="headerlink" href="#configuring-edi-communication" title="Permalink to this headline">¶</a></h1>
+<p>EDI is a complex application involving data communication, text file
+manipulation and archival, document translation, and database mapping. This
+document will describe configuring a Linux machine to exchange data with an ftp
+server on the web for EDI.</p>
+<ol class="arabic">
+<li><p class="first">First, the Linux machine must have a competent ftp client. Install lftp with
+the command:</p>
+<div class="highlight-python"><pre>sudo apt-get install lftp</pre>
+</div>
+</li>
+<li><p class="first">Second, change owner permissions on the WARES program files with the
+commands:</p>
+<div class="highlight-python"><pre>sudo chgrp -R __USERS__ /home/samba/shares/arev
+sudo chmod -R g+s /home/samba/shares/arev</pre>
+</div>
+</li>
+<li><p class="first">Third, lftp will run in non-interactive mode, taking its commands from a
+script file. The script file should be saved as <tt class="file docutils literal"><span class="pre">/etc/waresedi.conf</span></tt>,
+with owner <strong>root:root</strong> and permissions <strong>600</strong>. The text of a sample file
+follows:</p>
+<div class="highlight-python"><pre>lcd /home/samba/shares/arev/connect
+open -u {uname},{passwd} {ftp://serverURL}
+mput -c -E ./snd/* -O ./{OUTBOX}
+mget -c -E ./{INBOX}/* -O ./rcv
+quit</pre>
+</div>
+</li>
+</ol>
+<div class="section" id="schedule-exchange-in-webmin">
+<h2>Schedule Exchange in Webmin<a class="headerlink" href="#schedule-exchange-in-webmin" title="Permalink to this headline">¶</a></h2>
+<p>Using <em>Webmin</em>, <em class="menuselection">System ‣ Schedule</em> cron jobs, make a job with
+the following command:</p>
+<div class="highlight-python"><pre>date &gt;&gt; /var/log/cron.log; lftp -f /etc/waresedi.conf 1&gt;&gt; /var/log/cron.log 2&gt;&gt; /var/log/cron.log</pre>
+</div>
+<p>Schedule the job to run every 15 minutes between 7 am and 7 pm. Test run the
+job, and check the output with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">cat</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+<img alt="_images/EDI_cron.png" src="_images/EDI_cron.png" />
+<p>Finally, manage the log file: System &#8211;&gt; Log File Rotation &#8211;&gt; Add a new log
+file to rotate. Accept the default management options for the new log.</p>
+<img alt="_images/cron_log.png" src="_images/cron_log.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_procedures.html" title="Fixing locales:"
+             >previous</a></li>
+        <li><a href="index.html">AAltsys Derver 3.0 Administration 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

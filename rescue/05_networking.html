@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Network Options with SysRescue &mdash; AAltsys Server 3.0 Rescue 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Rescue 3.0 documentation" href="index.html" />
+    <link rel="next" title="System Task Utilities" href="06_systemtasks.html" />
+    <link rel="prev" title="Sysem Rescue CD Boot Options" href="03_bootoptions.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_systemtasks.html" title="System Task Utilities"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="03_bootoptions.html" title="Sysem Rescue CD Boot Options"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Network Options with SysRescue</a><ul>
+<li><a class="reference internal" href="#automatic-network-configuration">Automatic Network configuration</a></li>
+<li><a class="reference internal" href="#hand-configuring-networking">Hand-configuring Networking</a></li>
+<li><a class="reference internal" href="#setting-up-networking-at-boot">Setting up Networking at Boot</a></li>
+<li><a class="reference internal" href="#running-an-ssh-server">Running an SSH Server</a></li>
+<li><a class="reference internal" href="#accessing-a-windows-share">Accessing a Windows Share</a></li>
+<li><a class="reference internal" href="#mount-remote-ftp-ssh-shares">Mount remote FTP/SSH shares</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="03_bootoptions.html"
+                        title="previous chapter">Sysem Rescue CD Boot Options</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="06_systemtasks.html"
+                        title="next chapter">System Task Utilities</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/05_networking.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="network-options-with-sysrescue">
+<h1>Network Options with SysRescue<a class="headerlink" href="#network-options-with-sysrescue" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This documentation is extracted from the System Rescue CD documentation found on line at <a class="reference external" href="http://www.sysresccd.org/Online-Manual-EN">http://www.sysresccd.org/Online-Manual-EN</a>. Please refer to the original documentation there.</p>
+</div>
+<div class="section" id="automatic-network-configuration">
+<h2>Automatic Network configuration<a class="headerlink" href="#automatic-network-configuration" title="Permalink to this headline">¶</a></h2>
+<p>If your system has supported hardware, ethernet or wifi network adapters should be automatically detected, and the driver loaded during boot. You will still need to assign an IP address and a default gateway.</p>
+<ul class="simple">
+<li><strong>Network-Manager</strong> provides a graphical interface to configure the network, which makes configuration easier especially for wireless networks. The Network-Manager is available as a small icon in the taskbar just next to the clock. Network-Manager is only available in the graphical environment.</li>
+<li><strong>net-setup</strong> utility, (e.g. <tt class="kbd docutils literal"><span class="pre">net-setup</span> <span class="pre">eth0</span></tt>) should be used on the command line.</li>
+</ul>
+</div>
+<div class="section" id="hand-configuring-networking">
+<h2>Hand-configuring Networking<a class="headerlink" href="#hand-configuring-networking" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To use command line tools, first stop Network-Manager by running <tt class="kbd docutils literal"><span class="pre">/etc/init.d/NetworkManager</span> <span class="pre">stop</span></tt> in the shell or by booting SystemRescueCd with the <em>nonm</em> boot option. If you are booting SystemRescueCd from the network or if you are using boot options such as <em>ethx</em> or <em>dodhcp</em> the Network-Manager service will automatically be stopped.</p>
+</div>
+<ul class="simple">
+<li><strong>dhcpd</strong>: To use dynamic configuration, type <tt class="kbd docutils literal"><span class="pre">dhcpcd</span> <span class="pre">eth0</span></tt>. Then use <tt class="kbd docutils literal"><span class="pre">ifconfig</span> <span class="pre">-a</span></tt> to display the IP address the DHCP server leased to the interface.</li>
+<li><strong>ifconfig</strong>: To assign a specific static IP address, enter <tt class="kbd docutils literal"><span class="pre">ifconfig</span> <span class="pre">eth0</span> <span class="pre">192.168.10.17</span></tt> or similar, depending on the ethernet port and IP desired.</li>
+<li><strong>route</strong>: Next configure the default route. For example, to connect to a gateway at 192.168.10.2 enter: <tt class="kbd docutils literal"><span class="pre">route</span> <span class="pre">add</span> <span class="pre">default</span> <span class="pre">gw</span> <span class="pre">192.168.10.2</span></tt>.</li>
+</ul>
+</div>
+<div class="section" id="setting-up-networking-at-boot">
+<h2>Setting up Networking at Boot<a class="headerlink" href="#setting-up-networking-at-boot" title="Permalink to this headline">¶</a></h2>
+<p>SystemRescueCd provides network boot options such as <em>ethx</em>, <em>dns</em>, <em>gateway</em>, <em>dodhcp</em> that allow you to automatically configure the network when SystemRescueCd starts. It is very useful if you want to boot SystemRescueCd from the network using PXE but it can be used in any case.</p>
+</div>
+<div class="section" id="running-an-ssh-server">
+<h2>Running an SSH Server<a class="headerlink" href="#running-an-ssh-server" title="Permalink to this headline">¶</a></h2>
+<p><strong>SSH</strong> allows you to use a shell on another computer (as telnet does), and you can copy files (with <em>scp</em>). If you want to run an SSH server, first change the root password by typing <tt class="kbd docutils literal"><span class="pre">passwd</span> <span class="pre">xxx</span></tt>. You can also use the <tt class="kbd docutils literal"><span class="pre">rootpass=xxx</span></tt> boot option before SystemRescueCd starts to define the root password.</p>
+<p>Although ssh server is automatically started, you can restart it with the command <tt class="kbd docutils literal"><span class="pre">/etc/init.d/sshd</span> <span class="pre">restart</span></tt>, and you can stop it with <tt class="kbd docutils literal"><span class="pre">/etc/init.d/sshd</span> <span class="pre">stop</span></tt>. You can also use SystemRescueCd as an SSH client to connect to an SSH server: just use <tt class="kbd docutils literal"><span class="pre">ssh</span> <span class="pre">login&#64;ssh.server.org</span></tt> or <tt class="kbd docutils literal"><span class="pre">scp</span> <span class="pre">source</span> <span class="pre">dest</span></tt>. Both source and dest may be local or remote. Use <tt class="kbd docutils literal"><span class="pre">login&#64;ssh.server.org:/path/filename</span></tt> for remote files.</p>
+</div>
+<div class="section" id="accessing-a-windows-share">
+<h2>Accessing a Windows Share<a class="headerlink" href="#accessing-a-windows-share" title="Permalink to this headline">¶</a></h2>
+<p>SystemRescueCd comes with the cifs client package that allows you to connect to a Windows machine having shared drives.</p>
+<p>The <strong>mount-cifs</strong> package allows you to access a Windows computer on the network. For example, suppose a Windows box is on <em>192.168.10.3</em> and has a shared directory called <em>mydata</em> accessible by user <em>robert</em>:</p>
+<div class="highlight-python"><pre>mkdir /mnt/windows
+mount -t cifs //192.168.10.3/mydata /mnt/windows -o username=robert,MyPaSsWoRd=root -o lfs
+cd /mnt/windows</pre>
+</div>
+<p>Now you should be able to see files in <em>/mnt/windows</em>. Don&#8217;t forget to unmount the directory when you have finished what you are doing in the shared directory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">umount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">windows</span>
+</pre></div>
+</div>
+<p>It&#8217;s important not to forget the option &#8220;lfs&#8221; (Large File Support), because it allows you to handle files that are larger than 2 GB. Big files are often used when making a backup or an image file.</p>
+</div>
+<div class="section" id="mount-remote-ftp-ssh-shares">
+<h2>Mount remote FTP/SSH shares<a class="headerlink" href="#mount-remote-ftp-ssh-shares" title="Permalink to this headline">¶</a></h2>
+<p>there is a powerful way to access files located on an FTP server as local file systems with the <strong>Userland FileSystem</strong>. You mount the share and work on the remote files just as you would work on any local files, then umount the share with the standard <tt class="kbd docutils literal"><span class="pre">umount</span></tt> command. Here is an example showing how to mount an FTP file system in <em>/mnt/ftp</em> as anonymous (read only):</p>
+<div class="highlight-python"><pre>mkdir /mnt/ftp
+lufis fs=ftpfs,host=ftp.kernel.org /mnt/ftp -s
+cd /mnt/ftp
+umount /mnt/ftp</pre>
+</div>
+<p>Here is an example of how to mount an SSH file system in <em>/mnt/ssh</em> as anonymous (read only):</p>
+<div class="highlight-python"><pre>mkdir /mnt/ssh
+passwd root
+sshfs login@ssh.server.org:/path/to/dir /mnt/ssh
+cd /mnt/ssh
+umount /mnt/ssh</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_systemtasks.html" title="System Task Utilities"
+             >next</a></li>
+        <li class="right" >
+          <a href="03_bootoptions.html" title="Sysem Rescue CD Boot Options"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

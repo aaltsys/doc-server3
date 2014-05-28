@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>ConVirt 2.0 Administration &mdash; AAltsys Derver 3.0 Administration 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Derver 3.0 Administration 3.0 documentation" href="index.html" />
+    <link rel="next" title="Fixing locales:" href="06_procedures.html" />
+    <link rel="prev" title="AAltSys Server Administration" href="00_administer.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_procedures.html" title="Fixing locales:"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="00_administer.html" title="AAltSys Server Administration"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Derver 3.0 Administration 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">ConVirt 2.0 Administration</a><ul>
+<li><a class="reference internal" href="#connecting-to-the-administration-console">Connecting to the Administration Console</a></li>
+<li><a class="reference internal" href="#administering-virtual-networks">Administering Virtual Networks</a></li>
+<li><a class="reference internal" href="#provisioning-new-virtual-machines">Provisioning New Virtual Machines</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="00_administer.html"
+                        title="previous chapter">AAltSys Server Administration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="06_procedures.html"
+                        title="next chapter">Fixing locales:</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/02_convirt.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="convirt-2-0-administration">
+<h1>ConVirt 2.0 Administration<a class="headerlink" href="#convirt-2-0-administration" title="Permalink to this headline">¶</a></h1>
+<p>The AAltSys Server provides the KVM virtualization platform, allowing for multiple
+operating systems to be installed and virtualized. These virtualized operating
+systems can be run simultaneously and behave as though they were independent
+computers on the network.</p>
+<div class="section" id="connecting-to-the-administration-console">
+<h2>Connecting to the Administration Console<a class="headerlink" href="#connecting-to-the-administration-console" title="Permalink to this headline">¶</a></h2>
+<p>KVM virtualization on the AAltSys Server is administered through the ConVirt 2.0
+web interface. ConVirt may be selected from the server console menu, or from a
+workstation on the network, point a web browser to address <a class="reference external" href="http://aaltsysserver:8081/">http://aaltsysserver:8081/</a>.</p>
+</div>
+<div class="section" id="administering-virtual-networks">
+<h2>Administering Virtual Networks<a class="headerlink" href="#administering-virtual-networks" title="Permalink to this headline">¶</a></h2>
+<p>Virtual machines need to be connected to a network device of some sort. KVM uses
+virtual devices which then pass data off to the physical network. It may be desirable
+to set up multiple virtual networks to isolate different virtual machines from
+one another for security. To manage virtual networks:</p>
+<img alt="_images/convirt_server_options.png" src="_images/convirt_server_options.png" />
+<ul>
+<li><dl class="first docutils">
+<dt>On the left menu, navigate to the server where the networks are to be managed:</dt>
+<dd><div class="first last line-block">
+<div class="line">The default AAltSys Server is found at <em class="menuselection">Data Center ‣ AAltSys ‣ localhost</em>.</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Right-click on the server and choose <em>Manage Virtual Networks</em>:</dt>
+<dd><div class="first last line-block">
+<div class="line">This dialog lists all currently existing virtual networks.</div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">Add new networks using the <em class="guilabel">(+) New</em> button.</p>
+</li>
+<li><p class="first">Edit or delete existing networks with the <em class="guilabel">Edit</em> and <em class="guilabel">Remove</em> buttons.</p>
+</li>
+</ul>
+<img alt="_images/convirt_server_network.png" src="_images/convirt_server_network.png" />
+</div>
+<div class="section" id="provisioning-new-virtual-machines">
+<h2>Provisioning New Virtual Machines<a class="headerlink" href="#provisioning-new-virtual-machines" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>On the left menu, click to expand <em class="menuselection">Template Library</em></li>
+<li>Right-click the template for a new virtual machine, and select <em class="menuselection">Provision</em> from the context menu.</li>
+</ul>
+<img alt="_images/convirt_select_target.png" src="_images/convirt_select_target.png" />
+<ul class="simple">
+<li>In the <em class="guilabel">Select a Target Node</em> window, expand viewed items to show servers.</li>
+<li>Select either a managed server or a server pool to provision the virtual machine on.</li>
+</ul>
+<img alt="_images/convirt_config_settings.png" src="_images/convirt_config_settings.png" />
+<ul>
+<li><p class="first">The <em class="guilabel">Virtual Machine Config Settings</em> window will display.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Enter a name for the virtual machine in the <em class="guilabel">VM</em> field. <em>(Example: WebServer)</em></li>
+<li>Specify the amount of memory (RAM) available to the virtual machine in megabytes. <em>(Example: 512)</em></li>
+<li>Specify the number of virtual processors available to the virtual machine.</li>
+<li>Specify details of the operating system to be installed in the virtual machine.</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Convirt allows any amount of memory and any number of processors to be assigned.
+Take care not to exceed the physical limits of the hardware.</p>
+</div>
+</li>
+<li><p class="first">Click <em class="guilabel">Storage</em> to specify the physical CD-ROM device on the server:
+(If an ISO image has been copied to the server it can be used by editing VM
+Device <em>hdc:cdrom</em>.)</p>
+</li>
+<li><p class="first">Click <em class="guilabel">Networks</em> and specify machine connections to virtual networks.</p>
+</li>
+<li><p class="first">Click <em class="guilabel">Boot Params</em> and specify advanced boot parameters for the system.</p>
+</li>
+<li><p class="first">Click <em class="guilabel">Miscellaneous</em> for advanced virtual machine settings (not described).</p>
+</li>
+<li><p class="first">Click <em class="guilabel">Template Parameters</em> for additional system settings (not described):
+Specify <em>hda_disk_size</em> to set the virtual hard disk drive size in megabytes.</p>
+</li>
+<li><p class="first">Click <em class="guilabel">OK</em> to complete the VM specification and begin installation.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_procedures.html" title="Fixing locales:"
+             >next</a></li>
+        <li class="right" >
+          <a href="00_administer.html" title="AAltSys Server Administration"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Derver 3.0 Administration 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

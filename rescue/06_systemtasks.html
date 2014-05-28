@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>System Task Utilities &mdash; AAltsys Server 3.0 Rescue 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Rescue 3.0 documentation" href="index.html" />
+    <link rel="next" title="SysRescue Boot Utilities" href="08_bootutils.html" />
+    <link rel="prev" title="Network Options with SysRescue" href="05_networking.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_bootutils.html" title="SysRescue Boot Utilities"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="05_networking.html" title="Network Options with SysRescue"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">System Task Utilities</a><ul>
+<li><a class="reference internal" href="#back-up-the-partition-table">Back up the partition table</a></li>
+<li><a class="reference internal" href="#back-up-partition-contents">Back up partition contents</a></li>
+<li><a class="reference internal" href="#archiving">Archiving</a></li>
+<li><a class="reference internal" href="#clam-antivirus">Clam AntiVirus</a></li>
+<li><a class="reference internal" href="#graphical-partition-tools">Graphical Partition Tools</a></li>
+<li><a class="reference internal" href="#accessing-ntfs-partitions">Accessing NTFS Partitions</a><ul>
+<li><a class="reference internal" href="#read-only-support">Read only support</a></li>
+<li><a class="reference internal" href="#full-read-write-support">Full Read-Write support</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="05_networking.html"
+                        title="previous chapter">Network Options with SysRescue</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="08_bootutils.html"
+                        title="next chapter">SysRescue Boot Utilities</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/06_systemtasks.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="system-task-utilities">
+<h1>System Task Utilities<a class="headerlink" href="#system-task-utilities" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This documentation is extracted from the System Rescue CD
+documentation found on line at <a class="reference external" href="http://www.sysresccd.org/Online-Manual-EN">http://www.sysresccd.org/Online-Manual-EN</a>.
+Please refer to the original documentation there.</p>
+</div>
+<div class="section" id="back-up-the-partition-table">
+<h2>Back up the partition table<a class="headerlink" href="#back-up-the-partition-table" title="Permalink to this headline">¶</a></h2>
+<p><strong class="program">sfdisk</strong> is a tiny program which saves the partition table to a
+regular file and only takes a few seconds. As an initial step for system
+recovery before making things worse, backup the system table now! For example:</p>
+<div class="highlight-python"><pre>sfdisk -d /dev/sda &gt; sda.110601.2345.partTable</pre>
+</div>
+<p>Copy the backup to another hard disk, removable media (thumb disk, floppy or
+CD) or ftp it to another computer. To Restore a backed up system table, first
+back up the current partition table, even if it seems to be damaged. This will
+allow you to undo the restoration. Then use the command:</p>
+<div class="highlight-python"><pre>cat sda.110601.2345.partTable | sfdisk /dev/sda</pre>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This command is very dangerous, because it overwrites the existing
+partition table.</p>
+</div>
+</div>
+<div class="section" id="back-up-partition-contents">
+<h2>Back up partition contents<a class="headerlink" href="#back-up-partition-contents" title="Permalink to this headline">¶</a></h2>
+<p><strong class="program">Partimage</strong> (client and server) are provided, which will save an
+existing partition into an image file. If something goes wrong, you can restore
+the partition from the image. A semi-text interface is provided, and this
+should not be very hard to use. You need a partition with a lot of free space to
+store the image file.</p>
+<p>Two versions of <strong class="program">partimage</strong> are provided: one for local use, and one
+for remote administration. The local version is compiled without SSL and
+without login support. The client is available by typing <strong class="command">partimage</strong>,
+and the server with <strong class="command">partimaged</strong>. You should use this client in most
+cases, and when you want to connect to a <strong>partimaged</strong> server that does not
+support SSL.</p>
+<p>The secured version is compiled with SSL and login support. The client is
+available by typing <strong class="command">partimagessl</strong>, and the server with
+<strong class="command">partimagedssl</strong>. You should use this client when you connect to a
+<strong>partimaged</strong> server that expects an SSL encrypted connection with login.</p>
+</div>
+<div class="section" id="archiving">
+<h2>Archiving<a class="headerlink" href="#archiving" title="Permalink to this headline">¶</a></h2>
+<p>SystemRescueCd comes with a lot of archive programs. You can use
+<strong class="program">zip/unzip</strong> for the <em>ZIP</em> format, and <strong class="program">rar/unrar</strong> for the
+<em>RAR</em> format. Even the new <strong class="program">7zip</strong> is supported with the
+<strong class="command">p7zip</strong> command.</p>
+<p><strong class="program">dar</strong> is an archiver similar to <strong class="program">tar</strong>, but it is more
+powerful. Even when using compression, <strong class="program">dar</strong> does not have to read the
+whole backup to extract one file. This way, if you just want to restore one
+file from a huge backup, the process will be much faster than using
+<strong class="program">tar</strong>. <strong class="program">Dar</strong> first reads the catalogue (i.e. the contents of
+the backup), then it goes directly to the location of the saved file(s) which
+you want to restore and then proceeds to restoration. In particular using
+slices, <strong class="program">dar</strong> will ask only for the slice(s) containing the file(s)
+to restore. But you can also restore all files from an archive, <strong class="program">dar</strong>
+will then read sequentially without seeking into the file. Except for the first
+and last slice, <strong class="program">dar</strong> will not ask twice for the same slice.</p>
+</div>
+<div class="section" id="clam-antivirus">
+<h2>Clam AntiVirus<a class="headerlink" href="#clam-antivirus" title="Permalink to this headline">¶</a></h2>
+<p><strong class="program">Clam AntiVirus</strong> is a free anti-virus software which provides several
+important commands:</p>
+<blockquote>
+<div><p><strong class="command">freshclam</strong>: This command updates the virus definitions. Of course,
+you need to be connected to internet for updating.</p>
+<p><strong class="command">clamscan</strong>: This utility scans all the files in the named directory
+and searches for viruses.</p>
+</div></blockquote>
+<p>Before scanning for viruses, you have to update the virus definitions. Because
+this is run from a CD-ROM, you may have read-only related problems. That is why
+you have to specify a read-write directory for definitions. Here is how to
+update definitions and make a scan:</p>
+<ol class="arabic">
+<li><p class="first">ensure that you are connected to the internet.</p>
+</li>
+<li><p class="first">Download the latest virus definitions by running the following commands:</p>
+<div class="highlight-python"><pre>chown clamav:clamav /var/lib/clamav
+chown clamav:clamav /var/lib/clamav/*
+freshclam</pre>
+</div>
+</li>
+<li><p class="first">Mount the partition to be scanned:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">testpart</span>
+<span class="n">mount</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">sda1</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">testpart</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Perform the scan on the files:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">clamscan</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">testpart</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>If you really don&#8217;t have an internet connection, you can scan for viruses
+without updating the virus definitions. Of course, it&#8217;s less safe because only
+the older viruses can be detected.</p>
+</div>
+<div class="section" id="graphical-partition-tools">
+<h2>Graphical Partition Tools<a class="headerlink" href="#graphical-partition-tools" title="Permalink to this headline">¶</a></h2>
+<p><strong class="program">gparted</strong> a Partition-Magic clone which is easy to use and very
+powerful. This tool requires the X.Org graphical environment, so refer to the
+boot process if you do not know how to work in X.Org. You can run
+<strong class="program">GParted</strong> by typing this command: <strong class="command">gparted</strong>, or from the
+contextual menu on the desktop.</p>
+</div>
+<div class="section" id="accessing-ntfs-partitions">
+<h2>Accessing NTFS Partitions<a class="headerlink" href="#accessing-ntfs-partitions" title="Permalink to this headline">¶</a></h2>
+<p><strong>NTFS</strong> (New Technology File System) is a very powerful file system provided
+with NT versions of Windows (Windows-NT, Windows-2000, Windows-XP). If you want
+full read-write support for NTFS disks, use <strong class="program">Ntfs-3g</strong> (Ntfs third
+generation driver), which is a userspace program. With <strong class="program">clamav</strong> and
+<strong class="program">Ntfs-3g</strong>, you can check and repair viruses on a MS-Windows system
+without running Windows.</p>
+<div class="section" id="read-only-support">
+<h3>Read only support<a class="headerlink" href="#read-only-support" title="Permalink to this headline">¶</a></h3>
+<p>To get read support only on an NTFS disk, mount it with the following command
+(replace xxx with the device name of your disk):</p>
+<div class="highlight-python"><pre>mount -t ntfs /dev/xxx /mnt/windows -o ro</pre>
+</div>
+<p>This read-only support is safe (you cannot alter or damage your data). Use this
+if, for example, you just want to backup several files, or read a document.</p>
+</div>
+<div class="section" id="full-read-write-support">
+<h3>Full Read-Write support<a class="headerlink" href="#full-read-write-support" title="Permalink to this headline">¶</a></h3>
+<p>Use <strong class="program">ntfs-3g</strong> for complete NTFS Write support with the command:</p>
+<div class="highlight-python"><pre>ntfs-3g /dev/sda1 /mnt/windows</pre>
+</div>
+<p>In this example, we suppose the device name of the NTFS partition is
+<tt class="file docutils literal"><span class="pre">/dev/sda1</span></tt> and the mount point is <tt class="file docutils literal"><span class="pre">/mnt/windows</span></tt>. If you do not
+know the device name, you may list partitions with
+<strong class="command">cat /proc/partitions</strong> or use <strong class="program">GParted</strong>.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_bootutils.html" title="SysRescue Boot Utilities"
+             >next</a></li>
+        <li class="right" >
+          <a href="05_networking.html" title="Network Options with SysRescue"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

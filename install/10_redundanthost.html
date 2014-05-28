@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Redundant Server Setup &mdash; AAltsys Server 3.0 Installation 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
+    <link rel="prev" title="Procedures of Operation" href="09_procedures.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_procedures.html" title="Procedures of Operation"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Redundant Server Setup</a><ul>
+<li><a class="reference internal" href="#file-copy-backup-server">File Copy Backup Server</a><ul>
+<li><a class="reference internal" href="#switching-to-a-backup-server">Switching to a Backup Server</a></li>
+<li><a class="reference internal" href="#server-configuration-differences">Server Configuration Differences</a></li>
+<li><a class="reference internal" href="#configure-the-backup-server">Configure the Backup Server</a></li>
+<li><a class="reference internal" href="#configure-the-primary-server">Configure the Primary Server</a></li>
+<li><a class="reference internal" href="#configure-ssh-on-backup-server">Configure SSH on Backup Server</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-a-backup-server">Configuring a Backup Server</a></li>
+<li><a class="reference internal" href="#device-replication-backup-server">Device Replication Backup Server</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="09_procedures.html"
+                        title="previous chapter">Procedures of Operation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/10_redundanthost.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="redundant-server-setup">
+<h1>Redundant Server Setup<a class="headerlink" href="#redundant-server-setup" title="Permalink to this headline">¶</a></h1>
+<p>Two AAltSys servers on the same network, a primary server and a backup server,
+can provide redundant data storage and server functions. In case the primary
+server fails, a few commands issued on a backup server will allow it to assume
+the role of the primary server. This guide describes installing a backup server,
+adding it to the network, and configuring the primary server to backup to it.</p>
+<p>Two common approaches to creating a redundant server array are: file copy, and
+device replication. The simpler approach is to copy files from the primary
+server to the backup system, as this involves nothing more than operating
+system command line steps. Device replication, where the devices containing
+data are mirrored between primary and backup machines, requires special system
+and device configuration. This procedure creates a filecopy redundant server.</p>
+<div class="section" id="file-copy-backup-server">
+<h2>File Copy Backup Server<a class="headerlink" href="#file-copy-backup-server" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="switching-to-a-backup-server">
+<h3>Switching to a Backup Server<a class="headerlink" href="#switching-to-a-backup-server" title="Permalink to this headline">¶</a></h3>
+<p>To switch to a backup server, the primary server must first be shutdown. If the
+primary server is a network gateway machine, then move the external network
+interface connection (NIC device eth0) from the primary server to the backup
+server. Then:</p>
+<div class="highlight-python"><pre>Login to the backup server, and start Zentyal.
+Navigate to :menuselection:`Core --&gt; System --&gt; Backup --&gt; General`.
+Change the :guilabel:`Host or destination` to :kbd:`/home/mnt/backup/source_config`
+Go to :menuselection:`Core --&gt; System --&gt; Backup --&gt; Services Restore`.
+Run the selection: :kbd:`Restore Zentyal configuration from Backup`.
+Click :kbd:`Save Changes` on the Zentyal title bar, and then :kbd:`save`.</pre>
+</div>
+<p>The following issues are noted with this procedure:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#.       Zentyal progress bar hangs at 88% when saving changes. Close Firefox and reopen it to clear this hang.</span>
+<span class="c">#.       __Hostname__ on the redundant server is not replaced when restoring. Go to :menuselection:`Core --&gt; System --&gt; General --&gt; Hostname` and change the name to `__Hostname__.local.aaltsys.net`.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The redundant server stores configuration backups for the primary server
+and data backups for the redundant server. To restore data files, got to
+<em class="menuselection">Core ‣ System ‣ Backup ‣ Restore Files</em> and select
+backup dates, then choose directories or files to restore.</p>
+</div>
+</div>
+<div class="section" id="server-configuration-differences">
+<h3>Server Configuration Differences<a class="headerlink" href="#server-configuration-differences" title="Permalink to this headline">¶</a></h3>
+<p>When a primary server is installed in the default configuration, then
+differences in the Zentyal configuration for primary and backup servers are
+documented following (Changed settings are in italics):</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="11%" />
+<col width="30%" />
+<col width="11%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Menu item</th>
+<th class="head" colspan="2">Primary server value</th>
+<th class="head" colspan="2">Redundant server value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Hostname</td>
+<td colspan="2">aaltsysserver.local.aaltsys.net</td>
+<td colspan="2"><cite>backupserver.local.aaltsys.net</cite></td>
+</tr>
+<tr class="row-odd"><td>Netbios Name</td>
+<td colspan="2">aaltsysserver</td>
+<td colspan="2"><cite>backupserver</cite></td>
+</tr>
+<tr class="row-even"><td>eth1 - IP</td>
+<td colspan="2">192.168.2.241</td>
+<td colspan="2"><cite>192.168.2.242</cite></td>
+</tr>
+<tr class="row-odd"><td>DHCP ranges</td>
+<td colspan="2">192.168.2.1 - 192.168.2.200</td>
+<td colspan="2"><cite>no default range</cite></td>
+</tr>
+<tr class="row-even"><td>Backups</td>
+<td>Include</td>
+<td>/etc/cups</td>
+<td>Include</td>
+<td>/etc/cups</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Exclude</td>
+<td>/</td>
+<td>Include</td>
+<td>/home</td>
+</tr>
+<tr class="row-even"><td colspan="3">&nbsp;</td>
+<td>Exclude</td>
+<td>/home/mnt</td>
+</tr>
+<tr class="row-odd"><td colspan="3">&nbsp;</td>
+<td>Exclude</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+<p>Additional changes are required for external backup drives. Connect an external
+backup drive to the redundant server only, and remark out the corresponding
+<strong>autofs</strong> drive configuration on the primary server.</p>
+</div>
+<div class="section" id="configure-the-backup-server">
+<h3>Configure the Backup Server<a class="headerlink" href="#configure-the-backup-server" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Connect a monitor, keyboard, and mouse directly to the backup server and
+configure the server according to this guide before connecting it to the
+local network.</p>
+</div>
+<p>Make these changes in <strong>Zentyal</strong> to configure the backup server for its role:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default value of <strong>[backup_IP]</strong> would be <strong>192.168.2.242</strong> as shown in
+the preceding table. Substitute values according to your network IP.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="61%" />
+<col width="39%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Zentyal menu location</th>
+<th class="head">Redundant server value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Core &gt; System &gt; General &gt; Hostname</td>
+<td><tt class="docutils literal"><span class="pre">backupserver.local.aaltsys.net</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Office &gt; File Sharing &gt; General Settings &gt; Netbios Name</td>
+<td><tt class="docutils literal"><span class="pre">backupserver</span></tt></td>
+</tr>
+<tr class="row-even"><td>Core &gt; Network &gt; Interfaces &gt; eth1</td>
+<td><tt class="docutils literal"><span class="pre">192.168.2.242</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Infrastructure &gt; DHCP &gt; eth1 &gt; Ranges &gt; default</td>
+<td><tt class="docutils literal"><span class="pre">(delete</span> <span class="pre">the</span> <span class="pre">default</span> <span class="pre">range)</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="configure-the-primary-server">
+<h3>Configure the Primary Server<a class="headerlink" href="#configure-the-primary-server" title="Permalink to this headline">¶</a></h3>
+<p>Install scripts for data transfer between servers by executing the following
+commands (use either a console terminal or an ssh session to the server&#8217;s
+terminal shell):</p>
+<div class="highlight-python"><pre>sudo su -
+## in case autofs is configured #########
+sed -i '$d' /etc/auto.master
+service autofs restart
+## end autofs reconfiguration ###########
+mkdir -p /home/mnt/backup/source_config
+mkdir -p /root/.ssh/
+if [ ! -f "/root/.ssh/id_rsa" ]; then ssh-keygen -N "" -f /root/.ssh/id_rsa; fi
+scp /root/.ssh/id_rsa.pub admin1@[backup_IP]:~/
+wget https://raw.github.com/gist/870781/rsync-data -O /usr/bin/rsync-data
+wget https://raw.github.com/gist/870783/rsync-config.sh -O /usr/bin/rsync-config
+chmod +x /usr/bin/rsync-data
+chmod +x /usr/bin/rsync-config
+exit</pre>
+</div>
+<p>Next, log into Webmin at <a class="reference external" href="https://aaltsysserver.local.aaltsys.net:10000">https://aaltsysserver.local.aaltsys.net:10000</a>.
+Navigate the menu to <em class="menuselection">Core ‣ System ‣ Scheduled cron jobs</em>,
+and add three cron jobs to run each night. The last two of these jobs may be
+scheduled to run throughout the day as well, provided none of the software
+being used has problems with file locking. Settings for the cron jobs are
+shown in the following screenshot:</p>
+<img alt="_images/backup_cron_primary.png" src="_images/backup_cron_primary.png" />
+<p>Be sure to change the job <strong>Description</strong> and <strong>Command</strong> within the jobs
+as shown in the table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Job Description</th>
+<th class="head">Command</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Clear Backup Locks</td>
+<td>rm /tmp/lock*</td>
+</tr>
+<tr class="row-odd"><td>Backup data</td>
+<td>/usr/bin/rsync-data [backup_IP] mnt/</td>
+</tr>
+<tr class="row-even"><td>Backup configuration</td>
+<td>/usr/bin/rsync-config [backup_IP] /home/mnt/backup</td>
+</tr>
+</tbody>
+</table>
+<p>Zentyal backup module general configuration is shown in the following screenshot:</p>
+<img alt="_images/backup_config_primary.png" src="_images/backup_config_primary.png" />
+<p>Settings for the backup Includes and Excludes tab are also shown following:</p>
+<img alt="_images/backup_exclude_primary.png" src="_images/backup_exclude_primary.png" />
+</div>
+<div class="section" id="configure-ssh-on-backup-server">
+<h3>Configure SSH on Backup Server<a class="headerlink" href="#configure-ssh-on-backup-server" title="Permalink to this headline">¶</a></h3>
+<p>At the backup server, open a terminal session and configure ssh with the
+commands:</p>
+<div class="highlight-python"><pre>sudo su -
+service autofs stop
+mkdir -p /home/mnt/backup/source_config
+service autofs start
+mkdir -p /root/.ssh
+cat /home/admin1/id_rsa.pub &gt;&gt; /root/.ssh/authorized_keys
+rm /home/admin1/id_rsa.pub
+exit</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is important to use two greater than symbols in the previous commands
+so that any existing keys are not erased.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Connect the removable drive to the redundant backup server. Connecting the
+external drive to the primary server on eSATA may prevent the server from
+rebooting.</p>
+</div>
+<p>For instructions on setting up an external backup drive, see
+<a class="reference internal" href="07_backup.html#backup"><em>Backing Up Server Data</em></a>.</p>
+</div>
+</div>
+<div class="section" id="configuring-a-backup-server">
+<h2>Configuring a Backup Server<a class="headerlink" href="#configuring-a-backup-server" title="Permalink to this headline">¶</a></h2>
+<p>The primary server configuration can be restored to a backup server at any
+time. Here is a brief outline of the steps for this to work:</p>
+<ul class="simple">
+<li>On the primary server, make sure that a configuration backup has run.</li>
+<li>On the primary server, run the cron job <tt class="docutils literal"><span class="pre">rsync-config</span></tt> to propagate the backup.</li>
+<li>Disconnect the redundant server from the network.</li>
+<li>On the redundant server, set the backup directory to <tt class="docutils literal"><span class="pre">/home/mnt/backup/source_config</span></tt>.</li>
+<li>Perform a services restore on the redundant server.</li>
+<li>Reset the redundant server settings as described previously.</li>
+<li>Shutdown the redundant server, reconnect it to the network, and restart.</li>
+</ul>
+</div>
+<div class="section" id="device-replication-backup-server">
+<h2>Device Replication Backup Server<a class="headerlink" href="#device-replication-backup-server" title="Permalink to this headline">¶</a></h2>
+<p>Due to the natue of current AAltSys install procedures, setting up replication
+is technical and tedious. Basically, the the home partition must be backed up,
+erased, recreated using Linux-HA, and then the files and permissions must be
+reinstalled. Directions for using Linux-HA are available at
+<a class="reference external" href="http://www.linux-ha.org/">http://www.linux-ha.org/</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_procedures.html" title="Procedures of Operation"
+             >previous</a></li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

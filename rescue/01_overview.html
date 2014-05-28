@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>System Rescue CD Overview &mdash; AAltsys Server 3.0 Rescue 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Rescue 3.0 documentation" href="index.html" />
+    <link rel="next" title="SysRescue First Steps" href="02_firststeps.html" />
+    <link rel="prev" title="Using SysRescue Utilities" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="02_firststeps.html" title="SysRescue First Steps"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="index.html" title="Using SysRescue Utilities"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">System Rescue CD Overview</a><ul>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#contents">Contents</a></li>
+<li><a class="reference internal" href="#getting-started">Getting Started</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Using SysRescue Utilities</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="02_firststeps.html"
+                        title="next chapter">SysRescue First Steps</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/01_overview.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="system-rescue-cd-overview">
+<h1>System Rescue CD Overview<a class="headerlink" href="#system-rescue-cd-overview" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This documentation is extracted from the System Rescue CD documentation found on line at <a class="reference external" href="http://www.sysresccd.org/Online-Manual-EN">http://www.sysresccd.org/Online-Manual-EN</a>. Please refer to the original documentation there.</p>
+</div>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>SystemRescueCd is a Linux system available on a bootable CD-ROM that allows you to repair your system and your data after a crash. It also aims to provide an easy way to do administrative tasks on your computer, such as creating and editing the partitions of the hard disk. It contains a lot of system utilities (parted, partimage, fstools, ...) and basic functions (editors, midnight commander, network tools). It aims to be very easy to use: just boot from the CD-ROM, and you can do everything. The kernel of the system supports most important file systems (ext2/ext3, reiserfs, reiser4, xfs, jfs, vfat, ntfs, iso9660), and network ones (samba and nfs).</p>
+<p>You can use SystemRescueCd for many tasks:</p>
+<ul class="simple">
+<li>The first time you use the computer, when no operating system is installed. The first task is creating partitions on the hard disk, and installing the operating system. With this CD-ROM, you can make partitions easily with the graphical partition tool GParted, and you can install Gentoo Linux.</li>
+<li>After a crash, or a mistake, you may have problems booting. For example, after installing Windows, your bootloader (LILO, Grub) may have been erased from the MBR. With this CD-ROM, you have all you need for reinstalling Grub or Lilo.</li>
+<li>For windows users that don not have Linux installed, it provides a tiny Linux System with most important system tools. For example, Windows users can backup their system partition using Partimage. They need Linux to run partimage.</li>
+</ul>
+</div>
+<div class="section" id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<p>Here is a short list that describes what you will find on this CD-ROM:</p>
+<ul class="simple">
+<li>A recent Linux kernel, that supports most important file systems, and the most important hardware. Supported file systems include: Ext2/Ext3, Reiserfs, Reiser4, Fat16/Fat32, XFS, JFS, NTFS, and others. The kernel supports NFS and Samba.</li>
+<li>Graphical partition tools, that aim to be free partition-magic clones for Linux. You can use GParted.</li>
+<li>Most important console system tools for Linux. Of course, you have GNU Parted (partition editor), Partimage (drive image clone) for backing up partitions to an image file, File system tools (e2fsprogs for ext2/ext3, reiserfsprogs for ReiserFS, reiser4progs for reiser4, xfsprogs for XFS, jfsutils for JFS, dosfstools for FAT, NtfsProgs for NTFS). You can use dump/restore for backing up an ext2/ext3 partition.</li>
+<li>Ntfs-3g (Ntfs driver third generation) provides a full read-write support for NTFS partitions from Linux.</li>
+<li>Clam-AntiVirus. This is a free AntiVirus software.</li>
+<li>Usual tools for Linux users: tar/gzip/bzip2 for archiving files. The same tools for Windows users: zip/unzip, rar/unrar, p7zip are provided. This means that you are able to backup/restore your windows data. We have added DAR (Disk Archiver). This is a program like tar, but more powerful.</li>
+<li>Midnight-Commander (type &#8220;mc&#8221; on the console command line) is a free Norton Commander clone for Linux. With mc, it&#8217;s easy to browse, copy, move, edit all files on your computer. If you don&#8217;t know all the linux shell commands well, you can start with mc.</li>
+<li>Lightweight web browsers lynx or links. Under FrameBuffer mode, you can pass parameters to the command line of the links program. It will allow you to enable the graphical mode. It would show images, and you get a nice interface.</li>
+<li>Of course, editors are important when you have problems. Nano (easy editor),vim (vi improved) and qemacs (emacs clone) are provided for the text mode.</li>
+<li>The X.Org / Xvesa graphical environments and the WindowMaker window manager. It allows you to use graphical programs such as GParted, editors (gvim and leafpad), and Firefox-2.0 (you may need help from internet).</li>
+</ul>
+</div>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>System messages are important. Read the text of messages for information about your system.</li>
+<li>You can login on another console.</li>
+<li>The root password is empty.</li>
+<li>To auto-configure networking, type <tt class="kbd docutils literal"><span class="pre">dhcpcd</span> <span class="pre">eth0</span></tt> (or similar). To set network addresses by hand, use the command <tt class="kbd docutils literal"><span class="pre">net-setup</span> <span class="pre">eth0</span></tt>.</li>
+<li>To start an ssh server on this system, type <tt class="kbd docutils literal"><span class="pre">/etc/init.d/sshd</span> <span class="pre">start</span></tt>. If you need to log in remotely as root, type <tt class="kbd docutils literal"><span class="pre">passwd</span> <span class="pre">root</span></tt> to reset the root password to a known value.</li>
+<li>To use graphical tools such as <em>GParted</em>, you can use a graphical environment by typing <tt class="kbd docutils literal"><span class="pre">wizard</span></tt> in the console. You will have the choice between two graphical environments: <em>Xorg</em> and <em>Xvesa</em>. Try Xorg first, but if it fails to start, run <tt class="kbd docutils literal"><span class="pre">wizard</span></tt> again and choose <em>Xvesa</em>. <em>Xvesa</em> should always work, provided you are using a 32bit kernel. (Xvesa does not work on 64bits kernels <em>rescue64</em> and <em>altker64</em>.)</li>
+<li>Available editors include: <em>vim</em>, <em>nano</em>, <em>qemacs</em> in console mode. You can also use <em>gvim</em> and <em>leafpad</em> in the graphical environment.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Mounting anything on <em>/mnt</em> will freeze the system! Use <tt class="kbd docutils literal"><span class="pre">mkdir</span> <span class="pre">/mnt/mydir</span></tt> and <tt class="kbd docutils literal"><span class="pre">mount</span> <span class="pre">xxx</span> <span class="pre">/mnt/mydir</span></tt> instead.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="02_firststeps.html" title="SysRescue First Steps"
+             >next</a></li>
+        <li class="right" >
+          <a href="index.html" title="Using SysRescue Utilities"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

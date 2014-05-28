@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Backing Up Server Data &mdash; AAltsys Server 3.0 Installation 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
+    <link rel="next" title="AAD Server Terminal Services" href="08_aadserver.html" />
+    <link rel="prev" title="Office File Sharing" href="06_office.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_aadserver.html" title="AAD Server Terminal Services"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="06_office.html" title="Office File Sharing"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Backing Up Server Data</a><ul>
+<li><a class="reference internal" href="#restoring-backups">Restoring Backups</a></li>
+<li><a class="reference internal" href="#performing-a-demand-backup">Performing a Demand Backup</a></li>
+<li><a class="reference internal" href="#id1">Backup Configuration</a><ul>
+<li><a class="reference internal" href="#configure-zentyal">Configure Zentyal</a></li>
+<li><a class="reference internal" href="#moving-home-files-to-server">Moving Home Files to Server</a></li>
+<li><a class="reference internal" href="#what-is-backed-up">What Is Backed Up</a></li>
+<li><a class="reference internal" href="#what-is-not-backed-up">What Is Not Backed Up</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-a-server-clone-image">Creating a Server Clone Image</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="06_office.html"
+                        title="previous chapter">Office File Sharing</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="08_aadserver.html"
+                        title="next chapter">AAD Server Terminal Services</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/07_backup.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="backing-up-server-data">
+<span id="backup"></span><h1>Backing Up Server Data<a class="headerlink" href="#backing-up-server-data" title="Permalink to this headline">¶</a></h1>
+<p>The AAltSys Server provides robust, simple, and inexpensive options for data
+backup. Backups can be written to DVDs for a small amount of information, but
+we recommend using auto-mounted USB or eSATA drives to handle large data sets.
+For instructions on preparing (an external) drive for storing backups, refer to
+article <a class="reference external" href="../resources/05_backupdrive.html#backupdrive" title="(in AAltsys Server 3.0 Technical v3.0)"><em>Automount Drive Setup</em></a>.</p>
+<div class="section" id="restoring-backups">
+<h2>Restoring Backups<a class="headerlink" href="#restoring-backups" title="Permalink to this headline">¶</a></h2>
+<p>Backups are stored in Duplicity rsync format. Duplicity is available for free
+on Linux and Mac. The Linux version of Duplicity can execute on Windows under
+Cygwin; an ISO image of Duplicity encapsulated in Cygwin is being developed.</p>
+</div>
+<div class="section" id="performing-a-demand-backup">
+<span id="backup-configuration"></span><h2>Performing a Demand Backup<a class="headerlink" href="#performing-a-demand-backup" title="Permalink to this headline">¶</a></h2>
+<p>To manually perform a backup on Zentyal 2.2 or later run one of the following
+commands:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">sudo</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">zentyal</span><span class="o">-</span><span class="n">ebackup</span><span class="o">/</span><span class="n">backup</span><span class="o">-</span><span class="n">tool</span> <span class="o">--</span><span class="n">full</span>
+<span class="n">sudo</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">zentyal</span><span class="o">-</span><span class="n">ebackup</span><span class="o">/</span><span class="n">backup</span><span class="o">-</span><span class="n">tool</span> <span class="o">--</span><span class="n">incremental</span>
+</pre></div>
+</div>
+<p>To manually perform a backup on Zentyal 2.0 (older) run one of these commands:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">sudo</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">ebox</span><span class="o">-</span><span class="n">ebackup</span><span class="o">/</span><span class="n">ebox</span><span class="o">-</span><span class="n">remote</span><span class="o">-</span><span class="n">ebackup</span> <span class="o">--</span><span class="n">full</span>
+<span class="n">sudo</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">ebox</span><span class="o">-</span><span class="n">ebackup</span><span class="o">/</span><span class="n">ebox</span><span class="o">-</span><span class="n">remote</span><span class="o">-</span><span class="n">ebackup</span> <span class="o">--</span><span class="n">incremental</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Backup Configuration<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Backups are written inside of the <strong>/home</strong> directory. The directory for backups
+is created with the terminal command:</p>
+<div class="highlight-python"><pre>sudo mkdir -p /home/mnt/backup/source_config</pre>
+</div>
+<p>Linux cron jobs perform backup functions. Zentyal manages cron tab entries for
+Duplicity operations. Writing backup files to external media requires entering
+cron jobs using Webmin. An example entry for writing to DVD is shown following:</p>
+<img alt="_images/backup_dvdcron.png" src="_images/backup_dvdcron.png" />
+<p>The software for writing DVDs may be missing from the OS. It is installed with
+the command:</p>
+<div class="highlight-python"><pre>sudo apt-get install dvd+rw-tools</pre>
+</div>
+<div class="section" id="configure-zentyal">
+<h3>Configure Zentyal<a class="headerlink" href="#configure-zentyal" title="Permalink to this headline">¶</a></h3>
+<p>Backups are managed in Zentyal. From the universe of potential configurations,
+the following arrangement is suggested to provide the flexibility and capability
+required in most situations.</p>
+<ul class="simple">
+<li>Open Zentyal, and navigate to tab
+<em class="menuselection">Core ‣ Backup ‣ Configuration and Status</em></li>
+<li>Set the backup path to <tt class="kbd docutils literal"><span class="pre">/home/mnt/backup</span></tt></li>
+<li>Leave prompts <tt class="docutils literal"><span class="pre">User:</span></tt> and <tt class="docutils literal"><span class="pre">Password:</span></tt> blank</li>
+<li>Fill in a schedule for full and incremental backups as shown following:</li>
+</ul>
+<img alt="_images/backup_config.png" src="_images/backup_config.png" />
+<ul class="simple">
+<li>Navigate to tab <em class="menuselection">Core ‣ Backup ‣ Includes and Excludes</em></li>
+<li>Enter Includes and Excludes as shown in the following image:</li>
+</ul>
+<img alt="_images/backup_exclude.png" src="_images/backup_exclude.png" />
+</div>
+<div class="section" id="moving-home-files-to-server">
+<h3>Moving Home Files to Server<a class="headerlink" href="#moving-home-files-to-server" title="Permalink to this headline">¶</a></h3>
+<p>Storing important files on workstation hard drives is not only risky, but
+inconvenient to business operations. Instead, a user should manage files in
+server directories. To guarantee that new files are created there, set the
+user&#8217;s server home folder as the default directory in programs. Server-based
+home folders work across platforms such as Windows PCs and Apple desktops,
+as described in the following table:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="38%" />
+<col width="15%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Workstation type</th>
+<th class="head">Connection to server home</th>
+<th class="head">Works from</th>
+<th class="head">Instructions</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>LTSP terminals</td>
+<td>uses /home/$USER by default</td>
+<td>local only</td>
+<td>no instructions</td>
+</tr>
+<tr class="row-odd"><td>Windows PCs</td>
+<td>maps /home/$USER to drive H:</td>
+<td>local only</td>
+<td>instructions</td>
+</tr>
+<tr class="row-even"><td>Linux workstations</td>
+<td>ssh link to /home/$USER</td>
+<td>Internet</td>
+<td>instructions</td>
+</tr>
+<tr class="row-odd"><td>Apple desktops</td>
+<td>ssh link to /home/$USER</td>
+<td>Internet</td>
+<td>instructions</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="what-is-backed-up">
+<h3>What Is Backed Up<a class="headerlink" href="#what-is-backed-up" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Server configuration data, eBox Database</li>
+<li>Printer configuration data, /etc/cups</li>
+<li>Virtual machine images, /home/convirt</li>
+<li>Shared files, /home/samba/shares/...</li>
+<li>Home directories, /home/$USER...</li>
+</ul>
+</div>
+<div class="section" id="what-is-not-backed-up">
+<h3>What Is Not Backed Up<a class="headerlink" href="#what-is-not-backed-up" title="Permalink to this headline">¶</a></h3>
+<p>The base operating system of the server is not backed up. For an OS backup to
+be useful, we would need to answer the following questions:</p>
+<ul class="simple">
+<li>How can you backup the operating system when it is running?</li>
+<li>Without a working operating system, how would you restore the OS?</li>
+</ul>
+<p>Instead of trying to backup the server OS, we have made AAltSys Server OS
+installation relatively fast and simple. Keep the AAltSys or Zentyal install
+DVD handy, along with a list of any console changes to the server
+configuration.</p>
+</div>
+</div>
+<div class="section" id="creating-a-server-clone-image">
+<h2>Creating a Server Clone Image<a class="headerlink" href="#creating-a-server-clone-image" title="Permalink to this headline">¶</a></h2>
+<p>Use the CloneZilla utility disk to create a complete server image, stored on
+your backup drive.</p>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="https://help.ubuntu.com/community/Autofs">https://help.ubuntu.com/community/Autofs</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><a class="reference external" href="http://unix.stackexchange.com/questions/85061/automount-not-disabling-in-ubuntu-12-04-or-13-04">http://unix.stackexchange.com/questions/85061/automount-not-disabling-in-ubuntu-12-04-or-13-04</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><a class="reference external" href="https://help.ubuntu.com/community/Mount/USB">https://help.ubuntu.com/community/Mount/USB</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="08_aadserver.html" title="AAD Server Terminal Services"
+             >next</a></li>
+        <li class="right" >
+          <a href="06_office.html" title="Office File Sharing"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

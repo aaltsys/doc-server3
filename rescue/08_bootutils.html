@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SysRescue Boot Utilities &mdash; AAltsys Server 3.0 Rescue 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Rescue 3.0 documentation" href="index.html" />
+    <link rel="prev" title="System Task Utilities" href="06_systemtasks.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_systemtasks.html" title="System Task Utilities"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SysRescue Boot Utilities</a><ul>
+<li><a class="reference internal" href="#boot-floppy-disks-overview">Boot Floppy Disks Overview</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="06_systemtasks.html"
+                        title="previous chapter">System Task Utilities</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/08_bootutils.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sysrescue-boot-utilities">
+<h1>SysRescue Boot Utilities<a class="headerlink" href="#sysrescue-boot-utilities" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This documentation is extracted from the System Rescue CD documentation found on line at <a class="reference external" href="http://www.sysresccd.org/Online-Manual-EN">http://www.sysresccd.org/Online-Manual-EN</a>. Please refer to the original documentation there.</p>
+</div>
+<p>SystemRescueCd allows you to do many administration tasks by booting from virtual floppy disks. Virtual floppy booting is comparable to starting the computer from a physical floppy disk, in that the hard drive is accessible but not active. This permits many repair functions such as system backup, password recovery, data repair, and hardware testing.</p>
+<div class="section" id="boot-floppy-disks-overview">
+<h2>Boot Floppy Disks Overview<a class="headerlink" href="#boot-floppy-disks-overview" title="Permalink to this headline">¶</a></h2>
+<p>To boot from a virtual floppy, first start the computer from the SysRescueCD to see the first menu, as shown below.</p>
+<img alt="_images/sysrescmenu.png" src="_images/sysrescmenu.png" />
+<p>From the SysRescueCD main menu, select item <em>F)</em> to see a list of available virtual boot images:</p>
+<img alt="_images/sysrescboot.png" src="_images/sysrescboot.png" />
+<p>Select an item from the list to boot an image which will run the corresponding program.</p>
+<p><strong>MEMTEST</strong>: Use <em>MemTest+</em> to test system memory for damage.</p>
+<p><strong>NTPASSWD</strong>: Use <em>NT Password and Registry editor</em> to change system information in Windows installations. Of most interest is the ability to change the password of a user account. Now, you will not have to reinstall Windows if you forget the password of the administrator account, as you can edit the password with this utility. This program also allows you to edit the Windows registry, even when Windows is installed on an NTFS disk.</p>
+<p><strong>FREEDOS</strong>: To start a DOS session, select <em>FreeDos</em> from the menu. FreeDos is a free operating system compatible with MS-DOS. It allows you to run DOS programs such as Partition Magic or Drive Image without an MS-DOS license.</p>
+<p><strong>NETBOOT</strong>: Select <em>Network Booting</em> to boot from a network image for computers which do not support PXE, or which are not set to enable PXE booting in the BIOS.</p>
+<p><strong>HDT</strong>: <em>Hardware Diagnostics Tool</em> is an advanced diagnostic system program which will detect your computer hardware, such as the processor, chipset, mainboard, network card, and so forth. It is very useful, for example, when you want to download a driver and you don&#8217;&#8216;t know which one to take.</p>
+<p><strong>ranish</strong>: The <em>Ranish Partition Manager</em> is a low level partition manager with power, unlike <em>Fdisk</em> from Microsoft.</p>
+<p><strong>AIDA</strong>: <em>Advanced Information Diagnostics Tool</em> is a diagnostic program similar to <em>HDT</em>. While superceded, it is still in common use.</p>
+<p><strong>GAG</strong>: <em>Graphical-Boot-Manager</em> is a working boot manager similar to <em>Lilo</em>, <em>Grub</em>, or <em>Boot-Magic</em>.</p>
+<p><strong>DBAN</strong>: Use <em>Darik&#8217;&#8217;s Boot and Nuke</em> to destroy all data on a computer&#8217;&#8217;s drives. For example, use <em>Dban</em> before selling or giving away a computer.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><em>Dban</em> is intended to produce irretrievable data loss.</p>
+</div>
+<p><strong>MHDD</strong>: Use <em>Hard Drive Diagnostics</em> to perform low-level diagnostics on a hard drive.</p>
+<p><strong>SGD</strong>: Use the <em>Super Grub Disk</em> bootloader to identify and manage bootable devices.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_systemtasks.html" title="System Task Utilities"
+             >previous</a></li>
+        <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

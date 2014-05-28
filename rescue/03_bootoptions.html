@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Sysem Rescue CD Boot Options &mdash; AAltsys Server 3.0 Rescue 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Rescue 3.0 documentation" href="index.html" />
+    <link rel="next" title="Network Options with SysRescue" href="05_networking.html" />
+    <link rel="prev" title="SysRescue First Steps" href="02_firststeps.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="05_networking.html" title="Network Options with SysRescue"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="02_firststeps.html" title="SysRescue First Steps"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sysem Rescue CD Boot Options</a><ul>
+<li><a class="reference internal" href="#kernels-on-systemrescuecd">Kernels on SystemRescueCd</a><ul>
+<li><a class="reference internal" href="#standard-kernels-rescuecd-and-rescue64">standard-kernels: (rescuecd and rescue64)</a></li>
+<li><a class="reference internal" href="#alternative-kernels-altker32-and-altker64">alternative-kernels: (altker32 and altker64)</a></li>
+<li><a class="reference internal" href="#bit-kernels">32 bit kernels</a></li>
+<li><a class="reference internal" href="#id1">64 bit kernels</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#choosing-a-kernel">Choosing a kernel</a></li>
+<li><a class="reference internal" href="#booting-from-the-cd-rom">Booting from the CD-ROM</a></li>
+<li><a class="reference internal" href="#boot-options">Boot options</a><ul>
+<li><a class="reference internal" href="#general-boot-options">General boot options</a></li>
+<li><a class="reference internal" href="#hardware-drivers-and-troubleshooting-options">Hardware, drivers and troubleshooting options</a></li>
+<li><a class="reference internal" href="#network-configuration-and-remote-access">Network configuration and remote access</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#network-boot-using-pxe">Network boot using PXE</a></li>
+<li><a class="reference internal" href="#options-provided-for-autorun">Options provided for autorun</a></li>
+<li><a class="reference internal" href="#changing-default-boot-options">Changing default boot options</a></li>
+<li><a class="reference internal" href="#booting-from-the-network-via-pxe">Booting from the network via PXE</a></li>
+<li><a class="reference internal" href="#booting-with-an-old-computer">Booting with an old computer</a></li>
+<li><a class="reference internal" href="#booting-from-a-virtual-machine">Booting from a Virtual Machine</a></li>
+<li><a class="reference internal" href="#booting-from-the-windows-partition">Booting from the Windows partition</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="02_firststeps.html"
+                        title="previous chapter">SysRescue First Steps</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="05_networking.html"
+                        title="next chapter">Network Options with SysRescue</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/03_bootoptions.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sysem-rescue-cd-boot-options">
+<h1>Sysem Rescue CD Boot Options<a class="headerlink" href="#sysem-rescue-cd-boot-options" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This documentation is extracted from the System Rescue CD documentation found on line at <a class="reference external" href="http://www.sysresccd.org/Online-Manual-EN">http://www.sysresccd.org/Online-Manual-EN</a>. Please refer to the original documentation there.</p>
+</div>
+<div class="section" id="kernels-on-systemrescuecd">
+<h2>Kernels on SystemRescueCd<a class="headerlink" href="#kernels-on-systemrescuecd" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="standard-kernels-rescuecd-and-rescue64">
+<h3>standard-kernels: (rescuecd and rescue64)<a class="headerlink" href="#standard-kernels-rescuecd-and-rescue64" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>recent linux version: linux-2.6.35 with recent linux-stable fixes</li>
+<li>kernel sources are based on vanilla (it is stable) with the sysresccd patchset.</li>
+<li>both IDE and SATA hard disk drivers are based on the libsata (all disks are sda, sdb, ...)</li>
+<li>almost all disk-controllers (IDE, SATA, SCSI) and network drivers are compiled as modules (so that you can use noload-xxx if it hangs)</li>
+<li>supports the frame buffer, the frame buffer can be enabled with the boot option (vga=xxx)</li>
+<li>the standard kernel is preferred if you want to use either ext4 or btrfs</li>
+</ul>
+</div>
+<div class="section" id="alternative-kernels-altker32-and-altker64">
+<h3>alternative-kernels: (altker32 and altker64)<a class="headerlink" href="#alternative-kernels-altker32-and-altker64" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>stable linux version version: linux-2.6.32.25</li>
+<li>kernel sources are based on linux-2.6.32 (series with long term maintenance) with the sysresccd patchset</li>
+<li>the two kernel images are altker32 (32bit) and altker64 (64bit)</li>
+<li>both IDE and SATA hard disk drivers are based on the libsata (all disks are sda, sdb, ...)</li>
+<li>almost all disk-controllers (IDE, SATA, SCSI) and network drivers are built-in (no need to load a module)</li>
+<li>no frame buffer support</li>
+</ul>
+</div>
+<div class="section" id="bit-kernels">
+<h3>32 bit kernels<a class="headerlink" href="#bit-kernels" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>rescuecd and altker32 are the two 32bit kernels provided</li>
+<li>any Intel/AMD/VIA based processor should work with the 32bit kernel</li>
+<li>you can run a 32bit kernel even if you have a processor that supports 64bit instructions (amd64 / em64t)</li>
+<li>you can work (backup/restore) 64bit programs with a 32bit kernel</li>
+<li>you cannot chroot on an existing linux partition with 64bit programs with a 32bit kernel</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h3>64 bit kernels<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>rescue64 and altker64 are the two 64bit kernels provided</li>
+<li>64bit kernels will work only if your processor supports amd64 (AMD implementation of x86_64) or em64t (Intel implementation of x86_64) instruction set.</li>
+<li>64bit kernels do not work on IA64 / Itanium processors.</li>
+<li>You must use a 64bit kernel if you want to chroot to a linux system using 64bit programs.</li>
+<li>64bit kernels can execute 32bit programs since the IA32 instructions support is included in the kernel</li>
+</ul>
+</div>
+</div>
+<div class="section" id="choosing-a-kernel">
+<h2>Choosing a kernel<a class="headerlink" href="#choosing-a-kernel" title="Permalink to this headline">¶</a></h2>
+<p>Pressing [Enter] boots SystemRescueCD with defaults that are a good starting point.
+These kernels are available:
++ <strong>rescuecd</strong> Default for 32bit systems, with Framebuffer disabled, best choice.
++ <strong>rescue64</strong> Default 64 bit kernel. Use it if you want to chroot to a 64bit linux system installed on your hard disk, or if you have to run 64 bit programs. This kernel is able to boot with 32bit programs, and it requires a processor with 64bit instructions (amd64 / em64t).
++ <strong>altker32</strong> an alternative kernel for 32bit systems. Boot with this kernel if you have problems with rescuecd
++ <strong>altker64</strong> an alternative kernel for 64bit systems. Boot with this kernel in case you have problems with rescue64.</p>
+</div>
+<div class="section" id="booting-from-the-cd-rom">
+<h2>Booting from the CD-ROM<a class="headerlink" href="#booting-from-the-cd-rom" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To boot from a CD-ROM ensure that the BIOS is configured to boot from a CD drive before the hard disk. To start SystemRescueCd, insert the CD in the drive, and power on or reset your computer.</p>
+</div>
+<p>Move up and down the SystemRescueCD menu with the cursor keys. To change the options for a selection, press <tt class="kbd docutils literal"><span class="pre">&lt;Tab&gt;</span></tt>; press <tt class="kbd docutils literal"><span class="pre">&lt;Esc&gt;</span></tt> to return to the menu from the options entry line. Press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> at any time to start the highlighted selection.</p>
+<p>As the system begins to load, if you did not disable this option, the map for your keyboard will be requested. Next, the kernel will continue to load, and the hardware configuration will be autodetected. Boot scripts will load kernel modules required for all detected hardware automatically. Boot will end with a shell prompt, where you have several linux consoles available. You can change between them by pressing Alt+F1 for the first one, Alt+F2 for the second, ...</p>
+</div>
+<div class="section" id="boot-options">
+<h2>Boot options<a class="headerlink" href="#boot-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general-boot-options">
+<h3>General boot options<a class="headerlink" href="#general-boot-options" title="Permalink to this headline">¶</a></h3>
+<p>Press <tt class="kbd docutils literal"><span class="pre">&lt;Tab&gt;</span></tt> to add additional options.</p>
+<ul class="simple">
+<li><strong>docache</strong>: causes the CD-ROM to be fully loaded into memory. A slower start but once complete, programs start faster and the CD drive will be released allowing normal access to other CDs. This requires 400MB of memory to cache everything (including the bootdisks and isolinux directories). Add lowmem if you have less that 400MB of memory of to prevent these directories from being copied.</li>
+<li><strong>setkmap=kk</strong>: defines the keymap to load (example: <tt class="kbd docutils literal"><span class="pre">setkmap=de</span></tt> for German keyboards). This way you will not be prompted for the keyboard configuration during the boot.</li>
+<li><strong>root=/dev/xdnp</strong>: the <em>root=&lt;device&gt;</em> option boots an existing linux system. For example, if you have linux Gentoo installed on <em>/dev/sda6</em>, use <tt class="kbd docutils literal"><span class="pre">rescuecd</span> <span class="pre">root=/dev/sda6</span></tt> to start it. Keep in mind that you must use a 64bit kernel if your system is made of 64bit programs. This option works with LVM volumes, e.g., <tt class="kbd docutils literal"><span class="pre">rescuecd</span> <span class="pre">root=/dev/VolGroup00/LogVol00</span></tt>. The option <tt class="kbd docutils literal"><span class="pre">root=auto</span></tt> will scan all the block devices for a linux system; the first linux system found will be started. So <em>root=auto</em> lets you start the system installed from the CD-ROM in case you have problem with your boot loader or kernel. If the label of the partition where linux is installed is <em>mylinux</em>, then boot it using rescuecd <tt class="kbd docutils literal"><span class="pre">root=LABEL=mylinux</span></tt>. Similarly specify a partition using its uuid: <tt class="kbd docutils literal"><span class="pre">root=UUID=b3d3bec5-997a-413e-8449-0d0ec41ccba7</span></tt>.</li>
+<li><strong>initscript=service:action</strong>: This option allows one to start/stop a service at boot time. For instance if you need the samba service to be started, you can boot with: <tt class="kbd docutils literal"><span class="pre">initscript=samba:start</span></tt>. This does the same thing as <em>/etc/init.d/samba start</em>. Use this option a multiple of times for different services. All the actions that are supported by an initscript can be used.</li>
+<li><strong>backstore=xxx</strong>: SystemRescueCd comes with support for the backing-stores. A backing-store saves all the changes you can make, so that you keep these changes the next time you boot. By default, sysresccd automatically scan removable devices (eg: USB sticks) at boot time and uses the first backing-store it finds. A backing-store is not mandatory and if the scan fails, it will store the files which have changed in memory. To disable the disks scan at boot time specify <tt class="kbd docutils literal"><span class="pre">backstore=off</span></tt> on the boot command line. If you want to save your backing-store file on a harddisk, boot with <tt class="kbd docutils literal"><span class="pre">backstore=alldev</span></tt> to scan all devices (not just removable devices). The default location for a backing-stores file is any file named <em>sysrcd.bs</em> located at the root of a disk which is often a USB stick. Change the path by using <tt class="kbd docutils literal"><span class="pre">backstore=/sysrcd/mybackstore.bs</span></tt>.</li>
+<li><strong>isoloop=xxx</strong>: Grub2 will boot from an ISO image which is stored on the hard disk. If you put a copy of <em>systemrescuecd.iso</em> on a partition that Grub2 can read then you can boot SystemRescueCd directly from the ISO image stored on your hard drive. When booting an image, SystemRescueCd must be aware that its <em>sysrcd.dat</em> file is in an ISO and not directly on the partition. For that reason, this <tt class="kbd docutils literal"><span class="pre">isoloop=xxx</span></tt> boot option is required in your <em>grub.cfg</em>. This option specifies the path of the ISO image in the partition that grub considers as its root partition. The path of the ISO image may be different from the path on your linux system. If you have a separate boot partition mounted on <em>/boot</em> and if you copy this ISO image to <em>/boot/sysrcd/systemrescuecd-x86.iso</em> then the option has to be <tt class="kbd docutils literal"><span class="pre">isoloop=/sysrcd/systemrescuecd-x86.iso</span></tt>. This is because the boot partition is what Grub2 will consider as its root partition during the boot process.</li>
+</ul>
+</div>
+<div class="section" id="hardware-drivers-and-troubleshooting-options">
+<h3>Hardware, drivers and troubleshooting options<a class="headerlink" href="#hardware-drivers-and-troubleshooting-options" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>dodebug</strong>: Enables verbose messages in linuxrc.</li>
+<li><strong>doload=xxx</strong>: loads needed kernel modules, multiple comma separated occurrences are permitted (example: <tt class="kbd docutils literal"><span class="pre">doload=3c59x,e1000</span></tt>).</li>
+<li><strong>noload=xxx</strong>: prevents loading kernel modules, multiple comma separated occurrences are permitted (example: <tt class="kbd docutils literal"><span class="pre">noload=3c59x,e1000</span></tt>). Use this option if you have a problem when the system loads a particular module.</li>
+<li><strong>nonet</strong>: this will disable the network auto detection at startup.</li>
+<li><strong>scandelay=x</strong>: pauses x seconds during the startup to allow slow devices to initialize. This is required when you boot a USB device. A delay of only few seconds should be enough.</li>
+<li><strong>doxdetect</strong>: This option forces the system to run the <em>mkxf86config</em> startup script and to run the hardware auto-detection from this script. Use this option if you have problems with the graphical environment configuration. This option replaces the option noxdetect that was useful in previous versions.</li>
+<li><strong>nodetect</strong>: prevents generic hardware auto-detection.</li>
+<li><strong>nomodeset</strong>: Do not load the Kernel-Mode-Setting video driver. You can use that option if you are experiencing problems with your screen during the boot process (just after modules are being loaded).</li>
+<li><strong>dostartx</strong>: load the X.Org graphical environment.</li>
+<li><strong>forcevesa</strong>: Forces X.Org to use the safe VESA driver instead of the best video driver detected for your video card. Use this option if you cannot get the graphical environment working with the default options.</li>
+<li><strong>forcevesa=xxx</strong>: The startx command will load the Xvesa server instead of Xorg, and use the screen resolution given as parameter (e.g. <tt class="kbd docutils literal"><span class="pre">1024x768</span></tt>, <tt class="kbd docutils literal"><span class="pre">1280x1024x32</span></tt>).</li>
+<li><strong>all-generic-ide</strong>: In case of problems related to your hard disk, try to enable this option (e.g. <tt class="kbd docutils literal"><span class="pre">rescuecd</span> <span class="pre">all-generic-ide</span></tt>).</li>
+<li><strong>nodmraid</strong>: Disable dmraid, for some motherboards with built-in RAID controller.</li>
+<li><strong>nomdadm</strong>: Disable mdadm, for software RAID.</li>
+<li><strong>acpi-off / noapic / irqpool</strong>: use these options if, during boot, the kernel hangs on a driver, or if it crashes, ...</li>
+<li><strong>lowmem</strong>: For systems with smaller memory, some daemons are not started including <em>sshd</em> and <em>nfsd</em>.</li>
+<li><strong>skipmount=/dev/xxx</strong>: The system mounts all the storage devices at boot time to find the <em>sysrcd.dat</em> file. If your hard disk is broken it should not be mounted. Boot with <tt class="kbd docutils literal"><span class="pre">skipmount=/dev/sda1</span> <span class="pre">skipmount=/dev/sda2</span></tt> to ignore these two partitions, for example.</li>
+</ul>
+</div>
+<div class="section" id="network-configuration-and-remote-access">
+<h3>Network configuration and remote access<a class="headerlink" href="#network-configuration-and-remote-access" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first"><strong>nonm</strong>: Use this option to disable the Network-Manager service that conflicts with the standard network command line tools such as <tt class="kbd docutils literal"><span class="pre">ifconfig</span></tt> and <tt class="kbd docutils literal"><span class="pre">ip</span></tt>. This option is not necessary when SystemRescueCd is booting from the network since the service is automatically stopped in that case.</p>
+</li>
+<li><p class="first"><strong>dodhcp</strong>: will request a DHCP server provide network attributes including IP address, gateway, and so forth. If there are multiple interfaces on the computer it will run the dhcp client on all of them by default, when no argument is specified with this option. Optionally specify which interfaces should be configured with dhcp to combine static and dynamic addresses in the automatic Ethernet configuration. For example, to use dhcp for <em>eth0</em> and <em>eth2</em> and a static address on <em>eth1</em>, you can use options like:</p>
+<div class="highlight-python"><pre>dodhcp=eth0,eth2 eth1=192.168.128.1/24.</pre>
+</div>
+</li>
+<li><p class="first"><strong>nodhcp</strong>: never run the dhcp client in the initramfs boot script. May be useful if you use PXE boot on a computer with several ethernet interfaces.</p>
+</li>
+<li><p class="first"><strong>ethx=ipaddr/cidr</strong>: Sets the static IP address of all the ethernet interfaces on the system. The <tt class="kbd docutils literal"><span class="pre">/cidr</span></tt> extension is optional. For instance, if you use option <tt class="kbd docutils literal"><span class="pre">ethx=192.168.0.1</span></tt> on a machine with two ethernet adapters, both <em>eth0</em> and <em>eth1</em> will be configured with <em>192.168.0.1</em>. You can use the format <tt class="kbd docutils literal"><span class="pre">ethx=10.0.0.1/24</span></tt> (using the cidr notation) if you do not use the default netmask.</p>
+</li>
+<li><p class="first"><strong>eth0=ipaddr/cidr</strong>: This option is similar to <em>ethx=ipaddr/cidr</em> but it configures only one interface at a time. To configure the network on a server that has two interfaces, use, for example: <tt class="kbd docutils literal"><span class="pre">eth0=192.168.10.1/24</span> <span class="pre">eth1=192.168.20.1</span></tt>.</p>
+</li>
+<li><p class="first"><strong>dns=ipaddr</strong>: Sets the static IP address of the DNS nameserver you want to use to resolve the names. For instance <tt class="kbd docutils literal"><span class="pre">dns=192.168.0.254</span></tt> means that you want to use <em>192.168.0.254</em> as the DNS server.</p>
+</li>
+<li><p class="first"><strong>gateway=ipaddr</strong>: Sets the static IP address of the default route on your network. For instance <tt class="kbd docutils literal"><span class="pre">gateway=192.168.0.254</span></tt> means that the computer can connect to a computer outside of the local network via <em>192.168.0.254</em>.</p>
+</li>
+<li><p class="first"><strong>dhcphostname=myhost</strong>: Sets the hostname that the DHCP client will send to the DHCP server. This may be required if the default hostname cannot be used with your DHCP configuration.</p>
+</li>
+<li><p class="first"><strong>rootpass=123456</strong>: Sets the root password of the system running on the livecd to <em>123456</em>. That way you can connect from the network and ssh on the livecd and give <em>123456</em> password as the root password.</p>
+</li>
+<li><p class="first"><strong>vncserver=x:123456</strong>: This options forces the system to configure the VNC-server and to start it automatically at boot time. You have to replace <em>x</em> with the number of displays you want, and <em>123456</em> with your password. The password must be between 5 and 12 characters, else the boot option will be ignored. In other words the command option <tt class="kbd docutils literal"><span class="pre">vncserver=2:MyPaSsWd</span></tt> will give you access to two displays, display=1 on tcp/5901 and display=2 on tcp/5902 (Display 0 is reserved for X.Org).</p>
+</li>
+<li><p class="first"><strong>nameif=xxx</strong>: You can specify what interface name to give to a particular interface using the mac address. Here is how you can specify which interface is using which mac address on a machine with two network interfaces: <tt class="kbd docutils literal"><span class="pre">nameif=eth0!00:0C:29:57:D0:6E,eth1!00:0C:29:57:D0:64</span></tt>. Be careful, you have to respect the separator (comma between the interfaces and exclamation marks between the name and the mac address). You can also use the magic keyword <tt class="kbd docutils literal"><span class="pre">BOOTIF</span></tt> when you boot from pxelinux. The pxeboot loader will set <em>BOOTIF</em> to the name of the interface used to boot. You can then use something like <tt class="kbd docutils literal"><span class="pre">nameif=eth0!BOOTIF</span></tt> if you want the boot interface to be called <em>eth0</em> on a computer with several Ethernet interfaces.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="network-boot-using-pxe">
+<h2>Network boot using PXE<a class="headerlink" href="#network-boot-using-pxe" title="Permalink to this headline">¶</a></h2>
+<p>SystemRescueCd provides several options for booting from the network using PXE. These options can be combined with other network boot options such as <em>ethx</em> (cf previous section). See PXE network booting to get a global overview of SystemRescueCd and PXE and Manage remote servers using PXE.
+The second stage downloads the kernel + initramfs using DHCP/TFTP.
+The third stage of the PXE boot process acquires the root files system.
+Several protocols are available.</p>
+<ul class="simple">
+<li><strong>netboot=tftp://ip/path/sysrcd.dat</strong>: from a TFTP server. The filesystem is loaded into memory. As a consequence computers with less than 400MB of memory will not be able to boot this way. The system will continue to work if the network is disconnected after the boot process.</li>
+<li><strong>netboot=http://ip:port/path/sysrcd.dat</strong>: from a Web server. The file system is loaded into memory. Computers with smaller memory will not be able to boot this way. The the system continues to work if the network is disconnected after the boot process.</li>
+<li><strong>netboot=nfs://ip:/path</strong>: mount an NFSv3 directory. The NFS url must be the path of the directory that contains <em>sysrcd.dat</em>. Only NFSv3 can be used, NFSv4 is not supported. NFS allows computers with smaller memory to boot SystemRescueCd from the network. After the boot process, continued network connection is required or you will loose access to the root file system.</li>
+<li><strong>netboot=nbd://ip:port</strong>: connect to an NBD server configured with <em>sysrcd.dat</em> on <em>ip:port</em>. NBD is easier to configure than NFS (only one TCP port involved) and it allows computers with smaller memory to boot SystemRescueCd from the network. After the boot process, the network connection continues to be required to access the root file system.</li>
+</ul>
+</div>
+<div class="section" id="options-provided-for-autorun">
+<h2>Options provided for autorun<a class="headerlink" href="#options-provided-for-autorun" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>ar_source=xxx</strong>: place where the autorun are stored. It may be the root directory of a partition (<em>/dev/sda1</em>), an nfs share (<em>nfs://192.168.1.1:/path/to/scripts</em>), a samba share (<em>smb://192.168.1.1/path/to/scripts</em>), or an http directory (<em>http://192.168.1.1/path/to/scripts</em>).</li>
+<li><strong>autoruns=[0-9]</strong>: comma separated list of the autorun script to be run. For example, the option <tt class="kbd docutils literal"><span class="pre">autoruns=0,2,7</span></tt> will run the scripts <em>autorun0</em>, <em>autorun2</em>, and <em>autorun7</em>. Use <tt class="kbd docutils literal"><span class="pre">autoruns=no</span></tt> to disable all the autorun scripts with a number.</li>
+<li><strong>ar_ignorefail</strong>: continue to execute the scripts chain even if a script failed (returned a non-zero status).</li>
+<li><strong>ar_nodel</strong>: do not delete the temporary copy of the autorun scripts located in <em>/var/autorun/tmp</em> after execution.</li>
+<li><strong>ar_disable</strong>: completely disable autorun, the simple autorun script will not be executed.</li>
+<li><strong>ar_nowait</strong>: do not wait for a keypress after the autorun script have been executed.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Refer to the on-line documentation at <a class="reference external" href="http://www/sysresccd.org">http://www/sysresccd.org</a> for help with any of the following options.</p>
+</div>
+</div>
+<div class="section" id="changing-default-boot-options">
+<h2>Changing default boot options<a class="headerlink" href="#changing-default-boot-options" title="Permalink to this headline">¶</a></h2>
+<p>Follow this instruction to create a personalized SystemRescueCd and edit <em>syslinux.cfg</em> to add your options. Use the <em>sysresccd-custom</em> script to extract the current files of the livecd, edit <em>isolinux.cfg</em> (<em>syslinux.cfg</em> with USB keys), and recreate the ISO image. If you use the network booting via PXE feature edit <em>pxelinux.cfg/default</em> on your PXE boot server.</p>
+</div>
+<div class="section" id="booting-from-the-network-via-pxe">
+<h2>Booting from the network via PXE<a class="headerlink" href="#booting-from-the-network-via-pxe" title="Permalink to this headline">¶</a></h2>
+<p>It is also possible to boot SystemRescueCd from the network. Since the installation is not obvious, there is a dedicated chapter to network booting via pxe.</p>
+</div>
+<div class="section" id="booting-with-an-old-computer">
+<h2>Booting with an old computer<a class="headerlink" href="#booting-with-an-old-computer" title="Permalink to this headline">¶</a></h2>
+<p>Many old computers cannot boot a CD-ROM. If you have such a problem, you can try to create a boot floppy that allows you to start the system on the CD-ROM. SmartBootManager can create such a boot floppy for you. If you have no floppy drive, you can install this bootloader on the hard disk too. Using this boot manager is easy. You must download <em>sbminst</em>, and run the installer from Linux. Here is the most common install process:</p>
+<div class="highlight-python"><pre>./sbminst -t us -d /dev/fd0</pre>
+</div>
+</div>
+<div class="section" id="booting-from-a-virtual-machine">
+<h2>Booting from a Virtual Machine<a class="headerlink" href="#booting-from-a-virtual-machine" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to use SystemRescueCd from Windows or Linux with a complete computer emulator, such as VMWare and Virtual PC. You have to declare the ISO image as the virtual CD-ROM drive. In the virtual BIOS, you must ask the computer to boot from the CD-ROM. It is even possible to use the network. The virtual machine will have a new IP address.</p>
+</div>
+<div class="section" id="booting-from-the-windows-partition">
+<h2>Booting from the Windows partition<a class="headerlink" href="#booting-from-the-windows-partition" title="Permalink to this headline">¶</a></h2>
+<p>It is now possible to install SystemRescueCd on an NTFS / FAT partition used by Windows. It means you do not have to partition your disk, and you can even boot SystemRescueCd if there is no cdrom drive in your computer.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="05_networking.html" title="Network Options with SysRescue"
+             >next</a></li>
+        <li class="right" >
+          <a href="02_firststeps.html" title="SysRescue First Steps"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

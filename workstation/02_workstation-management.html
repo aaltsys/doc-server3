@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Workstation User Management &mdash; AAltsys Server 3.0 Workstation 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Workstation 3.0 documentation" href="index.html" />
+    <link rel="next" title="Command Utilities" href="03_command-line-utilities.html" />
+    <link rel="prev" title="Workstation Control Panels" href="01_control-panels.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="03_command-line-utilities.html" title="Command Utilities"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="01_control-panels.html" title="Workstation Control Panels"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Workstation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Workstation User Management</a><ul>
+<li><a class="reference internal" href="#identifier-standards">Identifier Standards</a></li>
+<li><a class="reference internal" href="#windows-user-management-issues">Windows User Management Issues</a></li>
+<li><a class="reference internal" href="#windows-xp-user-management">Windows XP User Management</a></li>
+<li><a class="reference internal" href="#windows-xp-passwords">Windows XP Passwords</a></li>
+<li><a class="reference internal" href="#mac-os-x-user-management">Mac OS X User Management</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="01_control-panels.html"
+                        title="previous chapter">Workstation Control Panels</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="03_command-line-utilities.html"
+                        title="next chapter">Command Utilities</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/02_workstation-management.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="workstation-user-management">
+<h1>Workstation User Management<a class="headerlink" href="#workstation-user-management" title="Permalink to this headline">¶</a></h1>
+<p>The <strong>AAltSys Server</strong> provides user security, which requires that all users
+authenticate their login information when accessing the server. User names and
+passwords which are stored in individual workstations must be entered in the
+server&#8217;s <strong>Zentyal</strong> administration system before users can access the server.
+Therefore part of server installation is collecting, and correcting, user
+account information from the workstations.</p>
+<div class="section" id="identifier-standards">
+<span id="id1"></span><h2>Identifier Standards<a class="headerlink" href="#identifier-standards" title="Permalink to this headline">¶</a></h2>
+<p>The following standards apply to user names, full names, and passwords:</p>
+<ul class="simple">
+<li>User names may contain only alphanumeric characters or the symbols
+<tt class="kbd docutils literal"><span class="pre">.</span> <span class="pre">?</span> <span class="pre">&amp;</span> <span class="pre">+</span> <span class="pre">:</span> <span class="pre">-</span> <span class="pre">&#64;</span></tt></li>
+<li>Spaces are not permitted in user names.</li>
+<li>Administrative users, <em>&#8220;Administrator&#8221;</em> and <em>&#8220;Owner&#8221;</em>, should not be used for
+logins.</li>
+<li><em>&#8220;Guest&#8221;</em> should be disabled.</li>
+<li>All administrative and user logins must have passwords.</li>
+</ul>
+</div>
+<div class="section" id="windows-user-management-issues">
+<h2>Windows User Management Issues<a class="headerlink" href="#windows-user-management-issues" title="Permalink to this headline">¶</a></h2>
+<p>The following user account management problems are commonly found on Windows
+workstations:</p>
+<ul class="simple">
+<li>Administrative user <em>Administrator</em> or <em>Owner</em> has a user&#8217;s full name and
+is used as the primary login account.</li>
+<li>User <em>&#8220;Guest&#8221;</em> is being used as a login account.</li>
+<li>A user&#8217;s name contains spaces or prohibited characters.</li>
+<li>Several separate machines in a network list the same user name, with
+differing full names and/or passwords.</li>
+<li>A user name, full name, and home folder name are all three different.</li>
+<li>A home folder name, which cannot be changed by any entry process, does not
+match the user to whom it is assigned.</li>
+<li><em class="menuselection">Start ‣ Control Panel ‣ User Accounts</em> displays the full
+name, but not the user name, for login authorization.</li>
+</ul>
+</div>
+<div class="section" id="windows-xp-user-management">
+<h2>Windows XP User Management<a class="headerlink" href="#windows-xp-user-management" title="Permalink to this headline">¶</a></h2>
+<p>The following procedure allows user names, full names, and passwords to be
+viewed and changed:</p>
+<ul>
+<li><p class="first">On the <em class="menuselection">Start</em> menu, right-click
+<em class="menuselection">My Computer ‣ Manage</em>.</p>
+</li>
+<li><p class="first">In the <em class="guilabel">Computer Management</em> windows, click the <em class="guilabel">+</em> at
+the left of <em class="guilabel">Local Users and Groups</em>.</p>
+</li>
+<li><p class="first">Double-click the <em class="guilabel">Users</em> folder.</p>
+</li>
+<li><p class="first">To add a new user, select menu item <em class="menuselection">Action ‣ New User...</em>.</p>
+</li>
+<li><p class="first">To delete a user, &lt;right-click&gt; the user name, choose
+<em class="menuselection">Delete</em>, follow the directions.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><em>This permanently deletes all data and records for the user,
+including email.</em></p>
+</div>
+</li>
+<li><p class="first">To change a user name, click on the name, press <tt class="kbd docutils literal"><span class="pre">[F2]</span></tt>, edit the name,
+and press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt></p>
+</li>
+<li><p class="first">To set or change a full name, double-click a user name, change the full name
+in the <em class="guilabel">Properties</em> windows, click <em class="guilabel">OK</em>.</p>
+</li>
+<li><p class="first">To set or change a password, right-click a user name, choose
+<em class="menuselection">Set password</em>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><em>This is not recommended for active users.</em></p>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="windows-xp-passwords">
+<h2>Windows XP Passwords<a class="headerlink" href="#windows-xp-passwords" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Login as the user whose password will be reset</p>
+</li>
+<li><p class="first">On the menu, choose <em class="menuselection">Start ‣ Control Panel</em></p>
+</li>
+<li><p class="first">Double-click <em class="guilabel">User Accounts</em>.</p>
+</li>
+<li><p class="first">Double-click the logged in user&#8217;s full name.</p>
+</li>
+<li><p class="first">Click on <em class="guilabel">Change my password</em>, follow the on-screen directions.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><em>If the chosen user is not logged in the link will say</em>
+<em class="guilabel">Change the password</em> <em>instead, but please do not.</em></p>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="mac-os-x-user-management">
+<h2>Mac OS X User Management<a class="headerlink" href="#mac-os-x-user-management" title="Permalink to this headline">¶</a></h2>
+<p>The following procedure allows user names, full names, and passwords to be
+viewed and changed:</p>
+<ul>
+<li><p class="first">Open <em class="menuselection">Apple Menu ‣ System Preferences...</em></p>
+</li>
+<li><p class="first">In <em class="guilabel">System Preferences</em> open the <em class="guilabel">Accounts</em> preference
+pane.</p>
+<ul class="simple">
+<li>If the pane is locked, click the lock icon in the lower left corener to
+authenticate your administrative credentials.</li>
+</ul>
+</li>
+<li><p class="first">To add a user, click the <em class="guilabel">+</em> below the user account list.</p>
+<ul>
+<li><p class="first">Specify the user account type.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Standard account type is recommended for users as all
+administrative tasks request an administrator&#8217;s username and password for
+security.</p>
+</div>
+</li>
+<li><p class="first">Specify the user&#8217;s full name.</p>
+</li>
+<li><p class="first">Specify the user&#8217;s account name, also known as the username, following the
+guidelines listed in <a class="reference internal" href="#identifier-standards"><em>Identifier Standards</em></a>.</p>
+</li>
+<li><p class="first">Specify the user&#8217;s password.</p>
+</li>
+<li><p class="first">Click <em class="guilabel">Create Account</em>.</p>
+</li>
+</ul>
+</li>
+<li><p class="first">To view the account name (also known as the username) of an existing user,
+right-click on the user in the account list and select
+<em class="menuselection">Advanded Options...</em></p>
+<ul class="simple">
+<li>The account name listed is the username used for network communications.</li>
+</ul>
+</li>
+<li><p class="first">To change the password for an existing account, login as the account in
+question.</p>
+<ul>
+<li><p class="first">Select the user account from the account list.</p>
+</li>
+<li><p class="first">Click <em class="guilabel">Change password...</em></p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><em>If the chosen user is not logged in the button will say</em>
+<em class="guilabel">Reset password...</em> <em>instead, but please do not.</em></p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Multiuser Mac OSX is possible with the following steps:</p>
+<ul class="simple">
+<li>Install Vine VNC Server</li>
+<li>Login as the user to be shared</li>
+<li>Start (click) the Vine Server program. Set option to start on login</li>
+<li>Switch user to background</li>
+<li>At remote workstation, connect to Mac user with a VNC client program</li>
+</ul>
+<p>Other Mac OS-X Terminal Server multiuser solutions are:</p>
+<ul class="last simple">
+<li>AquaConnect</li>
+<li>iRAPP</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="03_command-line-utilities.html" title="Command Utilities"
+             >next</a></li>
+        <li class="right" >
+          <a href="01_control-panels.html" title="Workstation Control Panels"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Workstation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

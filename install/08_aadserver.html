@@ -1,0 +1,584 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AAD Server Terminal Services &mdash; AAltsys Server 3.0 Installation 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
+    <link rel="next" title="Procedures of Operation" href="09_procedures.html" />
+    <link rel="prev" title="Backing Up Server Data" href="07_backup.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_procedures.html" title="Procedures of Operation"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="07_backup.html" title="Backing Up Server Data"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AAD Server Terminal Services</a><ul>
+<li><a class="reference internal" href="#ts-host-machine">TS Host Machine</a></li>
+<li><a class="reference internal" href="#install-vpn">Install VPN</a></li>
+<li><a class="reference internal" href="#setup-users">Setup Users</a></li>
+<li><a class="reference internal" href="#add-program-fles">Add Program Fles</a></li>
+<li><a class="reference internal" href="#install-aads-server">Install AADS Server</a></li>
+<li><a class="reference internal" href="#setup-applications">Setup Applications</a></li>
+<li><a class="reference internal" href="#customize-batch-programs">Customize Batch Programs</a><ul>
+<li><a class="reference internal" href="#netshare-bat">NETSHARE.BAT</a></li>
+<li><a class="reference internal" href="#rdpprint-bat">RDPPRINT.BAT</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#authentication-entries">Authentication entries</a><ul>
+<li><a class="reference internal" href="#windows-registration">Windows registration:</a></li>
+<li><a class="reference internal" href="#windows-station-information">Windows station information:</a></li>
+<li><a class="reference internal" href="#ts-usernames-and-passwords">TS usernames and passwords</a></li>
+<li><a class="reference internal" href="#aad-server-license">AAD Server license</a></li>
+<li><a class="reference internal" href="#hamachi-vpn">Hamachi VPN</a></li>
+<li><a class="reference internal" href="#rdpprint-bat-information">RDPPRINT.BAT information</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="07_backup.html"
+                        title="previous chapter">Backing Up Server Data</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="09_procedures.html"
+                        title="next chapter">Procedures of Operation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/08_aadserver.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="aad-server-terminal-services">
+<span id="aadserver"></span><h1>AAD Server Terminal Services<a class="headerlink" href="#aad-server-terminal-services" title="Permalink to this headline">¶</a></h1>
+<p>Multiuser Terminal Services is a Windows feature which allows remote
+workstations access to programs on a central computer system. Terminal Services
+is necessary when centralized computer programs which run in a desktop
+environment and which access local databases must be used at remote locations.</p>
+<p>Frequently, the reason for remote TS capability is to share a DOS or 32-bit
+Windows program such as WARES. Microsoft offers multiuser Terminal Services in
+their 64-bit Advanced Server Operating Systems. DOS and 32-bit Windows programs
+are incompatible with 64-bit Windows, so a different solution is required.</p>
+<div class="section" id="ts-host-machine">
+<h2>TS Host Machine<a class="headerlink" href="#ts-host-machine" title="Permalink to this headline">¶</a></h2>
+<p>An add-on program, <a class="reference external" href="http://www.aads-worldwide.hk/index.html">AADServer</a>, is
+available for Windows XP or Windows 7, in both 32-bit and 64-bit versions, and
+can be used in small offices or enterprise domain environments. This program
+has many features which make it an excellent remote access software solution.</p>
+<p>On the hardware side, an adjunct server machine is required in an office to
+host terminal sessions on the AADServer. We suggest using an Atom-powered
+netbook with 2 Gb RAM for this purpose. The Atom processor requires a 32-bit
+operating system, and a battery backup for power is built into the computer.</p>
+<p>Most netbooks ship with Windows Home Starter Edition as an operating system.
+Microsoft supplies RDP server functionality only in Professional and Ultimate
+editions. Upgrade the netbook operating system to Windows 7 Professional.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">After registering Windows and upgrading, remove any bloatware
+which includes nag screens such as &#8220;update your virus software now.&#8221; If
+nag screens open for a remote user with program execution restrictions,
+the remote session may hang.</p>
+</div>
+</div>
+<div class="section" id="install-vpn">
+<h2>Install VPN<a class="headerlink" href="#install-vpn" title="Permalink to this headline">¶</a></h2>
+<p>Secure access across the Internet requires a Virtual Private Network service,
+or VPN. <a class="reference external" href="https://secure.logmein.com/products/hamachi/">Logmein/Hamachi VPN</a>
+provides free hosting services with very little client configuration.
+Install Hamachi on the terminal services computer and setup a new Hamachi
+network hosted on this TS machine.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><a class="reference external" href="http://www.remobo.com/howto">Remobo</a> may be an alternative to Hamachi VPN.</p>
+</div>
+</div>
+<div class="section" id="setup-users">
+<h2>Setup Users<a class="headerlink" href="#setup-users" title="Permalink to this headline">¶</a></h2>
+<p>&lt;Right-Click&gt; on <em class="menuselection">Start ‣ Computer</em>, choose
+<em class="menuselection">Manage</em>.</p>
+<p>Under <em class="guilabel">Local Users and Groups</em>, open <em class="guilabel">Groups</em>. Add a group
+<strong>WARES</strong>.</p>
+<p>Add users as shown in the following table, and set non-expiring passwords.
+Users in group WARES should be fungible, or interchangeable. Use the same
+password for all such users.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="30%" />
+<col width="54%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Username</th>
+<th class="head">Full name</th>
+<th class="head">Member of</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>{install}</td>
+<td>System Installer</td>
+<td>Administrators, Users, RD Users</td>
+</tr>
+<tr class="row-odd"><td>{siteadm}</td>
+<td>Site Administrator</td>
+<td>Administrators, Users, RD Users</td>
+</tr>
+<tr class="row-even"><td>STARTUP</td>
+<td>VPN Startup</td>
+<td>Guests</td>
+</tr>
+<tr class="row-odd"><td>USER00</td>
+<td>&nbsp;</td>
+<td>Users, Remote Desktop Users, WARES</td>
+</tr>
+<tr class="row-even"><td>USER01</td>
+<td>&nbsp;</td>
+<td>Users, Remote Desktop Users, WARES</td>
+</tr>
+<tr class="row-odd"><td>USER02</td>
+<td>&nbsp;</td>
+<td>Users, Remote Desktop Users, WARES</td>
+</tr>
+<tr class="row-even"><td>USER03</td>
+<td>&nbsp;</td>
+<td>Users, Remote Desktop Users, WARES</td>
+</tr>
+<tr class="row-odd"><td>USER04</td>
+<td>&nbsp;</td>
+<td>Users, Remote Desktop Users, WARES</td>
+</tr>
+<tr class="row-even"><td>USER05</td>
+<td>&nbsp;</td>
+<td>Users, Remote Desktop Users, WARES</td>
+</tr>
+<tr class="row-odd"><td>USER06</td>
+<td>&nbsp;</td>
+<td>Users, Remote Desktop Users, WARES</td>
+</tr>
+<tr class="row-even"><td>USER07</td>
+<td>&nbsp;</td>
+<td>Users, Remote Desktop Users, WARES</td>
+</tr>
+<tr class="row-odd"><td>USER08</td>
+<td>&nbsp;</td>
+<td>Users, Remote Desktop Users, WARES</td>
+</tr>
+<tr class="row-even"><td>USER09</td>
+<td>&nbsp;</td>
+<td>Users, Remote Desktop Users, WARES</td>
+</tr>
+</tbody>
+</table>
+<p>Unless the VPN is run as a service, a user must login and launch the VPN
+when the computer boots. Set user <strong>STARTUP</strong> to login at boot as follows:</p>
+<ol class="arabic simple">
+<li>From the start menu, run <strong class="program">NETPLWIZ</strong> administration utility
+(Windows 7) or <strong class="program">control userpasswords2</strong> (Windows XP).</li>
+<li>Uncheck the box for <em class="guilabel">Users must enter a username and password to
+use this computer</em>, and then click button <em class="guilabel">Apply</em>.</li>
+<li>In the resulting <em class="guilabel">Automatically log on</em> dialog, Enter user name
+<tt class="kbd docutils literal"><span class="pre">STARTUP</span></tt>, the user&#8217;s password, confirm the password, and then click
+<em class="guilabel">OK</em>. Click <em class="guilabel">OK</em> again to close the main control panel.</li>
+<li>Login as user <strong>STARTUP</strong>. Copy the Hamachi start file into the user&#8217;s start
+menu folder, <em class="menuselection">Start ‣ All Programs ‣ Startup</em>.</li>
+<li>Reboot the computer to verify that user <strong>STARTUP</strong> logs in automatically and
+that the Hamachi VPN is started.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <strong>STARTUP</strong> login deducts one user from the available user count
+of <strong class="program">AADServer</strong>.</p>
+</div>
+</div>
+<div class="section" id="add-program-fles">
+<h2>Add Program Fles<a class="headerlink" href="#add-program-fles" title="Permalink to this headline">¶</a></h2>
+<p>Add folder <tt class="file docutils literal"><span class="pre">WARES</span></tt> inside <tt class="file docutils literal"><span class="pre">C:\Users\Public</span></tt>. In the
+<tt class="file docutils literal"><span class="pre">WARES</span></tt> folder, add the following files, downloadable from links at
+<a class="reference external" href="http://doswares.aaltsys.info/resources/">DOS WARES Resources</a>:</p>
+<div class="line-block">
+<div class="line"><tt class="file docutils literal"><span class="pre">NETPRINT.BAT</span></tt></div>
+<div class="line"><tt class="file docutils literal"><span class="pre">NETSHARE.BAT</span></tt></div>
+<div class="line"><tt class="file docutils literal"><span class="pre">WARES.BAT</span></tt></div>
+<div class="line"><tt class="file docutils literal"><span class="pre">WARES.pif</span></tt></div>
+</div>
+</div>
+<div class="section" id="install-aads-server">
+<h2>Install AADS Server<a class="headerlink" href="#install-aads-server" title="Permalink to this headline">¶</a></h2>
+<p>From the <a class="reference external" href="http://www.aads-worldwide.hk/index.html">AADS site</a>, purchase and
+download an appropriate copy of the server software. For WARES remote access,
+we recommend the 10 user small system package unless all remote workstations
+are capable of Windows domain authentication.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When changing versions of AADServer, always choose to perform an
+upgrade rather than removing and installing the software. Otherwise, any
+existing configuration information will be lost.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If a computer belongs to a windows domain, installing AADServer
+small system version will remove the domain registration. Install only the
+Enterprise edition of AADServer on domain member machines.</p>
+</div>
+</div>
+<div class="section" id="setup-applications">
+<h2>Setup Applications<a class="headerlink" href="#setup-applications" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The AADServer is administered from a separate application which is
+added to the Windows control panel and the Start menu. The site administrator
+should make this application always accessible from the start menu:
+&lt;Right-click&gt; on <em class="guilabel">Maintenance AADServer</em>, and choose
+<em class="menuselection">Pin to start menu</em>.</p>
+</div>
+<ul>
+<li><p class="first">Using <em class="menuselection">Start ‣ Maintenance AADServer</em>, display tab
+<em class="guilabel">Application</em>.</p>
+</li>
+<li><p class="first">In section <em class="guilabel">Application control mode</em>, tab <em class="guilabel">Mode</em>, choose
+<em class="guilabel">Default a user sees a complete desktop</em>.</p>
+</li>
+<li><p class="first">In section <em class="guilabel">Application</em>, tab
+<em class="guilabel">Users, Groups, and Applications</em>,
+enter the following programs and assign them to group <strong>WARES</strong>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="52%" />
+<col width="12%" />
+<col width="22%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Display</th>
+<th class="head">Program name</th>
+<th class="head">Startup</th>
+<th class="head">Command</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>WARES</td>
+<td>C:\Users\Public\WARES\WARES.pif</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>RDPPRINT</td>
+<td>C:\Users\Public\WARES\RDPPRINT.BAT</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>NETSHARE</td>
+<td>C:\Users\Public\WARES\NETSHARE.BAT</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>LOGOUT</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>shutdown /l /f</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The path <tt class="file docutils literal"><span class="pre">C:\Users\Public</span></tt> on Windows 7 replaced the folder
+<tt class="file docutils literal"><span class="pre">C:\Documents</span> <span class="pre">and</span> <span class="pre">Settings\All</span> <span class="pre">Users\Desktop</span></tt> used by Windows XP.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Application windows on remote machines may not be sized to display
+correctly. We suggest logging into the application for each user, and sizing
+the application window before accessing the TS user from remote. DOS program
+windows are resized by clicking the menu icon on the top left of the title
+bar. Then on the <em class="guilabel">Font</em> tab, choose a character set and size, such
+as <strong>Lucida Console 20</strong>.</p>
+</div>
+</div>
+<div class="section" id="customize-batch-programs">
+<h2>Customize Batch Programs<a class="headerlink" href="#customize-batch-programs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="netshare-bat">
+<h3>NETSHARE.BAT<a class="headerlink" href="#netshare-bat" title="Permalink to this headline">¶</a></h3>
+<p>Edit the <tt class="file docutils literal"><span class="pre">NETSHARE.BAT</span></tt> program to use either the correct IP address
+or NETBIOS name of the server, such as <tt class="kbd docutils literal"><span class="pre">192.168.2.241</span></tt> or
+<tt class="kbd docutils literal"><span class="pre">AAltsysServer</span></tt>.</p>
+</div>
+<div class="section" id="rdpprint-bat">
+<h3>RDPPRINT.BAT<a class="headerlink" href="#rdpprint-bat" title="Permalink to this headline">¶</a></h3>
+<p>The default <tt class="file docutils literal"><span class="pre">NETPRINT.BAT</span></tt> is intended to work for local printers,
+and it will not work for remote users. Instead, the remote users must share
+their printers. Before printing can work, a table of remote workstation names,
+VPN addresses, TS users and printer sharenames is required. A sample table for
+this information is provided in the authentication section following.</p>
+<p>Substituting for {workstationIP} and {sharename} in the following script,
+Create a new <tt class="file docutils literal"><span class="pre">RDPPRINT.BAT</span></tt> program as follows:</p>
+<div class="highlight-python"><pre>@ECHO OFF
+NET USE LPT1 /DELETE
+rem NET USE LPT2 /DELETE
+:USER00
+IF NOT $%USERNAME%$ == $USER00$ GOTO USER01
+@ECHO ON
+NET USE LPT1 \\{workstationIP}\{sharename} /PERSISTENT:YES
+IF %ERRORLEVEL% NEQ 0 PAUSE
+GOTO EXIT
+:USER01
+IF NOT $%USERNAME%$ == $USER01$ GOTO USER02
+@ECHO ON
+NET USE LPT1 \\{workstationIP}\{sharename} /PERSISTENT:YES
+IF %ERRORLEVEL% NEQ 0 PAUSE
+GOTO EXIT
+:USER02
+...
+:USER09
+@ECHO ON
+NET USE LPT1 \\{workstationIP}\{sharename} /PERSISTENT:YES
+IF %ERRORLEVEL% NEQ 0 PAUSE
+:EXIT</pre>
+</div>
+<p>Sample batch file <a class="reference download internal" href="_downloads/rdpprint.bat"><tt class="xref download docutils literal"><span class="pre">RDPPRINT.BAT</span></tt></a>
+is provided; download it to <tt class="file docutils literal"><span class="pre">C:\Users\Public\WARES\RDPPRINT.BAT</span></tt> on
+the TS machine. Then edit the file as described above.</p>
+<p class="rubric">References</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.techrepublic.com/blog/window-on-windows/how-do-i-copy-shortcuts-to-the-all-users-folders-in-vista-or-windows-7/1857">http://www.techrepublic.com/blog/window-on-windows/how-do-i-copy-shortcuts-to-the-all-users-folders-in-vista-or-windows-7/1857</a></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="authentication-entries">
+<h2>Authentication entries<a class="headerlink" href="#authentication-entries" title="Permalink to this headline">¶</a></h2>
+<p>Keep a record of this information in a safe place.</p>
+<div class="section" id="windows-registration">
+<h3>Windows registration:<a class="headerlink" href="#windows-registration" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>Installation License number: ______________________________
+Professional Upgrade number: ______________________________</pre>
+</div>
+</div>
+<div class="section" id="windows-station-information">
+<h3>Windows station information:<a class="headerlink" href="#windows-station-information" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>Workstation name: ______________________________
+       Workgroup: ______________________________
+  Windows domain: ______________________________</pre>
+</div>
+</div>
+<div class="section" id="ts-usernames-and-passwords">
+<h3>TS usernames and passwords<a class="headerlink" href="#ts-usernames-and-passwords" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="33%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Function</th>
+<th class="head">Username</th>
+<th class="head">Password</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>System Installer</td>
+<td colspan="2">(this information is never published)</td>
+</tr>
+<tr class="row-odd"><td>Site Administrator</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Hamachi VPN Startup</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>WARES User</td>
+<td>USER00 ... USER09</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="aad-server-license">
+<h3>AAD Server license<a class="headerlink" href="#aad-server-license" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre>Registration username: ______________________________
+       License number: ______________________________</pre>
+</div>
+</div>
+<div class="section" id="hamachi-vpn">
+<h3>Hamachi VPN<a class="headerlink" href="#hamachi-vpn" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre> Hamachi IP: ______________________________
+Networkname: ______________________________
+   Password: ______________________________</pre>
+</div>
+</div>
+<div class="section" id="rdpprint-bat-information">
+<h3>RDPPRINT.BAT information<a class="headerlink" href="#rdpprint-bat-information" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="25%" />
+<col width="27%" />
+<col width="21%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">login ID</th>
+<th class="head">Workstation name</th>
+<th class="head">Hamachi VPN IP</th>
+<th class="head">Printer share</th>
+<th class="head">Device</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>USER00</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LPT1</td>
+</tr>
+<tr class="row-odd"><td>USER01</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LPT1</td>
+</tr>
+<tr class="row-even"><td>USER02</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LPT1</td>
+</tr>
+<tr class="row-odd"><td>USER03</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LPT1</td>
+</tr>
+<tr class="row-even"><td>USER04</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LPT1</td>
+</tr>
+<tr class="row-odd"><td>USER05</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LPT1</td>
+</tr>
+<tr class="row-even"><td>USER06</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LPT1</td>
+</tr>
+<tr class="row-odd"><td>USER07</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LPT1</td>
+</tr>
+<tr class="row-even"><td>USER08</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LPT1</td>
+</tr>
+<tr class="row-odd"><td>USER09</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>LPT1</td>
+</tr>
+<tr class="row-even"><td>EXAMPLE</td>
+<td>DEVELOPER</td>
+<td>25.50.50.50</td>
+<td>Laserjet</td>
+<td>LPT1</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It would be a good idea to ghost a drive image from this installation
+once complete, so that recovery from an OS failure would be possible.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_procedures.html" title="Procedures of Operation"
+             >next</a></li>
+        <li class="right" >
+          <a href="07_backup.html" title="Backing Up Server Data"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>AAltSys Server Administration &mdash; AAltsys Derver 3.0 Administration 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Derver 3.0 Administration 3.0 documentation" href="index.html" />
+    <link rel="next" title="ConVirt 2.0 Administration" href="02_convirt.html" />
+    <link rel="prev" title="AAltsys Server 3.0 Administration Guide" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="02_convirt.html" title="ConVirt 2.0 Administration"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="index.html" title="AAltsys Server 3.0 Administration Guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Derver 3.0 Administration 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AAltSys Server Administration</a><ul>
+<li><a class="reference internal" href="#command-line-access">Command Line Access</a><ul>
+<li><a class="reference internal" href="#restarting-zentyal">Restarting Zentyal</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#zentyal-server-management">Zentyal Server Management</a></li>
+<li><a class="reference internal" href="#convert-virtualization">Convert Virtualization</a></li>
+<li><a class="reference internal" href="#webmin-advanced-administration">Webmin Advanced Administration</a><ul>
+<li><a class="reference internal" href="#using-webmin-with-zentyal">Using Webmin with Zentyal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">AAltsys Server 3.0 Administration Guide</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="02_convirt.html"
+                        title="next chapter">ConVirt 2.0 Administration</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/00_administer.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="aaltsys-server-administration">
+<h1>AAltSys Server Administration<a class="headerlink" href="#aaltsys-server-administration" title="Permalink to this headline">¶</a></h1>
+<p>The AAltSys Server is designed to be administered from a web browser. Separate
+management programs are installed covering differing aspects of Linux server
+operation. In addition, direct control of the server at the command line is
+performed with ssh. Server management programs are accessed from the web browser
+at any workstation on the local network, using the local management URLs listed
+below. For registered servers, remote administrative workstations can address
+servers on the management VPN using the remote domain names shown.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="48%" />
+<col width="43%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Program</th>
+<th class="head">Local management URL</th>
+<th class="head">Remote VPN management URL</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>VMware</td>
+<td><a class="reference external" href="https://AAltSysServer.local.aaltsys.net:8333">https://AAltSysServer.local.aaltsys.net:8333</a></td>
+<td>(registration).servers.aaltsys.net:8333</td>
+</tr>
+<tr class="row-odd"><td>Convert</td>
+<td><a class="reference external" href="http://AAltSysServer.local.aaltsys.net:8081">http://AAltSysServer.local.aaltsys.net:8081</a></td>
+<td>(registration).servers.aaltsys.net:8081</td>
+</tr>
+<tr class="row-even"><td>Zimbra</td>
+<td><a class="reference external" href="https://AAltSysServer.local.aaltsys.net:7071">https://AAltSysServer.local.aaltsys.net:7071</a></td>
+<td>(registration).servers.aaltsys.net:7071</td>
+</tr>
+<tr class="row-odd"><td>eBox</td>
+<td><a class="reference external" href="https://AAltSysServer.local.aaltsys.net:447">https://AAltSysServer.local.aaltsys.net:447</a></td>
+<td>(registration).servers.aaltsys.net:447</td>
+</tr>
+<tr class="row-even"><td>Zentyal</td>
+<td><a class="reference external" href="https://AAltSysServer.local.aaltsys.net">https://AAltSysServer.local.aaltsys.net</a></td>
+<td>(registration).servers.aaltsys.net:443</td>
+</tr>
+<tr class="row-odd"><td>Webmin</td>
+<td><a class="reference external" href="https://AAltSysServer.local.aaltsys.net:10000">https://AAltSysServer.local.aaltsys.net:10000</a></td>
+<td>(registration).servers.aaltsys.net:10000</td>
+</tr>
+<tr class="row-even"><td>ssh</td>
+<td><a class="reference external" href="ssh://AAltSysServer.local.aaltsys.net">ssh://AAltSysServer.local.aaltsys.net</a></td>
+<td><a class="reference external" href="ssh://(registration).servers.aaltsys.net">ssh://(registration).servers.aaltsys.net</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="command-line-access">
+<h2>Command Line Access<a class="headerlink" href="#command-line-access" title="Permalink to this headline">¶</a></h2>
+<p>Network access to command line functions is provided using secure shell (ssh).
+The behavior of ssh from a browser or command line depends on features of the
+desktop operating system. Provided the desktop can use ssh, any of the
+following Linux commands might provide CLI access to an AAltSys Server:</p>
+<div class="highlight-python"><pre>ssh -l (administrator) 192.168.2.241
+ssh -l (administrator) aaltsysserver
+ssh -l (administrator) (registration).servers.aaltsys.net
+gnome-terminal -x ssh -l (administrator) (registration).servers.aaltsys.net</pre>
+</div>
+<div class="section" id="restarting-zentyal">
+<h3>Restarting Zentyal<a class="headerlink" href="#restarting-zentyal" title="Permalink to this headline">¶</a></h3>
+<p>Due to the chicken-or-egg nature of the task, Zentyal does not include a
+facility for restarting or reloading server management through the management
+interface. Instead, this procedure can be performed from a command line login.
+Either use the server console terminal window, or at a workstation, open a
+server ssh session with the terminal command:</p>
+<div class="highlight-python"><pre>&gt;$ ssh -l (administrator) aaltsysserver</pre>
+</div>
+<p>Run the following command line statements:</p>
+<div class="highlight-python"><pre>&gt;$ sudo su -
+&gt;$ byobu
+&gt;$ stop ebox
+&gt;$ start ebox
+&gt;$ exit
+&gt;$ exit
+&gt;$ exit</pre>
+</div>
+</div>
+</div>
+<div class="section" id="zentyal-server-management">
+<h2>Zentyal Server Management<a class="headerlink" href="#zentyal-server-management" title="Permalink to this headline">¶</a></h2>
+<p>The principal functions of a network file server are easily administered using
+Zentyal. These functions are divided into the following areas:</p>
+<ul class="simple">
+<li>Infrastructure services such as DNS, NTP, and DHCP;</li>
+<li>Network services including firewall, gateway, and Quality of Service;</li>
+<li>Threat management through proxy, VPN, Intrusion detection, and mail filtering;</li>
+<li>Office functions: file and printer sharing, user directory and authentication;</li>
+<li>Optional groupware and collaboration software such as email and calendars;</li>
+<li>Maintenance operations like monitoring, backup, and support.</li>
+</ul>
+</div>
+<div class="section" id="convert-virtualization">
+<h2>Convert Virtualization<a class="headerlink" href="#convert-virtualization" title="Permalink to this headline">¶</a></h2>
+<p>The AAltSys Server offers KVM virtualization, and the Convert web management
+console provides a graphical interface for this feature. Through virtualization,
+a single powerful server platform can behave as if it were multiple hardware
+machines and operating systems. Some capabilities of virtual machines include:</p>
+<ul class="simple">
+<li>Serving multiuser Linux remote desktop sessions</li>
+<li>Providing local bootable terminal desktop sessions</li>
+<li>Adding shared applications running in another OS such as Windows 7</li>
+<li>Adding specialized services such as MS SQLServer</li>
+<li>Running a web server host</li>
+</ul>
+<p>Virtualization is important because it allows a server installed today to run
+new features and operating systems developed in the future, without having to
+repurchase server or network technology to do it. It is like getting (virtually)
+a new car whenever you want, without losing the depreciation cost of your used
+vehicle.</p>
+</div>
+<div class="section" id="webmin-advanced-administration">
+<h2>Webmin Advanced Administration<a class="headerlink" href="#webmin-advanced-administration" title="Permalink to this headline">¶</a></h2>
+<p>Webmin is an advanced administration package which can simplify remote server
+management for the Linux expert. Webin services are not described further in
+this guide, since if you are an expert, you probably know how to use Webmin
+already, and if you are not an expert, you should not be using Webmin.</p>
+<div class="section" id="using-webmin-with-zentyal">
+<h3>Using Webmin with Zentyal<a class="headerlink" href="#using-webmin-with-zentyal" title="Permalink to this headline">¶</a></h3>
+<p>Using Webmin is tricky in combination with Zentyal. Webmin directly modifies the
+standard Linux configuration files in <tt class="file docutils literal"><span class="pre">/etc</span></tt>, while Zentyal makes
+configuration changes by overwriting these files with its own private copy of
+configuration data. In general, these two approaches to server administration
+are incompatible and attempts to combine them will likely result in server
+failure.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Zentyal will override Webmin if the two programs are used to administer the
+same service. Do not use Webmin on any service which is under Zentyal control
+without first disabling that aspect of Zentyal. (Do not use Webmin at all if
+you are not adept at Linux administration.)</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="02_convirt.html" title="ConVirt 2.0 Administration"
+             >next</a></li>
+        <li class="right" >
+          <a href="index.html" title="AAltsys Server 3.0 Administration Guide"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Derver 3.0 Administration 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation Instructions &mdash; AAltsys Server 3.0 Installation 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
+    <link rel="next" title="First Boot Configuration" href="04_firstboot.html" />
+    <link rel="prev" title="Dual-Booting Mac Servers" href="02_macserver.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="04_firstboot.html" title="First Boot Configuration"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="02_macserver.html" title="Dual-Booting Mac Servers"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation Instructions</a><ul>
+<li><a class="reference internal" href="#purpose-and-requirements">Purpose and Requirements</a></li>
+<li><a class="reference internal" href="#recommended-hardware">Recommended Hardware</a></li>
+<li><a class="reference internal" href="#hardware-configuration">Hardware Configuration</a></li>
+<li><a class="reference internal" href="#installing-zentyal">Installing Zentyal</a><ul>
+<li><a class="reference internal" href="#installer-options">Installer options</a></li>
+<li><a class="reference internal" href="#configure-the-network">Configure the Network</a></li>
+<li><a class="reference internal" href="#configure-the-clock">Configure the Clock</a></li>
+<li><a class="reference internal" href="#partition-disks-bios-raid">Partition disks (BIOS RAID)</a></li>
+<li><a class="reference internal" href="#partition-disks-mac">Partition disks (Mac)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#finish-installation">Finish Installation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="02_macserver.html"
+                        title="previous chapter">Dual-Booting Mac Servers</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="04_firstboot.html"
+                        title="next chapter">First Boot Configuration</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/03_install.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation-instructions">
+<span id="install"></span><h1>Installation Instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Only the most current version of Zentyal is supported. Some directions may be
+out of order or wrong, haaving been written based on previous Zentyal
+versions. Mac instructions were written based on Zentyal 3.4, current as of
+4/1/2014.</p>
+</div>
+<div class="section" id="purpose-and-requirements">
+<h2>Purpose and Requirements<a class="headerlink" href="#purpose-and-requirements" title="Permalink to this headline">¶</a></h2>
+<p>This document is a quick guide to configuring hardware and installing a Zentyal
+office server which may then be registered for support with the AAltSys VPN.</p>
+<p>Before starting this procedure, you should have the following information:</p>
+<div class="highlight-python"><pre>{Domain}:              __________________________________
+{Hostname}:            __________________________________ (____server)
+{Username}:            __________________________________ (admin1)
+{Password}:            __________________________________
+{Registration number}: __________________________________
+{Activation code}:     __________________________________
+{Administrator email}: __________________________________</pre>
+</div>
+<p>For servers used as LAN peers instead of network gateways, additional
+information is required:</p>
+<div class="highlight-python"><pre>{Static IP address}:   __________________________________
+{Netmask}:             __________________________________
+{Gateway}:             __________________________________
+{DNS server1}:         __________________________________
+{DNS server2}:         __________________________________</pre>
+</div>
+</div>
+<div class="section" id="recommended-hardware">
+<h2>Recommended Hardware<a class="headerlink" href="#recommended-hardware" title="Permalink to this headline">¶</a></h2>
+<p>Minimum server hardware requirements start with a multicore processor capable
+of virtualization. Other requirements are as follows:</p>
+<ul class="simple">
+<li>Dual Core x64 Processor with Virtualization <em>(either Intel VT-x or AMD-V)</em></li>
+<li>4 Gb RAM, <em>minimum</em></li>
+<li>80 Gb Hard Disk Drive, <em>minimum</em></li>
+<li>Gigabit Ethernet Adapter</li>
+<li>DVD-ROM Drive, <em>required for installation</em></li>
+</ul>
+<p>Our recommended hardware configuration is provided in <a class="reference internal" href="01_hardware.html#hardware"><em>Mac mini Server Hardware</em></a>.</p>
+</div>
+<div class="section" id="hardware-configuration">
+<h2>Hardware Configuration<a class="headerlink" href="#hardware-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Connect the computer components and network cables as described in the hardware
+documentation, or as required for the specific hardware you are using.</p>
+<p>If your server is intended as a gateway computer, connect the primary Ethernet
+port <tt class="docutils literal"><span class="pre">eth0</span></tt> to your Internet gateway or WAN, and the secondary port <tt class="docutils literal"><span class="pre">eth1</span></tt>
+to your local LAN. If your server will operate only as a file server on a
+local LAN, connect <tt class="docutils literal"><span class="pre">eth0</span></tt> to your LAN and leave other network ports
+unconnected.</p>
+</div>
+<div class="section" id="installing-zentyal">
+<h2>Installing Zentyal<a class="headerlink" href="#installing-zentyal" title="Permalink to this headline">¶</a></h2>
+<p>Power on the computer, and boot from the Zentyal Install DVD.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">A function key press such as <tt class="kbd docutils literal"><span class="pre">[F8]</span></tt> or <tt class="kbd docutils literal"><span class="pre">[F12]</span></tt>, or holding down
+<tt class="kbd docutils literal"><span class="pre">alt/option</span></tt> on the Mac mini Server, may be required to select the boot
+device.</p>
+</div>
+<div class="section" id="installer-options">
+<h3>Installer options<a class="headerlink" href="#installer-options" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> at selection <em class="menuselection">English</em> to choose the
+installer language default: <tt class="docutils literal"><span class="pre">English</span></tt>.</p>
+</li>
+<li><p class="first"><strong>Choose the second option on the Installation menu</strong>,
+<em class="guilabel">Install Zentyal (expert mode)</em>.</p>
+</li>
+<li><p class="first">Make the following selections, or press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> for defaults:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="24%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Selection name</th>
+<th class="head">Default</th>
+<th class="head">Suggested action</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Language</td>
+<td>English</td>
+<td>press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Country</td>
+<td>United States</td>
+<td>press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt></td>
+</tr>
+<tr class="row-even"><td>Detect keyboard</td>
+<td>No</td>
+<td>press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Country of keyboard</td>
+<td>English (US)</td>
+<td>press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt></td>
+</tr>
+<tr class="row-even"><td>Keyboard layout</td>
+<td>English (US)</td>
+<td><div class="first last line-block">
+<div class="line">press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> or,</div>
+<div class="line">select <tt class="docutils literal"><span class="pre">English</span> <span class="pre">(Macintosh)</span></tt></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+<div class="section" id="configure-the-network">
+<h3>Configure the Network<a class="headerlink" href="#configure-the-network" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Choose the Primary Network Interface, enter the fully-qualified host name,
+and setup the site administrator user.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Use your site hostname and domain in the following entry, not
+&#8220;<tt class="kbd docutils literal"><span class="pre">{hostname}</span></tt>&#8221; and &#8220;<tt class="kbd docutils literal"><span class="pre">{domain}</span></tt>&#8221;. <strong>hostname</strong> and <strong>domain</strong>
+cannot be changed on fully configured systems.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Selection prompt</th>
+<th class="head">Recommended entry or action</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Primary Network Interface</td>
+<td><em class="menuselection">eth0: ...</em> (PC)</td>
+</tr>
+<tr class="row-odd"><td>Hostname:</td>
+<td><div class="first last line-block">
+<div class="line">either <tt class="kbd docutils literal"><span class="pre">{hostname}.local</span></tt></div>
+<div class="line">or <tt class="kbd docutils literal"><span class="pre">{hostname}.local.{domain}</span></tt></div>
+<div class="line">or <tt class="kbd docutils literal"><span class="pre">{hostname}.local.aaltsys.net</span></tt></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Administrator username</td>
+<td><tt class="kbd docutils literal"><span class="pre">admin1</span></tt> (if registering with AAltsys)</td>
+</tr>
+<tr class="row-odd"><td>Password</td>
+<td><tt class="kbd docutils literal"><span class="pre">{password}</span></tt></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p class="first">The network should configure using DHCP. If DHCP does not work, fix your
+network connection.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="configure-the-clock">
+<h3>Configure the Clock<a class="headerlink" href="#configure-the-clock" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Verify that the displayed timezone, such as <tt class="docutils literal"><span class="pre">America/Chicago</span></tt>, is correct
+for your physical location. Otherwise, enter <tt class="kbd docutils literal"><span class="pre">No</span></tt> to pick your timezone
+from a list.</li>
+</ul>
+</div>
+<div class="section" id="partition-disks-bios-raid">
+<h3>Partition disks (BIOS RAID)<a class="headerlink" href="#partition-disks-bios-raid" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">For <strong>Mac</strong>, skip this section and continue at <a class="reference internal" href="#partition-mac"><em>Partition disks (Mac)</em></a>. These
+instructions apply to custom-built PCs with BIOS RAID on the motherboard.</p>
+</div>
+<ul>
+<li><p class="first">Answer the following questions:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Installation prompt</th>
+<th class="head">Response</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Activate serial ATA RAID devices?</td>
+<td>&lt;Yes&gt;</td>
+</tr>
+<tr class="row-odd"><td>Partitioning method</td>
+<td>Guided &#8211; use entire disk</td>
+</tr>
+<tr class="row-even"><td>select the disk to partition</td>
+<td>Serial ATA RAID, isw&#8212;&#8212;-aaltsys</td>
+</tr>
+<tr class="row-odd"><td>... partition for boot loader code?</td>
+<td>&lt;Yes&gt;</td>
+</tr>
+<tr class="row-even"><td>Write the changes to disks?</td>
+<td>&lt;Yes&gt;</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When installing Zentyal 3.0, a bug makes it necessary to write down the
+ATA RAID identifier, <em class="guilabel">isw_&#8212;&#8212;&#8212;-_aaltsys</em>, for later use.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="partition-disks-mac">
+<span id="partition-mac"></span><h3>Partition disks (Mac)<a class="headerlink" href="#partition-disks-mac" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">If asked to <em class="guilabel">unmount partitions that are in use</em>, answer <tt class="kbd docutils literal"><span class="pre">No</span></tt>.</p>
+</li>
+<li><p class="first">Select <em class="guilabel">Partitioning method</em> as <tt class="kbd docutils literal"><span class="pre">Manual</span></tt>.</p>
+</li>
+<li><p class="first">Partition drive <em class="guilabel">SCSI2 (0.0.0) (sdb)</em> for installation, creating
+partitions for EFI boot, swap, and ext4 ZENTYAL as shown following:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="17%" />
+<col width="10%" />
+<col width="22%" />
+<col width="28%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Area</th>
+<th class="head">Size</th>
+<th class="head">Flags</th>
+<th class="head">Type</th>
+<th class="head">Label</th>
+<th class="head">Mount</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>1.0 MB</td>
+<td>&nbsp;</td>
+<td>FREE SPACE</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>#1</td>
+<td>209.7 MB</td>
+<td>B  F</td>
+<td>EFIboot</td>
+<td>EFI system p ...</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>#2</td>
+<td>10.0 GB</td>
+<td>F</td>
+<td>swap</td>
+<td>&nbsp;</td>
+<td>swap</td>
+</tr>
+<tr class="row-odd"><td>#3</td>
+<td>990.0 GB</td>
+<td>F</td>
+<td>ext4</td>
+<td>ZENTYAL</td>
+<td>/</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>728.6 KB</td>
+<td>&nbsp;</td>
+<td>FREE SPACE</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">ZENTYAL</span></tt> partition does not have to be set <tt class="kbd docutils literal"><span class="pre">bootable</span></tt>, as
+<strong class="program">rEFInd</strong> will act as boot manager. An empty EFIboot partition is
+maintained for possibly restoring the drive to OS X.</p>
+</div>
+</li>
+<li><p class="first">Select <em class="guilabel">Finish partitioning and write changes to disk</em>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Zentyal wants to use Grub in place of Apple&#8217;s EFI boot partition, and so a
+question appears regarding a &#8220;separate partition for boot loader code&#8221;.</p>
+</div>
+</li>
+<li><p class="first">At the prompt <em class="guilabel">Go back to the menu and correct this problem?</em>,
+enter <tt class="kbd docutils literal"><span class="pre">&lt;No&gt;</span></tt>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="finish-installation">
+<h2>Finish Installation<a class="headerlink" href="#finish-installation" title="Permalink to this headline">¶</a></h2>
+<p>Answer these questions, each of which involves installation activity:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">For Zentyal 3.0, question <em class="guilabel">Device for boot loader installation:</em>
+must be answered with <tt class="kbd docutils literal"><span class="pre">/dev/mapper/isw_----------_aaltsys</span> <span class="pre">&lt;Tab&gt;&lt;Enter&gt;</span></tt>.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="73%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Question</th>
+<th class="head">Answer</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Write the changes to disks?</td>
+<td>&lt;Yes&gt;</td>
+</tr>
+<tr class="row-odd"><td>Proceed installation without graphical environment?</td>
+<td>&lt;No&gt;</td>
+</tr>
+<tr class="row-even"><td>HTTP proxy information (blank for none):</td>
+<td>(blank) &lt;Continue&gt;</td>
+</tr>
+<tr class="row-odd"><td>Device for boot loader installation:</td>
+<td>(blank) &lt;Continue&gt;</td>
+</tr>
+<tr class="row-even"><td>Is the system clock set to UTC?</td>
+<td>&lt;Yes&gt;</td>
+</tr>
+</tbody>
+</table>
+<p>When the installation finishes, remove the install media and press
+<tt class="kbd docutils literal"><span class="pre">&lt;enter&gt;</span></tt> to reboot the system.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="04_firstboot.html" title="First Boot Configuration"
+             >next</a></li>
+        <li class="right" >
+          <a href="02_macserver.html" title="Dual-Booting Mac Servers"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Zentyal Configuration &mdash; AAltsys Server 3.0 Installation 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
+    <link rel="next" title="Office File Sharing" href="06_office.html" />
+    <link rel="prev" title="First Boot Configuration" href="04_firstboot.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_office.html" title="Office File Sharing"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="04_firstboot.html" title="First Boot Configuration"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Zentyal Configuration</a><ul>
+<li><a class="reference internal" href="#module-status">Module Status</a></li>
+<li><a class="reference internal" href="#general-information">General Information</a></li>
+<li><a class="reference internal" href="#system-backup">System Backup</a></li>
+<li><a class="reference internal" href="#network-interfaces">Network Interfaces</a></li>
+<li><a class="reference internal" href="#network-gateway">Network Gateway</a></li>
+<li><a class="reference internal" href="#network-services">Network Services</a></li>
+<li><a class="reference internal" href="#software-management">Software Management</a></li>
+<li><a class="reference internal" href="#firewall-packet-filter">Firewall Packet Filter</a></li>
+<li><a class="reference internal" href="#ids">IDS</a></li>
+<li><a class="reference internal" href="#dns">DNS</a></li>
+<li><a class="reference internal" href="#dhcp">DHCP</a></li>
+<li><a class="reference internal" href="#save-changes">Save Changes</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="04_firstboot.html"
+                        title="previous chapter">First Boot Configuration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="06_office.html"
+                        title="next chapter">Office File Sharing</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/05_zentyal.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="zentyal-configuration">
+<span id="configure"></span><h1>Zentyal Configuration<a class="headerlink" href="#zentyal-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Follow this guide to setup and manage an AAltSys Server using Zentyal.
+Documentation for Zentyal itself is found at <a class="reference external" href="http://doc.zentyal.org/en">http://doc.zentyal.org/en</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Your server is administered with Zentyal using the Firefox web
+browser, and other browsers may not work correctly. Specifically, versions
+of Microsoft&#8217;s Internet Explorer which do not conform to HTML5 standards
+cannot be used to administer Zentyal.</p>
+</div>
+<p>There are thee accepted ways to access Zentyal administration:</p>
+<ul class="simple">
+<li>At the server console, login to the system as the administrator, or</li>
+<li>At a local workstation, go to browser address <a class="reference external" href="https://__server.IP.address__">https://__server.IP.address__</a>,
+or</li>
+<li>At a local workstation, go to browser address <a class="reference external" href="https://__hostname__">https://__hostname__</a>.</li>
+</ul>
+<p>Login to Zentyal using your administrator <tt class="kbd docutils literal"><span class="pre">__username__</span></tt> and
+<tt class="kbd docutils literal"><span class="pre">__password__</span></tt> to perform the following initial configuration steps.</p>
+<div class="section" id="module-status">
+<h2>Module Status<a class="headerlink" href="#module-status" title="Permalink to this headline">¶</a></h2>
+<p>On the Zentyal menu, select <em class="menuselection">Core ‣ Module Status</em>. Check that
+all installed modules are active; that is, that their statuses are checked. The
+following image from a new install shows the DHCP module unchecked. (DHCP
+should be checked only on servers used as network gateways.)  After activating
+modules, click on <tt class="docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></tt> in the top bar, and then click <tt class="docutils literal"><span class="pre">Save</span></tt> to
+finalize the change.</p>
+<img alt="_images/zentyal_02_module.png" src="_images/zentyal_02_module.png" />
+</div>
+<div class="section" id="general-information">
+<h2>General Information<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h2>
+<p>Check the information on the <em class="menuselection">System ‣ General</em> page
+for any installation entry errors.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Zentyal 2.2: The password change option on this page requires special
+procedures, as described in <a class="reference internal" href="09_procedures.html#change-password"><em>Change Password</em></a>.</p>
+</div>
+</div>
+<div class="section" id="system-backup">
+<h2>System Backup<a class="headerlink" href="#system-backup" title="Permalink to this headline">¶</a></h2>
+<p>Configure backups at <em class="menuselection">Core ‣ System ‣ Backup</em>. Display
+the <em class="guilabel">Configuration and Status</em> tab, and set the following options
+to tell Zentyal how to backup:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Host or Destination</td>
+<td><tt class="docutils literal"><span class="pre">/home/mnt/backup</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Full backup frequency</td>
+<td><tt class="docutils literal"><span class="pre">Weekly</span> <span class="pre">--</span> <span class="pre">on</span> <span class="pre">Monday</span></tt></td>
+</tr>
+<tr class="row-even"><td>Keep previous full copies</td>
+<td><tt class="docutils literal"><span class="pre">maximum</span> <span class="pre">number</span> <span class="pre">--</span> <span class="pre">5</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>Below is a screen shot of these settings.</p>
+<img alt="_images/zentyal_04.1_backup_settings.png" src="_images/zentyal_04.1_backup_settings.png" />
+<p>Now click the <em class="guilabel">Includes and Excludes</em> tab to tell Zentyal what
+to backup. Click <cite>Add new</cite> to add each of the following entries, going up
+from the bottom of this list:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Exclude or Include</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Include Path</td>
+<td><tt class="docutils literal"><span class="pre">/etc/cups</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Include Path</td>
+<td><tt class="docutils literal"><span class="pre">/home</span></tt></td>
+</tr>
+<tr class="row-even"><td>Exclude Path</td>
+<td><tt class="docutils literal"><span class="pre">/home/mnt</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Exclude Path</td>
+<td><tt class="docutils literal"><span class="pre">/</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>Then delete any entries not on the above list, leaving the four lines
+displayed in the following image:</p>
+<img alt="_images/zentyal_04.2_backup_include.png" src="_images/zentyal_04.2_backup_include.png" />
+</div>
+<div class="section" id="network-interfaces">
+<h2>Network Interfaces<a class="headerlink" href="#network-interfaces" title="Permalink to this headline">¶</a></h2>
+<p>At <em class="menuselection">Core ‣ Network ‣ Interfaces</em>, There are two possible
+configurations for the network interface <tt class="docutils literal"><span class="pre">eth0</span></tt> depending on whether the
+server will be used as a network gateway or as a peer on a LAN.</p>
+<p>For network gateways, we recommend configuring <tt class="docutils literal"><span class="pre">eth0</span></tt> with method <tt class="kbd docutils literal"><span class="pre">DHCP</span></tt>,
+and the <em class="guilabel">External (WAN):</em> box must be checked.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When a gateway server is reconfigured from <tt class="kbd docutils literal"><span class="pre">DHCP</span></tt> to
+<tt class="kbd docutils literal"><span class="pre">static</span></tt>, a default gateway record must be added as well. Changing from
+<tt class="kbd docutils literal"><span class="pre">static</span></tt> to <tt class="kbd docutils literal"><span class="pre">DHCP</span></tt> requires deleting the default gateway first.</p>
+</div>
+<p>Where a server is a LAN peer, only <tt class="docutils literal"><span class="pre">eth0</span></tt> should be connected. The interface
+should be set to a static IP address, and the <em class="guilabel">External (WAN):</em> box
+must not be checked. An example of this configuration is illustrated following.</p>
+<img alt="_images/zentyal_07_interfaces.png" src="_images/zentyal_07_interfaces.png" />
+<p>More details on Zentyal networking are found at <a class="reference external" href="../resources/04_network.html#network" title="(in AAltsys Server 3.0 Technical v3.0)"><em>Server Network Setup</em></a>.</p>
+</div>
+<div class="section" id="network-gateway">
+<h2>Network Gateway<a class="headerlink" href="#network-gateway" title="Permalink to this headline">¶</a></h2>
+<p>When <tt class="docutils literal"><span class="pre">eth0</span></tt> is an external interface configured to obtain its IP address
+through DHCP, Zentyal should configure the Internet gateway for your system as
+the following example shows.</p>
+<img alt="_images/zentyal_08_gateway.png" src="_images/zentyal_08_gateway.png" />
+</div>
+<div class="section" id="network-services">
+<h2>Network Services<a class="headerlink" href="#network-services" title="Permalink to this headline">¶</a></h2>
+<p>In section <em class="menuselection">Core ‣ Network ‣ Services</em>, a Network Service
+definition must be added so that firewall rules can be created later. First
+click <tt class="kbd docutils literal"><span class="pre">add</span> <span class="pre">new</span></tt> to add the following service:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="63%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Service Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>webmin</td>
+<td><tt class="docutils literal"><span class="pre">AAltsys</span> <span class="pre">webmin</span> <span class="pre">service</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>Once the new service is added to the list, click the <em class="guilabel">Configuration</em>
+button for <tt class="docutils literal"><span class="pre">webmin</span></tt> and add a configuration for:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="31%" />
+<col width="69%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Protocol:</td>
+<td><tt class="docutils literal"><span class="pre">TCP/UDP</span></tt></td>
+</tr>
+<tr class="row-even"><td>Source port:</td>
+<td><tt class="docutils literal"><span class="pre">any</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Destination:</td>
+<td><tt class="docutils literal"><span class="pre">Single</span> <span class="pre">port</span> <span class="pre">--&gt;</span> <span class="pre">10000</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>The resulting configuration is displayed following:</p>
+<img alt="_images/zentyal_11_webmin.png" src="_images/zentyal_11_webmin.png" />
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Remember to click <tt class="kbd docutils literal"><span class="pre">Change</span></tt> when making configuration changes.</p>
+</div>
+</div>
+<div class="section" id="software-management">
+<h2>Software Management<a class="headerlink" href="#software-management" title="Permalink to this headline">¶</a></h2>
+<p>At menu selection <em class="menuselection">Core ‣ Software Management ‣ Settings</em>:
+for the setting <em class="guilabel">Perform automatic security updates</em>, choose
+<tt class="docutils literal"><span class="pre">Enabled</span></tt>, and remember to click <tt class="docutils literal"><span class="pre">Change</span></tt>, as shown following.</p>
+<img alt="_images/zentyal_23_settings.png" src="_images/zentyal_23_settings.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The Zentyal 3.0 <em class="guilabel">Gateway</em> menu section was formerly known
+as <em class="guilabel">UTM</em>.</p>
+</div>
+</div>
+<div class="section" id="firewall-packet-filter">
+<h2>Firewall Packet Filter<a class="headerlink" href="#firewall-packet-filter" title="Permalink to this headline">¶</a></h2>
+<p>Select <em class="menuselection">Gateway ‣ Firewall ‣ Packet Filter ‣ internal networks
+to Zentyal</em> on the Zentyal menu to insert a new firewall rule for the Network
+Service defined previously. Click the <tt class="docutils literal"><span class="pre">Configure</span> <span class="pre">rules</span></tt> link below
+<em class="guilabel">Filtering rules from internal networks to Zentyal.</em> Then click
+<tt class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></tt> to enter this rule:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="23%" />
+<col width="23%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Decision</th>
+<th class="head">Source</th>
+<th class="head">Service</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ACCEPT</td>
+<td>Any</td>
+<td>webmin</td>
+<td>(blank)</td>
+</tr>
+</tbody>
+</table>
+<p>The new rule will be positioned at the top of the list as shown following:</p>
+<img alt="_images/zentyal_28_packetfilter.png" src="_images/zentyal_28_packetfilter.png" />
+</div>
+<div class="section" id="ids">
+<h2>IDS<a class="headerlink" href="#ids" title="Permalink to this headline">¶</a></h2>
+<p>At <em class="MenuSelection">Gateway &#8211;&gt; IDS</em>, check the <em class="guilabel">Enabled</em> box
+for <em class="guilabel">eth0</em> in the <em class="guilabel">Intrusion Detection System</em>.</p>
+</div>
+<div class="section" id="dns">
+<h2>DNS<a class="headerlink" href="#dns" title="Permalink to this headline">¶</a></h2>
+<p>At <em class="menuselection">Infrastructure ‣ DNS</em>, click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></tt> under
+<em class="guilabel">Forwarders</em> to add your ISP&#8217;s forwarding DNS entries, or enter IP
+addresses for known good DNS servers. (Google DNS servers are shown here.)</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Zentyal 2.2: Click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></tt> under <em class="guilabel">Domains</em> to add a new
+local domain, <tt class="kbd docutils literal"><span class="pre">local.aaltsys.net</span></tt>, but do not enter an IP address.</p>
+</div>
+<p>The following image shows the resulting DNS page:</p>
+<img alt="_images/zentyal_34.1_dns.png" src="_images/zentyal_34.1_dns.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <em class="guilabel">local.aaltsys.net</em> domain is not checked as
+<em class="guilabel">Dynamic</em>. This feature will be configured in the <tt class="docutils literal"><span class="pre">DHCP</span></tt> section
+to follow.</p>
+</div>
+<ul class="simple">
+<li>Click the configuration icon below <em class="guilabel">Hostnames</em> on the
+<em class="guilabel">local.aaltsys.net</em> domain.</li>
+<li>Click the configuration icon below <em class="guilabel">Alias</em> on the
+<tt class="kbd docutils literal"><span class="pre">__hostname__</span></tt> host, then click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></tt> to add a new alias.</li>
+<li>Type a new alias <tt class="kbd docutils literal"><span class="pre">aaltsysserver</span></tt> for this host, then click <tt class="kbd docutils literal"><span class="pre">add</span></tt> to
+accept it.</li>
+</ul>
+</div>
+<div class="section" id="dhcp">
+<h2>DHCP<a class="headerlink" href="#dhcp" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Skip this section if you are not configuring a network gateway server.</p>
+</div>
+<p>Use section <em class="menuselection">Infrastructure DHCP</em> to configure interface
+<tt class="docutils literal"><span class="pre">eth1</span></tt>. (Only static internal interfaces provide DHCP services.) Settings
+for the <em class="guilabel">Common options</em> follow:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option name</th>
+<th class="head">Setting value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Default gateway</td>
+<td><tt class="docutils literal"><span class="pre">Zentyal</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Search domain</td>
+<td><tt class="docutils literal"><span class="pre">Zentyal</span> <span class="pre">domain</span> <span class="pre">--&gt;</span> <span class="pre">local.aaltsys.net</span></tt></td>
+</tr>
+<tr class="row-even"><td>Primary name server</td>
+<td><tt class="docutils literal"><span class="pre">local</span> <span class="pre">Zentyal</span> <span class="pre">DNS</span></tt></td>
+</tr>
+<tr class="row-odd"><td>Secondary name server</td>
+<td>(IP of your DSL or cable modem)</td>
+</tr>
+<tr class="row-even"><td>NTP server</td>
+<td><tt class="docutils literal"><span class="pre">local</span> <span class="pre">Zentyal</span> <span class="pre">NTP</span></tt></td>
+</tr>
+<tr class="row-odd"><td>WINS server</td>
+<td><tt class="docutils literal"><span class="pre">none</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">The <em class="guilabel">Secondary nameserver</em> value should be set to the IP address
+of your DSL or cable interface.</p>
+</div>
+<p>Click <tt class="docutils literal"><span class="pre">Change</span></tt> to save the <em class="guilabel">Common options</em> settings. The following
+screenshot shows a DHCP configuration, where the cable modem uses IP address
+<tt class="kbd docutils literal"><span class="pre">192.168.1.254</span></tt>.</p>
+<img alt="_images/zentyal_33.1_common.png" src="_images/zentyal_33.1_common.png" />
+<p>Click the <em class="guilabel">Dynamic DNS Options</em> tab on the DHCP page, and click the
+<em class="guilabel">Enabled:</em> checkbox, and click <tt class="docutils literal"><span class="pre">Change</span></tt>. The settings on this page
+should be:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option name</th>
+<th class="head">Setting value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Enabled</td>
+<td>(Checked)</td>
+</tr>
+<tr class="row-odd"><td>Dynamic domain</td>
+<td><tt class="docutils literal"><span class="pre">local.aaltsys.net</span></tt></td>
+</tr>
+<tr class="row-even"><td>Static domain</td>
+<td><tt class="docutils literal"><span class="pre">Same</span> <span class="pre">as</span> <span class="pre">Dynamic</span> <span class="pre">Domain</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>The following screenshot shows <em class="guilabel">Dynamic DNS Options</em> settings:</p>
+<img alt="_images/zentyal_33.2_dynamic.png" src="_images/zentyal_33.2_dynamic.png" />
+<p>Under <em class="guilabel">Ranges</em>, click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></tt> to add an IP address range for
+dynamic IP assignment in your local subnet. We recommend excluding addresses
+above <tt class="docutils literal"><span class="pre">x.x.x.200</span></tt> to provide static IP address space, so our default settings
+are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Name:</td>
+<td><tt class="docutils literal"><span class="pre">Local</span> <span class="pre">dynamic</span> <span class="pre">hosts</span></tt></td>
+</tr>
+<tr class="row-even"><td>From:</td>
+<td><tt class="docutils literal"><span class="pre">192.168.2.1</span></tt></td>
+</tr>
+<tr class="row-odd"><td>To:</td>
+<td><tt class="docutils literal"><span class="pre">192.168.2.200</span></tt></td>
+</tr>
+</tbody>
+</table>
+<p>Click <tt class="docutils literal"><span class="pre">Add</span></tt> to complete the change. The result is displayed following:</p>
+<img alt="_images/zentyal_33.3_ranges.png" src="_images/zentyal_33.3_ranges.png" />
+</div>
+<div class="section" id="save-changes">
+<h2>Save Changes<a class="headerlink" href="#save-changes" title="Permalink to this headline">¶</a></h2>
+<p>Click <tt class="docutils literal"><span class="pre">Save</span> <span class="pre">changes</span></tt> in the Zentyal title bar, and under <em class="guilabel">Save
+configuration</em>, click <tt class="docutils literal"><span class="pre">Save</span></tt>. Your server functions are configured, and now
+office use can be set up.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="06_office.html" title="Office File Sharing"
+             >next</a></li>
+        <li class="right" >
+          <a href="04_firstboot.html" title="First Boot Configuration"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

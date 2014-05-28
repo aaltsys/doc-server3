@@ -1,0 +1,402 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Upgrade Server to AAltSysServer &mdash; AAltsys Server 3.0 Technical 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Technical 3.0 documentation" href="index.html" />
+    <link rel="prev" title="Earlier Server Versions" href="10_legacy.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="10_legacy.html" title="Earlier Server Versions"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Upgrade Server to AAltSysServer</a><ul>
+<li><a class="reference internal" href="#typographical-conventions">Typographical Conventions</a></li>
+<li><a class="reference internal" href="#change-network-driver-in-arev">Change Network Driver in AREV</a></li>
+<li><a class="reference internal" href="#backup-wares-and-fileshares">Backup WARES and Fileshares</a><ul>
+<li><a class="reference internal" href="#from-the-server">From the Server:</a></li>
+<li><a class="reference internal" href="#from-a-workstation">From a Workstation:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#install-new-os-on-old-hardware">Install New OS on Old Hardware</a></li>
+<li><a class="reference internal" href="#configure-new-server-os">Configure New Server OS</a><ul>
+<li><a class="reference internal" href="#register-the-server">Register the Server</a></li>
+<li><a class="reference internal" href="#open-zentyal-administration">Open Zentyal Administration</a><ul>
+<li><a class="reference internal" href="#setup-shared-folders">Setup Shared Folders</a></li>
+<li><a class="reference internal" href="#setup-users-and-groups">Setup Users and Groups</a></li>
+<li><a class="reference internal" href="#setup-shared-print-queues">Setup Shared Print Queues</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#close-zentyal-management">Close Zentyal Management</a></li>
+<li><a class="reference internal" href="#restore-wares-and-public-data">Restore WARES and Public Data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#shutdown-server-and-upgrade-hardware">Shutdown Server and Upgrade Hardware</a></li>
+<li><a class="reference internal" href="#restart-server-and-workstations">Restart Server and Workstations</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="10_legacy.html"
+                        title="previous chapter">Earlier Server Versions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/11_upgrade.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="upgrade-server-to-aaltsysserver">
+<h1>Upgrade Server to AAltSysServer<a class="headerlink" href="#upgrade-server-to-aaltsysserver" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document applies to upgrading an older generation WARESserver to
+a later AAltsysServer which uses the Zentyal operating system.</p>
+</div>
+<div class="section" id="typographical-conventions">
+<h2>Typographical Conventions<a class="headerlink" href="#typographical-conventions" title="Permalink to this headline">¶</a></h2>
+<p>Various type styles are used throughout this document to indicate</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type Style</th>
+<th class="head">Example of Style</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Body text is in plain proportional type</td>
+<td>sample document text</td>
+</tr>
+<tr class="row-odd"><td>Titles or references are emphasized</td>
+<td><em>this text is emphasized</em></td>
+</tr>
+<tr class="row-even"><td>Keywords or menu selections are bold</td>
+<td><strong>this is bold text</strong></td>
+</tr>
+<tr class="row-odd"><td>Commands and program listings are monospaced</td>
+<td><tt class="docutils literal"><span class="pre">entries</span> <span class="pre">are</span> <span class="pre">monospaced</span></tt></td>
+</tr>
+<tr class="row-even"><td>Hyperlinks are underlined</td>
+<td>(no example provided)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">All Unix-like operating systems are inherently case-sensitive. Type commands
+in correct case exactly as shown.</p>
+</div>
+</div>
+<div class="section" id="change-network-driver-in-arev">
+<h2>Change Network Driver in AREV<a class="headerlink" href="#change-network-driver-in-arev" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>From a workstation, log into WARES using the supervisor level password.</li>
+<li>Press <tt class="kbd docutils literal"><span class="pre">F2</span></tt> to see all menus, choose <strong>STARTUP</strong>.</li>
+<li>Select <em class="menuselection">Application ‣ Open</em>, and enter the account <tt class="docutils literal"><span class="pre">SYSPROG</span></tt>, password ____________.</li>
+<li>In the Commands window, enter <tt class="docutils literal"><span class="pre">RUNMENU</span> <span class="pre">LANPACK</span></tt>.</li>
+<li>Choose <strong>Network Type</strong> from menu <em class="menuselection">Lanpack</em>.</li>
+<li>Press <tt class="kbd docutils literal"><span class="pre">F2</span></tt> for options, and switch to <strong>Microsoft Lan Manager</strong>.</li>
+<li>Press <tt class="kbd docutils literal"><span class="pre">F9</span></tt> to save the setting. (A message will display saying revboot is rebuilt.)</li>
+<li>Choose <strong>Exit</strong> to exit the application.</li>
+</ol>
+</div>
+<div class="section" id="backup-wares-and-fileshares">
+<h2>Backup WARES and Fileshares<a class="headerlink" href="#backup-wares-and-fileshares" title="Permalink to this headline">¶</a></h2>
+<p>A backup copy of server data can be created either at the server, or at a workstation.</p>
+<div class="section" id="from-the-server">
+<h3>From the Server:<a class="headerlink" href="#from-the-server" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This guide section makes the following assumptions about your WARESserver:</p>
+<ul class="last simple">
+<li>Your operating system is some flavor of Linux Fedora.</li>
+<li>A <strong>wares</strong> program folder is located at <strong>/var/opt/arev</strong></li>
+<li>A <strong>public</strong> file share folder is located at <strong>/home/global</strong></li>
+</ul>
+</div>
+<ol class="arabic simple">
+<li>Login as user <strong>root</strong>, password __________________</li>
+<li>Insert a USB drive in a server port</li>
+<li>Open a terminal command prompt from <em class="menuselection">system/(accessories)/terminal</em></li>
+<li>Enter the commands from the command column below:</li>
+</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="60%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Command</th>
+<th class="head">Explanation</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">ls</span> <span class="pre">/media/</span></tt></td>
+<td>Identify mount point of USB drive</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">mkdir</span> <span class="pre">/media/(usb_drive)/wares</span></tt></td>
+<td>Create a <strong>wares</strong> directory on USB</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">mkdir</span> <span class="pre">/media/(usb_drive)/public</span></tt></td>
+<td>Create a <strong>public</strong> directory on USB</td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/var/opt/arev/.</span> <span class="pre">to</span> <span class="pre">/media/(usb_drive)/wares/</span></tt></td>
+<td>Copy <strong>wares</strong> data to USB</td>
+</tr>
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/home/global/.</span> <span class="pre">to</span> <span class="pre">/media/(usb_drive)/public/</span></tt></td>
+<td>Copy <strong>public</strong> data to USB</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="from-a-workstation">
+<h3>From a Workstation:<a class="headerlink" href="#from-a-workstation" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This guide assumes the following:</p>
+<ul class="last simple">
+<li>The server share for the WARES program is mapped to drive letter <strong>W:\</strong>.</li>
+<li>The server share for public file folders is mapped to drive letter <strong>S:\</strong>.</li>
+</ul>
+</div>
+<ol class="arabic simple">
+<li>Insert a USB drive, and open it in a window on the desktop.</li>
+<li>Create folders <strong>wares</strong> and <strong>public</strong> on the USB drive.</li>
+<li>Open My Computer, and navigate to drive <strong>W:\</strong>.</li>
+<li>Press <tt class="kbd docutils literal"><span class="pre">Ctrl-A</span> <span class="pre">Ctrl-C</span></tt> to copy all contents of drive W:.</li>
+<li>Click in the USB drive window, and double-click to open the <strong>wares</strong> folder. Press <tt class="kbd docutils literal"><span class="pre">Ctrl-V</span></tt> to paste.</li>
+<li>Switch back to My Computer, and navigate to drive <strong>S:\</strong>.</li>
+<li>Press <tt class="kbd docutils literal"><span class="pre">Ctrl-A</span> <span class="pre">Ctrl-C</span></tt> to copy all contents of drive S:.</li>
+<li>Click in the USB drive window, and double-click to open the <strong>public</strong> folder. Press <tt class="kbd docutils literal"><span class="pre">Ctrl-V</span></tt> to paste.</li>
+<li>Once copying is finished, Right-click the USB drive icon and choose <em class="menuselection">Safely Remove</em>.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="install-new-os-on-old-hardware">
+<h2>Install New OS on Old Hardware<a class="headerlink" href="#install-new-os-on-old-hardware" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Logout on the WARESserver console.</li>
+<li>Select <strong>Shutdown Server</strong> to shutdown and turn power off.</li>
+<li>Open the server case, make a record of drive connections for</li>
+</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>SATA 1</strong> &#8211;&gt; ____________________</td>
+<td><strong>SATA 2</strong> &#8211;&gt; ____________________</td>
+</tr>
+<tr class="row-even"><td><strong>SATA 3</strong> &#8211;&gt; ____________________</td>
+<td><strong>SATA 4</strong> &#8211;&gt; ____________________</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li>Disconnect old hard drives, add new drive controller and new drives.</li>
+<li>Connect new drives to the new soft-hardware RAID card.</li>
+<li>Use the &lt;AAltSys&gt; DVD to install the new OS per the <em>Quick Install Guide</em>.</li>
+</ol>
+</div>
+<div class="section" id="configure-new-server-os">
+<h2>Configure New Server OS<a class="headerlink" href="#configure-new-server-os" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Server configuration is performed through web applications which may be accessed from a workstation web browser or directly at the server console. For the purpose of this guide, instructions are given for a server console. (AAltSys prefers administration from workstations, as this avoids having physical access to a server with monitor, keyboard, and mouse.)</p>
+</div>
+<div class="section" id="register-the-server">
+<h3>Register the Server<a class="headerlink" href="#register-the-server" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Choose <em class="menuselection">Debian ‣ Registration</em> on the task bar to display the Registration window.</li>
+<li>Enter the site email address, registration number, and activation code.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Registrations must be purchased in advance at AAltSys.com before registering a server.</p>
+</div>
+</div>
+<div class="section" id="open-zentyal-administration">
+<h3>Open Zentyal Administration<a class="headerlink" href="#open-zentyal-administration" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Select <em class="menuselection">Debian‣Zentyal Administration</em> from the task bar.</li>
+<li>Login to Zentyal with an administrator _____________ password _______________.</li>
+<li>&#8211;&gt; Select all options from the left menu &lt;&#8211;</li>
+</ol>
+<div class="section" id="setup-shared-folders">
+<h4>Setup Shared Folders<a class="headerlink" href="#setup-shared-folders" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Select <em class="menuselection">Office ‣ File Sharing ‣ General Tab</em>.</li>
+<li>If server is in a Windows domain environment, uncheck <em class="guilabel">Enable PDC</em>.</li>
+<li>Set the workgroup or domain for the server (defaults to <tt class="docutils literal"><span class="pre">AALTSYS</span></tt>).</li>
+<li>Set the server description string (defaults to <tt class="docutils literal"><span class="pre">AAltSys</span> <span class="pre">Server</span></tt>).</li>
+<li>Click <em class="guilabel">Change</em> to save settings.</li>
+<li>Select <em class="menuselection">Office ‣ File Sharing ‣ Shares Tab</em>.</li>
+<li>Click <em class="guilabel">add new</em> to define a share.</li>
+<li>Enter share name <tt class="docutils literal"><span class="pre">arev</span></tt>, select <em class="guilabel">Directory under Zentyal</em>, name <tt class="docutils literal"><span class="pre">arev</span></tt></li>
+<li>You may add a comment, <tt class="docutils literal"><span class="pre">WARES</span> <span class="pre">data</span></tt>. Do not check <em class="guilabel">Guest access</em>.</li>
+<li>Click <strong>Add</strong> to add the share directory.</li>
+<li>Click <strong>add new</strong> to define a share.</li>
+<li>Enter share name <tt class="docutils literal"><span class="pre">public</span></tt>, select <strong>Directory under Zentyal</strong>, name <tt class="docutils literal"><span class="pre">public</span></tt></li>
+<li>You may add a comment, <tt class="docutils literal"><span class="pre">Shared</span> <span class="pre">files</span></tt>. Do not check <strong>Guest access</strong>.</li>
+<li>Click <strong>Add</strong> to add the share directory.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="setup-users-and-groups">
+<h4>Setup Users and Groups<a class="headerlink" href="#setup-users-and-groups" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Select <em class="menuselection">Office ‣ Users and Groups ‣ Users</em>.</li>
+<li>Enter a Username, First name, Last name, and Password (twice).</li>
+<li>Specify group <strong>Users</strong>.</li>
+<li>Click <em class="guilabel">Add</em> to add the user.</li>
+<li>Repeat the preceding steps for every network user.</li>
+</ol>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Username and Password entries on workstations must match the Usernames and Passwords entered here. See the <em>Workstation Setup</em> section in this guide for more information.</p>
+</div>
+</div>
+<div class="section" id="setup-shared-print-queues">
+<h4>Setup Shared Print Queues<a class="headerlink" href="#setup-shared-print-queues" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Select <em class="menuselection">Office ‣ Printer Sharing</em>.</li>
+<li>Click on the <em class="guilabel">CUPS Web Interface</em> link (in the bar below Printer Sharing).</li>
+<li>Define each shared or network printer in CUPS. Refer to on-line documentation.</li>
+</ol>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="close-zentyal-management">
+<h3>Close Zentyal Management<a class="headerlink" href="#close-zentyal-management" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Save all your settings when the server configuration is complete!</p>
+</div>
+<ol class="arabic simple">
+<li>Click <em class="guilabel">Save changes</em> at the top-right of the Zentyal window.</li>
+<li>Click the <em class="guilabel">Save</em> button in the Saving Configuration confirmation page.</li>
+<li>Click the link to <em class="guilabel">return to the Dashboard</em>.</li>
+<li>Click <em class="guilabel">Logout</em> At the top right of the Zentyal window.</li>
+<li>Click <em class="guilabel">Exit</em> on the Logout confirmation page to end your session.</li>
+<li>Click the <em class="guilabel">close</em> button in the title bar to close the Zentyal window.</li>
+</ol>
+</div>
+<div class="section" id="restore-wares-and-public-data">
+<h3>Restore WARES and Public Data<a class="headerlink" href="#restore-wares-and-public-data" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Select <em class="menuselection">Debian ‣ Advanced ‣ Terminal</em> from the task bar menu.</p>
+</li>
+<li><p class="first">Login with an administrator _____________ password _______________.</p>
+</li>
+<li><p class="first">Insert the USB drive used for backup in a server port.</p>
+</li>
+<li><p class="first">Copy files to the server, and set user permissions, with the following commands:</p>
+<div class="line-block">
+<div class="line"><br /></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/mnt/usb</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mount</span> <span class="pre">/dev/sdc1</span> <span class="pre">/mnt/usb</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">cd</span> <span class="pre">/home/samba/shares</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/mnt/usb/wares/.</span> <span class="pre">./arev/</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/mnt/usb/public/.</span> <span class="pre">./public/</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">chmod</span> <span class="pre">-R</span> <span class="pre">777</span> <span class="pre">./arev</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">chmod</span> <span class="pre">-R</span> <span class="pre">777</span> <span class="pre">./public</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">rm</span> <span class="pre">-f</span> <span class="pre">/etc/udev/rules.d/70*</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">shutdown</span> <span class="pre">-h</span> <span class="pre">now</span></tt></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="shutdown-server-and-upgrade-hardware">
+<h2>Shutdown Server and Upgrade Hardware<a class="headerlink" href="#shutdown-server-and-upgrade-hardware" title="Permalink to this headline">¶</a></h2>
+<p>(Refer to the <em>Installation Manual</em> chapter on <em>Reference Hardware</em>.)</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure you connect the network correctly at this time. With the <strong>ASUS P5BV-C</strong> motherboard, when the computer is viewed from the rear, the ethernet ports are: eth1 (LAN) on the left, eth0 (WAN) on the right.</p>
+</div>
+</div>
+<div class="section" id="restart-server-and-workstations">
+<h2>Restart Server and Workstations<a class="headerlink" href="#restart-server-and-workstations" title="Permalink to this headline">¶</a></h2>
+<p>(Refer to the <em>Workstation Administration</em> manual.)</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="10_legacy.html" title="Earlier Server Versions"
+             >previous</a></li>
+        <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

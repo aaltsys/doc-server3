@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Office File Sharing &mdash; AAltsys Server 3.0 Installation 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
+    <link rel="next" title="Backing Up Server Data" href="07_backup.html" />
+    <link rel="prev" title="Zentyal Configuration" href="05_zentyal.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="07_backup.html" title="Backing Up Server Data"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="05_zentyal.html" title="Zentyal Configuration"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Office File Sharing</a><ul>
+<li><a class="reference internal" href="#printer-sharing">Printer Sharing</a></li>
+<li><a class="reference internal" href="#user-template">User Template</a></li>
+<li><a class="reference internal" href="#ldap-settings">LDAP Settings</a></li>
+<li><a class="reference internal" href="#users">Users</a></li>
+<li><a class="reference internal" href="#groups">Groups</a></li>
+<li><a class="reference internal" href="#file-sharing">File Sharing</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="05_zentyal.html"
+                        title="previous chapter">Zentyal Configuration</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="07_backup.html"
+                        title="next chapter">Backing Up Server Data</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/06_office.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="office-file-sharing">
+<span id="installoffice"></span><h1>Office File Sharing<a class="headerlink" href="#office-file-sharing" title="Permalink to this headline">¶</a></h1>
+<p>This article describes activities in the <strong>Office</strong> section of the left menu.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This section presents tasks in dependency order, so that each section
+is visited only once.</p>
+</div>
+<div class="section" id="printer-sharing">
+<h2>Printer Sharing<a class="headerlink" href="#printer-sharing" title="Permalink to this headline">¶</a></h2>
+<p>Zentyal uses CUPS, or Common Unix Printing System, to define network printers
+and share them through the server. To begin, make a list of network-attached
+printers, their manufacturers, models, and IP addresses.</p>
+<p>Then open Zentyal by one of the following approaches:</p>
+<ul class="simple">
+<li>On the host console, open a Firefox session at <tt class="kbd docutils literal"><span class="pre">https://localhost</span></tt></li>
+<li>At a local workstation, browse to address <tt class="kbd docutils literal"><span class="pre">https://__hostname__</span></tt></li>
+<li>At a local workstation, browse to address <tt class="kbd docutils literal"><span class="pre">https://192.168.2.241</span></tt></li>
+</ul>
+<p>Go to <em class="menuselection">Office ‣ Printer Sharing</em>, and make sure that the
+<tt class="docutils literal"><span class="pre">Listen</span></tt> checkbox is checked for each active interface, as shown following.</p>
+<img alt="_images/office_45.1_printersharing.png" src="_images/office_45.1_printersharing.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The CUPS web interface can be displayed only in the local network.
+Therefore only local workstations or the server console can administer CUPS.</p>
+<p class="last">The browser may present a certificate warning the first time you use
+CUPS. Accept this certificate; it is perfectly safe to do so. This certificate
+is issued from your local server for use by the server.</p>
+</div>
+<ul class="simple">
+<li>Press <tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-T&gt;</span></tt> to open a new browser tab.</li>
+<li>Enter the web address <tt class="kbd docutils literal"><span class="pre">https://192.168.2.241:631</span></tt></li>
+<li>If required, follow your browser&#8217;s instructions to add a security exception.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Zentyal 2.2: Below <em class="guilabel">Printer Sharing</em>, click the link to the
+<em class="guilabel">CUPS Web Interface</em>.</p>
+</div>
+<p>This displays the CUPS interface.</p>
+<ul>
+<li><p class="first">Press the <em class="menuselection">Administration</em> menu label.</p>
+</li>
+<li><p class="first">In the CUPS authentication message, enter your Zentyal administrator username
+and password.</p>
+<img alt="_images/office_45.2_cups.png" src="_images/office_45.2_cups.png" />
+</li>
+<li><p class="first">In section <em class="guilabel">Server</em>, check the boxes for
+<em class="guilabel">Share printers connected to this system</em> and for
+<em class="guilabel">Allow remote administration</em>.</p>
+</li>
+<li><p class="first">Click <tt class="docutils literal"><span class="pre">Change</span> <span class="pre">Settings</span></tt>. These options are shown following:</p>
+<img alt="_images/office_45.3_cups_server.png" src="_images/office_45.3_cups_server.png" />
+</li>
+<li><p class="first">In section <cite>Printers</cite>, click <tt class="kbd docutils literal"><span class="pre">Add</span> <span class="pre">Printer</span></tt> to enter a new printer queue.</p>
+<img alt="_images/office_45.4_cups_printer.png" src="_images/office_45.4_cups_printer.png" />
+</li>
+</ul>
+<p>Adding printers in CUPS is inherently similar to adding printers in any OS:
+select the connection, the printer manufacturer, the printer model, and any
+settings specific to the printer installation. As such, this process is not
+described further here.</p>
+<p>Check the <strong>Sharing:</strong> <em class="guilabel">Share this printer</em> box when saving a printer
+setup. This allows the printer queue to be used from other workstations as a
+SAMBA share. Once all printers are defined, close the CUPS tab and return to
+Zentyal.</p>
+<img alt="_images/office_45.5_cups_share.png" src="_images/office_45.5_cups_share.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We recommend that all shared printers be defined as network printers
+shared from the server. Also, for enhanced security, these printers may be
+connected on the WAN side of the network and then accessed by LAN computers
+through server queues.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="user-template">
+<h2>User Template<a class="headerlink" href="#user-template" title="Permalink to this headline">¶</a></h2>
+<p>By default, Zentyal limits the size of user shares.</p>
+<p>In the <em class="menuselection">Office ‣ Users and Groups ‣ User Template</em> section,
+either (1) change the <em class="guilabel">Default user quota</em> to <tt class="kbd docutils literal"><span class="pre">Disabled</span></tt>, or
+(2) Change the quota to <tt class="kbd docutils literal"><span class="pre">0</span></tt> (unlimited). Then click <tt class="kbd docutils literal"><span class="pre">Change</span></tt>.</p>
+<img alt="_images/office_41_template.png" src="_images/office_41_template.png" />
+</div>
+<div class="section" id="ldap-settings">
+<h2>LDAP Settings<a class="headerlink" href="#ldap-settings" title="Permalink to this headline">¶</a></h2>
+<p>In the LDAP module <em class="guilabel">PAM settings</em>:</p>
+<ul class="simple">
+<li>Set the <em class="guilabel">Default login shell</em> to <tt class="kbd docutils literal"><span class="pre">bash</span></tt></li>
+<li>Click the <em class="guilabel">Enable PAM:</em> checkbox to turn on PAM (Pluggable
+Authentication Module)</li>
+<li>Click <tt class="kbd docutils literal"><span class="pre">Change</span></tt>.</li>
+</ul>
+<img alt="_images/office_42_ldap.png" src="_images/office_42_ldap.png" />
+<p>On the Zentyal top bar, click <tt class="docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></tt> and then click the <tt class="docutils literal"><span class="pre">Save</span></tt>
+button to record your changes.</p>
+</div>
+<div class="section" id="users">
+<h2>Users<a class="headerlink" href="#users" title="Permalink to this headline">¶</a></h2>
+<p>From each network workstation, make a list of each username and the
+corresponding password which is used on the workstation. Make sure that each
+username is unique to a single person and has exactly one password. Replace
+system-names such as USER, OWNER, and ADMINISTRATOR with actual person-names
+or office role-names (payclerk, manager, etc.).</p>
+<p>In Zentyal, select <em class="menuselection">Office ‣ Users and Groups ‣ Users</em> on
+the menu. Use the <em class="guilabel">Add User</em> feature to add each network user on the
+server.</p>
+<img alt="_images/office_39.1_adduser.png" src="_images/office_39.1_adduser.png" />
+<p>Once all the users are added, they will all display in the users list. Note
+that your initial administrative user is not on the list, as shown below.</p>
+<img alt="_images/office_39.2_users.png" src="_images/office_39.2_users.png" />
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">For file sharing users, click <tt class="docutils literal"><span class="pre">Add</span></tt> after entering names and
+passwords. For administrative users, click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">and</span> <span class="pre">Edit</span></tt>, then check the
+box for <tt class="docutils literal"><span class="pre">Administration</span> <span class="pre">rights</span></tt> and click <tt class="docutils literal"><span class="pre">Change</span></tt>.</p>
+</div>
+<p>If any user is entered in error, click the <tt class="docutils literal"><span class="pre">Edit</span></tt> icon on the user&#8217;s line.
+Then click the <tt class="docutils literal"><span class="pre">Delete</span> <span class="pre">user</span></tt> button to remove the user. Similarly, edit a
+user to add or remove administration rights, or to change group memberships.</p>
+<img alt="_images/office_39.3_administer.png" src="_images/office_39.3_administer.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Maybe it is a bug, but user directories are not removed when users are
+deleted.</p>
+</div>
+</div>
+<div class="section" id="groups">
+<h2>Groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h2>
+<p>Once all users are entered, select
+<em class="menuselection">Office ‣ Users and Groups ‣ Groups</em>. Enter a group
+<tt class="kbd docutils literal"><span class="pre">fsusers</span></tt> and a group <tt class="kbd docutils literal"><span class="pre">admins</span></tt>, as shown here.</p>
+<img alt="_images/office_40.1_addgroup.png" src="_images/office_40.1_addgroup.png" />
+<p>Click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">and</span> <span class="pre">edit</span></tt> to complete the group information. For the <tt class="docutils literal"><span class="pre">fsusers</span></tt>
+group, <tt class="kbd docutils literal"><span class="pre">&lt;Shift-Click&gt;</span></tt> each name in the <em class="guilabel">Users not in group</em>
+list, and then click the <em class="guilabel">left-arrow</em> to move them to the
+<em class="guilabel">Users in group</em> list.</p>
+<img alt="_images/office_40.2_groups.png" src="_images/office_40.2_groups.png" />
+<p>In the <em class="guilabel">Printers</em> section, click the <em class="guilabel">Allow all priters</em>
+checkbox and then <tt class="docutils literal"><span class="pre">Change</span></tt>, so that all users can access printers as shown.</p>
+<img alt="_images/office_40.3_group_printers.png" src="_images/office_40.3_group_printers.png" />
+</div>
+<div class="section" id="file-sharing">
+<h2>File Sharing<a class="headerlink" href="#file-sharing" title="Permalink to this headline">¶</a></h2>
+<p>Open the <em class="menuselection">Office ‣ File Sharing</em> link on the left menu. With
+the <em class="guilabel">General</em> tab displayed. Enter a domain (workgroup) name, a
+NetBIOS name for the server, and a description. If the server is not the
+primary domain controller in a network, uncheck the <em class="guilabel">PDC</em> box.</p>
+<img alt="_images/office_44.1_filesharing.png" src="_images/office_44.1_filesharing.png" />
+<p>Next click on the <em class="guilabel">Shares</em> tab, and then click <tt class="docutils literal"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">new</span></tt>
+to setup new file shares. Enter a <em class="guilabel">share name</em>, a <em class="guilabel">share
+path</em>, and a descriptive <em class="guilabel">comment</em> for a share, and then click <tt class="docutils literal"><span class="pre">Add</span></tt>
+to create the share. The following image shows share <tt class="docutils literal"><span class="pre">backup</span></tt> being added.</p>
+<img alt="_images/office_44.2_shares_new.png" src="_images/office_44.2_shares_new.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Most file shares will be defined with <em class="guilabel">Share path:</em>
+<tt class="docutils literal"><span class="pre">Directory</span> <span class="pre">under</span> <span class="pre">Zentyal</span></tt>. As shown, the <tt class="docutils literal"><span class="pre">backup</span></tt> share is an exception
+to this rule.</p>
+</div>
+<p>Once shares are defined, Access Control entries must be set for each share.
+Entries for groups <tt class="docutils literal"><span class="pre">Users</span></tt> and <tt class="docutils literal"><span class="pre">Admins</span></tt> are permitted at this time. Click
+the <em class="guilabel">Access control</em> button next to a share, and then click
+<tt class="docutils literal"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">new</span></tt> to add a permission. Next to <em class="guilabel">User/Group</em>, press the
+dropdown button and choose <tt class="docutils literal"><span class="pre">Group</span></tt>, then press the dropdown to set the group
+name. At <em class="guilabel">Permission</em>, press the dropdown and set permissions for the
+selected group. The settings to add <tt class="docutils literal"><span class="pre">Group</span></tt> <tt class="docutils literal"><span class="pre">fsusers</span></tt> to the
+<em class="guilabel">public</em> share with <tt class="docutils literal"><span class="pre">read</span> <span class="pre">and</span> <span class="pre">write</span></tt> permissions are illustrated
+following.</p>
+<img alt="_images/office_44.3_shares_acl.png" src="_images/office_44.3_shares_acl.png" />
+<p>Click <tt class="docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></tt> in the Zentyal title bar and confirm the save when all
+shares are defined. Your file sharing server is ready for service.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We usually setup a general public share for documents, a share
+reserved for application data, and a share where backups are written.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="07_backup.html" title="Backing Up Server Data"
+             >next</a></li>
+        <li class="right" >
+          <a href="05_zentyal.html" title="Zentyal Configuration"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

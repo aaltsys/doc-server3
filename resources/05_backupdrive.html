@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Automount Drive Setup &mdash; AAltsys Server 3.0 Technical 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Technical 3.0 documentation" href="index.html" />
+    <link rel="next" title="Mounting Devices with udev" href="09_udevmount.html" />
+    <link rel="prev" title="Server Network Setup" href="04_network.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_udevmount.html" title="Mounting Devices with udev"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="04_network.html" title="Server Network Setup"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Automount Drive Setup</a><ul>
+<li><a class="reference internal" href="#part-1-install-autofs">Part 1: Install autofs </a></li>
+<li><a class="reference internal" href="#part-2-format-drive-ntfs">Part 2. Format drive NTFS</a></li>
+<li><a class="reference internal" href="#part-3-identify-the-device">Part 3: Identify the device</a></li>
+<li><a class="reference internal" href="#part-4-verify-drive-mounting">Part 4: Verify drive mounting</a></li>
+<li><a class="reference internal" href="#disconnect-automounted-drive">Disconnect automounted drive</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="04_network.html"
+                        title="previous chapter">Server Network Setup</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="09_udevmount.html"
+                        title="next chapter">Mounting Devices with udev</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/05_backupdrive.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="automount-drive-setup">
+<span id="backupdrive"></span><h1>Automount Drive Setup<a class="headerlink" href="#automount-drive-setup" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>(1) Connecting external drives over eSATA for scheduled backups can result in
+corrupted RAID arrays on some  motherboards which do not organize SATA ports
+based on boot status.</p>
+<p class="last">(2) Zentyal 3.0 through 3.3 automounts USB devices, which interferes with
+fuse autofs mounts for backup drives connected using USB.</p>
+</div>
+<p>In this example, a backup drive is configured as an extended partition
+hard drive formatted NTFS. Since Linux does not honor file permissions on NTFS
+volumes, the backup will be readable by anyone.</p>
+<div class="section" id="part-1-install-autofs">
+<h2>Part 1: Install autofs <a class="footnote-reference" href="#id4" id="id1">[1]</a><a class="headerlink" href="#part-1-install-autofs" title="Permalink to this headline">¶</a></h2>
+<p>Display a terminal command line on the server console, or <strong class="command">ssh</strong> to a
+server command shell. At the command prompt, type:</p>
+<div class="highlight-python"><pre>sudo apt-get install autofs ntfsprogs ntfs-3g</pre>
+</div>
+</div>
+<div class="section" id="part-2-format-drive-ntfs">
+<h2>Part 2. Format drive NTFS<a class="headerlink" href="#part-2-format-drive-ntfs" title="Permalink to this headline">¶</a></h2>
+<p>A drive must be formatted before use. We recommend NTFS file system for the
+external backup drive, as then it can be read from either Linux or Windows.
+Use the following instructions to perform this format:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">These instructions assume that the external drive is device
+<strong>sdc</strong>, and you are using data partition <strong>sdc1</strong>. Verify this, or replace
+<strong>sdc1</strong> in the following instructions with the correct parameter for your
+specific system. All instructions are intended to be executed at a terminal
+command prompt.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">Identify the device, format, and mount status using the following commands:</p>
+<div class="highlight-python"><pre>ls -al /dev/sd*
+sudo blkid
+mount -l</pre>
+</div>
+</li>
+<li><p class="first">If mounted, unmount the drive volume with one of the following commands:</p>
+<div class="highlight-python"><pre>sudo service autofs stop (for an automounted drive).
+sudo umount /dev/sdc (For a standard mount point).</pre>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>For Zentyal 3.0 through 3.3, modify the udev rules to prevent USB drives from
+automounting. <a class="footnote-reference" href="#id5" id="id2">[2]</a> :</p>
+<blockquote class="last">
+<div>sudo bash &lt; &lt;(echo &#8216;echo &#8220;SUBSYSTEM==&#8221;usb&#8221;, ENV{UDISKS_AUTO}=&#8221;0&#8221;&#8221; &gt;&gt; /etc/udev/rules.d/85-no-automount.rules&#8217;)
+sudo service udev restart</div></blockquote>
+</div>
+<ol class="arabic">
+<li><p class="first">Verify the device is unmounted:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">mount</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Use <strong>fdisk</strong> to remove partitions, create a fresh partition, set type to 7
+(NTFS/HPFS):</p>
+<div class="highlight-python"><pre>sudo fdisk /dev/sdc
+u
+c
+n,p,&lt;Enter&gt;,&lt;Enter&gt;
+t,7
+w</pre>
+</div>
+</li>
+<li><p class="first">Format the new partition NTFS, label it BACKUP:</p>
+<div class="highlight-python"><pre>sudo mkntfs -L BACKUP -f /dev/sdc1</pre>
+</div>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Creating a new drive partition changes the UUID for the drive
+mount. When a drive has been automounted in the past, partitioning  must be
+followed by the automount steps below before autofs can mount the drive.</p>
+</div>
+</div>
+<div class="section" id="part-3-identify-the-device">
+<h2>Part 3: Identify the device<a class="headerlink" href="#part-3-identify-the-device" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Once a drive is formatted, a bash script is provided to perform Parts
+2 and 3 of this document. From the web browser on the server, download
+<a class="reference download internal" href="_downloads/backupdrive.sh"><tt class="xref download docutils literal"><span class="pre">this</span> <span class="pre">script</span></tt></a> and save it
+in your home folder. Then execute the script with the commands:</p>
+<div class="last highlight-python"><pre>cd ~/Downloads
+bash backupdrive.sh BACKUP
+rm backupdrive.sh</pre>
+</div>
+</div>
+<p>The drive device will be discovered and then mounted to logical mount point
+<tt class="docutils literal"><span class="pre">/home/mnt/backup</span></tt>. <a class="footnote-reference" href="#id6" id="id3">[3]</a></p>
+<ol class="arabic">
+<li><p class="first">Plug in the hot-pluggable device on a <strong>USB</strong> port (eSATA is risky).</p>
+</li>
+<li><p class="first">At the command prompt, type:</p>
+<div class="highlight-python"><pre>sudo blkid</pre>
+</div>
+</li>
+<li><p class="first">Output similar to the following will be displayed:</p>
+<div class="highlight-python"><pre>/dev/sda1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
+/dev/sda5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
+/dev/sda6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
+/dev/sdb1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
+/dev/sdb5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
+/dev/sdb6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
+/dev/mapper/ddf1_aaltsys1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
+/dev/mapper/ddf1_aaltsys5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
+/dev/mapper/ddf1_aaltsys6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
+/dev/sdc5: LABEL="HD-HSQ" UUID="363404743404397F" TYPE="ntfs"</pre>
+</div>
+</li>
+</ol>
+<p>This example shows block device <tt class="docutils literal"><span class="pre">/dev/sdc5</span></tt>, UUID <tt class="docutils literal"><span class="pre">363404743404397F</span></tt>, of
+<tt class="docutils literal"><span class="pre">TYPE=&quot;ntfs&quot;</span></tt>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In the following commands, replace <strong>$UUID</strong> with the identifier
+<strong>YOU OBTAINED</strong> from the instructions in Part 3.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The output above shows <cite>LABEL=&#8221;HD-HSQ&#8221;</cite>. If desired, change the volume label
+with the command:</p>
+<div class="highlight-python"><pre>sudo ntfslabel {block_device} {new_label}</pre>
+</div>
+<p class="last">For example, the command <strong class="command">sudo ntfslabel /dev/sdc5 BACKUP</strong> would
+change the label from <cite>HD-HSQ</cite> to <cite>BACKUP</cite> in the previous output.</p>
+</div>
+<p>At the command prompt, type:</p>
+<div class="highlight-python"><pre>sudo service autofs stop
+sudo mkdir -p /home/mnt/backup/source_config
+sudo bash &lt; &lt;(echo 'echo "/-  /etc/auto.backup  --timeout=30 --ghost" &gt;&gt; /etc/auto.master')
+sudo bash &lt; &lt;(echo 'echo "/home/mnt/backup  -fstype=auto,sync  :/dev/disk/by-uuid/$UUID" &gt;&gt; /etc/auto.backup')
+sudo service autofs start</pre>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Did you remember to replace $UUID with your partition identifier?</p>
+</div>
+</div>
+<div class="section" id="part-4-verify-drive-mounting">
+<h2>Part 4: Verify drive mounting<a class="headerlink" href="#part-4-verify-drive-mounting" title="Permalink to this headline">¶</a></h2>
+<p>Type the commands:</p>
+<div class="highlight-python"><pre>ls /home/mnt/backup
+touch /home/mnt/backup/@@external@@</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This procedure created a file directory on the local drive as well as
+the target directory on the external drive. When the external drive is
+disconnected, turned off, or failed, the file <tt class="docutils literal"><span class="pre">&#64;&#64;external&#64;&#64;</span></tt> will not
+display with the command <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">/home/mnt/backup/&#64;&#64;*</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="disconnect-automounted-drive">
+<h2>Disconnect automounted drive<a class="headerlink" href="#disconnect-automounted-drive" title="Permalink to this headline">¶</a></h2>
+<p>Your device is mounted with a 30-second timeout. To avoid corruption, count
+to 60 before disconnecting the drive. When a drive will remain disconnected,
+autofs interferes with using the underlying file system of the system drive.
+Reconfigure autofs to ignore the file system mount point as follows:</p>
+<div class="highlight-python"><pre>sudo sed -i '$d' /etc/auto.master
+sudo service autofs restart</pre>
+</div>
+<hr class="docutils" />
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://help.ubuntu.com/community/Autofs">https://help.ubuntu.com/community/Autofs</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://unix.stackexchange.com/questions/85061/automount-not-disabling-in-ubuntu-12-04-or-13-04">http://unix.stackexchange.com/questions/85061/automount-not-disabling-in-ubuntu-12-04-or-13-04</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="https://help.ubuntu.com/community/Mount/USB">https://help.ubuntu.com/community/Mount/USB</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="09_udevmount.html" title="Mounting Devices with udev"
+             >next</a></li>
+        <li class="right" >
+          <a href="04_network.html" title="Server Network Setup"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,733 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Foxconn 955X7AA BIOS Settings &mdash; AAltsys Server 3.0 Technical 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Technical 3.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Foxconn 955X7AA BIOS Settings</a><ul>
+<li><a class="reference internal" href="#standard-cmos-features">Standard CMOS Features</a></li>
+<li><a class="reference internal" href="#bios-features">BIOS Features</a></li>
+<li><a class="reference internal" href="#advanced-bios-features">Advanced BIOS Features</a></li>
+<li><a class="reference internal" href="#advanced-chipset-features">Advanced Chipset Features</a></li>
+<li><a class="reference internal" href="#integrated-peripherals">Integrated Peripherals</a></li>
+<li><a class="reference internal" href="#power-management-setup">Power Management Setup</a></li>
+<li><a class="reference internal" href="#pnp-pci-configurations">PnP/PCI Configurations</a></li>
+<li><a class="reference internal" href="#hardware-monitor">Hardware Monitor</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#flash-foxconn-955x7aa-bios">Flash Foxconn 955X7AA BIOS</a><ul>
+<li><a class="reference internal" href="#enable-bios-flash-settings">Enable BIOS Flash Settings</a></li>
+<li><a class="reference internal" href="#boot-from-usb-flash-drive">Boot From USB Flash Drive</a></li>
+<li><a class="reference internal" href="#flash-the-startup-logo">Flash the Startup Logo</a></li>
+<li><a class="reference internal" href="#restart-the-system">Restart the system</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/bios-foxconn-955X7AA.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="foxconn-955x7aa-bios-settings">
+<span id="bios-955x7aa"></span><h1>Foxconn 955X7AA BIOS Settings<a class="headerlink" href="#foxconn-955x7aa-bios-settings" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="standard-cmos-features">
+<h2>Standard CMOS Features<a class="headerlink" href="#standard-cmos-features" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="48%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Section</th>
+<th class="head">Option</th>
+<th class="head">Setting</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>IDE Channel 0 Slave:</td>
+<td><tt class="docutils literal"><span class="pre">LITE-ON</span> <span class="pre">DVDRW</span> <span class="pre">SHM-16</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>(all other drives set to:)</td>
+<td><tt class="docutils literal"><span class="pre">None</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Drive A:</td>
+<td><tt class="docutils literal"><span class="pre">None</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Halt On:</td>
+<td><tt class="docutils literal"><span class="pre">All,</span> <span class="pre">But</span> <span class="pre">Keyboard</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="bios-features">
+<h2>BIOS Features<a class="headerlink" href="#bios-features" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="48%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Section</th>
+<th class="head">Option</th>
+<th class="head">Setting</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>SuperBoot:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>SuperBIOS-Protect:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>SuperRecovery Hotkey:</td>
+<td><tt class="docutils literal"><span class="pre">LSHIFT+F12</span></tt></td>
+</tr>
+<tr class="row-odd"><td colspan="3">SuperSpeed</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Ratio Free:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Auto Detect PCI Clk:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Spread Spectrum:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Overclock:</td>
+<td><tt class="docutils literal"><span class="pre">Default</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="advanced-bios-features">
+<h2>Advanced BIOS Features<a class="headerlink" href="#advanced-bios-features" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="48%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Section</th>
+<th class="head">Option</th>
+<th class="head">Setting</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="3">CPU Feature</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Delay Prior to Thermal:</td>
+<td><tt class="docutils literal"><span class="pre">4</span> <span class="pre">Min</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Execute Disable Bit:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Virtualization Technology:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-even"><td colspan="3">Hard Disk Boot Priority</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td colspan="2">Bootable Add-in Cards</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Virus Warning:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>CPU L1 &amp; L2 Cache:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>First Boot Device:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt> <tt class="docutils literal"><span class="pre">(CDROM)</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Second Boot Device:</td>
+<td><tt class="docutils literal"><span class="pre">Hard</span> <span class="pre">Disk</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Third Boot Device:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Boot Other Device:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Boot Up Floppy Seek:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Boot Up Numlock Status:</td>
+<td><tt class="docutils literal"><span class="pre">On</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Security Option:</td>
+<td><tt class="docutils literal"><span class="pre">Setup</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>APIC Mode:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>MPS Version Control For OS:</td>
+<td><tt class="docutils literal"><span class="pre">1.4</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>OS Select for DRAM &gt; 64MB:</td>
+<td><tt class="docutils literal"><span class="pre">Non-OS2</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Report No FDD For WIN 95:</td>
+<td><tt class="docutils literal"><span class="pre">No</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Delay for HDD (Secs):</td>
+<td><tt class="docutils literal"><span class="pre">4</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Full Screen LOGO Show:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Small Logo (EPA) Show:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="advanced-chipset-features">
+<h2>Advanced Chipset Features<a class="headerlink" href="#advanced-chipset-features" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="48%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Section</th>
+<th class="head">Option</th>
+<th class="head">Setting</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>DRAM Timing Selectable:</td>
+<td><tt class="docutils literal"><span class="pre">By</span> <span class="pre">SPD</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Memory Remap Function:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>SLP_S4# Assertion Width:</td>
+<td><tt class="docutils literal"><span class="pre">1</span> <span class="pre">to</span> <span class="pre">2</span> <span class="pre">Sec.</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>System BIOS Cacheable:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Video BIOS Cacheable:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Memory Hole At 15M-16M:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-even"><td colspan="3">PCI Express Root Port Function</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>PCI Express Port 1:</td>
+<td><tt class="docutils literal"><span class="pre">Auto</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>PCI Express Port 2:</td>
+<td><tt class="docutils literal"><span class="pre">Auto</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>PCI Express Port 3:</td>
+<td><tt class="docutils literal"><span class="pre">Auto</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>PCI-E Compliancy Mode:</td>
+<td><tt class="docutils literal"><span class="pre">v1.0a</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>DRAM Data Integrity Mode:</td>
+<td><tt class="docutils literal"><span class="pre">Non-ECC</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>PEG Force X1:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="integrated-peripherals">
+<h2>Integrated Peripherals<a class="headerlink" href="#integrated-peripherals" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="48%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Section</th>
+<th class="head">Option</th>
+<th class="head">Setting</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="3">OnChip IDE Device</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>IDE HDD Block Mode:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>IDE DMA transfer access:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>On-Chip Primary PCI IDE:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>On-Chip Secondary PCI IDE:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>All PIO and UDMA settings:</td>
+<td><tt class="docutils literal"><span class="pre">Auto</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>SATA Mode:</td>
+<td><tt class="docutils literal"><span class="pre">RAID</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>SATA PORT Speed Settings</td>
+<td><tt class="docutils literal"><span class="pre">Force</span> <span class="pre">GEN</span> <span class="pre">II</span></tt></td>
+</tr>
+<tr class="row-even"><td colspan="3">Onboard Device</td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>USB Controller:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>USB 2.0 Controller:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>USB Keyboard Support:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>USB Mouse Support:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Azalia/AC97 Audio Select:</td>
+<td><tt class="docutils literal"><span class="pre">Auto</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>1394 Controller:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>PCI LAN Controller:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Onboard Lan Boot ROM:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>PCI-E Lan Controller:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>SiI3114 SATA Controller:</td>
+<td><tt class="docutils literal"><span class="pre">Raid</span> <span class="pre">Mode</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>ITE8212F RAID Controller:</td>
+<td><tt class="docutils literal"><span class="pre">IDE</span> <span class="pre">Mode</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Detecting Device Time:</td>
+<td><tt class="docutils literal"><span class="pre">Quick</span> <span class="pre">Mode</span></tt></td>
+</tr>
+<tr class="row-odd"><td colspan="3">Super IO Device</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Onboard FDC Controller:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Onboard Serial Port 1:</td>
+<td><tt class="docutils literal"><span class="pre">3F8/IRQ4</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Onboard Serial Port 2:</td>
+<td><tt class="docutils literal"><span class="pre">2F8/IRQ3</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>UART Mode Select:</td>
+<td><tt class="docutils literal"><span class="pre">ASKIR</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&#8212;IR settings:</td>
+<td><tt class="docutils literal"><span class="pre">Default</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Onboard Parallel Port:</td>
+<td><tt class="docutils literal"><span class="pre">378/IRQ7</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Parallel Port Mode:</td>
+<td><tt class="docutils literal"><span class="pre">ECP+EPP</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>EPP Mode Select:</td>
+<td><tt class="docutils literal"><span class="pre">EPP1.7</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>ECP Mode Use DMA:</td>
+<td><tt class="docutils literal"><span class="pre">3</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="power-management-setup">
+<h2>Power Management Setup<a class="headerlink" href="#power-management-setup" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="48%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Section</th>
+<th class="head">Option</th>
+<th class="head">Setting</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="2">ACPI Function:</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>ACPI Suspend Type:</td>
+<td><tt class="docutils literal"><span class="pre">S3(STR)</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Run VGABIOS if S3 Resume:</td>
+<td><tt class="docutils literal"><span class="pre">Auto</span></tt></td>
+</tr>
+<tr class="row-odd"><td colspan="2">Power Management:</td>
+<td><tt class="docutils literal"><span class="pre">User</span> <span class="pre">Define</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Suspend Type:</td>
+<td><tt class="docutils literal"><span class="pre">PwrOn</span> <span class="pre">Suspend</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>MODEM Use IRQ:</td>
+<td><tt class="docutils literal"><span class="pre">3</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Suspend Mode:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>HDD Power Down:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Soft-Off by PWR-BTTN:</td>
+<td><tt class="docutils literal"><span class="pre">Delay</span> <span class="pre">4</span> <span class="pre">Sec.</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>CPU THRM-Throttling:</td>
+<td><tt class="docutils literal"><span class="pre">50.0%</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>PWRON After PWR-Fail:</td>
+<td><tt class="docutils literal"><span class="pre">Former-Sts</span></tt></td>
+</tr>
+<tr class="row-odd"><td colspan="3">Power Management Events</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Wake-Up by PCI card:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Wake-Up by Ring:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Wake Up Pn LAN:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>USB KB Wake-Up From S3:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>POWER ON Function:</td>
+<td><tt class="docutils literal"><span class="pre">BUTTON</span> <span class="pre">ONLY</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Resume by Alarm:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="pnp-pci-configurations">
+<h2>PnP/PCI Configurations<a class="headerlink" href="#pnp-pci-configurations" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="48%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Section</th>
+<th class="head">Option</th>
+<th class="head">Setting</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>Init Display First:</td>
+<td><tt class="docutils literal"><span class="pre">PCIEx</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Reset Configuration Data:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Resources Controlled By:</td>
+<td><tt class="docutils literal"><span class="pre">Auto(ESCD)</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>PCI/VGA Palette Snoop:</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Maximum Payload Size:</td>
+<td><tt class="docutils literal"><span class="pre">4096</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hardware-monitor">
+<h2>Hardware Monitor<a class="headerlink" href="#hardware-monitor" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="48%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Section</th>
+<th class="head">Option</th>
+<th class="head">Setting</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&nbsp;</td>
+<td>Shutdown Temperature</td>
+<td><tt class="docutils literal"><span class="pre">75</span> <span class="pre">C/167</span> <span class="pre">F</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>CPU Warning</td>
+<td><tt class="docutils literal"><span class="pre">60</span> <span class="pre">C/140</span> <span class="pre">F</span></tt></td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>Smart Fan Control</td>
+<td><tt class="docutils literal"><span class="pre">Enabled</span></tt></td>
+</tr>
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Case Open Warning</td>
+<td><tt class="docutils literal"><span class="pre">Disabled</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>BIOS Notes</p>
+<ul class="last simple">
+<li>BIOS Features, SuperBoot &#8211; set <tt class="docutils literal"><span class="pre">Disabled</span></tt> so logo screen will display</li>
+<li>BIOS features, SuperBIOS Protect &#8211; set <tt class="docutils literal"><span class="pre">Enabled</span></tt> to prevent BIOS corruption</li>
+<li>Advanced BIOS Features, Delay Prior to Thermal &#8211; set to the minimum interval for a complete boot</li>
+<li>Integrated Peripherals, SATA Mode &#8211; set to RAID</li>
+<li>Integrated Peripherals, SATA Port Speed Settings &#8211; Force GEN II for highest data transfer rates</li>
+<li>Integrated Peripherals, SiI 3114 SATA Controller &#8211; RAID Mode for disk mirroring</li>
+<li>Power Management Setup, ACPI Function &#8211; <tt class="docutils literal"><span class="pre">Enabled</span></tt> allows soft power off on shutdown</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="flash-foxconn-955x7aa-bios">
+<h1>Flash Foxconn 955X7AA BIOS<a class="headerlink" href="#flash-foxconn-955x7aa-bios" title="Permalink to this headline">¶</a></h1>
+<p>The Foxconn MB is capable of being flashed with a custom BIOS and boot splash,
+appropriate for OEM distribution. Use these notes to install the custom BIOS.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Instructions in this article apply to internal services at AAltsys Technology
+and are not intended for general use.</p>
+</div>
+<div class="section" id="enable-bios-flash-settings">
+<h2>Enable BIOS Flash Settings<a class="headerlink" href="#enable-bios-flash-settings" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Insert the bootable flash drive in a USB port</li>
+<li>Turn on the CPU, press <tt class="docutils literal"><span class="pre">&lt;</span> <span class="pre">Del</span> <span class="pre">&gt;</span></tt> to enter setup when prompted</li>
+<li>Choose <tt class="docutils literal"><span class="pre">Advanced</span> <span class="pre">BIOS</span> <span class="pre">Features</span></tt> from the CMOS Setup Utility
+#. At <tt class="docutils literal"><span class="pre">Hard</span> <span class="pre">Disk</span> <span class="pre">Boot</span> <span class="pre">Priority</span></tt>, press <tt class="docutils literal"><span class="pre">&lt;Enter&gt;</span></tt>
+#. Highlight <tt class="docutils literal"><span class="pre">'USB-HDD0</span></tt>&#8216;, press <tt class="docutils literal"><span class="pre">+</span></tt> until it is at the top of the list
+#. Press <tt class="docutils literal"><span class="pre">&lt;Esc&gt;</span></tt> to return to the main menu</li>
+<li>Choose <tt class="docutils literal"><span class="pre">BIOS</span> <span class="pre">Features</span></tt>
+#. Set <tt class="docutils literal"><span class="pre">SuperBIOS-Protect</span></tt> to <tt class="docutils literal"><span class="pre">'Disabled</span></tt>&#8216;</li>
+<li>Press <tt class="docutils literal"><span class="pre">&lt;F10&gt;</span></tt>, then <tt class="docutils literal"><span class="pre">Y</span></tt> to Save and Exit</li>
+</ol>
+</div>
+<div class="section" id="boot-from-usb-flash-drive">
+<h2>Boot From USB Flash Drive<a class="headerlink" href="#boot-from-usb-flash-drive" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Boot from the USB Drive, starting BartPE...</li>
+<li>When asked, &#8220;Do you want to start network support now?&#8221;, answer <tt class="docutils literal"><span class="pre">No</span></tt></li>
+<li>On the manu, select <tt class="docutils literal"><span class="pre">Go</span> <span class="pre">+</span> <span class="pre">Programs</span> <span class="pre">+</span> <span class="pre">SuperLogo</span></tt></li>
+</ol>
+</div>
+<div class="section" id="flash-the-startup-logo">
+<h2>Flash the Startup Logo<a class="headerlink" href="#flash-the-startup-logo" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Click the <tt class="docutils literal"><span class="pre">Change</span> <span class="pre">Logo</span></tt> pushbutton</li>
+<li>Click the <tt class="docutils literal"><span class="pre">Full</span> <span class="pre">Screen</span></tt> radiobutton</li>
+<li>Click <tt class="docutils literal"><span class="pre">Next</span></tt></li>
+<li>At &#8220;Logo File,&#8221; Select <tt class="docutils literal"><span class="pre">Browse...</span></tt></li>
+<li>Show files of type <tt class="docutils literal"><span class="pre">Jpeg</span> <span class="pre">Files</span> <span class="pre">(*.jpg)</span></tt></li>
+<li>Click &#8220;Look in:&#8221;, select drive <tt class="docutils literal"><span class="pre">WARESPE</span> <span class="pre">(X:)</span></tt></li>
+<li>Open folder <tt class="docutils literal"><span class="pre">Boot</span> <span class="pre">Images</span></tt></li>
+<li>Select file <tt class="docutils literal"><span class="pre">BootLogo.jpg</span></tt></li>
+<li>Click <tt class="docutils literal"><span class="pre">Next</span></tt></li>
+<li>Click button <tt class="docutils literal"><span class="pre">Update</span></tt></li>
+<li>At &#8220;Do you really want to change logo?&#8221;,  choose <tt class="docutils literal"><span class="pre">Yes</span></tt></li>
+<li>At the message, &#8220;Can not open file flash.txt for reading,&#8221; click <tt class="docutils literal"><span class="pre">OK</span></tt></li>
+<li>At the message, &#8220;Unable to get flash information!,&#8221; click <tt class="docutils literal"><span class="pre">OK</span></tt></li>
+<li>WAIT FOR THE MESSAGE, &#8220;You must restart your system in order for the new logo to take effect!,&#8221;</li>
+<li>Close the SuperLogo program, then restart the computer.</li>
+</ol>
+</div>
+<div class="section" id="restart-the-system">
+<h2>Restart the system<a class="headerlink" href="#restart-the-system" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Remove the USB Flash drive</li>
+<li>Press <tt class="docutils literal"><span class="pre">&lt;</span> <span class="pre">Del</span> <span class="pre">&gt;</span></tt> to enter the CMOS Setup Utility</li>
+<li>Select BIOS Features, change &#8220;SuperBIOS-Protect&#8221; to <tt class="docutils literal"><span class="pre">Enabled</span></tt></li>
+<li>Press <tt class="docutils literal"><span class="pre">&lt;F10&gt;</span></tt>, then <tt class="docutils literal"><span class="pre">Y</span></tt> to save the new settings</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

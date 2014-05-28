@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>First Boot Configuration &mdash; AAltsys Server 3.0 Installation 3.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '3.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
+    <link rel="next" title="Zentyal Configuration" href="05_zentyal.html" />
+    <link rel="prev" title="Installation Instructions" href="03_install.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="05_zentyal.html" title="Zentyal Configuration"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="03_install.html" title="Installation Instructions"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">First Boot Configuration</a><ul>
+<li><a class="reference internal" href="#package-selection">Package Selection:</a></li>
+<li><a class="reference internal" href="#confirmation">Confirmation:</a></li>
+<li><a class="reference internal" href="#installation">Installation:</a><ul>
+<li><a class="reference internal" href="#initial-configuration">Initial Configuration:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#network-interfaces">Network Interfaces</a></li>
+<li><a class="reference internal" href="#saving-changes">Saving Changes</a><ul>
+<li><a class="reference internal" href="#connecting-external-drive">Connecting External Drive</a></li>
+<li><a class="reference internal" href="#installing-aaltsys-vpn">Installing AAltSys VPN</a></li>
+<li><a class="reference internal" href="#restarting-server">Restarting Server</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="03_install.html"
+                        title="previous chapter">Installation Instructions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="05_zentyal.html"
+                        title="next chapter">Zentyal Configuration</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/04_firstboot.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="first-boot-configuration">
+<span id="firstboot"></span><h1>First Boot Configuration<a class="headerlink" href="#first-boot-configuration" title="Permalink to this headline">¶</a></h1>
+<p>On first boot, the Zentyal desktop loads Firefox and opens the local server
+administration console. First, in Firefox
+<em class="menuselection">Edit ‣ Preferences ‣ Security</em>, uncheck item
+<em class="guilabel">Remember passwords for sites</em>. Then login to Zentyal for the first
+boot configuration:</p>
+<div class="highlight-python"><pre>:guilabel:`Username:`  :kbd:`__username__`
+:guilabel:`Password:`  :kbd:`__password__`</pre>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Following section titles correspond to items on the Zentyal
+<em class="guilabel">Initial Steps</em> menu, at the left of the Zentyal pages.</p>
+</div>
+<div class="section" id="package-selection">
+<h2>Package Selection:<a class="headerlink" href="#package-selection" title="Permalink to this headline">¶</a></h2>
+<p>At <em class="guilabel">Choose Zentyal packages to install</em>, select the following modules:</p>
+<div class="highlight-python"><pre>Backup
+Bandwidth Monitor
+Certification Authority
+DHCP Service
+DNS Service
+FTP
+Firewall
+IPsec
+Intrusion Prevention System
+Layer 7 Filter
+NTP Service
+Network Configuration
+Printer Sharing Service
+RADIUS
+Traffic Shaping
+UPS Management
+Users and Computers
+VPN Service</pre>
+</div>
+<p>Click <em class="guilabel">Install</em>.</p>
+</div>
+<div class="section" id="confirmation">
+<h2>Confirmation:<a class="headerlink" href="#confirmation" title="Permalink to this headline">¶</a></h2>
+<p>On the <em class="Guilabel">Confirmation</em> page, click <em class="guilabel">OK</em>.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation:<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Packages will be downloaded and installed now (10-30 minutes).</p>
+<div class="section" id="initial-configuration">
+<h3>Initial Configuration:<a class="headerlink" href="#initial-configuration" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">At <em class="guilabel">Initial configuration wizard</em>, do not click
+<em class="guilabel">SKIP</em> or <em class="guilabel">NEXT</em>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="network-interfaces">
+<h2>Network Interfaces<a class="headerlink" href="#network-interfaces" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Check the <em class="guilabel">Configure interface types</em> radio buttons according to
+your server type:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="49%" />
+<col width="1%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">NETWORK GATEWAY SERVER</th>
+<th class="head">&nbsp;</th>
+<th class="head">LAN PEER SERVER</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Configure Interface Types:</strong></td>
+<td>&nbsp;</td>
+<td><strong>Configure Interface types:</strong></td>
+</tr>
+<tr class="row-odd"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">External</span></tt></td>
+<td>&nbsp;</td>
+<td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">Internal</span></tt></td>
+</tr>
+<tr class="row-even"><td>eth1 &#8211;&gt; <tt class="docutils literal"><span class="pre">Internal</span></tt></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p class="first">Click <em class="guilabel">Next</em></p>
+</li>
+<li><p class="first">Configure network internal and external interfaces as shown below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="49%" />
+<col width="1%" />
+<col width="49%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">NETWORK GATEWAY SERVER</th>
+<th class="head">&nbsp;</th>
+<th class="head">LAN PEER SERVER</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Configure network for external...</strong></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">DHCP</span></tt></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td><strong>Configure network for internal...</strong></td>
+<td>&nbsp;</td>
+<td><strong>Configure network for internal...</strong></td>
+</tr>
+<tr class="row-even"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">Static</span></tt></td>
+<td>&nbsp;</td>
+<td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">DHCP</span></tt></td>
+</tr>
+<tr class="row-odd"><td>IP address &#8211;&gt; <tt class="docutils literal"><span class="pre">192.168.2.241</span></tt></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Netmask &#8211;&gt; <tt class="docutils literal"><span class="pre">255.255.255.0</span></tt></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Interfaces are configured according to the server function. For more
+explanation of network setup, see <a class="reference external" href="../resources/04_network.html#network" title="(in AAltsys Server 3.0 Technical v3.0)"><em>Server Network Setup</em></a>. During
+initial setup, use DHCP to configure a LAN peer server network interface.</p>
+</div>
+</li>
+<li><p class="first">Click <em class="guilabel">Next</em></p>
+</li>
+<li><p class="first">The <em class="guilabel">Host domain name</em> prompt displays the domain name from the
+initial installation, such as <em class="guilabel">local.aaltsys.net</em>.</p>
+</li>
+<li><p class="first">Click <em class="guilabel">NEXT</em>.</p>
+</li>
+<li><p class="first">Register the server with Zentyal. An existing account <tt class="docutils literal"><span class="pre">admin1&#64;aaltsys.com</span></tt>
+with the default password exists for this purpose.</p>
+</li>
+<li><p class="first">At <em class="guilabel">Initial configuration wizard</em>, click <em class="guilabel">FINISH</em>.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="saving-changes">
+<h2>Saving Changes<a class="headerlink" href="#saving-changes" title="Permalink to this headline">¶</a></h2>
+<p>Packages will be configured now (1-5 minutes).</p>
+<p>When finished, click on <em class="guilabel">GO TO THE DASHBOARD</em>.</p>
+<p>To exit Zentyal, choose <em class="guilabel">Logout</em> from the Zentyal top bar, then click
+<em class="guilabel">Exit</em>.</p>
+<div class="section" id="connecting-external-drive">
+<h3>Connecting External Drive<a class="headerlink" href="#connecting-external-drive" title="Permalink to this headline">¶</a></h3>
+<p>An external drive should be connected for storing backups, such as the Passport
+1.0 Tb portable drive with USB 3.0 interface. Follow instructions in article
+<a class="reference external" href="../resources/05_backupdrive.html#backupdrive" title="(in AAltsys Server 3.0 Technical v3.0)"><em>Automount Drive Setup</em></a> to partition, format, and configure this drive.</p>
+</div>
+<div class="section" id="installing-aaltsys-vpn">
+<h3>Installing AAltSys VPN<a class="headerlink" href="#installing-aaltsys-vpn" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Download this <a class="reference download internal" href="_downloads/aas.sh"><tt class="xref download docutils literal"><span class="pre">registration</span> <span class="pre">script</span></tt></a></p>
+</li>
+<li><p class="first">Double-click the <em class="guilabel">Console</em> icon from the server desktop.</p>
+</li>
+<li><p class="first">Type the following commands in the exact case shown:</p>
+<div class="highlight-python"><pre>cd ~/Downloads
+bash aas.sh
+rm aas.sh</pre>
+</div>
+</li>
+<li><p class="first">Type in your <tt class="kbd docutils literal"><span class="pre">__password__</span></tt>.When prompted for it.</p>
+</li>
+<li><p class="first">Additional packages may be installed now (10-20 minutes).</p>
+</li>
+<li><p class="first">Enter the following information when prompted:</p>
+<div class="highlight-python"><pre>Registration number: ________________________________
+Activation code:     ________________________________
+email address:       ________________________________</pre>
+</div>
+</li>
+</ul>
+<p>An upgrade to all installed packages will be performed, taking 10-30 minutes.
+When all command activity finishes and installation is complete, the server
+should restart.</p>
+</div>
+<div class="section" id="restarting-server">
+<h3>Restarting Server<a class="headerlink" href="#restarting-server" title="Permalink to this headline">¶</a></h3>
+<p>From a console terminal window, restart your server with the command:</p>
+<div class="highlight-python"><pre>sudo reboot &lt;Enter&gt;</pre>
+</div>
+<p>Congratulations. Your AAltSys server is ready for local configuration.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="05_zentyal.html" title="Zentyal Configuration"
+             >next</a></li>
+        <li class="right" >
+          <a href="03_install.html" title="Installation Instructions"
+             >previous</a> |</li>
+        <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

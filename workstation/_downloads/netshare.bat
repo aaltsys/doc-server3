@@ -1,1 +1,1 @@
-netshare.bat
+../../resources/_downloads/netshare.bat

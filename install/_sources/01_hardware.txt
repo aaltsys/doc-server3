@@ -188,16 +188,10 @@ Replacing a Current Server
 Backup the Old Server
 =============================
 
-To backup the server configuration only, login to Zentyal, and from menu 
-selection :menuselection:`CORE --> System --> Import/Export Configuration`, 
-:guilabel:`Backup the Current State`. Then Select the new configuration file 
-from the :guilabel:`Backups list`, and download it to a workstation for transfer 
-to the replacement system. [#]_
-
 Zentyal does not provide a program option or document a command for performing a 
 demand backup. Backup all user data along with the server configuration at menu 
 selection :menuselection:`CORE --> System --> Backup`, by setting a new time for 
-a full backup to happen starting on the next hour.
+a full backup to happen starting on the next hour. [#]_
 
 Install the New Server
 =============================

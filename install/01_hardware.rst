@@ -65,7 +65,7 @@ console components are needed while installing operating system software:
 
 -----------------------------
 
-.. connectserver:
+.. _connectserver:
 
 #############################
 Mac mini Server Connections

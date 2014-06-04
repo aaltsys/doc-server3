@@ -55,7 +55,12 @@
 </li>
 <li><a class="reference internal" href="#replacing-a-current-server">Replacing a Current Server</a><ul>
 <li><a class="reference internal" href="#backup-the-old-server">Backup the Old Server</a></li>
-<li><a class="reference internal" href="#install-the-new-server">Install the New Server</a></li>
+<li><a class="reference internal" href="#install-the-new-server">Install the New Server</a><ul>
+<li><a class="reference internal" href="#connect-old-backup-drive">Connect old backup drive</a></li>
+<li><a class="reference internal" href="#restore-configuration-data">Restore configuration, data</a></li>
+<li><a class="reference internal" href="#reconnect-new-backup-drive">Reconnect new backup drive</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -349,7 +354,7 @@ xcopy . S:\ /s/e</pre>
 selection <em class="menuselection">CORE ‣ System ‣ Import/Export Configuration</em>,
 <em class="guilabel">Backup the Current State</em>. Then Select the new configuration file
 from the <em class="guilabel">Backups list</em>, and download it to a workstation for transfer
-to the replacement system. _[#]</p>
+to the replacement system. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 <p>Zentyal does not provide a program option or document a command for performing a
 demand backup. Backup all user data along with the server configuration at menu
 selection <em class="menuselection">CORE ‣ System ‣ Backup</em>, by setting a new time for
@@ -357,12 +362,55 @@ a full backup to happen starting on the next hour.</p>
 </div>
 <div class="section" id="install-the-new-server">
 <h2>Install the New Server<a class="headerlink" href="#install-the-new-server" title="Permalink to this headline">¶</a></h2>
-<p>Use the</p>
-<p>Connect the old backup drive</p>
-<p>In Zentyal, run a system configuration restore</p>
-<p>In Zentyal, run a system data restore</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Preparing to restore data from a backup drive requires using a Command Line
+Interface (CLI), which is achieved by one of the following:</p>
+<ol class="last arabic">
+<li><p class="first"><strong class="program">ssh</strong>: From a workstation running either Linux or Apple OS-X,
+open a command line and start a terminal session on the server with the
+command:</p>
+<div class="highlight-python"><pre>ssh admin1@192.168.2.241</pre>
+</div>
+</li>
+<li><p class="first"><strong class="program">console</strong>: Connect keyboard, mouse, and video monitor to the
+server. Login on the console and open a terminal session there.</p>
+</li>
+</ol>
+</div>
+<p>Use the <em class="xref std std-ref">connectserver</em> documentation to connect and manage the new server.</p>
+<div class="section" id="connect-old-backup-drive">
+<h3>Connect old backup drive<a class="headerlink" href="#connect-old-backup-drive" title="Permalink to this headline">¶</a></h3>
+<p>If the new server uses a new backup drive, disconnect the new backup drive and
+connect the backup drive from the old server. Open a command line as described
+in the note above, then download shell script <strong class="program">backupdrive.sh</strong> and run
+the script with the commands:</p>
+<div class="highlight-python"><pre>wget http://servers.aaltsys.info/resources/_downloads/backupdrive.sh -P ~/
+sudo ~/backupdrive.sh</pre>
+</div>
+</div>
+<div class="section" id="restore-configuration-data">
+<h3>Restore configuration, data<a class="headerlink" href="#restore-configuration-data" title="Permalink to this headline">¶</a></h3>
+<p>In a web browser, login to Zentyal server management at <a class="reference external" href="https://192.168.2.241">https://192.168.2.241</a>.
+Select <em class="menuselection">Core ‣ System ‣ Backup ‣ Services Restore</em> from the
+menu to restore the system configuration, then use
+<em class="menuselection">Restore Files</em> to restore backed up data.</p>
+</div>
+<div class="section" id="reconnect-new-backup-drive">
+<h3>Reconnect new backup drive<a class="headerlink" href="#reconnect-new-backup-drive" title="Permalink to this headline">¶</a></h3>
+<p>If the new server has a new backup drive, wait a minute after activity finishes,
+then disconnect the old backup drive used for data transfer. Connect the new
+drive, and reconfigure it with the terminal command:</p>
+<div class="highlight-python"><pre>sudo ~/backupdrive.sh</pre>
+</div>
 <hr class="docutils" />
-<p>[#]. &lt;Zentyal backup procedures documentation <cite>http://doc.zentyal.org/en/backup.html</cite>&gt;_.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://doc.zentyal.org/en/backup.html">Zentyal backup procedures documentation</a>.</td></tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 

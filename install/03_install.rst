@@ -26,6 +26,7 @@ Before starting this procedure, you should have the following information::
    {Activation code}:     __________________________________
    {Administrator email}: __________________________________
 
+Some of this information can be found at manage.aaltsys.net   
 For servers used as LAN peers instead of network gateways, additional 
 information is required::
 
@@ -172,7 +173,7 @@ Partition disks (Mac)
    +---------+------------+-------+---------------+-------------------+-------+
    | #1      |  209.7 MB  | B  F  | EFIboot       | EFI system p ...  |       |
    +---------+------------+-------+---------------+-------------------+-------+
-   | #2      |   10.0 GB  |    F  | swap          |                   | swap  |
+   | #2      |   16.0 GB  |    F  | swap          |                   | swap  |
    +---------+------------+-------+---------------+-------------------+-------+
    | #3      |  990.0 GB  |    F  | ext4          | ZENTYAL           | /     |
    +---------+------------+-------+---------------+-------------------+-------+

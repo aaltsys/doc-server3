@@ -114,10 +114,13 @@ Configure the Network
    | Hostname:                   || either :kbd:`{hostname}.local`             |
    |                             || or :kbd:`{hostname}.local.{domain}`        |
    |                             || or :kbd:`{hostname}.local.aaltsys.net`     |
+   |                             || or :kbd: `aaltsysserver` for local'
    +-----------------------------+---------------------------------------------+
    | Administrator username      | :kbd:`admin1` (if registering with AAltsys) |
    +-----------------------------+---------------------------------------------+
    | Password                    | :kbd:`{password}`                           |
+   +-----------------------------+---------------------------------------------+
+   | Use weak password?          | Yes                                         |
    +-----------------------------+---------------------------------------------+
 *  The network should configure using DHCP. If DHCP does not work, fix your 
    network connection.
@@ -175,7 +178,7 @@ Partition disks (Mac)
    +---------+------------+-------+---------------+-------------------+-------+
    | #2      |   16.0 GB  |    F  | swap          |                   | swap  |
    +---------+------------+-------+---------------+-------------------+-------+
-   | #3      |  990.0 GB  |    F  | ext4          | ZENTYAL           | /     |
+   | #3      |  983.3 GB  |    F  | ext4          | ZENTYAL           | /     |
    +---------+------------+-------+---------------+-------------------+-------+
    |         |  728.6 KB  |       | FREE SPACE    |                   |       |
    +---------+------------+-------+---------------+-------------------+-------+
@@ -193,6 +196,12 @@ Partition disks (Mac)
 
 *  At the prompt :guilabel:`Go back to the menu and correct this problem?`, 
    enter :kbd:`<No>`.
+   
+* If you see a prompt :guilabel: `do you want to return to the partitioner` select 
+  :kbd: `<No>`
+   
+* At the prompt :guilabel: `Write changes to the disks?`,
+  Enter :kbd: `<Yes>`.
 
 Finish Installation
 =============================
@@ -206,7 +215,6 @@ Answer these questions, each of which involves installation activity:
 +-----------------------------------------------------+--------------------+
 | Question                                            | Answer             |
 +=====================================================+====================+
-| Write the changes to disks?                         | <Yes>              |
 +-----------------------------------------------------+--------------------+
 | Proceed installation without graphical environment? | <No>               |
 +-----------------------------------------------------+--------------------+

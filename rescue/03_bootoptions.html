@@ -214,7 +214,8 @@ These kernels are available:
 <li><p class="first"><strong>nonm</strong>: Use this option to disable the Network-Manager service that conflicts with the standard network command line tools such as <tt class="kbd docutils literal"><span class="pre">ifconfig</span></tt> and <tt class="kbd docutils literal"><span class="pre">ip</span></tt>. This option is not necessary when SystemRescueCd is booting from the network since the service is automatically stopped in that case.</p>
 </li>
 <li><p class="first"><strong>dodhcp</strong>: will request a DHCP server provide network attributes including IP address, gateway, and so forth. If there are multiple interfaces on the computer it will run the dhcp client on all of them by default, when no argument is specified with this option. Optionally specify which interfaces should be configured with dhcp to combine static and dynamic addresses in the automatic Ethernet configuration. For example, to use dhcp for <em>eth0</em> and <em>eth2</em> and a static address on <em>eth1</em>, you can use options like:</p>
-<div class="highlight-python"><pre>dodhcp=eth0,eth2 eth1=192.168.128.1/24.</pre>
+<div class="highlight-python"><div class="highlight"><pre>dodhcp=eth0,eth2 eth1=192.168.128.1/24.
+</pre></div>
 </div>
 </li>
 <li><p class="first"><strong>nodhcp</strong>: never run the dhcp client in the initramfs boot script. May be useful if you use PXE boot on a computer with several ethernet interfaces.</p>
@@ -277,7 +278,8 @@ Several protocols are available.</p>
 <div class="section" id="booting-with-an-old-computer">
 <h2>Booting with an old computer<a class="headerlink" href="#booting-with-an-old-computer" title="Permalink to this headline">¶</a></h2>
 <p>Many old computers cannot boot a CD-ROM. If you have such a problem, you can try to create a boot floppy that allows you to start the system on the CD-ROM. SmartBootManager can create such a boot floppy for you. If you have no floppy drive, you can install this bootloader on the hard disk too. Using this boot manager is easy. You must download <em>sbminst</em>, and run the installer from Linux. Here is the most common install process:</p>
-<div class="highlight-python"><pre>./sbminst -t us -d /dev/fd0</pre>
+<div class="highlight-python"><div class="highlight"><pre>./sbminst -t us -d /dev/fd0
+</pre></div>
 </div>
 </div>
 <div class="section" id="booting-from-a-virtual-machine">
@@ -310,7 +312,7 @@ Several protocols are available.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

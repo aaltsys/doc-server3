@@ -86,14 +86,15 @@
 Symptom: console character set was ISO... terminal, and could not be reset to
 UTF-8. This was fixed as follows:</p>
 <p>The locales information was updated with the following console commands:</p>
-<div class="highlight-python"><pre># edit and fix the list of locales, replacing the en_US line
-sudo sed -i s/"en_US ISO-8859-1"/"en_US.UTF-8 UTF-8"/ /var/lib/locales/supported.d/local
-# regenerate the locales (equivalent to command 'locales-gen')
+<div class="highlight-python"><div class="highlight"><pre># edit and fix the list of locales, replacing the en_US line
+sudo sed -i s/&quot;en_US ISO-8859-1&quot;/&quot;en_US.UTF-8 UTF-8&quot;/ /var/lib/locales/supported.d/local
+# regenerate the locales (equivalent to command &#39;locales-gen&#39;)
 sudo dpkg-reconfigure locales
 # update the locale settings for LANG and MESSAGES
 sudo update-locale LANG=en_US.UTF-8 LC_MESSAGES=en_US.UTF-8
 # make the new language setting available in the current login session
-export LANG="en_US.UTF-8"</pre>
+export LANG=&quot;en_US.UTF-8&quot;
+</pre></div>
 </div>
 <p>This procedure was developed from the following support document:
 <a class="reference external" href="https://help.ubuntu.com/community/Locale/#Changing_settings_permanently">https://help.ubuntu.com/community/Locale/#Changing_settings_permanently</a></p>
@@ -106,7 +107,8 @@ export LANG="en_US.UTF-8"</pre>
 </div>
 <p>If the primary boot disk is full, or nearly so, then there may be too many Linux
 kernel images stored on it. Clear old images with the command:</p>
-<div class="highlight-python"><pre>dpkg -l 'linux-*' | sed '/^ii/!d;/'"$(uname -r | sed "s/\(.*\)-\([^0-9]\+\)/\1/")"'/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d' | xargs sudo apt-get -y purge</pre>
+<div class="highlight-python"><div class="highlight"><pre>dpkg -l &#39;linux-*&#39; | sed &#39;/^ii/!d;/&#39;&quot;$(uname -r | sed &quot;s/\(.*\)-\([^0-9]\+\)/\1/&quot;)&quot;&#39;/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d&#39; | xargs sudo apt-get -y purge
+</pre></div>
 </div>
 </div>
 
@@ -130,7 +132,7 @@ kernel images stored on it. Clear old images with the command:</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

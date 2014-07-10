@@ -24,18 +24,18 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
-    <link rel="next" title="Dual-Booting Mac Servers" href="02_macserver.html" />
-    <link rel="prev" title="AAltsys Server 3.0 Installation Guide" href="index.html" /> 
+    <link rel="next" title="Use of Diskutil" href="02_diskutil.html" />
+    <link rel="prev" title="Apple First Boot Instructions" href="01_Appleboot.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_macserver.html" title="Dual-Booting Mac Servers"
+          <a href="02_diskutil.html" title="Use of Diskutil"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="index.html" title="AAltsys Server 3.0 Installation Guide"
+          <a href="01_Appleboot.html" title="Apple First Boot Instructions"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
@@ -66,11 +66,11 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">AAltsys Server 3.0 Installation Guide</a></p>
+  <p class="topless"><a href="01_Appleboot.html"
+                        title="previous chapter">Apple First Boot Instructions</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="02_macserver.html"
-                        title="next chapter">Dual-Booting Mac Servers</a></p>
+  <p class="topless"><a href="02_diskutil.html"
+                        title="next chapter">Use of Diskutil</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/01_hardware.txt"
@@ -304,9 +304,10 @@ command line by clicking <em class="guilabel">Start</em> and entering <tt class=
 the search window, then selecting <strong class="program">cmd.exe</strong> from the search results.</p>
 <p>Copy files from share <tt class="file docutils literal"><span class="pre">\\AAltsysserver\shared</span></tt>, mapped to drive
 <tt class="file docutils literal"><span class="pre">S:</span></tt>, by typing the commands:</p>
-<div class="highlight-python"><pre>md \shared
+<div class="highlight-python"><div class="highlight"><pre>md \shared
 cd \shared
-xcopy S:\*.* . /s/e</pre>
+xcopy S:\*.* . /s/e
+</pre></div>
 </div>
 <p>Use the preceding commands as a template for copying other server shares to a
 workstation. For example, copy a user&#8217;s server private home directory, mapped to
@@ -340,8 +341,9 @@ script to reference the new server, and run the script to map drives.</p>
 following commands to copy the share files back to the server, remembering to
 replace <tt class="file docutils literal"><span class="pre">S:</span></tt> and <tt class="file docutils literal"><span class="pre">shared</span></tt> with the respective share drive letter and
 directory name for a share:</p>
-<div class="highlight-python"><pre>cd \shared
-xcopy . S:\ /s/e</pre>
+<div class="highlight-python"><div class="highlight"><pre>cd \shared
+xcopy . S:\ /s/e
+</pre></div>
 </div>
 <hr class="docutils" />
 </div>
@@ -350,22 +352,28 @@ xcopy . S:\ /s/e</pre>
 <span id="replaceserver"></span><h1>Replacing a Current Server<a class="headerlink" href="#replacing-a-current-server" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="backup-the-old-server">
 <h2>Backup the Old Server<a class="headerlink" href="#backup-the-old-server" title="Permalink to this headline">¶</a></h2>
+<p>To backup the server configuration only, login to Zentyal, and from menu
+selection <em class="menuselection">CORE ‣ System ‣ Import/Export Configuration</em>,
+<em class="guilabel">Backup the Current State</em>. Then Select the new configuration file
+from the <em class="guilabel">Backups list</em>, and download it to a workstation for transfer
+to the replacement system. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
 <p>Zentyal does not provide a program option or document a command for performing a
 demand backup. Backup all user data along with the server configuration at menu
 selection <em class="menuselection">CORE ‣ System ‣ Backup</em>, by setting a new time for
-a full backup to happen starting on the next hour. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
+a full backup to happen starting on the next hour.</p>
 </div>
 <div class="section" id="install-the-new-server">
 <h2>Install the New Server<a class="headerlink" href="#install-the-new-server" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Instructions require using a Command Line Interface (CLI), which is accessed
-by one of the following:</p>
+<p>Preparing to restore data from a backup drive requires using a Command Line
+Interface (CLI), which is achieved by one of the following:</p>
 <ol class="last arabic">
 <li><p class="first"><strong class="program">ssh</strong>: From a workstation running either Linux or Apple OS-X,
 open a command line and start a terminal session on the server with the
 command:</p>
-<div class="highlight-python"><pre>ssh admin1@192.168.2.241</pre>
+<div class="highlight-python"><div class="highlight"><pre>ssh admin1@192.168.2.241
+</pre></div>
 </div>
 </li>
 <li><p class="first"><strong class="program">console</strong>: Connect keyboard, mouse, and video monitor to the
@@ -380,8 +388,9 @@ server. Login on the console and open a terminal session there.</p>
 connect the backup drive from the old server. Open a command line as described
 in the note above, then download shell script <strong class="program">backupdrive.sh</strong> and run
 the script with the commands:</p>
-<div class="highlight-python"><pre>wget http://servers.aaltsys.info/resources/_downloads/backupdrive.sh -P ~/
-sudo ~/backupdrive.sh</pre>
+<div class="highlight-python"><div class="highlight"><pre>wget http://servers.aaltsys.info/resources/_downloads/backupdrive.sh -P ~/
+sudo ~/backupdrive.sh
+</pre></div>
 </div>
 </div>
 <div class="section" id="restore-configuration-data">
@@ -393,10 +402,11 @@ menu to restore the system configuration, then use
 </div>
 <div class="section" id="reconnect-new-backup-drive">
 <h3>Reconnect new backup drive<a class="headerlink" href="#reconnect-new-backup-drive" title="Permalink to this headline">¶</a></h3>
-<p>To reconnect a new backup drive, wait a minute after activity finishes, then
-disconnect the old drive used for data transfer. Connect the new drive, and
-reconfigure it with the terminal command:</p>
-<div class="highlight-python"><pre>sudo ~/backupdrive.sh</pre>
+<p>If the new server has a new backup drive, wait a minute after activity finishes,
+then disconnect the old backup drive used for data transfer. Connect the new
+drive, and reconfigure it with the terminal command:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo ~/backupdrive.sh
+</pre></div>
 </div>
 <hr class="docutils" />
 <table class="docutils footnote" frame="void" id="id2" rules="none">
@@ -419,17 +429,17 @@ reconfigure it with the terminal command:</p>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_macserver.html" title="Dual-Booting Mac Servers"
+          <a href="02_diskutil.html" title="Use of Diskutil"
              >next</a></li>
         <li class="right" >
-          <a href="index.html" title="AAltsys Server 3.0 Installation Guide"
+          <a href="01_Appleboot.html" title="Apple First Boot Instructions"
              >previous</a> |</li>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

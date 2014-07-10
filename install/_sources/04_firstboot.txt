@@ -22,15 +22,12 @@ Package Selection:
 At :guilabel:`Choose Zentyal packages to install`, select the following modules::
 
    Backup
-   Bandwidth Monitor
    Certification Authority
    DHCP Service
    DNS Service
-   FTP
    Firewall
    IPsec
    Intrusion Prevention System
-   Layer 7 Filter
    NTP Service
    Network Configuration
    Printer Sharing Service
@@ -103,8 +100,7 @@ Network Interfaces
 *  The :guilabel:`Host domain name` prompt displays the domain name from the 
    initial installation, such as :guilabel:`local.aaltsys.net`.
 *  Click :guilabel:`NEXT`.
-*  Register the server with Zentyal. An existing account ``admin1@aaltsys.com`` 
-   with the default password exists for this purpose.
+*  Do not register the server with Zentyal.
 *  At :guilabel:`Initial configuration wizard`, click :guilabel:`FINISH`.
 
 Saving Changes
@@ -134,7 +130,7 @@ Installing AAltSys VPN
 *  Type the following commands in the exact case shown::
 
       cd ~/Downloads
-      bash aas.sh
+      sudo bash aas.sh
       rm aas.sh
 
 *  Type in your :kbd:`__password__`.When prompted for it. 

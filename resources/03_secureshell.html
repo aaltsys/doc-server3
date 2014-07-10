@@ -98,9 +98,10 @@
 <p class="first admonition-title">Warning</p>
 <p>This article includes proprietary information about AAltSys logins. Please
 generalize this material before release:</p>
-<div class="last highlight-python"><pre>Identify username _____________________________________,
+<div class="last highlight-python"><div class="highlight"><pre>Identify username _____________________________________,
 registration __________________________________________,
-LTSP server IP ________________________________________.</pre>
+LTSP server IP ________________________________________.
+</pre></div>
 </div>
 </div>
 <div class="section" id="command-line-usage">
@@ -110,13 +111,15 @@ LTSP server IP ________________________________________.</pre>
 </pre></div>
 </div>
 <p>NX Port forwarding of LTSP server:</p>
-<div class="highlight-python"><pre>ssh -L8889:ltspserver:8888 -l [username] [registration].servers.aaltsys.net</pre>
+<div class="highlight-python"><div class="highlight"><pre>ssh -L8889:ltspserver:8888 -l [username] [registration].servers.aaltsys.net
+</pre></div>
 </div>
 </div>
 <div class="section" id="gnome-terminal">
 <h2>Gnome terminal<a class="headerlink" href="#gnome-terminal" title="Permalink to this headline">¶</a></h2>
 <p>X-11 Forwarding with gnome-terminal (default IP for ltspserver is 10.4.0.2):</p>
-<div class="highlight-python"><pre>gnome-terminal -x ssh -L8889:ltspserver:8888 -l [username] [registration].servers.aaltsys.net</pre>
+<div class="highlight-python"><div class="highlight"><pre>gnome-terminal -x ssh -L8889:ltspserver:8888 -l [username] [registration].servers.aaltsys.net
+</pre></div>
 </div>
 </div>
 <div class="section" id="redirecting-ssh-to-putty">
@@ -141,11 +144,13 @@ key. To address the problem for a terminal icon, open a terminal shell prompt:</
 </pre></div>
 </div>
 <p>Address this problem for a weblink:</p>
-<div class="highlight-python"><pre>ssh://[registration].servers.aaltsys.net/</pre>
+<div class="highlight-python"><div class="highlight"><pre>ssh://[registration].servers.aaltsys.net/
+</pre></div>
 </div>
 <p>The line number in your <tt class="file docutils literal"><span class="pre">~/.ssh/known_hosts</span></tt> file which is wrong will be
 displayed. Delete this line with the command:</p>
-<div class="highlight-python"><pre>sudo sed -i c\[linenumber] ~/.ssh/known_hosts</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo sed -i c\[linenumber] ~/.ssh/known_hosts
+</pre></div>
 </div>
 </div>
 <div class="section" id="fixing-x11-forwarding-zentyal">
@@ -155,7 +160,8 @@ from working, among other things.</p>
 <div class="section" id="missing-xauth">
 <h3>Missing <strong class="program">xauth</strong><a class="headerlink" href="#missing-xauth" title="Permalink to this headline">¶</a></h3>
 <p>On Zentyal 2.0 and below, the <strong class="program">xauth</strong> is missing. Install it with:</p>
-<div class="highlight-python"><pre>sudo apt-get install xauth</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install xauth
+</pre></div>
 </div>
 </div>
 <div class="section" id="ssh-uses-ipv4-and-not-ipv6">
@@ -163,12 +169,14 @@ from working, among other things.</p>
 <p>On Zentyal 3.0+, Localhost may have an IPV6 address configured, preventing X11
 forwarding by localhost over IPV4. The following commands (on the remote server,
 of course) prevent <strong class="program">ssh</strong> from attempting IPV6:</p>
-<div class="highlight-python"><pre>sudo sed -ie "/\/usr\/sbin\/sshd -D/c\exec \/usr\/sbin\/sshd -D -4" /etc/init/ssh.conf
-sudo service ssh reload</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo sed -ie &quot;/\/usr\/sbin\/sshd -D/c\exec \/usr\/sbin\/sshd -D -4&quot; /etc/init/ssh.conf
+sudo service ssh reload
+</pre></div>
 </div>
 <p>If <tt class="file docutils literal"><span class="pre">/etc/hosts</span></tt> configures <tt class="docutils literal"><span class="pre">localhost</span></tt> under <tt class="docutils literal"><span class="pre">ip6</span></tt>, then the following
 command might fix this configuration:</p>
-<div class="highlight-python"><pre>sudo sed -ie "/localhost ip6/c\::1\tip6-localhost\tip6-loopback" /etc/hosts</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo sed -ie &quot;/localhost ip6/c\::1\tip6-localhost\tip6-loopback&quot; /etc/hosts
+</pre></div>
 </div>
 <p>Check to see that the <tt class="docutils literal"><span class="pre">127.0.0.1</span></tt> line includes <tt class="docutils literal"><span class="pre">localhost</span></tt> afterwards.</p>
 </div>
@@ -176,14 +184,16 @@ command might fix this configuration:</p>
 <h3>X11 Forwarding turned off<a class="headerlink" href="#x11-forwarding-turned-off" title="Permalink to this headline">¶</a></h3>
 <p>File <tt class="file docutils literal"><span class="pre">/etc/ssh/sshd_config</span></tt> should have 3 option lines for X11 Forwarding
 as follows:</p>
-<div class="highlight-python"><pre>X11Forwarding yes
+<div class="highlight-python"><div class="highlight"><pre>X11Forwarding yes
 X11DisplayOffset 10
-X11UseLocalhost yes</pre>
+X11UseLocalhost yes
+</pre></div>
 </div>
 <p>Correct any problems here by editing the configuration files and then reloading
 sshd:</p>
-<div class="highlight-python"><pre>sudo nano /etc/ssh/sshd_config
-sudo service ssh reload</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo nano /etc/ssh/sshd_config
+sudo service ssh reload
+</pre></div>
 </div>
 </div>
 </div>
@@ -196,26 +206,30 @@ session and the Linux server authenticate <tt class="docutils literal"><span cla
 logins.</p>
 <p>First display a terminal window on the local machine, then ssh to the remote
 server:</p>
-<div class="highlight-python"><pre>xdg-open ssh://username@remoteserver.support.aaltsys.com</pre>
+<div class="highlight-python"><div class="highlight"><pre>xdg-open ssh://username@remoteserver.support.aaltsys.com
+</pre></div>
 </div>
 <p>Now explore the remote environment to identify Windows RDP servers. Recommended
 commands are:</p>
-<div class="highlight-python"><pre>smbclient -L NETBIOSNAME
-smbtree</pre>
+<div class="highlight-python"><div class="highlight"><pre>smbclient -L NETBIOSNAME
+smbtree
+</pre></div>
 </div>
 <p>These commands identify the virtualized windows session as <tt class="docutils literal"><span class="pre">XPUNLIMITED</span></tt>. Now
 find the IP for this machine using either of the commands:</p>
-<div class="highlight-python"><pre>net lookup XPUNLIMITED
-nmblookup XPUNLIMITED</pre>
+<div class="highlight-python"><div class="highlight"><pre>net lookup XPUNLIMITED
+nmblookup XPUNLIMITED
+</pre></div>
 </div>
 <p>Suppose the remote Windows terminal server <strong>XPUNLIMITED</strong> uses IP
 <strong>192.168.2.243</strong> in its local network. Display the PuTTY menu with
 <tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-RightClick&gt;</span></tt>, and choose <em class="menuselection">Change Settings...</em>.
 Then select Category: <em class="menuselection">Connection &gt; SSH &gt; Tunnels</em> and enter:</p>
-<div class="highlight-python"><pre>Source port -- 3389
+<div class="highlight-python"><div class="highlight"><pre>Source port -- 3389
 Destination -- 192.168.2.243:3389
 Click -- Add
-Click -- Apply</pre>
+Click -- Apply
+</pre></div>
 </div>
 <p>Finally, open the KRDC Remote Desktop client on the KDE Desktop, and connect
 to: <em class="guilabel">rdp</em> :kbd:<tt class="docutils literal"><span class="pre">localhost</span></tt>. A remote Windows RDP session will
@@ -243,7 +257,7 @@ display as if it were local, being redirected to you over SSH.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

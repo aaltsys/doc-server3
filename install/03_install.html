@@ -107,21 +107,24 @@ versions. Mac instructions were written based on Zentyal 3.4, current as of
 <p>This document is a quick guide to configuring hardware and installing a Zentyal
 office server which may then be registered for support with the AAltSys VPN.</p>
 <p>Before starting this procedure, you should have the following information:</p>
-<div class="highlight-python"><pre>{Domain}:              __________________________________
+<div class="highlight-python"><div class="highlight"><pre>{Domain}:              __________________________________
 {Hostname}:            __________________________________ (____server)
 {Username}:            __________________________________ (admin1)
 {Password}:            __________________________________
 {Registration number}: __________________________________
 {Activation code}:     __________________________________
-{Administrator email}: __________________________________</pre>
+{Administrator email}: __________________________________
+</pre></div>
 </div>
-<p>For servers used as LAN peers instead of network gateways, additional
+<p>Some of this information can be found at manage.aaltsys.net
+For servers used as LAN peers instead of network gateways, additional
 information is required:</p>
-<div class="highlight-python"><pre>{Static IP address}:   __________________________________
+<div class="highlight-python"><div class="highlight"><pre>{Static IP address}:   __________________________________
 {Netmask}:             __________________________________
 {Gateway}:             __________________________________
 {DNS server1}:         __________________________________
-{DNS server2}:         __________________________________</pre>
+{DNS server2}:         __________________________________
+</pre></div>
 </div>
 </div>
 <div class="section" id="recommended-hardware">
@@ -219,36 +222,6 @@ and setup the site administrator user.</p>
 &#8220;<tt class="kbd docutils literal"><span class="pre">{hostname}</span></tt>&#8221; and &#8220;<tt class="kbd docutils literal"><span class="pre">{domain}</span></tt>&#8221;. <strong>hostname</strong> and <strong>domain</strong>
 cannot be changed on fully configured systems.</p>
 </div>
-<table border="1" class="docutils">
-<colgroup>
-<col width="39%" />
-<col width="61%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Selection prompt</th>
-<th class="head">Recommended entry or action</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Primary Network Interface</td>
-<td><em class="menuselection">eth0: ...</em> (PC)</td>
-</tr>
-<tr class="row-odd"><td>Hostname:</td>
-<td><div class="first last line-block">
-<div class="line">either <tt class="kbd docutils literal"><span class="pre">{hostname}.local</span></tt></div>
-<div class="line">or <tt class="kbd docutils literal"><span class="pre">{hostname}.local.{domain}</span></tt></div>
-<div class="line">or <tt class="kbd docutils literal"><span class="pre">{hostname}.local.aaltsys.net</span></tt></div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td>Administrator username</td>
-<td><tt class="kbd docutils literal"><span class="pre">admin1</span></tt> (if registering with AAltsys)</td>
-</tr>
-<tr class="row-odd"><td>Password</td>
-<td><tt class="kbd docutils literal"><span class="pre">{password}</span></tt></td>
-</tr>
-</tbody>
-</table>
 </li>
 <li><p class="first">The network should configure using DHCP. If DHCP does not work, fix your
 network connection.</p>
@@ -351,14 +324,14 @@ partitions for EFI boot, swap, and ext4 ZENTYAL as shown following:</p>
 <td>&nbsp;</td>
 </tr>
 <tr class="row-even"><td>#2</td>
-<td>10.0 GB</td>
+<td>16.0 GB</td>
 <td>F</td>
 <td>swap</td>
 <td>&nbsp;</td>
 <td>swap</td>
 </tr>
 <tr class="row-odd"><td>#3</td>
-<td>990.0 GB</td>
+<td>983.3 GB</td>
 <td>F</td>
 <td>ext4</td>
 <td>ZENTYAL</td>
@@ -390,6 +363,12 @@ question appears regarding a &#8220;separate partition for boot loader code&#822
 <li><p class="first">At the prompt <em class="guilabel">Go back to the menu and correct this problem?</em>,
 enter <tt class="kbd docutils literal"><span class="pre">&lt;No&gt;</span></tt>.</p>
 </li>
+<li><p class="first">If you see a prompt :guilabel: <cite>do you want to return to the partitioner</cite> select
+:kbd: <cite>&lt;No&gt;</cite></p>
+</li>
+<li><p class="first">At the prompt :guilabel: <cite>Write changes to the disks?</cite>,
+Enter :kbd: <cite>&lt;Yes&gt;</cite>.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -412,8 +391,8 @@ must be answered with <tt class="kbd docutils literal"><span class="pre">/dev/ma
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>Write the changes to disks?</td>
-<td>&lt;Yes&gt;</td>
+<tr class="row-even"><td>&nbsp;</td>
+<td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>Proceed installation without graphical environment?</td>
 <td>&lt;No&gt;</td>
@@ -454,7 +433,7 @@ must be answered with <tt class="kbd docutils literal"><span class="pre">/dev/ma
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

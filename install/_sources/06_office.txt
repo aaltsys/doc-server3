@@ -84,7 +84,7 @@ User Template
 
 By default, Zentyal limits the size of user shares.
 
-In the :menuselection:`Office --> Users and Groups --> User Template` section, 
+In the :menuselection:`Office --> Users and Computers --> User Template` section, 
 either (1) change the :guilabel:`Default user quota` to :kbd:`Disabled`, or
 (2) Change the quota to :kbd:`0` (unlimited). Then click :kbd:`Change`.
 
@@ -114,8 +114,8 @@ username is unique to a single person and has exactly one password. Replace
 system-names such as USER, OWNER, and ADMINISTRATOR with actual person-names 
 or office role-names (payclerk, manager, etc.).
 
-In Zentyal, select :menuselection:`Office --> Users and Groups --> Users` on 
-the menu. Use the :guilabel:`Add User` feature to add each network user on the 
+In Zentyal, select :menuselection:`Office --> Users and Computers --> Manage` on 
+the menu. Use the :guilabel: Plus Icon to add each network user on the 
 server.
 
 .. image:: _images/office_39.1_adduser.png
@@ -153,8 +153,8 @@ list, and then click the :guilabel:`left-arrow` to move them to the
 :guilabel:`Users in group` list.
 
 .. image:: _images/office_40.2_groups.png
-
-In the :guilabel:`Printers` section, click the :guilabel:`Allow all priters`
+https://192.168.2.241:631/
+In the :guilabel:`Printers` section, click the :guilabel:`Allow all printers`
 checkbox and then ``Change``, so that all users can access printers as shown.
 
 .. image:: _images/office_40.3_group_printers.png

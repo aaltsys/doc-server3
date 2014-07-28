@@ -144,7 +144,9 @@ The resulting configuration is displayed following:
 
 .. image:: _images/zentyal_11_webmin.png
 
-.. Tip:: Remember to click :kbd:`Change` when making configuration changes.
+.. Tip:: Remember to click :kbd:`Change` when making configuration changes.And always save your changes.
+
+.. image:: _images/Savechanges.png
 
 Software Management
 ==========================

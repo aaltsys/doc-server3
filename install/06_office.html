@@ -168,8 +168,8 @@ through server queues.</p>
 <h2>User Template<a class="headerlink" href="#user-template" title="Permalink to this headline">¶</a></h2>
 <p>By default, Zentyal limits the size of user shares.</p>
 <p>In the <em class="menuselection">Office ‣ Users and Computers ‣ User Template</em> section,
-either (1) change the <em class="guilabel">Default user quota</em> to <tt class="kbd docutils literal"><span class="pre">Disabled</span></tt>, or
-(2) Change the quota to <tt class="kbd docutils literal"><span class="pre">0</span></tt> (unlimited). Then click <tt class="kbd docutils literal"><span class="pre">Change</span></tt>.</p>
+either (1) change the <em class="guilabel">Default user quota</em> to <tt class="kbd docutils literal"><span class="pre">Disabled`(Pictured</span> <span class="pre">here),</span> <span class="pre">or</span>
+<span class="pre">(2)</span> <span class="pre">Change</span> <span class="pre">the</span> <span class="pre">quota</span> <span class="pre">to</span> <span class="pre">:kbd:`0</span></tt> (unlimited). Then click <tt class="kbd docutils literal"><span class="pre">Change</span></tt>.</p>
 <img alt="_images/office_41_template.png" src="_images/office_41_template.png" />
 </div>
 <div class="section" id="ldap-settings">
@@ -222,26 +222,25 @@ deleted.</p>
 <tt class="kbd docutils literal"><span class="pre">fsusers</span></tt> and a group <tt class="kbd docutils literal"><span class="pre">admins</span></tt>, as shown here.</p>
 <img alt="_images/office_40.1_addgroup.png" src="_images/office_40.1_addgroup.png" />
 <p>Click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">and</span> <span class="pre">edit</span></tt> to complete the group information. For the <tt class="docutils literal"><span class="pre">fsusers</span></tt>
-group, <tt class="kbd docutils literal"><span class="pre">&lt;Shift-Click&gt;</span></tt> each name in the <em class="guilabel">Users not in group</em>
-list, and then click the <em class="guilabel">left-arrow</em> to move them to the
-<em class="guilabel">Users in group</em> list.</p>
+group, click the green plus sign in order to add each user to the users in group list.</p>
 <img alt="_images/office_40.2_groups.png" src="_images/office_40.2_groups.png" />
-<p><a class="reference external" href="https://192.168.2.241:631/">https://192.168.2.241:631/</a>
-In the <em class="guilabel">Printers</em> section, click the <em class="guilabel">Allow all printers</em>
-checkbox and then <tt class="docutils literal"><span class="pre">Change</span></tt>, so that all users can access printers as shown.</p>
-<img alt="_images/office_40.3_group_printers.png" src="_images/office_40.3_group_printers.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">there is currently a new interface for access control, the access control instrunctions
+coming soon.</p>
+</div>
 </div>
 <div class="section" id="file-sharing">
 <h2>File Sharing<a class="headerlink" href="#file-sharing" title="Permalink to this headline">¶</a></h2>
 <p>Open the <em class="menuselection">Office ‣ File Sharing</em> link on the left menu. With
-the <em class="guilabel">General</em> tab displayed. Enter a domain (workgroup) name, a
-NetBIOS name for the server, and a description. If the server is not the
-primary domain controller in a network, uncheck the <em class="guilabel">PDC</em> box.</p>
-<img alt="_images/office_44.1_filesharing.png" src="_images/office_44.1_filesharing.png" />
-<p>Next click on the <em class="guilabel">Shares</em> tab, and then click <tt class="docutils literal"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">new</span></tt>
+the <em class="guilabel">Shares</em> tab, and then click <tt class="docutils literal"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">new</span></tt>
 to setup new file shares. Enter a <em class="guilabel">share name</em>, a <em class="guilabel">share
 path</em>, and a descriptive <em class="guilabel">comment</em> for a share, and then click <tt class="docutils literal"><span class="pre">Add</span></tt>
 to create the share. The following image shows share <tt class="docutils literal"><span class="pre">backup</span></tt> being added.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">DO NOT check Apply ACLs recursively when adding a new share</p>
+</div>
 <img alt="_images/office_44.2_shares_new.png" src="_images/office_44.2_shares_new.png" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>

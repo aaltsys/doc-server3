@@ -84,8 +84,8 @@ User Template
 
 By default, Zentyal limits the size of user shares.
 
-In the :menuselection:`Office --> Users and Groups --> User Template` section, 
-either (1) change the :guilabel:`Default user quota` to :kbd:`Disabled`, or
+In the :menuselection:`Office --> Users and Computers --> User Template` section, 
+either (1) change the :guilabel:`Default user quota` to :kbd:`Disabled`(Pictured here), or
 (2) Change the quota to :kbd:`0` (unlimited). Then click :kbd:`Change`.
 
 .. image:: _images/office_41_template.png
@@ -114,8 +114,8 @@ username is unique to a single person and has exactly one password. Replace
 system-names such as USER, OWNER, and ADMINISTRATOR with actual person-names 
 or office role-names (payclerk, manager, etc.).
 
-In Zentyal, select :menuselection:`Office --> Users and Groups --> Users` on 
-the menu. Use the :guilabel:`Add User` feature to add each network user on the 
+In Zentyal, select :menuselection:`Office --> Users and Computers --> Manage` on 
+the menu. Use the :guilabel: Plus Icon to add each network user on the 
 server.
 
 .. image:: _images/office_39.1_adduser.png
@@ -148,31 +148,24 @@ Once all users are entered, select
 .. image:: _images/office_40.1_addgroup.png
 
 Click ``Add and edit`` to complete the group information. For the ``fsusers`` 
-group, :kbd:`<Shift-Click>` each name in the :guilabel:`Users not in group` 
-list, and then click the :guilabel:`left-arrow` to move them to the 
-:guilabel:`Users in group` list.
+group, click the green plus sign in order to add each user to the users in group list.
 
 .. image:: _images/office_40.2_groups.png
 
-In the :guilabel:`Printers` section, click the :guilabel:`Allow all priters`
-checkbox and then ``Change``, so that all users can access printers as shown.
 
-.. image:: _images/office_40.3_group_printers.png
+.. note:: there is currently a new interface for access control, the access control instrunctions 
+          coming soon.
 
 File Sharing
 ==========================
 
 Open the :menuselection:`Office --> File Sharing` link on the left menu. With
-the :guilabel:`General` tab displayed. Enter a domain (workgroup) name, a 
-NetBIOS name for the server, and a description. If the server is not the 
-primary domain controller in a network, uncheck the :guilabel:`PDC` box. 
-
-.. image:: _images/office_44.1_filesharing.png
-
-Next click on the :guilabel:`Shares` tab, and then click ``+ Add new``
+the :guilabel:`Shares` tab, and then click ``+ Add new``
 to setup new file shares. Enter a :guilabel:`share name`, a :guilabel:`share 
 path`, and a descriptive :guilabel:`comment` for a share, and then click ``Add``
 to create the share. The following image shows share ``backup`` being added.
+
+.. warning:: DO NOT check Apply ACLs recursively when adding a new share
 
 .. image:: _images/office_44.2_shares_new.png
 

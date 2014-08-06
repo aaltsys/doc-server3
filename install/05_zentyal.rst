@@ -144,7 +144,9 @@ The resulting configuration is displayed following:
 
 .. image:: _images/zentyal_11_webmin.png
 
-.. Tip:: Remember to click :kbd:`Change` when making configuration changes.
+.. Tip:: Remember to click :kbd:`Change` when making configuration changes.And always save your changes.
+
+.. image:: _images/Savechanges.png
 
 Software Management
 ==========================
@@ -176,6 +178,8 @@ Service defined previously. Click the ``Configure rules`` link below
 The new rule will be positioned at the top of the list as shown following:
 
 .. image:: _images/zentyal_28_packetfilter.png
+
+.. image:: _images/newpacketrule.png
 
 IDS
 ==========================

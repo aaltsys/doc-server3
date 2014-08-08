@@ -34,8 +34,6 @@ Software
 Make a Linux installer 
 =============================
 
-.. note:: This section is based on official Ubuntu documentation [#]_
-
 .. tip:: 
    Throughout this section, replace the token ``{linux.iso}`` with the
    actual download filename of the Linux being installed.
@@ -126,17 +124,8 @@ Install rEFInd software
       cd refind <Tab> <Enter>
       ./install.sh --alldrivers
 
-Make free space on drive
------------------------------
 
-#. Open :menuselection:`Launchpad --> Other --> Disk Utility`
-#. Choose a media drive to repartition, and select :menuselection:`Partition`
-   from the dialog border menu. We recommend installing on /dev/disk02, aka
-   "Recovery HD"
-#. Remove Apple HFS data partitions on the drive, leaving only the EFI partition 
-   and the remainder as free space. 
-
-Install Linux from USB
+Reboot & Install Linux
 -----------------------------
 
 .. note::

@@ -163,10 +163,13 @@ for the setting :guilabel:`Perform automatic security updates`, choose
 Firewall Packet Filter
 ==========================
 
-Select :menuselection:`Gateway --> Firewall --> Packet Filter --> internal networks 
-to Zentyal` on the Zentyal menu to insert a new firewall rule for the Network 
-Service defined previously. Click the ``Configure rules`` link below 
-:guilabel:`Filtering rules from internal networks to Zentyal.` Then click 
+Select :menuselection:`Gateway --> Firewall --> Packet Filter
+Click the ``Configure rules`` link below 
+:guilabel:`Filtering rules from internal networks to Zentyal.` 
+
+.. image:: _image/Internal.png
+
+Then click 
 ``Add new`` to enter this rule:
 
 +-------------+--------------+--------------+-------------------+

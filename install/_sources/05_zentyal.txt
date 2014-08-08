@@ -167,7 +167,7 @@ Select :menuselection:`Gateway --> Firewall --> Packet Filter
 Click the ``Configure rules`` link below 
 :guilabel:`Filtering rules from internal networks to Zentyal.` 
 
-.. image:: _image/Internal.png
+.. image:: _images/Internal.png
 
 Then click 
 ``Add new`` to enter this rule:

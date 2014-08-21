@@ -114,7 +114,7 @@ Configure the Network
    | Hostname:                   || either :kbd:`{hostname}.local`             |
    |                             || or :kbd:`{hostname}.local.{domain}`        |
    |                             || or :kbd:`{hostname}.local.aaltsys.net`     |
-   |                             || or :kbd: `aaltsysserver` for local'
+   |                             || or :kbd: `aaltsysserver` for local'        |
    +-----------------------------+---------------------------------------------+
    | Administrator username      | :kbd:`admin1` (if registering with AAltsys) |
    +-----------------------------+---------------------------------------------+

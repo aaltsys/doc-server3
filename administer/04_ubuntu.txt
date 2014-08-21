@@ -1,1 +1,30 @@
+.. _ubuntu:
 
+#############################
+Ubuntu Clients to Zentyal
+#############################
+
+Source: `Authenticating Linux Client to Samba <https://wiki.zentyal.org/wiki/Authenticating_Linux_client_against_Samba>`
+
+Client Configuration script
+=============================
+
+Install packages as follows::
+
+   sudo apt-get install sssd heimdal-clients msktutil
+   
+Write a new kerberos configuration with:
+
+cat <<EOF >> /etc/krb5.conf
+[libdefaults]
+	default_realm = LOCAL.AALTSYS.NET
+	rdns = no
+	dns_lookup_kdc = true
+	dns_lookup_realm = false
+EOF
+
+Zentyal Server Configuration
+=============================
+
+Open the LDAP port in the Zentyal firewall at 
+:menuselection:`Gateway --> Firewall --> Packet Filter --> Internal Networks to Zentyal` 

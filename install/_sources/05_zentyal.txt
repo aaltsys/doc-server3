@@ -27,9 +27,9 @@ Module Status
 
 On the Zentyal menu, select :menuselection:`Core --> Module Status`. Check that 
 all installed modules are active; that is, that their statuses are checked. The 
-following image is from a new install. (DHCP should be checked only on servers 
-used as network gateways.)  After activating modules, click on
-``Save Changes`` in the top bar, and then click ``Save`` to 
+following image from a new install shows the DHCP module unchecked. (DHCP 
+should be checked only on servers used as network gateways.)  After activating 
+modules, click on ``Save Changes`` in the top bar, and then click ``Save`` to 
 finalize the change.
 
 .. image:: _images/zentyal_02_module.png
@@ -112,7 +112,7 @@ Network Gateway
 
 When ``eth0`` is an external interface configured to obtain its IP address 
 through DHCP, Zentyal should configure the Internet gateway for your system as 
-the following example in Core---->Network------>Gateway shows.
+the following example shows.
 
 .. image:: _images/zentyal_08_gateway.png
 
@@ -163,13 +163,10 @@ for the setting :guilabel:`Perform automatic security updates`, choose
 Firewall Packet Filter
 ==========================
 
-Select :menuselection:`Gateway --> Firewall --> Packet Filter
-Click the ``Configure rules`` link below 
-:guilabel:`Filtering rules from internal networks to Zentyal.` 
-
-.. image:: _images/Internal.png
-
-Then click 
+Select :menuselection:`Gateway --> Firewall --> Packet Filter --> internal networks 
+to Zentyal` on the Zentyal menu to insert a new firewall rule for the Network 
+Service defined previously. Click the ``Configure rules`` link below 
+:guilabel:`Filtering rules from internal networks to Zentyal.` Then click 
 ``Add new`` to enter this rule:
 
 +-------------+--------------+--------------+-------------------+
@@ -221,8 +218,7 @@ DHCP
 .. Note:: Skip this section if you are not configuring a network gateway server.
 
 Use section :menuselection:`Infrastructure DHCP` to configure interface 
-``eth1``. (Only static internal interfaces provide DHCP services.) Go to 
-Interface----->DHCP and click the eth1 configuration button. Settings 
+``eth1``. (Only static internal interfaces provide DHCP services.) Settings 
 for the :guilabel:`Common options` follow:
 
 +----------------------------+-------------------------------------------+

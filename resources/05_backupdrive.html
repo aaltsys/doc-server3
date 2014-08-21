@@ -103,8 +103,7 @@ volumes, the backup will be readable by anyone.</p>
 <h2>Part 1: Install autofs <a class="footnote-reference" href="#id4" id="id1">[1]</a><a class="headerlink" href="#part-1-install-autofs" title="Permalink to this headline">¶</a></h2>
 <p>Display a terminal command line on the server console, or <strong class="command">ssh</strong> to a
 server command shell. At the command prompt, type:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install autofs ntfsprogs ntfs-3g
-</pre></div>
+<div class="highlight-python"><pre>sudo apt-get install autofs ntfsprogs ntfs-3g</pre>
 </div>
 </div>
 <div class="section" id="part-2-format-drive-ntfs">
@@ -122,16 +121,14 @@ command prompt.</p>
 </div>
 <ol class="arabic">
 <li><p class="first">Identify the device, format, and mount status using the following commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>ls -al /dev/sd*
+<div class="highlight-python"><pre>ls -al /dev/sd*
 sudo blkid
-mount -l
-</pre></div>
+mount -l</pre>
 </div>
 </li>
 <li><p class="first">If mounted, unmount the drive volume with one of the following commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo service autofs stop (for an automounted drive).
-sudo umount /dev/sdc (For a standard mount point).
-</pre></div>
+<div class="highlight-python"><pre>sudo service autofs stop (for an automounted drive).
+sudo umount /dev/sdc (For a standard mount point).</pre>
 </div>
 </li>
 </ol>
@@ -151,18 +148,16 @@ sudo service udev restart</div></blockquote>
 </li>
 <li><p class="first">Use <strong>fdisk</strong> to remove partitions, create a fresh partition, set type to 7
 (NTFS/HPFS):</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo fdisk /dev/sdc
+<div class="highlight-python"><pre>sudo fdisk /dev/sdc
 u
 c
 n,p,&lt;Enter&gt;,&lt;Enter&gt;
 t,7
-w
-</pre></div>
+w</pre>
 </div>
 </li>
 <li><p class="first">Format the new partition NTFS, label it BACKUP:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo mkntfs -L BACKUP -f /dev/sdc1
-</pre></div>
+<div class="highlight-python"><pre>sudo mkntfs -L BACKUP -f /dev/sdc1</pre>
 </div>
 </li>
 </ol>
@@ -181,10 +176,9 @@ followed by the automount steps below before autofs can mount the drive.</p>
 2 and 3 of this document. From the web browser on the server, download
 <a class="reference download internal" href="_downloads/backupdrive.sh"><tt class="xref download docutils literal"><span class="pre">this</span> <span class="pre">script</span></tt></a> and save it
 in your home folder. Then execute the script with the commands:</p>
-<div class="last highlight-python"><div class="highlight"><pre>cd ~/Downloads
+<div class="last highlight-python"><pre>cd ~/Downloads
 bash backupdrive.sh BACKUP
-rm backupdrive.sh
-</pre></div>
+rm backupdrive.sh</pre>
 </div>
 </div>
 <p>The drive device will be discovered and then mounted to logical mount point
@@ -193,22 +187,20 @@ rm backupdrive.sh
 <li><p class="first">Plug in the hot-pluggable device on a <strong>USB</strong> port (eSATA is risky).</p>
 </li>
 <li><p class="first">At the command prompt, type:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo blkid
-</pre></div>
+<div class="highlight-python"><pre>sudo blkid</pre>
 </div>
 </li>
 <li><p class="first">Output similar to the following will be displayed:</p>
-<div class="highlight-python"><div class="highlight"><pre>/dev/sda1: UUID=&quot;27d7b97c-d615-4fff-9c55-ab714176ab29&quot; TYPE=&quot;ext4&quot;
-/dev/sda5: UUID=&quot;25630530-a7b8-442c-9c2d-57ea5eab109b&quot; TYPE=&quot;swap&quot;
-/dev/sda6: UUID=&quot;cf5aed21-730f-42bc-8a63-b068884772b5&quot; TYPE=&quot;ext4&quot;
-/dev/sdb1: UUID=&quot;27d7b97c-d615-4fff-9c55-ab714176ab29&quot; TYPE=&quot;ext4&quot;
-/dev/sdb5: UUID=&quot;25630530-a7b8-442c-9c2d-57ea5eab109b&quot; TYPE=&quot;swap&quot;
-/dev/sdb6: UUID=&quot;cf5aed21-730f-42bc-8a63-b068884772b5&quot; TYPE=&quot;ext4&quot;
-/dev/mapper/ddf1_aaltsys1: UUID=&quot;27d7b97c-d615-4fff-9c55-ab714176ab29&quot; TYPE=&quot;ext4&quot;
-/dev/mapper/ddf1_aaltsys5: UUID=&quot;25630530-a7b8-442c-9c2d-57ea5eab109b&quot; TYPE=&quot;swap&quot;
-/dev/mapper/ddf1_aaltsys6: UUID=&quot;cf5aed21-730f-42bc-8a63-b068884772b5&quot; TYPE=&quot;ext4&quot;
-/dev/sdc5: LABEL=&quot;HD-HSQ&quot; UUID=&quot;363404743404397F&quot; TYPE=&quot;ntfs&quot;
-</pre></div>
+<div class="highlight-python"><pre>/dev/sda1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
+/dev/sda5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
+/dev/sda6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
+/dev/sdb1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
+/dev/sdb5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
+/dev/sdb6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
+/dev/mapper/ddf1_aaltsys1: UUID="27d7b97c-d615-4fff-9c55-ab714176ab29" TYPE="ext4"
+/dev/mapper/ddf1_aaltsys5: UUID="25630530-a7b8-442c-9c2d-57ea5eab109b" TYPE="swap"
+/dev/mapper/ddf1_aaltsys6: UUID="cf5aed21-730f-42bc-8a63-b068884772b5" TYPE="ext4"
+/dev/sdc5: LABEL="HD-HSQ" UUID="363404743404397F" TYPE="ntfs"</pre>
 </div>
 </li>
 </ol>
@@ -223,19 +215,17 @@ rm backupdrive.sh
 <p class="first admonition-title">Note</p>
 <p>The output above shows <cite>LABEL=&#8221;HD-HSQ&#8221;</cite>. If desired, change the volume label
 with the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo ntfslabel {block_device} {new_label}
-</pre></div>
+<div class="highlight-python"><pre>sudo ntfslabel {block_device} {new_label}</pre>
 </div>
 <p class="last">For example, the command <strong class="command">sudo ntfslabel /dev/sdc5 BACKUP</strong> would
 change the label from <cite>HD-HSQ</cite> to <cite>BACKUP</cite> in the previous output.</p>
 </div>
 <p>At the command prompt, type:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo service autofs stop
+<div class="highlight-python"><pre>sudo service autofs stop
 sudo mkdir -p /home/mnt/backup/source_config
-sudo bash &lt; &lt;(echo &#39;echo &quot;/-  /etc/auto.backup  --timeout=30 --ghost&quot; &gt;&gt; /etc/auto.master&#39;)
-sudo bash &lt; &lt;(echo &#39;echo &quot;/home/mnt/backup  -fstype=auto,sync  :/dev/disk/by-uuid/$UUID&quot; &gt;&gt; /etc/auto.backup&#39;)
-sudo service autofs start
-</pre></div>
+sudo bash &lt; &lt;(echo 'echo "/-  /etc/auto.backup  --timeout=30 --ghost" &gt;&gt; /etc/auto.master')
+sudo bash &lt; &lt;(echo 'echo "/home/mnt/backup  -fstype=auto,sync  :/dev/disk/by-uuid/$UUID" &gt;&gt; /etc/auto.backup')
+sudo service autofs start</pre>
 </div>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
@@ -245,9 +235,8 @@ sudo service autofs start
 <div class="section" id="part-4-verify-drive-mounting">
 <h2>Part 4: Verify drive mounting<a class="headerlink" href="#part-4-verify-drive-mounting" title="Permalink to this headline">¶</a></h2>
 <p>Type the commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>ls /home/mnt/backup
-touch /home/mnt/backup/@@external@@
-</pre></div>
+<div class="highlight-python"><pre>ls /home/mnt/backup
+touch /home/mnt/backup/@@external@@</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -263,9 +252,8 @@ display with the command <tt class="docutils literal"><span class="pre">ls</span
 to 60 before disconnecting the drive. When a drive will remain disconnected,
 autofs interferes with using the underlying file system of the system drive.
 Reconfigure autofs to ignore the file system mount point as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo sed -i &#39;$d&#39; /etc/auto.master
-sudo service autofs restart
-</pre></div>
+<div class="highlight-python"><pre>sudo sed -i '$d' /etc/auto.master
+sudo service autofs restart</pre>
 </div>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
@@ -310,7 +298,7 @@ sudo service autofs restart
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

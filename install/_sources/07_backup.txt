@@ -4,20 +4,34 @@
  Backing Up Server Data
 #############################
 
-The AAltSys Server provides robust, simple, and inexpensive options for data 
-backup. Backups can be written to DVDs for a small amount of information, but 
-we recommend using auto-mounted USB or eSATA drives to handle large data sets. 
-For instructions on preparing (an external) drive for storing backups, refer to
-article :ref:`resources:backupdrive`.
+Zentyal provides robust, simple, and inexpensive options for data backup through
+`Duplicity <http://duplicity.nongnu.org/>`. We recommend using auto-mounted USB 
+drives as removeable backup media; the article :ref:`resources:backupdrive`
+provides instructions on preparing (an external) drive for storing backups.
+
+Backups are stored in Duplicity rsync format. Duplicity is available for free 
+on Linux and Mac. The Linux version of Duplicity can execute on Windows under 
+Cygwin, but this is not an option for most users.
 
 Restoring Backups
 =============================
 
-Backups are stored in Duplicity rsync format. Duplicity is available for free 
-on Linux and Mac. The Linux version of Duplicity can execute on Windows under 
-Cygwin; an ISO image of Duplicity encapsulated in Cygwin is being developed. 
+Zentyal management restore options appear to be broken as of version 3.4 and 
+later. The Zentyal interface is confusing anyway, and so we recommend using the 
+command line for restore. For help with Duplicity at the command line, type::
 
-.. _backup_configuration:
+   man duplicity
+   duplicity [action] --help
+
+to restore files to their original position, use the command::
+
+   duplicity -v info --no-encryption {protocol://path-to-backup-files} {full-path-to-restore}
+   
+For example, say the backup drive is mounted at :file:`/home/mnt/backup` and the 
+data directory to restore is :file:`/home/samba/shares/shared`. Then the restore 
+command could be::
+
+   duplicity -v info --no-encryption file:///home/mnt/backup /home/samba/shares/shared/.
 
 Performing a Demand Backup
 =============================
@@ -32,6 +46,8 @@ To manually perform a backup on Zentyal 2.0 (older) run one of these commands::
 
    sudo /usr/share/ebox-ebackup/ebox-remote-ebackup --full
    sudo /usr/share/ebox-ebackup/ebox-remote-ebackup --incremental
+
+.. _backup_configuration:
 
 Backup Configuration
 =============================

@@ -104,15 +104,13 @@ Please refer to the original documentation there.</p>
 <p><strong class="program">sfdisk</strong> is a tiny program which saves the partition table to a
 regular file and only takes a few seconds. As an initial step for system
 recovery before making things worse, backup the system table now! For example:</p>
-<div class="highlight-python"><div class="highlight"><pre>sfdisk -d /dev/sda &gt; sda.110601.2345.partTable
-</pre></div>
+<div class="highlight-python"><pre>sfdisk -d /dev/sda &gt; sda.110601.2345.partTable</pre>
 </div>
 <p>Copy the backup to another hard disk, removable media (thumb disk, floppy or
 CD) or ftp it to another computer. To Restore a backed up system table, first
 back up the current partition table, even if it seems to be damaged. This will
 allow you to undo the restoration. Then use the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>cat sda.110601.2345.partTable | sfdisk /dev/sda
-</pre></div>
+<div class="highlight-python"><pre>cat sda.110601.2345.partTable | sfdisk /dev/sda</pre>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -174,10 +172,9 @@ update definitions and make a scan:</p>
 <li><p class="first">ensure that you are connected to the internet.</p>
 </li>
 <li><p class="first">Download the latest virus definitions by running the following commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>chown clamav:clamav /var/lib/clamav
+<div class="highlight-python"><pre>chown clamav:clamav /var/lib/clamav
 chown clamav:clamav /var/lib/clamav/*
-freshclam
-</pre></div>
+freshclam</pre>
 </div>
 </li>
 <li><p class="first">Mount the partition to be scanned:</p>
@@ -216,8 +213,7 @@ without running Windows.</p>
 <h3>Read only support<a class="headerlink" href="#read-only-support" title="Permalink to this headline">¶</a></h3>
 <p>To get read support only on an NTFS disk, mount it with the following command
 (replace xxx with the device name of your disk):</p>
-<div class="highlight-python"><div class="highlight"><pre>mount -t ntfs /dev/xxx /mnt/windows -o ro
-</pre></div>
+<div class="highlight-python"><pre>mount -t ntfs /dev/xxx /mnt/windows -o ro</pre>
 </div>
 <p>This read-only support is safe (you cannot alter or damage your data). Use this
 if, for example, you just want to backup several files, or read a document.</p>
@@ -225,8 +221,7 @@ if, for example, you just want to backup several files, or read a document.</p>
 <div class="section" id="full-read-write-support">
 <h3>Full Read-Write support<a class="headerlink" href="#full-read-write-support" title="Permalink to this headline">¶</a></h3>
 <p>Use <strong class="program">ntfs-3g</strong> for complete NTFS Write support with the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>ntfs-3g /dev/sda1 /mnt/windows
-</pre></div>
+<div class="highlight-python"><pre>ntfs-3g /dev/sda1 /mnt/windows</pre>
 </div>
 <p>In this example, we suppose the device name of the NTFS partition is
 <tt class="file docutils literal"><span class="pre">/dev/sda1</span></tt> and the mount point is <tt class="file docutils literal"><span class="pre">/mnt/windows</span></tt>. If you do not
@@ -256,7 +251,7 @@ know the device name, you may list partitions with
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

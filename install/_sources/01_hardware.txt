@@ -188,23 +188,17 @@ Replacing a Current Server
 Backup the Old Server
 =============================
 
-To backup the server configuration only, login to Zentyal, and from menu 
-selection :menuselection:`CORE --> System --> Import/Export Configuration`, 
-:guilabel:`Backup the Current State`. Then Select the new configuration file 
-from the :guilabel:`Backups list`, and download it to a workstation for transfer 
-to the replacement system. [#]_
-
 Zentyal does not provide a program option or document a command for performing a 
 demand backup. Backup all user data along with the server configuration at menu 
 selection :menuselection:`CORE --> System --> Backup`, by setting a new time for 
-a full backup to happen starting on the next hour.
+a full backup to happen starting on the next hour. [#]_
 
 Install the New Server
 =============================
 
 .. note::
-   Preparing to restore data from a backup drive requires using a Command Line 
-   Interface (CLI), which is achieved by one of the following:
+   Instructions require using a Command Line Interface (CLI), which is accessed 
+   by one of the following:
    
    #. :program:`ssh`: From a workstation running either Linux or Apple OS-X, 
       open a command line and start a terminal session on the server with the 
@@ -239,9 +233,9 @@ menu to restore the system configuration, then use
 Reconnect new backup drive
 -----------------------------
 
-If the new server has a new backup drive, wait a minute after activity finishes, 
-then disconnect the old backup drive used for data transfer. Connect the new 
-drive, and reconfigure it with the terminal command::
+To reconnect a new backup drive, wait a minute after activity finishes, then 
+disconnect the old drive used for data transfer. Connect the new drive, and 
+reconfigure it with the terminal command::
 
    sudo ~/backupdrive.sh
 

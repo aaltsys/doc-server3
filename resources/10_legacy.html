@@ -94,24 +94,20 @@ session, to upgrade the server.</p>
 <div class="section" id="ssh-console-commands">
 <h3>SSH Console Commands<a class="headerlink" href="#ssh-console-commands" title="Permalink to this headline">¶</a></h3>
 <p>Add AAltSys and zentyal ppa:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo add-apt-repository ppa:aaltsys/10.07
-sudo add-apt-repository ppa:zentyal/2.0
-</pre></div>
+<div class="highlight-python"><pre>sudo add-apt-repository ppa:aaltsys/10.07
+sudo add-apt-repository ppa:zentyal/2.0</pre>
 </div>
 <p>Fix admin1 group membership:</p>
-<div class="highlight-python"><div class="highlight"><pre>usermod -G __USERS__ admin1
-</pre></div>
+<div class="highlight-python"><pre>usermod -G __USERS__ admin1</pre>
 </div>
 <p>Update server packages:</p>
-<div class="highlight-python"><div class="highlight"><pre>byobu
+<div class="highlight-python"><pre>byobu
 sudo aptitude update
 sudo aptitude safe-upgrade
-^D
-</pre></div>
+^D</pre>
 </div>
 <p>Install packages:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo aptitude install lftp mc
-</pre></div>
+<div class="highlight-python"><pre>sudo aptitude install lftp mc</pre>
 </div>
 </div>
 </div>
@@ -137,7 +133,7 @@ sudo aptitude safe-upgrade
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

@@ -105,13 +105,12 @@ and device configuration. This procedure creates a filecopy redundant server.</p
 primary server is a network gateway machine, then move the external network
 interface connection (NIC device eth0) from the primary server to the backup
 server. Then:</p>
-<div class="highlight-python"><div class="highlight"><pre>Login to the backup server, and start Zentyal.
+<div class="highlight-python"><pre>Login to the backup server, and start Zentyal.
 Navigate to :menuselection:`Core --&gt; System --&gt; Backup --&gt; General`.
 Change the :guilabel:`Host or destination` to :kbd:`/home/mnt/backup/source_config`
 Go to :menuselection:`Core --&gt; System --&gt; Backup --&gt; Services Restore`.
 Run the selection: :kbd:`Restore Zentyal configuration from Backup`.
-Click :kbd:`Save Changes` on the Zentyal title bar, and then :kbd:`save`.
-</pre></div>
+Click :kbd:`Save Changes` on the Zentyal title bar, and then :kbd:`save`.</pre>
 </div>
 <p>The following issues are noted with this procedure:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c">#.       Zentyal progress bar hangs at 88% when saving changes. Close Firefox and reopen it to clear this hang.</span>
@@ -233,21 +232,20 @@ the preceding table. Substitute values according to your network IP.</p>
 <p>Install scripts for data transfer between servers by executing the following
 commands (use either a console terminal or an ssh session to the server&#8217;s
 terminal shell):</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo su -
+<div class="highlight-python"><pre>sudo su -
 ## in case autofs is configured #########
-sed -i &#39;$d&#39; /etc/auto.master
+sed -i '$d' /etc/auto.master
 service autofs restart
 ## end autofs reconfiguration ###########
 mkdir -p /home/mnt/backup/source_config
 mkdir -p /root/.ssh/
-if [ ! -f &quot;/root/.ssh/id_rsa&quot; ]; then ssh-keygen -N &quot;&quot; -f /root/.ssh/id_rsa; fi
+if [ ! -f "/root/.ssh/id_rsa" ]; then ssh-keygen -N "" -f /root/.ssh/id_rsa; fi
 scp /root/.ssh/id_rsa.pub admin1@[backup_IP]:~/
 wget https://raw.github.com/gist/870781/rsync-data -O /usr/bin/rsync-data
 wget https://raw.github.com/gist/870783/rsync-config.sh -O /usr/bin/rsync-config
 chmod +x /usr/bin/rsync-data
 chmod +x /usr/bin/rsync-config
-exit
-</pre></div>
+exit</pre>
 </div>
 <p>Next, log into Webmin at <a class="reference external" href="https://aaltsysserver.local.aaltsys.net:10000">https://aaltsysserver.local.aaltsys.net:10000</a>.
 Navigate the menu to <em class="menuselection">Core ‣ System ‣ Scheduled cron jobs</em>,
@@ -289,15 +287,14 @@ as shown in the table:</p>
 <h3>Configure SSH on Backup Server<a class="headerlink" href="#configure-ssh-on-backup-server" title="Permalink to this headline">¶</a></h3>
 <p>At the backup server, open a terminal session and configure ssh with the
 commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo su -
+<div class="highlight-python"><pre>sudo su -
 service autofs stop
 mkdir -p /home/mnt/backup/source_config
 service autofs start
 mkdir -p /root/.ssh
 cat /home/admin1/id_rsa.pub &gt;&gt; /root/.ssh/authorized_keys
 rm /home/admin1/id_rsa.pub
-exit
-</pre></div>
+exit</pre>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -355,7 +352,7 @@ reinstalled. Directions for using Linux-HA are available at
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

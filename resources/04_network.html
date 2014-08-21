@@ -344,9 +344,8 @@ Internet</li>
 or else reboot the workstation to obtain an address.</p>
 </li>
 <li><p class="first">Open the workstation web browser, and enter one of the following addresses:</p>
-<div class="highlight-python"><div class="highlight"><pre>https://aaltsysserver
-https://192.168.2.241
-</pre></div>
+<div class="highlight-python"><pre>https://aaltsysserver
+https://192.168.2.241</pre>
 </div>
 </li>
 <li><p class="first">Login to Zentyal (eBox) using an administrator name and password.</p>
@@ -386,9 +385,8 @@ menu.</p>
 <li><p class="first">Obtain an IP address for the workstation using DHCP.</p>
 </li>
 <li><p class="first">Open your web browser, and enter one of the following addresses:</p>
-<div class="highlight-python"><div class="highlight"><pre>https://aaltsysserver/
-https://192.168.2.241/
-</pre></div>
+<div class="highlight-python"><pre>https://aaltsysserver/
+https://192.168.2.241/</pre>
 </div>
 </li>
 <li><p class="first">Login to Zentyal using an administrator name and password.</p>
@@ -421,8 +419,7 @@ To allow a static gateway setting when eth0 uses DHCP:</p>
 <li><p class="first">Login <tt class="docutils literal"><span class="pre">__Administrator__</span></tt>, <tt class="docutils literal"><span class="pre">__Password__</span></tt>.</p>
 </li>
 <li><p class="first">Enter the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo nano -w /usr/share/perl5/EBox/Network/Model/GatewayTable.pm
-</pre></div>
+<div class="highlight-python"><pre>sudo nano -w /usr/share/perl5/EBox/Network/Model/GatewayTable.pm</pre>
 </div>
 </li>
 <li><p class="first">Press <tt class="kbd docutils literal"><span class="pre">Ctrl-w</span></tt>, search for <tt class="docutils literal"><span class="pre">gatewayReachable</span></tt>.</p>
@@ -459,9 +456,8 @@ check the server&#8217;s network configuration.</p>
 <h3>ifconfig<a class="headerlink" href="#ifconfig" title="Permalink to this headline">¶</a></h3>
 <p>Use the <strong class="command">ifconfig</strong> command to display IP settings for the server&#8217;s
 devices:</p>
-<div class="highlight-python"><div class="highlight"><pre>ifconfig eth0
-ifconfig eth1
-</pre></div>
+<div class="highlight-python"><pre>ifconfig eth0
+ifconfig eth1</pre>
 </div>
 <ul class="simple">
 <li><strong>eth0</strong> settings should be either obtained through DHCP or set statically</li>
@@ -471,57 +467,50 @@ ifconfig eth1
 <div class="section" id="ping">
 <h3>ping<a class="headerlink" href="#ping" title="Permalink to this headline">¶</a></h3>
 <p>Use this command to test network connectivity:</p>
-<div class="highlight-python"><div class="highlight"><pre>ping 192.168.2.241
+<div class="highlight-python"><pre>ping 192.168.2.241
 ping (IP for eth0)
 ping (IP for Gateway)
 ping (IP for DNS)
-ping www.google.com
-</pre></div>
+ping www.google.com</pre>
 </div>
 </div>
 <div class="section" id="ip">
 <h3>ip<a class="headerlink" href="#ip" title="Permalink to this headline">¶</a></h3>
 <p>Use <strong class="command">ip</strong> to display network configuration, for instance:</p>
-<div class="highlight-python"><div class="highlight"><pre>ip route ls table default
-</pre></div>
+<div class="highlight-python"><pre>ip route ls table default</pre>
 </div>
 <p>(Should return &#8220;default via 123.456.789.012 dev eth0,&#8221; or other gateway ip)</p>
 </div>
 <div class="section" id="dhclient">
 <h3>dhclient<a class="headerlink" href="#dhclient" title="Permalink to this headline">¶</a></h3>
 <p>Use this command to obtain an ip and identify the gateway:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo dhclient eth0
-</pre></div>
+<div class="highlight-python"><pre>sudo dhclient eth0</pre>
 </div>
 </div>
 <div class="section" id="route">
 <h3>route<a class="headerlink" href="#route" title="Permalink to this headline">¶</a></h3>
 <p>Use this command to set a gateway to the Internet:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo route add default gw 123.456.789.012
-</pre></div>
+<div class="highlight-python"><pre>sudo route add default gw 123.456.789.012</pre>
 </div>
 </div>
 <div class="section" id="dig">
 <h3>dig<a class="headerlink" href="#dig" title="Permalink to this headline">¶</a></h3>
 <p>Use <strong class="command">dig</strong> to find DNS name servers:</p>
-<div class="highlight-python"><div class="highlight"><pre>dig 192.168.1.254
-dig comcast.net
-</pre></div>
+<div class="highlight-python"><pre>dig 192.168.1.254
+dig comcast.net</pre>
 </div>
 </div>
 <div class="section" id="nslookup">
 <h3>nslookup<a class="headerlink" href="#nslookup" title="Permalink to this headline">¶</a></h3>
 <p>Use <strong class="command">nslookup</strong> to find results returned from DNS servers:</p>
-<div class="highlight-python"><div class="highlight"><pre>nslookup aaltsys.info
-nslookup -query=hinfo fb.com
-</pre></div>
+<div class="highlight-python"><pre>nslookup aaltsys.info
+nslookup -query=hinfo fb.com</pre>
 </div>
 </div>
 <div class="section" id="ebox">
 <h3>eBox<a class="headerlink" href="#ebox" title="Permalink to this headline">¶</a></h3>
 <p>Use this command only when no workstations are logged in:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo invoke-rc.d ebox restart
-</pre></div>
+<div class="highlight-python"><pre>sudo invoke-rc.d ebox restart</pre>
 </div>
 </div>
 </div>
@@ -547,7 +536,7 @@ nslookup -query=hinfo fb.com
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

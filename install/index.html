@@ -24,29 +24,31 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="#" />
-    <link rel="next" title="Mac mini Server Hardware" href="01_hardware.html" /> 
+    <link rel="next" title="Apple First Boot Instructions" href="01_Appleboot.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="01_hardware.html" title="Mac mini Server Hardware"
+          <a href="01_Appleboot.html" title="Apple First Boot Instructions"
              accesskey="N">next</a></li>
-        <li><a href="#">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+        <li><a href="http://servers.aaltsys.info">Servers Documentation Main Index</a>  &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">AAltsys Server 3.0 Installation Guide</a></li>
+<li><a class="reference internal" href="#">AAltsys Server 3.0 Installation Guide</a><ul>
+</ul>
+</li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 
   <h4>Next topic</h4>
-  <p class="topless"><a href="01_hardware.html"
-                        title="next chapter">Mac mini Server Hardware</a></p>
+  <p class="topless"><a href="01_Appleboot.html"
+                        title="next chapter">Apple First Boot Instructions</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/index.txt"
@@ -78,6 +80,13 @@
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="01_Appleboot.html">Apple First Boot Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01_Appleboot.html#installing-google-chrome">Installing Google Chrome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_Appleboot.html#install-refind-and-linux">Install rEFInd and Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_Appleboot.html#configure-refind">Configure rEFInd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_Appleboot.html#restoring-refind-installation">Restoring rEFInd installation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="01_hardware.html">Mac mini Server Hardware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_hardware.html#mac-mini-server-connections">Mac mini Server Connections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="01_hardware.html#upgrading-a-zentyal-server">Upgrading a Zentyal Server</a><ul>
@@ -92,12 +101,19 @@
 <li class="toctree-l2"><a class="reference internal" href="01_hardware.html#install-the-new-server">Install the New Server</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="02_diskutil.html">Use of Diskutil</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_macserver.html">Dual-Booting Mac Servers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="02_macserver.html#requirements">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02_macserver.html#make-a-linux-installer">Make a Linux installer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_macserver.html#make-a-linux-installer-dvd">Make a Linux installer DVD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02_macserver.html#install-refind-and-linux">Install rEFInd and Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_macserver.html#install-linux-from-usb">Install Linux from USB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02_macserver.html#configure-refind">Configure rEFInd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="02_macserver.html#restoring-refind-installation">Restoring rEFInd installation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02_macserver.html#make-a-mac-bootable-usb">Make a Mac-Bootable USB</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02_macserver.html#prepare-bootable-usb-image">Prepare bootable USB image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_macserver.html#copy-linux-image-to-usb">Copy Linux image to USB</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="03_install.html">Installation Instructions</a><ul>
@@ -143,7 +159,7 @@
 <li class="toctree-l1"><a class="reference internal" href="07_backup.html">Backing Up Server Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="07_backup.html#restoring-backups">Restoring Backups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="07_backup.html#performing-a-demand-backup">Performing a Demand Backup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07_backup.html#id1">Backup Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07_backup.html#backup-configuration">Backup Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="07_backup.html#creating-a-server-clone-image">Creating a Server Clone Image</a></li>
 </ul>
 </li>
@@ -188,14 +204,14 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="01_hardware.html" title="Mac mini Server Hardware"
+          <a href="01_Appleboot.html" title="Apple First Boot Instructions"
              >next</a></li>
-        <li><a href="#">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
+        <li><a href="http://servers.aaltsys.info">Servers Documentation Main Index</a>  &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
     </div>
   </body>
 </html>

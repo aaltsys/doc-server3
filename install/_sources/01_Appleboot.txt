@@ -145,4 +145,8 @@ The efi directory is cleared and rewritten when updating Mac OS X. Keep program
       ./install.sh
       sudo cp ~/Documents/refind.conf /efi/refind/ 
 
-------
+----------
+
+.. rubric: Footnotes
+
+.. [#] `rEFInd configuration documentation <http://www.rodsbooks.com/refind/configfile.html>`_.

@@ -13,14 +13,15 @@ boot configuration::
    :guilabel:`Username:`  :kbd:`__username__`
    :guilabel:`Password:`  :kbd:`__password__`
 
-.. NOTE:: Following section titles correspond to items on the Zentyal 
+.. note::
+   Following section titles correspond to items on the Zentyal 
    :guilabel:`Initial Steps` menu, at the left of the Zentyal pages.
 
-.. warning:: If you see an error message that firefox cannot connect to the local host, open a terminal and type:: 
-
+.. warning:: 
+   If firefox cannot connect to the local host, open a terminal and type:: 
+   
      sudo reboot
 
-   
 Package Selection:
 -----------------------------
 

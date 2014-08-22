@@ -201,7 +201,7 @@ Prepare bootable USB image
    #. Right-Click the ``{linux.iso}`` image file, and choose 
       :menuselection:`Open With --> Disk Utility`.
    #. In :program:`Disk Utility`, Right-Click the ``{linux.iso}`` file 
-      and choose :menuselection:`Convert ``{linux_.iso}`` `.
+      and choose :menuselection:`Convert ``{linux_.iso}```. 
    #. In the :guilabel:`Convert` dialog, use the default name and location 
       :file:`Documents`, and click :guilabel:`Save` to write.
       ``{linux.dmg}`` (The :file:`.dmg` extension is added automatically.)

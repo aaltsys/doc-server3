@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# AAltsys Derver 3.0 Administration documentation build configuration file, created by
+# AAltsys Server Administration documentation build configuration file, created by
 # sphinx-quickstart on Tue Nov 27 17:16:03 2012.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'AAltsys Derver 3.0 Administration'
+project = u'AAltsys Server Administration'
 copyright = u'2012, Gerald Lovel'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -164,7 +164,7 @@ html_use_index = False
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'AAltsysDerver30Administrationdoc'
+htmlhelp_basename = 'AAltsysServerAdministrationdoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,7 +183,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'AAltsysDerver30Administration.tex', u'AAltsys Derver 3.0 Administration Documentation',
+  ('index', 'AAltsysServerAdministration.tex', u'AAltsys Server Administration Documentation',
    u'Gerald Lovel', 'manual'),
 ]
 
@@ -213,7 +213,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'aaltsysderver30administration', u'AAltsys Derver 3.0 Administration Documentation',
+    ('index', 'aaltsysserveradministration', u'AAltsys Server Administration Documentation',
      [u'Gerald Lovel'], 1)
 ]
 
@@ -227,7 +227,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'AAltsysDerver30Administration', u'AAltsys Derver 3.0 Administration Documentation',
+  ('index', 'AAltsysServerAdministration', u'AAltsys Server Administration Documentation',
    u'Gerald Lovel', 'AAltsysDerver30Administration', 'One line description of project.',
    'Miscellaneous'),
 ]
@@ -245,7 +245,7 @@ texinfo_documents = [
 # -- Options for Epub output ---------------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'AAltsys Derver 3.0 Administration'
+epub_title = u'AAltsys Server Administration'
 epub_author = u'Gerald Lovel'
 epub_publisher = u'Gerald Lovel'
 epub_copyright = u'2012, Gerald Lovel'

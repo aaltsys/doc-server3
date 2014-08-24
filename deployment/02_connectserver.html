@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Mac mini Server Connections &mdash; AAltsys Server Deployment 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server Deployment 1.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">AAltsys Server Deployment 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/02_connectserver.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mac-mini-server-connections">
+<span id="connectserver"></span><h1>Mac mini Server Connections<a class="headerlink" href="#mac-mini-server-connections" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/macmini_MD389LLA.png" src="_images/macmini_MD389LLA.png" />
+<p>The connector side of the Mac mini Server is illustrated above. Plug up cable
+connectors as follows:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="26%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Connector</th>
+<th class="head">Cable</th>
+<th class="head">Provided</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Power supply</td>
+<td>white power cable</td>
+<td>Special power cable included</td>
+</tr>
+<tr class="row-odd"><td>Gigabit Ethernet</td>
+<td>Ethernet to LAN</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>Firewire</td>
+<td>(unconnected)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>HDMI</td>
+<td>HDMI to monitor</td>
+<td>HDMI-to-DVI converter included</td>
+</tr>
+<tr class="row-even"><td>Thunderbolt</td>
+<td>Ethernet to WAN</td>
+<td>Thunderbolt-to-Ethernet adapter</td>
+</tr>
+<tr class="row-odd"><td>USB 3.0</td>
+<td>USB backup device</td>
+<td>MyPassport 1 Tb external drive</td>
+</tr>
+<tr class="row-even"><td>USB 3.0</td>
+<td>USB Keyboard</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>USB 3.0</td>
+<td>USB Mouse</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>AALtsys Technology servers which use the Zentyal operating system on Apple
+server hardware may be installed and managed &#8220;headless,&#8221; meaning that the
+monitor, keyboard, and mouse are not required. If compatible console devices are
+not available at a site, then a computer on the LAN can manage the server from
+the browser once the server is connected and powered up.</p>
+<p>Manage the server from a LAN workstation as follows:</p>
+<ol class="arabic simple">
+<li>Connect the network as described above, then power up the server.</li>
+<li>Restart a LAN computer, obtaining IP and DNS automatically through DHCP.</li>
+<li>Launch either Chrome or Firefox browser. Internet Explorer will not work.</li>
+<li>Enter address <a class="reference external" href="https://192.168.2.241">https://192.168.2.241</a> in the browser. Accept the server&#8217;s
+self-signed certificate.</li>
+<li>Login to the server management program using the provided credentials.</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">AAltsys Server Deployment 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

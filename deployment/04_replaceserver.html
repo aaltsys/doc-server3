@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Replacing a Current Server &mdash; AAltsys Server Deployment 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="AAltsys Server Deployment 1.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">AAltsys Server Deployment 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Replacing a Current Server</a><ul>
+<li><a class="reference internal" href="#backup-the-old-server">Backup the Old Server</a></li>
+<li><a class="reference internal" href="#install-the-new-server">Install the New Server</a><ul>
+<li><a class="reference internal" href="#connect-old-backup-drive">Connect old backup drive</a></li>
+<li><a class="reference internal" href="#restore-configuration-data">Restore configuration, data</a></li>
+<li><a class="reference internal" href="#reconnect-new-backup-drive">Reconnect new backup drive</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/04_replaceserver.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="replacing-a-current-server">
+<span id="replaceserver"></span><h1>Replacing a Current Server<a class="headerlink" href="#replacing-a-current-server" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="backup-the-old-server">
+<h2>Backup the Old Server<a class="headerlink" href="#backup-the-old-server" title="Permalink to this headline">¶</a></h2>
+<p>Zentyal does not provide a program option or document a command for performing a
+demand backup. Backup all user data along with the server configuration at menu
+selection <em class="menuselection">CORE ‣ System ‣ Backup</em>, by setting a new time for
+a full backup to happen starting on the next hour. <a class="footnote-reference" href="#id2" id="id1">[1]</a></p>
+</div>
+<div class="section" id="install-the-new-server">
+<h2>Install the New Server<a class="headerlink" href="#install-the-new-server" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Instructions require using a Command Line Interface (CLI), which is accessed
+by one of the following:</p>
+<ol class="last arabic">
+<li><p class="first"><strong class="program">ssh</strong>: From a workstation running either Linux or Apple OS-X,
+open a command line and start a terminal session on the server with the
+command:</p>
+<div class="highlight-python"><pre>ssh admin1@192.168.2.241</pre>
+</div>
+</li>
+<li><p class="first"><strong class="program">console</strong>: Connect keyboard, mouse, and video monitor to the
+server. Login on the console and open a terminal session there.</p>
+</li>
+</ol>
+</div>
+<p>Use the <a class="reference internal" href="02_connectserver.html#connectserver"><em>Mac mini Server Connections</em></a> documentation to connect and manage the new server.</p>
+<div class="section" id="connect-old-backup-drive">
+<h3>Connect old backup drive<a class="headerlink" href="#connect-old-backup-drive" title="Permalink to this headline">¶</a></h3>
+<p>If the new server uses a new backup drive, disconnect the new backup drive and
+connect the backup drive from the old server. Open a command line as described
+in the note above, then download shell script <strong class="program">backupdrive.sh</strong> and run
+the script with the commands:</p>
+<div class="highlight-python"><pre>wget http://servers.aaltsys.info/resources/_downloads/backupdrive.sh -P ~/
+sudo ~/backupdrive.sh</pre>
+</div>
+</div>
+<div class="section" id="restore-configuration-data">
+<h3>Restore configuration, data<a class="headerlink" href="#restore-configuration-data" title="Permalink to this headline">¶</a></h3>
+<p>In a web browser, login to Zentyal server management at <a class="reference external" href="https://192.168.2.241">https://192.168.2.241</a>.
+Select <em class="menuselection">Core ‣ System ‣ Backup ‣ Services Restore</em> from the
+menu to restore the system configuration, then use
+<em class="menuselection">Restore Files</em> to restore backed up data.</p>
+</div>
+<div class="section" id="reconnect-new-backup-drive">
+<h3>Reconnect new backup drive<a class="headerlink" href="#reconnect-new-backup-drive" title="Permalink to this headline">¶</a></h3>
+<p>To reconnect a new backup drive, wait a minute after activity finishes, then
+disconnect the old drive used for data transfer. Connect the new drive, and
+reconfigure it with the terminal command:</p>
+<div class="highlight-python"><pre>sudo ~/backupdrive.sh</pre>
+</div>
+<hr class="docutils" />
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://doc.zentyal.org/en/backup.html">Zentyal backup procedures documentation</a>.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html">AAltsys Server Deployment 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Gerald Lovel.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

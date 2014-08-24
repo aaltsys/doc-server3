@@ -10,6 +10,7 @@ AAltsys Server 3.0 Documentation
 
 Use this guide to install and administer a managed AAltsys Server.
 
+#. :ref:`deployment:index`
 #. :ref:`install:index`.
 #. :ref:`administer:index`.
 #. :ref:`workstation:index`.

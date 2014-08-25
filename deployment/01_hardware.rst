@@ -60,6 +60,6 @@ console components are needed while installing operating system software:
       VGA, and no display cable is included. Provide a combination of cable and 
       display compatible with HDMI or DVI. 
    #. The server requires USB keyboard and mouse; not PS/2 style devices.
-   #. The Apple Superdrive works with Apple devices only. Other brands or types 
-      of USB optical drives are not recognized by Apple servers.
+   #. The Apple Superdrive works with Apple computers only. Apple computers may
+      or may not work with other brands or types of USB optical drives.
 

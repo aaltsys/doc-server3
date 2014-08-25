@@ -32,8 +32,8 @@ Swap to new server
 =============================
 
 Shutdown and disconnect the old server, then connect the new server using the 
-diagram shown previously. Then power on the new server, and access its 
-administration at https://192.168.2.241 from a workstation web browser.
+diagram shown previously. Power on the new server, and access its administration 
+at https://192.168.2.241 from a workstation web browser.
 
 Enter office configuration 
 =============================

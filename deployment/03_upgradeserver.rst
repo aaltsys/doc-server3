@@ -50,9 +50,9 @@ corresponding drive letter. In Windows 7, shares are mapped to drives by opening
 :menuselection:`Tools --> Map Network Drive`. 
 
 .. note::
-   Download script :download:`NETSHARE.BAT <../install/_downloads/netshare.bat>` to the 
-   workstation desktop as an alternative to mapping drives. Then edit the batch
-   script to reference the new server, and run the script to map drives. 
+   Download script :download:`NETSHARE.BAT <../install/_downloads/netshare.bat>` 
+   to the workstation desktop as an alternative to mapping drives. Then edit the 
+   batch script to reference the new server, and run the script to map drives. 
 
 After mapping a share to a drive letter, open the command line, then use the 
 following commands to copy the share files back to the server, remembering to 

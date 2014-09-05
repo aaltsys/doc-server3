@@ -117,9 +117,9 @@ or</li>
 <h2>Module Status<a class="headerlink" href="#module-status" title="Permalink to this headline">¶</a></h2>
 <p>On the Zentyal menu, select <em class="menuselection">Core ‣ Module Status</em>. Check that
 all installed modules are active; that is, that their statuses are checked. The
-following image from a new install shows the DHCP module unchecked. (DHCP
-should be checked only on servers used as network gateways.)  After activating
-modules, click on <tt class="docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></tt> in the top bar, and then click <tt class="docutils literal"><span class="pre">Save</span></tt> to
+following image is from a new install. (DHCP should be checked only on servers
+used as network gateways.)  After activating modules, click on
+<tt class="docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></tt> in the top bar, and then click <tt class="docutils literal"><span class="pre">Save</span></tt> to
 finalize the change.</p>
 <img alt="_images/zentyal_02_module.png" src="_images/zentyal_02_module.png" />
 </div>
@@ -217,7 +217,7 @@ must not be checked. An example of this configuration is illustrated following.<
 <h2>Network Gateway<a class="headerlink" href="#network-gateway" title="Permalink to this headline">¶</a></h2>
 <p>When <tt class="docutils literal"><span class="pre">eth0</span></tt> is an external interface configured to obtain its IP address
 through DHCP, Zentyal should configure the Internet gateway for your system as
-the following example shows.</p>
+the following example in Core&#8212;-&gt;Network&#8212;&#8212;&gt;Gateways shows.</p>
 <img alt="_images/zentyal_08_gateway.png" src="_images/zentyal_08_gateway.png" />
 </div>
 <div class="section" id="network-services">
@@ -272,7 +272,7 @@ button for <tt class="docutils literal"><span class="pre">webmin</span></tt> and
 <h2>Software Management<a class="headerlink" href="#software-management" title="Permalink to this headline">¶</a></h2>
 <p>At menu selection <em class="menuselection">Core ‣ Software Management ‣ Settings</em>:
 for the setting <em class="guilabel">Perform automatic security updates</em>, choose
-<tt class="docutils literal"><span class="pre">Enabled</span></tt>, and remember to click <tt class="docutils literal"><span class="pre">Change</span></tt>, as shown following.</p>
+<tt class="docutils literal"><span class="pre">disabled</span></tt>, and remember to click <tt class="docutils literal"><span class="pre">Change</span></tt>, as shown following.</p>
 <img alt="_images/zentyal_23_settings.png" src="_images/zentyal_23_settings.png" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -282,10 +282,11 @@ as <em class="guilabel">UTM</em>.</p>
 </div>
 <div class="section" id="firewall-packet-filter">
 <h2>Firewall Packet Filter<a class="headerlink" href="#firewall-packet-filter" title="Permalink to this headline">¶</a></h2>
-<p>Select <em class="menuselection">Gateway ‣ Firewall ‣ Packet Filter ‣ internal networks
-to Zentyal</em> on the Zentyal menu to insert a new firewall rule for the Network
-Service defined previously. Click the <tt class="docutils literal"><span class="pre">Configure</span> <span class="pre">rules</span></tt> link below
-<em class="guilabel">Filtering rules from internal networks to Zentyal.</em> Then click
+<p>Select <em class="menuselection">Gateway ‣ Firewall ‣ Packet Filter
+Click the ``Configure rules`</em> link below
+<em class="guilabel">Filtering rules from internal networks to Zentyal.</em></p>
+<img alt="_images/Internal.png" src="_images/Internal.png" />
+<p>Then click
 <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></tt> to enter this rule:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -352,7 +353,8 @@ accept it.</li>
 <p class="last">Skip this section if you are not configuring a network gateway server.</p>
 </div>
 <p>Use section <em class="menuselection">Infrastructure DHCP</em> to configure interface
-<tt class="docutils literal"><span class="pre">eth1</span></tt>. (Only static internal interfaces provide DHCP services.) Settings
+<tt class="docutils literal"><span class="pre">eth1</span></tt>. (Only static internal interfaces provide DHCP services.) Go to
+Interface&#8212;&#8211;&gt;DHCP and click the eth1 configuration button. Settings
 for the <em class="guilabel">Common options</em> follow:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -473,7 +475,7 @@ office use can be set up.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

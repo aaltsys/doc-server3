@@ -47,7 +47,7 @@
 <li><a class="reference internal" href="#">Backing Up Server Data</a><ul>
 <li><a class="reference internal" href="#restoring-backups">Restoring Backups</a></li>
 <li><a class="reference internal" href="#performing-a-demand-backup">Performing a Demand Backup</a></li>
-<li><a class="reference internal" href="#backup-configuration">Backup Configuration</a><ul>
+<li><a class="reference internal" href="#id1">Backup Configuration</a><ul>
 <li><a class="reference internal" href="#configure-zentyal">Configure Zentyal</a></li>
 <li><a class="reference internal" href="#moving-home-files-to-server">Moving Home Files to Server</a></li>
 <li><a class="reference internal" href="#what-is-backed-up">What Is Backed Up</a></li>
@@ -93,32 +93,19 @@
             
   <div class="section" id="backing-up-server-data">
 <span id="backup"></span><h1>Backing Up Server Data<a class="headerlink" href="#backing-up-server-data" title="Permalink to this headline">¶</a></h1>
-<p>Zentyal provides robust, simple, and inexpensive options for data backup through
-<cite>Duplicity &lt;http://duplicity.nongnu.org/&gt;</cite>. We recommend using auto-mounted USB
-drives as removeable backup media; the article <a class="reference external" href="../resources/05_backupdrive.html#backupdrive" title="(in AAltsys Server 3.0 Technical v3.0)"><em>Automount Drive Setup</em></a>
-provides instructions on preparing (an external) drive for storing backups.</p>
-<p>Backups are stored in Duplicity rsync format. Duplicity is available for free
-on Linux and Mac. The Linux version of Duplicity can execute on Windows under
-Cygwin, but this is not an option for most users.</p>
+<p>The AAltSys Server provides robust, simple, and inexpensive options for data
+backup. Backups can be written to DVDs for a small amount of information, but
+we recommend using auto-mounted USB or eSATA drives to handle large data sets.
+For instructions on preparing (an external) drive for storing backups, refer to
+article <a class="reference external" href="../resources/05_backupdrive.html#backupdrive" title="(in AAltsys Server 3.0 Technical v3.0)"><em>Automount Drive Setup</em></a>.</p>
 <div class="section" id="restoring-backups">
 <h2>Restoring Backups<a class="headerlink" href="#restoring-backups" title="Permalink to this headline">¶</a></h2>
-<p>Zentyal management restore options appear to be broken as of version 3.4 and
-later. The Zentyal interface is confusing anyway, and so we recommend using the
-command line for restore. For help with Duplicity at the command line, type:</p>
-<div class="highlight-python"><pre>man duplicity
-duplicity [action] --help</pre>
-</div>
-<p>to restore files to their original position, use the command:</p>
-<div class="highlight-python"><pre>duplicity -v info --no-encryption {protocol://path-to-backup-files} {full-path-to-restore}</pre>
-</div>
-<p>For example, say the backup drive is mounted at <tt class="file docutils literal"><span class="pre">/home/mnt/backup</span></tt> and the
-data directory to restore is <tt class="file docutils literal"><span class="pre">/home/samba/shares/shared</span></tt>. Then the restore
-command could be:</p>
-<div class="highlight-python"><pre>duplicity -v info --no-encryption file:///home/mnt/backup /home/samba/shares/shared/.</pre>
-</div>
+<p>Backups are stored in Duplicity rsync format. Duplicity is available for free
+on Linux and Mac. The Linux version of Duplicity can execute on Windows under
+Cygwin; an ISO image of Duplicity encapsulated in Cygwin is being developed.</p>
 </div>
 <div class="section" id="performing-a-demand-backup">
-<h2>Performing a Demand Backup<a class="headerlink" href="#performing-a-demand-backup" title="Permalink to this headline">¶</a></h2>
+<span id="backup-configuration"></span><h2>Performing a Demand Backup<a class="headerlink" href="#performing-a-demand-backup" title="Permalink to this headline">¶</a></h2>
 <p>To manually perform a backup on Zentyal 2.2 or later run one of the following
 commands:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">sudo</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">zentyal</span><span class="o">-</span><span class="n">ebackup</span><span class="o">/</span><span class="n">backup</span><span class="o">-</span><span class="n">tool</span> <span class="o">--</span><span class="n">full</span>
@@ -131,11 +118,12 @@ commands:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="backup-configuration">
-<span id="id1"></span><h2>Backup Configuration<a class="headerlink" href="#backup-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2>Backup Configuration<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Backups are written inside of the <strong>/home</strong> directory. The directory for backups
 is created with the terminal command:</p>
-<div class="highlight-python"><pre>sudo mkdir -p /home/mnt/backup/source_config</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo mkdir -p /home/mnt/backup/source_config
+</pre></div>
 </div>
 <p>Linux cron jobs perform backup functions. Zentyal manages cron tab entries for
 Duplicity operations. Writing backup files to external media requires entering
@@ -143,7 +131,8 @@ cron jobs using Webmin. An example entry for writing to DVD is shown following:<
 <img alt="_images/backup_dvdcron.png" src="_images/backup_dvdcron.png" />
 <p>The software for writing DVDs may be missing from the OS. It is installed with
 the command:</p>
-<div class="highlight-python"><pre>sudo apt-get install dvd+rw-tools</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install dvd+rw-tools
+</pre></div>
 </div>
 <div class="section" id="configure-zentyal">
 <h3>Configure Zentyal<a class="headerlink" href="#configure-zentyal" title="Permalink to this headline">¶</a></h3>
@@ -281,7 +270,7 @@ your backup drive.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

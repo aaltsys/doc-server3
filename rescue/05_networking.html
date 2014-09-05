@@ -126,9 +126,10 @@
 <h2>Accessing a Windows Share<a class="headerlink" href="#accessing-a-windows-share" title="Permalink to this headline">¶</a></h2>
 <p>SystemRescueCd comes with the cifs client package that allows you to connect to a Windows machine having shared drives.</p>
 <p>The <strong>mount-cifs</strong> package allows you to access a Windows computer on the network. For example, suppose a Windows box is on <em>192.168.10.3</em> and has a shared directory called <em>mydata</em> accessible by user <em>robert</em>:</p>
-<div class="highlight-python"><pre>mkdir /mnt/windows
+<div class="highlight-python"><div class="highlight"><pre>mkdir /mnt/windows
 mount -t cifs //192.168.10.3/mydata /mnt/windows -o username=robert,MyPaSsWoRd=root -o lfs
-cd /mnt/windows</pre>
+cd /mnt/windows
+</pre></div>
 </div>
 <p>Now you should be able to see files in <em>/mnt/windows</em>. Don&#8217;t forget to unmount the directory when you have finished what you are doing in the shared directory:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">umount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">windows</span>
@@ -139,17 +140,19 @@ cd /mnt/windows</pre>
 <div class="section" id="mount-remote-ftp-ssh-shares">
 <h2>Mount remote FTP/SSH shares<a class="headerlink" href="#mount-remote-ftp-ssh-shares" title="Permalink to this headline">¶</a></h2>
 <p>there is a powerful way to access files located on an FTP server as local file systems with the <strong>Userland FileSystem</strong>. You mount the share and work on the remote files just as you would work on any local files, then umount the share with the standard <tt class="kbd docutils literal"><span class="pre">umount</span></tt> command. Here is an example showing how to mount an FTP file system in <em>/mnt/ftp</em> as anonymous (read only):</p>
-<div class="highlight-python"><pre>mkdir /mnt/ftp
+<div class="highlight-python"><div class="highlight"><pre>mkdir /mnt/ftp
 lufis fs=ftpfs,host=ftp.kernel.org /mnt/ftp -s
 cd /mnt/ftp
-umount /mnt/ftp</pre>
+umount /mnt/ftp
+</pre></div>
 </div>
 <p>Here is an example of how to mount an SSH file system in <em>/mnt/ssh</em> as anonymous (read only):</p>
-<div class="highlight-python"><pre>mkdir /mnt/ssh
+<div class="highlight-python"><div class="highlight"><pre>mkdir /mnt/ssh
 passwd root
 sshfs login@ssh.server.org:/path/to/dir /mnt/ssh
 cd /mnt/ssh
-umount /mnt/ssh</pre>
+umount /mnt/ssh
+</pre></div>
 </div>
 </div>
 </div>
@@ -174,7 +177,7 @@ umount /mnt/ssh</pre>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

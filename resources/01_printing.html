@@ -94,7 +94,8 @@
 <h2>HPLIP<a class="headerlink" href="#hplip" title="Permalink to this headline">¶</a></h2>
 <p>Your printer may require an updated version of HPLIP. to check the installed
 version, use the console command:</p>
-<div class="highlight-python"><pre>dpkg -l hplip</pre>
+<div class="highlight-python"><div class="highlight"><pre>dpkg -l hplip
+</pre></div>
 </div>
 <div class="section" id="updating-the-printer-list">
 <h3>Updating the Printer List<a class="headerlink" href="#updating-the-printer-list" title="Permalink to this headline">¶</a></h3>
@@ -102,16 +103,18 @@ version, use the console command:</p>
 appear. Possibly HPLIP may not be installed on the system. In any case, HPLIP
 is available from a Launchpad repository, and it can be installed or updated
 for your operating system version with the commands:</p>
-<div class="highlight-python"><pre>sudo apt-add-repository ppa:hplip-isv/ppa
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-add-repository ppa:hplip-isv/ppa
 sudo apt-get update
-sudo apt-get install hplip</pre>
+sudo apt-get install hplip
+</pre></div>
 </div>
 </div>
 <div class="section" id="latest-hplip-version">
 <h3>Latest HPLIP Version<a class="headerlink" href="#latest-hplip-version" title="Permalink to this headline">¶</a></h3>
 <p>If the repository version of HPLIP does not support your printer, then you
 can install the absolute latest version of HPLIP as a download from:</p>
-<div class="highlight-python"><pre>http://hplipopensource.com/hplip-web/install/install/index.html</pre>
+<div class="highlight-python"><div class="highlight"><pre>http://hplipopensource.com/hplip-web/install/install/index.html
+</pre></div>
 </div>
 <ul>
 <li><p class="first">On this webpage, right-click the <em class="guilabel">download &gt;</em> button, and choose
@@ -119,20 +122,23 @@ can install the absolute latest version of HPLIP as a download from:</p>
 </li>
 <li><p class="first">Open a command prompt, and type <tt class="kbd docutils literal"><span class="pre">wget</span> <span class="pre">-O</span> <span class="pre">hplip.run</span> <span class="pre">&lt;space&gt;&lt;ctrl-v&gt;</span></tt>
 Your resulting command, except for version, should look like the following:</p>
-<div class="highlight-python"><pre>wget -O hplip.run http://prdownloads.sourceforge.net/hplip/hplip-3.13.2.run</pre>
+<div class="highlight-python"><div class="highlight"><pre>wget -O hplip.run http://prdownloads.sourceforge.net/hplip/hplip-3.13.2.run
+</pre></div>
 </div>
 </li>
 <li><p class="first">Press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> to execute the download.</p>
 </li>
 <li><p class="first">Compile and make this version of hplip with the command:</p>
-<div class="highlight-python"><pre>sh hplip.run</pre>
+<div class="highlight-python"><div class="highlight"><pre>sh hplip.run
+</pre></div>
 </div>
 </li>
 <li><p class="first">Enter your password when asked, and answer other prompts as appropriate.</p>
 </li>
 <li><p class="first">Press <tt class="kbd docutils literal"><span class="pre">q</span></tt> to quit when you see the section titled:</p>
-<div class="highlight-python"><pre>RESTART OR RE-PLUG IS REQUIRED
-------------------------------</pre>
+<div class="highlight-python"><div class="highlight"><pre>RESTART OR RE-PLUG IS REQUIRED
+------------------------------
+</pre></div>
 </div>
 <p>Then logout, and login to the server again.</p>
 </li>
@@ -164,7 +170,8 @@ console, or over <strong class="command">ssh</strong>.</p>
 </pre></div>
 </div>
 <p>To find a setup string URI to use in CUPS:</p>
-<div class="highlight-python"><pre>hp-makeuri {printer_IP_address}</pre>
+<div class="highlight-python"><div class="highlight"><pre>hp-makeuri {printer_IP_address}
+</pre></div>
 </div>
 <p>For a list of HP commands, type <strong class="command">hp-</strong> at the command prompt, then
 press <tt class="kbd docutils literal"><span class="pre">&lt;tab&gt;&lt;tab&gt;</span></tt>.</p>
@@ -217,7 +224,7 @@ printer using the <strong class="command">hp-makeuri {printer_IP_address}</stron
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

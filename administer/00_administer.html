@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>AAltSys Server Administration &mdash; AAltsys Server Administration 3.0 documentation</title>
+    <title>AAltSys Server Administration &mdash; AAltsys Derver 3.0 Administration 3.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="AAltsys Server Administration 3.0 documentation" href="index.html" />
+    <link rel="top" title="AAltsys Derver 3.0 Administration 3.0 documentation" href="index.html" />
     <link rel="next" title="ConVirt 2.0 Administration" href="02_convirt.html" />
     <link rel="prev" title="AAltsys Server 3.0 Administration Guide" href="index.html" /> 
   </head>
@@ -37,7 +37,7 @@
         <li class="right" >
           <a href="index.html" title="AAltsys Server 3.0 Administration Guide"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">AAltsys Server Administration 3.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">AAltsys Derver 3.0 Administration 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -149,10 +149,11 @@ servers on the management VPN using the remote domain names shown.</p>
 The behavior of ssh from a browser or command line depends on features of the
 desktop operating system. Provided the desktop can use ssh, any of the
 following Linux commands might provide CLI access to an AAltSys Server:</p>
-<div class="highlight-python"><pre>ssh -l (administrator) 192.168.2.241
+<div class="highlight-python"><div class="highlight"><pre>ssh -l (administrator) 192.168.2.241
 ssh -l (administrator) aaltsysserver
 ssh -l (administrator) (registration).servers.aaltsys.net
-gnome-terminal -x ssh -l (administrator) (registration).servers.aaltsys.net</pre>
+gnome-terminal -x ssh -l (administrator) (registration).servers.aaltsys.net
+</pre></div>
 </div>
 <div class="section" id="restarting-zentyal">
 <h3>Restarting Zentyal<a class="headerlink" href="#restarting-zentyal" title="Permalink to this headline">¶</a></h3>
@@ -161,16 +162,18 @@ facility for restarting or reloading server management through the management
 interface. Instead, this procedure can be performed from a command line login.
 Either use the server console terminal window, or at a workstation, open a
 server ssh session with the terminal command:</p>
-<div class="highlight-python"><pre>&gt;$ ssh -l (administrator) aaltsysserver</pre>
+<div class="highlight-python"><div class="highlight"><pre>&gt;$ ssh -l (administrator) aaltsysserver
+</pre></div>
 </div>
 <p>Run the following command line statements:</p>
-<div class="highlight-python"><pre>&gt;$ sudo su -
+<div class="highlight-python"><div class="highlight"><pre>&gt;$ sudo su -
 &gt;$ byobu
 &gt;$ stop ebox
 &gt;$ start ebox
 &gt;$ exit
 &gt;$ exit
-&gt;$ exit</pre>
+&gt;$ exit
+</pre></div>
 </div>
 </div>
 </div>
@@ -246,12 +249,12 @@ you are not adept at Linux administration.)</p>
         <li class="right" >
           <a href="index.html" title="AAltsys Server 3.0 Administration Guide"
              >previous</a> |</li>
-        <li><a href="index.html">AAltsys Server Administration 3.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">AAltsys Derver 3.0 Administration 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

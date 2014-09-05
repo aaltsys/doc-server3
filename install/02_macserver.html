@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
     <link rel="next" title="Installation Instructions" href="03_install.html" />
-    <link rel="prev" title="Use of Diskutil" href="02_diskutil.html" /> 
+    <link rel="prev" title="Mac mini Server Hardware" href="01_hardware.html" /> 
   </head>
   <body>
     <div class="related">
@@ -35,7 +35,7 @@
           <a href="03_install.html" title="Installation Instructions"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="02_diskutil.html" title="Use of Diskutil"
+          <a href="01_hardware.html" title="Mac mini Server Hardware"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
@@ -50,13 +50,17 @@
 <li><a class="reference internal" href="#software">Software</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#make-a-linux-installer-dvd">Make a Linux installer DVD</a></li>
-<li><a class="reference internal" href="#install-refind-and-linux">Install rEFInd and Linux</a><ul>
-<li><a class="reference internal" href="#install-refind-software">Install rEFInd software</a></li>
-<li><a class="reference internal" href="#make-free-space-on-drive">Make free space on drive</a></li>
+<li><a class="reference internal" href="#make-a-linux-installer">Make a Linux installer</a><ul>
+<li><a class="reference internal" href="#copy-linux-image-to-dvd">Copy Linux image to DVD</a></li>
+<li><a class="reference internal" href="#prepare-bootable-usb-image">Prepare bootable USB image</a></li>
+<li><a class="reference internal" href="#copy-linux-image-to-usb">Copy Linux image to USB</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#install-linux-from-usb">Install Linux from USB</a></li>
+<li><a class="reference internal" href="#install-refind-and-linux">Install rEFInd and Linux</a><ul>
+<li><a class="reference internal" href="#install-refind-software">Install rEFInd software</a></li>
+<li><a class="reference internal" href="#reboot-install-linux">Reboot &amp; Install Linux</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#configure-refind">Configure rEFInd</a><ul>
 <li><a class="reference internal" href="#diagnose-refind-behavior">Diagnose rEFInd behavior</a></li>
 <li><a class="reference internal" href="#edit-refind-configuration">Edit rEFInd configuration</a></li>
@@ -66,16 +70,11 @@
 <li><a class="reference internal" href="#restoring-refind-installation">Restoring rEFInd installation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#make-a-mac-bootable-usb">Make a Mac-Bootable USB</a><ul>
-<li><a class="reference internal" href="#prepare-bootable-usb-image">Prepare bootable USB image</a></li>
-<li><a class="reference internal" href="#copy-linux-image-to-usb">Copy Linux image to USB</a></li>
-</ul>
-</li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="02_diskutil.html"
-                        title="previous chapter">Use of Diskutil</a></p>
+  <p class="topless"><a href="01_hardware.html"
+                        title="previous chapter">Mac mini Server Hardware</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="03_install.html"
                         title="next chapter">Installation Instructions</a></p>
@@ -107,60 +106,130 @@
             
   <div class="section" id="dual-booting-mac-servers">
 <span id="macserver"></span><h1>Dual-Booting Mac Servers<a class="headerlink" href="#dual-booting-mac-servers" title="Permalink to this headline">¶</a></h1>
-<p>The Mac mini Server is a modern alternative to the large desktop tower server.
-With the addition of a thunderbolt to ethernet port, needed for gateway
-operation, and a USB connected optical drive, this computer provides every
-server hardware feature required for Zentyal. <a class="footnote-reference" href="#id7" id="id1">[1]</a></p>
+<p>An alternative to the large desktop tower server configuration is the Mac Mini
+Server. This computer provides about every feature required for Zentyal except
+for an optical drive, unnecessary when using USB drives for installation, and
+additional ethernet ports for gateway server operation. <a class="footnote-reference" href="#id6" id="id1">[1]</a></p>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="hardware">
 <h3>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Mac mini Server with OS X Server <a class="footnote-reference" href="#id8" id="id2">[2]</a></li>
+<li>Mac mini Server with OS X Server <a class="footnote-reference" href="#id7" id="id2">[2]</a></li>
 <li>8 Gb 1600MHz DDR3 memory SODIMM netbook (single stick)</li>
 <li>Thunderbolt to Gigabit Ethernet Adapter</li>
-<li>Apple USB SuperDrive CD / DVD /DVD-RW (used for OS installation only)</li>
+<li>Apple USB SuperDrive CD / DVD /DVD-RW</li>
 </ul>
 </div>
 <div class="section" id="software">
 <h3>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>rEFInd boot manager for Mac <a class="footnote-reference" href="#id9" id="id3">[3]</a></li>
+<li>rEFInd boot manager for Mac <a class="footnote-reference" href="#id8" id="id3">[3]</a></li>
 <li>Current Mac OS X</li>
-<li>Linux with EFI stub loader support (e.g., Ubuntu 12.10 and later)</li>
+<li>Linux with EFI stub loader support, such as Ubuntu 12.10 and later</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Earlier Linux kernels, before 3.3.0, can be installed as documented in this
-footnote. <a class="footnote-reference" href="#id10" id="id4">[4]</a></p>
+footnote. <a class="footnote-reference" href="#id9" id="id4">[4]</a></p>
 </div>
 </div>
 </div>
-<div class="section" id="make-a-linux-installer-dvd">
-<h2>Make a Linux installer DVD<a class="headerlink" href="#make-a-linux-installer-dvd" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="make-a-linux-installer">
+<h2>Make a Linux installer<a class="headerlink" href="#make-a-linux-installer" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">Throughout this section, replace the token <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> with the
 actual download filename of the Linux being installed.</p>
 </div>
-<p>Download a Linux install <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> disk image, then burn the image to a
-DVD using the Apple Superdrive.</p>
+<p>Download a Linux install <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> disk image, then either:</p>
+<ul class="simple">
+<li>Burn the image to a DVD using the Apple Superdrive, or</li>
+<li>Convert the image to a bootable USB image and write it to a USB drive.</li>
+</ul>
+<div class="section" id="copy-linux-image-to-dvd">
+<h3>Copy Linux image to DVD<a class="headerlink" href="#copy-linux-image-to-dvd" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Open <strong class="program">Disk Utility</strong> from <em class="menuselection">Launchpad ‣ Other</em>.</li>
+<li>Open <strong class="program">Disk Utility</strong> from <em class="menuselection">Launchpad ‣ Other</em></li>
 <li>Click the {linux.iso} file in the left panel, then click <em class="guilabel">Burn</em>
-from the icon bar.</li>
-<li>Insert a DVD in the Superdrive and click <em class="guilabel">Burn</em> to continue.</li>
+from the icon bar</li>
+<li>Insert a DVD in the Superdrive and click <em class="guilabel">Burn</em> to continue</li>
+</ol>
+</div>
+<div class="section" id="prepare-bootable-usb-image">
+<h3>Prepare bootable USB image<a class="headerlink" href="#prepare-bootable-usb-image" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Select <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em> to open a terminal</p>
+</li>
+<li><p class="first">Convert the downloaded <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> to a mac disk image with the
+command:</p>
+<div class="highlight-python"><div class="highlight"><pre>hdiutil convert -format UDRW -o ~/Documents/{linux} ~/Downloads/{linux.iso}
+</pre></div>
+</div>
+</li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
+<p>For the terminal phobic, the following instructions could replace the
+preceding command:</p>
 <ol class="last arabic simple">
-<li>As an alternative to the Apple Superdrive, <a class="reference internal" href="#bootableusb"><em>Make a Mac-Bootable USB</em></a> describes
-writing a device image file to a bootable USB thumb drive.</li>
-<li>This section is based on official Ubuntu documentation <a class="footnote-reference" href="#id11" id="id5">[5]</a></li>
+<li>Open a <strong class="program">Finder</strong> window, and display the <tt class="file docutils literal"><span class="pre">Downloads</span></tt> folder</li>
+<li>Right-Click the <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> image file, and choose
+<em class="menuselection">Open With ‣ Disk Utility</em></li>
+<li>In <strong class="program">Disk Utility</strong>, Right-Click the <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> file
+and choose <em class="menuselection">Convert ``{linux_.iso}`</em> `</li>
+<li>In the <em class="guilabel">Convert</em> dialog, use the default name and location
+<tt class="file docutils literal"><span class="pre">Documents</span></tt>, and click <em class="guilabel">Save</em> to write
+<tt class="docutils literal"><span class="pre">{linux.dmg}</span></tt> (The <tt class="file docutils literal"><span class="pre">.dmg</span></tt> extension is added automatically.)</li>
 </ol>
 </div>
 </div>
-<hr class="docutils" />
+<div class="section" id="copy-linux-image-to-usb">
+<h3>Copy Linux image to USB<a class="headerlink" href="#copy-linux-image-to-usb" title="Permalink to this headline">¶</a></h3>
+<div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p class="last">Throughout these instructions, replace the expression <tt class="file docutils literal"><span class="pre">/dev/diskN</span></tt>
+with the actual identifier of the USB device, e.g., <tt class="file docutils literal"><span class="pre">/dev/disk2</span></tt>.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">Insert the USB flash media</p>
+</li>
+<li><p class="first">To get the current list of disk devices, open a terminal with
+<em class="menuselection">Launchpad ‣ Other ‣ Terminal</em>, and run the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>diskutil list
+</pre></div>
+</div>
+</li>
+<li><p class="first">Find the device node assigned to the USB media (e.g. <tt class="file docutils literal"><span class="pre">/dev/diskN</span></tt>),
+which should be last listed device</p>
+</li>
+<li><p class="first">Unmount the USB drive (where <tt class="docutils literal"><span class="pre">N</span></tt> is the disk number) with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>diskutil unmountDisk /dev/diskN
+</pre></div>
+</div>
+</li>
+<li><p class="first">Copy the disk image to the USB device (again <tt class="docutils literal"><span class="pre">N</span></tt> is the disk number):</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo dd if=~/Documents/{linux.dmg} of=/dev/diskN bs=1m
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ol class="last arabic simple">
+<li>The error &#8220;dd: Invalid number &#8216;1m&#8217;&#8221; will appear on Linux. The correct
+entries are <tt class="docutils literal"><span class="pre">bs=1M</span></tt> on Linux and <tt class="docutils literal"><span class="pre">bs=1m</span></tt> on OS X.</li>
+<li>The error &#8220;dd: /dev/diskN: Resource busy&#8221; will appear if the USB drive
+was not unmounted in step 3.</li>
+</ol>
+</div>
+</li>
+<li><p class="first">Eject the USB device before removing it with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>diskutil eject /dev/diskN
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
 <div class="section" id="install-refind-and-linux">
 <h2>Install rEFInd and Linux<a class="headerlink" href="#install-refind-and-linux" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="install-refind-software">
@@ -172,35 +241,25 @@ writing a device image file to a bootable USB thumb drive.</li>
 <li><p class="first">Open a terminal session, and change directory to the Downloads folder.</p>
 </li>
 <li><p class="first">Unzip the rEFInd download:</p>
-<div class="highlight-python"><pre>unzip refind &lt;Tab&gt; &lt;Enter&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>unzip refind &lt;Tab&gt; &lt;Enter&gt;
+</pre></div>
 </div>
 </li>
 <li><p class="first">install the software:</p>
-<div class="highlight-python"><pre>cd refind &lt;Tab&gt; &lt;Enter&gt;
-./install.sh --alldrivers</pre>
+<div class="highlight-python"><div class="highlight"><pre>cd refind &lt;Tab&gt; &lt;Enter&gt;
+./install.sh --alldrivers
+</pre></div>
 </div>
 </li>
 </ol>
 </div>
-<div class="section" id="make-free-space-on-drive">
-<h3>Make free space on drive<a class="headerlink" href="#make-free-space-on-drive" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Open <em class="menuselection">Launchpad ‣ Other ‣ Disk Utility</em></li>
-<li>Choose a media drive to repartition, and select <em class="menuselection">Partition</em>
-from the dialog border menu. We recommend installing on /dev/disk02, aka
-&#8220;Recovery HD&#8221;</li>
-<li>Remove Apple HFS data partitions on the drive, leaving only the EFI partition
-and the remainder as free space.</li>
-</ol>
-</div>
-</div>
-<div class="section" id="install-linux-from-usb">
-<h2>Install Linux from USB<a class="headerlink" href="#install-linux-from-usb" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="reboot-install-linux">
+<h3>Reboot &amp; Install Linux<a class="headerlink" href="#reboot-install-linux" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">These instructions create a multi-boot machine based on the Mac mini Server.
-Please refer to separate <a class="reference internal" href="03_install.html#install"><em>Installation Instructions</em></a> instructions for a detailed procedure
-specific to that operating system.</p>
+Please refer to separate Zentyal server installation instructions for a
+detailed procedure specific to that operating system.</p>
 </div>
 <ol class="arabic simple">
 <li>Restart the Mac, holding down the <tt class="kbd docutils literal"><span class="pre">alt/option</span></tt> key to choose the
@@ -217,9 +276,10 @@ The <strong class="program">rEFInd</strong> boot selector should now contain opt
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Linux will ask for a location to install the Grub boot loader, or a boot
-loader installation error will be thrown at the end of the install.
+<p class="last">Either Linux will ask for a location to install the Grub boot loader, or a
+boot loader installation error will be thrown at the end of the install.
 Grub is not needed because we are using <strong class="program">rEFInd</strong> to manage booting.</p>
+</div>
 </div>
 </div>
 <div class="section" id="configure-refind">
@@ -237,7 +297,7 @@ Linux-y approach to editing the <strong class="program">rEFInd</strong> configur
 <li>Restart the server, and press <tt class="kbd docutils literal"><span class="pre">right-arrow</span></tt> in <strong class="program">rEFInd</strong> to stop
 boot.</li>
 <li>Write down each main boot option to decide which should be displayed.</li>
-<li>Determine configuration options to change. <a class="footnote-reference" href="#id12" id="id6">[6]</a></li>
+<li>Determine configuration options to change. <a class="footnote-reference" href="#id10" id="id5">[5]</a></li>
 </ol>
 </div>
 <div class="section" id="edit-refind-configuration">
@@ -246,7 +306,8 @@ boot.</li>
 <li><p class="first">Start a terminal from <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em>.</p>
 </li>
 <li><p class="first">Edit the <strong class="program">rEFInd</strong> configuration file with the command:</p>
-<div class="highlight-python"><pre>sudo nano /efi/refind/refind.conf</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo nano /efi/refind/refind.conf
+</pre></div>
 </div>
 <p>and enter your password when prompted.</p>
 </li>
@@ -269,14 +330,15 @@ folder, as updates to Mac OS X will wipe out the EFI configuration.</p>
 but also capable of being used as a Mac server or workstation when not testing.
 Therefore the server by default would boot Linux with minimal delay, while still
 providing a <tt class="docutils literal"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></tt> boot option. The configuration options used were:</p>
-<div class="highlight-python"><pre>timeout 5
+<div class="highlight-python"><div class="highlight"><pre>timeout 5
 use_graphics_for osx, linux
-dont_scan_volumes "Backup", "Recovery HD"
+dont_scan_volumes &quot;Backup&quot;, &quot;Recovery HD&quot;
 dont_scan_dirs EFI/ubuntu
 dont_scan_files shim.efi, MokManager.efi
 scan_all_linux_kernels
 max_tags 2
-default_selection "vmlinuz"</pre>
+default_selection &quot;vmlinuz&quot;
+</pre></div>
 </div>
 </div>
 </div>
@@ -290,122 +352,50 @@ default_selection "vmlinuz"</pre>
 <li><p class="first">Start a terminal from <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em></p>
 </li>
 <li><p class="first">Reinstall <strong class="program">rEFInd</strong> with the commands:</p>
-<div class="highlight-python"><pre>cd ~/Downloads/refind &lt;Tab&gt; &lt;Enter&gt;
+<div class="highlight-python"><div class="highlight"><pre>cd ~/Downloads/refind &lt;Tab&gt; &lt;Enter&gt;
 ./install.sh
-sudo cp ~/Documents/refind.conf /efi/refind/</pre>
-</div>
-</li>
-</ol>
-</div>
-</div>
-<div class="section" id="make-a-mac-bootable-usb">
-<span id="bootableusb"></span><h1>Make a Mac-Bootable USB<a class="headerlink" href="#make-a-mac-bootable-usb" title="Permalink to this headline">¶</a></h1>
-<p>An alternative to using Apple&#8217;s Superdrive would be a bootable USB drive, as
-created with the following directions.</p>
-<div class="section" id="prepare-bootable-usb-image">
-<h2>Prepare bootable USB image<a class="headerlink" href="#prepare-bootable-usb-image" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic">
-<li><p class="first">Select <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em> to open a terminal.</p>
-</li>
-<li><p class="first">Convert the downloaded <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> to a mac disk image with the
-command:</p>
-<div class="highlight-python"><pre>hdiutil convert -format UDRW -o ~/Documents/{linux} ~/Downloads/{linux.iso}</pre>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>For the terminal phobic, the following instructions could replace the
-preceding command:</p>
-<ol class="last arabic simple">
-<li>Open a <strong class="program">Finder</strong> window, and display the <tt class="file docutils literal"><span class="pre">Downloads</span></tt> folder.</li>
-<li>Right-Click the <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> image file, and choose
-<em class="menuselection">Open With ‣ Disk Utility</em>.</li>
-<li>In <strong class="program">Disk Utility</strong>, Right-Click the <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> file
-and choose <em class="menuselection">Convert ``{linux_.iso}``</em>.</li>
-<li>In the <em class="guilabel">Convert</em> dialog, use the default name and location
-<tt class="file docutils literal"><span class="pre">Documents</span></tt>, and click <em class="guilabel">Save</em> to write.
-<tt class="docutils literal"><span class="pre">{linux.dmg}</span></tt> (The <tt class="file docutils literal"><span class="pre">.dmg</span></tt> extension is added automatically.)</li>
-</ol>
-</div>
-</div>
-<div class="section" id="copy-linux-image-to-usb">
-<h2>Copy Linux image to USB<a class="headerlink" href="#copy-linux-image-to-usb" title="Permalink to this headline">¶</a></h2>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">Throughout these instructions, replace the expression <tt class="file docutils literal"><span class="pre">/dev/diskN</span></tt>
-with the actual identifier of the USB device, e.g., <tt class="file docutils literal"><span class="pre">/dev/disk2</span></tt>.</p>
-</div>
-<ol class="arabic">
-<li><p class="first">Insert the USB flash media</p>
-</li>
-<li><p class="first">To get the current list of disk devices, open a terminal with
-<em class="menuselection">Launchpad ‣ Other ‣ Terminal</em>, and run the command:</p>
-<div class="highlight-python"><pre>diskutil list</pre>
-</div>
-</li>
-<li><p class="first">Find the device node assigned to the USB media (e.g. <tt class="file docutils literal"><span class="pre">/dev/diskN</span></tt>),
-which should be last listed device</p>
-</li>
-<li><p class="first">Unmount the USB drive (where <tt class="docutils literal"><span class="pre">N</span></tt> is the disk number) with the command:</p>
-<div class="highlight-python"><pre>diskutil unmountDisk /dev/diskN</pre>
-</div>
-</li>
-<li><p class="first">Copy the disk image to the USB device (again <tt class="docutils literal"><span class="pre">N</span></tt> is the disk number):</p>
-<div class="highlight-python"><pre>sudo dd if=~/Documents/{linux.dmg} of=/dev/diskN bs=1m</pre>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ol class="last arabic simple">
-<li>The error &#8220;dd: Invalid number &#8216;1m&#8217;&#8221; will appear on Linux. The correct
-entries are <tt class="docutils literal"><span class="pre">bs=1M</span></tt> on Linux and <tt class="docutils literal"><span class="pre">bs=1m</span></tt> on OS X.</li>
-<li>The error &#8220;dd: /dev/diskN: Resource busy&#8221; will appear if the USB drive
-was not unmounted in step 3.</li>
-</ol>
-</div>
-</li>
-<li><p class="first">Eject the USB device before removing it with the command:</p>
-<div class="highlight-python"><pre>diskutil eject /dev/diskN</pre>
+sudo cp ~/Documents/refind.conf /efi/refind/
+</pre></div>
 </div>
 </li>
 </ol>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
+<table class="docutils footnote" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>See <a class="reference external" href="http://www.macminiserver.com/">http://www.macminiserver.com/</a> for more information on the Mac mini
 Server.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://help.ubuntu.com/community/MactelSupportTeam/AppleIntelInstallation">https://help.ubuntu.com/community/MactelSupportTeam/AppleIntelInstallation</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
+<table class="docutils footnote" frame="void" id="id8" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="http://www.apple.com/mac-mini/server/">http://www.apple.com/mac-mini/server/</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
+<table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="http://www.rodsbooks.com/refind/getting.html">http://www.rodsbooks.com/refind/getting.html</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id11" rules="none">
+<table class="docutils footnote" frame="void" id="id10" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td><a class="reference external" href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx">http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id12" rules="none">
+<table class="docutils footnote" frame="void" id="id11" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td>Refer to <a class="reference external" href="http://www.rodsbooks.com/refind/configfile.html">http://www.rodsbooks.com/refind/configfile.html</a> for guidance</td></tr>
+<tr><td class="label">[6]</td><td>Refer to <a class="reference external" href="http://www.rodsbooks.com/refind/configfile.html">http://www.rodsbooks.com/refind/configfile.html</a> for guidance</td></tr>
 </tbody>
 </table>
 </div>
@@ -424,14 +414,14 @@ Server.</td></tr>
           <a href="03_install.html" title="Installation Instructions"
              >next</a></li>
         <li class="right" >
-          <a href="02_diskutil.html" title="Use of Diskutil"
+          <a href="01_hardware.html" title="Mac mini Server Hardware"
              >previous</a> |</li>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

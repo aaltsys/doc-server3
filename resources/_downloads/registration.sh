@@ -17,9 +17,6 @@ do
    fi
 done
 
-# maybe packages are not working first time through?
-apt-get -y -f install && apt-get -y update
-
 # wget https://raw.github.com/aaltsys/registration/master/registration.rb -O /tmp/reg.rb
 wget https://raw.github.com/aaltsys/doc-servers/master/resources/_downloads/registration.rb -O /tmp/reg.rb
 /usr/bin/ruby /tmp/reg.rb
@@ -39,8 +36,7 @@ update-rc.d aaltsysvpn defaults
 # change vpn configuration "client" to "aaltsys"
 mv /etc/openvpn/client.conf /etc/openvpn/aaltsys.conf
 
-# if already started, restart??
-invoke-rc.d aaltsysvpn start && invoke-rc.d aaltsysvpn restart
+invoke-rc.d aaltsysvpn start
 
 mkdir -p /home/mnt/backup/source_config
 
@@ -56,7 +52,7 @@ fi
 # add-apt-repository ppa:hplip-isv/ppa
 # hplip and other utilities
 echo "Installing additional packages"
-PKGS="hpijs hpijs-ppds hplip hplip-cups hplip-data autofs screen links lynx unzip dialog python-software-properties ntfs-3g curl smbclient"
+PKGS="hpijs hpijs-ppds hplip hplip-cups hplip-data autofs screen links lynx unzip dialog python-software-properties ntfs-3g ntfsprogs curl smbclient"
 for i in $PKGS
 do
    dpkg -s $i > null

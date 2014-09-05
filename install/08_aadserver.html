@@ -363,7 +363,7 @@ VPN addresses, TS users and printer sharenames is required. A sample table for
 this information is provided in the authentication section following.</p>
 <p>Substituting for {workstationIP} and {sharename} in the following script,
 Create a new <tt class="file docutils literal"><span class="pre">RDPPRINT.BAT</span></tt> program as follows:</p>
-<div class="highlight-python"><pre>@ECHO OFF
+<div class="highlight-python"><div class="highlight"><pre>@ECHO OFF
 NET USE LPT1 /DELETE
 rem NET USE LPT2 /DELETE
 :USER00
@@ -384,7 +384,8 @@ GOTO EXIT
 @ECHO ON
 NET USE LPT1 \\{workstationIP}\{sharename} /PERSISTENT:YES
 IF %ERRORLEVEL% NEQ 0 PAUSE
-:EXIT</pre>
+:EXIT
+</pre></div>
 </div>
 <p>Sample batch file <a class="reference download internal" href="_downloads/rdpprint.bat"><tt class="xref download docutils literal"><span class="pre">RDPPRINT.BAT</span></tt></a>
 is provided; download it to <tt class="file docutils literal"><span class="pre">C:\Users\Public\WARES\RDPPRINT.BAT</span></tt> on
@@ -401,15 +402,17 @@ the TS machine. Then edit the file as described above.</p>
 <p>Keep a record of this information in a safe place.</p>
 <div class="section" id="windows-registration">
 <h3>Windows registration:<a class="headerlink" href="#windows-registration" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><pre>Installation License number: ______________________________
-Professional Upgrade number: ______________________________</pre>
+<div class="highlight-python"><div class="highlight"><pre>Installation License number: ______________________________
+Professional Upgrade number: ______________________________
+</pre></div>
 </div>
 </div>
 <div class="section" id="windows-station-information">
 <h3>Windows station information:<a class="headerlink" href="#windows-station-information" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><pre>Workstation name: ______________________________
+<div class="highlight-python"><div class="highlight"><pre>Workstation name: ______________________________
        Workgroup: ______________________________
-  Windows domain: ______________________________</pre>
+  Windows domain: ______________________________
+</pre></div>
 </div>
 </div>
 <div class="section" id="ts-usernames-and-passwords">
@@ -449,15 +452,17 @@ Professional Upgrade number: ______________________________</pre>
 </div>
 <div class="section" id="aad-server-license">
 <h3>AAD Server license<a class="headerlink" href="#aad-server-license" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><pre>Registration username: ______________________________
-       License number: ______________________________</pre>
+<div class="highlight-python"><div class="highlight"><pre>Registration username: ______________________________
+       License number: ______________________________
+</pre></div>
 </div>
 </div>
 <div class="section" id="hamachi-vpn">
 <h3>Hamachi VPN<a class="headerlink" href="#hamachi-vpn" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><pre> Hamachi IP: ______________________________
+<div class="highlight-python"><div class="highlight"><pre> Hamachi IP: ______________________________
 Networkname: ______________________________
-   Password: ______________________________</pre>
+   Password: ______________________________
+</pre></div>
 </div>
 </div>
 <div class="section" id="rdpprint-bat-information">
@@ -578,7 +583,7 @@ once complete, so that recovery from an OS failure would be possible.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

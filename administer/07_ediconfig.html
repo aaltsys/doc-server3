@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Configuring EDI Communication &mdash; AAltsys Server Administration 3.0 documentation</title>
+    <title>Configuring EDI Communication &mdash; AAltsys Derver 3.0 Administration 3.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="AAltsys Server Administration 3.0 documentation" href="index.html" />
+    <link rel="top" title="AAltsys Derver 3.0 Administration 3.0 documentation" href="index.html" />
     <link rel="prev" title="Fixing locales:" href="06_procedures.html" /> 
   </head>
   <body>
@@ -33,7 +33,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="06_procedures.html" title="Fixing locales:"
              accesskey="P">previous</a></li>
-        <li><a href="index.html">AAltsys Server Administration 3.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">AAltsys Derver 3.0 Administration 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar">
@@ -84,24 +84,27 @@ server on the web for EDI.</p>
 <ol class="arabic">
 <li><p class="first">First, the Linux machine must have a competent ftp client. Install lftp with
 the command:</p>
-<div class="highlight-python"><pre>sudo apt-get install lftp</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install lftp
+</pre></div>
 </div>
 </li>
 <li><p class="first">Second, change owner permissions on the WARES program files with the
 commands:</p>
-<div class="highlight-python"><pre>sudo chgrp -R __USERS__ /home/samba/shares/arev
-sudo chmod -R g+s /home/samba/shares/arev</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo chgrp -R __USERS__ /home/samba/shares/arev
+sudo chmod -R g+s /home/samba/shares/arev
+</pre></div>
 </div>
 </li>
 <li><p class="first">Third, lftp will run in non-interactive mode, taking its commands from a
 script file. The script file should be saved as <tt class="file docutils literal"><span class="pre">/etc/waresedi.conf</span></tt>,
 with owner <strong>root:root</strong> and permissions <strong>600</strong>. The text of a sample file
 follows:</p>
-<div class="highlight-python"><pre>lcd /home/samba/shares/arev/connect
+<div class="highlight-python"><div class="highlight"><pre>lcd /home/samba/shares/arev/connect
 open -u {uname},{passwd} {ftp://serverURL}
 mput -c -E ./snd/* -O ./{OUTBOX}
 mget -c -E ./{INBOX}/* -O ./rcv
-quit</pre>
+quit
+</pre></div>
 </div>
 </li>
 </ol>
@@ -109,7 +112,8 @@ quit</pre>
 <h2>Schedule Exchange in Webmin<a class="headerlink" href="#schedule-exchange-in-webmin" title="Permalink to this headline">¶</a></h2>
 <p>Using <em>Webmin</em>, <em class="menuselection">System ‣ Schedule</em> cron jobs, make a job with
 the following command:</p>
-<div class="highlight-python"><pre>date &gt;&gt; /var/log/cron.log; lftp -f /etc/waresedi.conf 1&gt;&gt; /var/log/cron.log 2&gt;&gt; /var/log/cron.log</pre>
+<div class="highlight-python"><div class="highlight"><pre>date &gt;&gt; /var/log/cron.log; lftp -f /etc/waresedi.conf 1&gt;&gt; /var/log/cron.log 2&gt;&gt; /var/log/cron.log
+</pre></div>
 </div>
 <p>Schedule the job to run every 15 minutes between 7 am and 7 pm. Test run the
 job, and check the output with the command:</p>
@@ -135,12 +139,12 @@ file to rotate. Accept the default management options for the new log.</p>
         <li class="right" style="margin-right: 10px">
           <a href="06_procedures.html" title="Fixing locales:"
              >previous</a></li>
-        <li><a href="index.html">AAltsys Server Administration 3.0 documentation</a> &raquo;</li> 
+        <li><a href="index.html">AAltsys Derver 3.0 Administration 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

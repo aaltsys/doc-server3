@@ -98,9 +98,10 @@ command line by clicking <em class="guilabel">Start</em> and entering <tt class=
 the search window, then selecting <strong class="program">cmd.exe</strong> from the search results.</p>
 <p>Copy files from share <tt class="file docutils literal"><span class="pre">\\AAltsysserver\shared</span></tt>, mapped to drive
 <tt class="file docutils literal"><span class="pre">S:</span></tt>, by typing the commands:</p>
-<div class="highlight-python"><pre>md \shared
+<div class="highlight-python"><div class="highlight"><pre>md \shared
 cd \shared
-xcopy S:\*.* . /s/e</pre>
+xcopy S:\*.* . /s/e
+</pre></div>
 </div>
 <p>Use the preceding commands as a template for copying other server shares to a
 workstation. For example, copy a user&#8217;s server private home directory, mapped to
@@ -134,8 +135,9 @@ batch script to reference the new server, and run the script to map drives.</p>
 following commands to copy the share files back to the server, remembering to
 replace <tt class="file docutils literal"><span class="pre">S:</span></tt> and <tt class="file docutils literal"><span class="pre">shared</span></tt> with the respective share drive letter and
 directory name for a share:</p>
-<div class="highlight-python"><pre>cd \shared
-xcopy . S:\ /s/e</pre>
+<div class="highlight-python"><div class="highlight"><pre>cd \shared
+xcopy . S:\ /s/e
+</pre></div>
 </div>
 </div>
 </div>
@@ -160,7 +162,7 @@ xcopy . S:\ /s/e</pre>
     </div>
     <div class="footer">
         &copy; Copyright 2014, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

@@ -4,10 +4,10 @@
 Dual-Booting Mac Servers
 #############################
 
-An alternative to the large desktop tower server configuration is the Mac Mini 
-Server. This computer provides about every feature required for Zentyal except 
-for an optical drive, unnecessary when using USB drives for installation, and 
-additional ethernet ports for gateway server operation. [#]_
+The Mac mini Server is a modern alternative to the large desktop tower server. 
+With the addition of a thunderbolt to ethernet port, needed for gateway 
+operation, and a USB connected optical drive, this computer provides every 
+server hardware feature required for Zentyal. [#]_
 
 Requirements
 =============================
@@ -18,93 +18,41 @@ Hardware
 *  Mac mini Server with OS X Server [#]_
 *  8 Gb 1600MHz DDR3 memory SODIMM netbook (single stick)
 *  Thunderbolt to Gigabit Ethernet Adapter
-*  Apple USB SuperDrive CD / DVD /DVD-RW
+*  Apple USB SuperDrive CD / DVD /DVD-RW (used for OS installation only)
 
 Software
 -----------------------------
 
 *  rEFInd boot manager for Mac [#]_ 
 *  Current Mac OS X
-*  Linux with EFI stub loader support, such as Ubuntu 12.10 and later
+*  Linux with EFI stub loader support (e.g., Ubuntu 12.10 and later)
 
 .. note::
    Earlier Linux kernels, before 3.3.0, can be installed as documented in this
    footnote. [#]_
 
-Make a Linux installer 
+Make a Linux installer DVD
 =============================
 
 .. tip:: 
    Throughout this section, replace the token ``{linux.iso}`` with the
    actual download filename of the Linux being installed.
 
-Download a Linux install ``{linux.iso}`` disk image, then either:
+Download a Linux install ``{linux.iso}`` disk image, then burn the image to a 
+DVD using the Apple Superdrive.
 
-*  Burn the image to a DVD using the Apple Superdrive, or
-*  Convert the image to a bootable USB image and write it to a USB drive.
-
-Copy Linux image to DVD
------------------------------
-
-#. Open :program:`Disk Utility` from :menuselection:`Launchpad --> Other`
+#. Open :program:`Disk Utility` from :menuselection:`Launchpad --> Other`.
 #. Click the {linux.iso} file in the left panel, then click :guilabel:`Burn` 
-   from the icon bar
-#. Insert a DVD in the Superdrive and click :guilabel:`Burn` to continue
-
-Prepare bootable USB image
------------------------------
-
-#. Select :menuselection:`Launchpad --> Other --> Terminal` to open a terminal
-#. Convert the downloaded ``{linux.iso}`` to a mac disk image with the 
-   command::
-   
-      hdiutil convert -format UDRW -o ~/Documents/{linux} ~/Downloads/{linux.iso}
+   from the icon bar.
+#. Insert a DVD in the Superdrive and click :guilabel:`Burn` to continue.
 
 .. note::
-   For the terminal phobic, the following instructions could replace the
-   preceding command:
- 
-   #. Open a :program:`Finder` window, and display the :file:`Downloads` folder
-   #. Right-Click the ``{linux.iso}`` image file, and choose 
-      :menuselection:`Open With --> Disk Utility`
-   #. In :program:`Disk Utility`, Right-Click the ``{linux.iso}`` file 
-      and choose :menuselection:`Convert ``{linux_.iso}`` `
-   #. In the :guilabel:`Convert` dialog, use the default name and location 
-      :file:`Documents`, and click :guilabel:`Save` to write 
-      ``{linux.dmg}`` (The :file:`.dmg` extension is added automatically.)
-
-Copy Linux image to USB
------------------------------
-
-.. tip::
-   Throughout these instructions, replace the expression :file:`/dev/diskN` 
-   with the actual identifier of the USB device, e.g., :file:`/dev/disk2`.
-
-#. Insert the USB flash media
-#. To get the current list of disk devices, open a terminal with 
-   :menuselection:`Launchpad --> Other --> Terminal`, and run the command::
+   #. As an alternative to the Apple Superdrive, :ref:`bootableusb` describes 
+      writing a device image file to a bootable USB thumb drive.
    
-      diskutil list
+   #. This section is based on official Ubuntu documentation [#]_
 
-#. Find the device node assigned to the USB media (e.g. :file:`/dev/diskN`), 
-   which should be last listed device
-#. Unmount the USB drive (where ``N`` is the disk number) with the command::
-   
-      diskutil unmountDisk /dev/diskN
-   
-#. Copy the disk image to the USB device (again ``N`` is the disk number)::
-
-      sudo dd if=~/Documents/{linux.dmg} of=/dev/diskN bs=1m 
-   
-   .. note:: 
-      #. The error "dd: Invalid number '1m'" will appear on Linux. The correct 
-         entries are ``bs=1M`` on Linux and ``bs=1m`` on OS X.
-      #. The error "dd: /dev/diskN: Resource busy" will appear if the USB drive
-         was not unmounted in step 3.
-
-#. Eject the USB device before removing it with the command::
-
-      diskutil eject /dev/diskN
+----------
 
 Install rEFInd and Linux
 =============================
@@ -124,14 +72,23 @@ Install rEFInd software
       cd refind <Tab> <Enter>
       ./install.sh --alldrivers
 
-
-Reboot & Install Linux
+Make free space on drive
 -----------------------------
+
+#. Open :menuselection:`Launchpad --> Other --> Disk Utility`
+#. Choose a media drive to repartition, and select :menuselection:`Partition`
+   from the dialog border menu. We recommend installing on /dev/disk02, aka
+   "Recovery HD"
+#. Remove Apple HFS data partitions on the drive, leaving only the EFI partition 
+   and the remainder as free space. 
+
+Install Linux from USB
+=============================
 
 .. note::
    These instructions create a multi-boot machine based on the Mac mini Server.
-   Please refer to separate Zentyal server installation instructions for a 
-   detailed procedure specific to that operating system.
+   Please refer to separate :ref:`install` instructions for a detailed procedure 
+   specific to that operating system.
 
 #. Restart the Mac, holding down the :kbd:`alt/option` key to choose the 
    boot device, either the USB drive or the Superdrive.
@@ -146,8 +103,8 @@ Reboot & Install Linux
    The :program:`rEFInd` boot selector should now contain options to boot Linux.
 
 .. note::
-   Either Linux will ask for a location to install the Grub boot loader, or a 
-   boot loader installation error will be thrown at the end of the install. 
+   Linux will ask for a location to install the Grub boot loader, or a boot 
+   loader installation error will be thrown at the end of the install. 
    Grub is not needed because we are using :program:`rEFInd` to manage booting.
 
 Configure rEFInd
@@ -218,7 +175,71 @@ The efi directory is cleared and rewritten when updating Mac OS X. Keep program
       ./install.sh
       sudo cp ~/Documents/refind.conf /efi/refind/ 
 
-------
+.. _bootableusb:
+
+#############################
+Make a Mac-Bootable USB
+#############################
+
+An alternative to using Apple's Superdrive would be a bootable USB drive, as 
+created with the following directions.
+
+Prepare bootable USB image
+=============================
+
+#. Select :menuselection:`Launchpad --> Other --> Terminal` to open a terminal.
+#. Convert the downloaded ``{linux.iso}`` to a mac disk image with the 
+   command::
+   
+      hdiutil convert -format UDRW -o ~/Documents/{linux} ~/Downloads/{linux.iso}
+
+.. note::
+   For the terminal phobic, the following instructions could replace the
+   preceding command:
+ 
+   #. Open a :program:`Finder` window, and display the :file:`Downloads` folder.
+   #. Right-Click the ``{linux.iso}`` image file, and choose 
+      :menuselection:`Open With --> Disk Utility`.
+   #. In :program:`Disk Utility`, Right-Click the ``{linux.iso}`` file 
+      and choose :menuselection:`Convert ``{linux_.iso}```. 
+   #. In the :guilabel:`Convert` dialog, use the default name and location 
+      :file:`Documents`, and click :guilabel:`Save` to write.
+      ``{linux.dmg}`` (The :file:`.dmg` extension is added automatically.)
+
+Copy Linux image to USB
+=============================
+
+.. tip::
+   Throughout these instructions, replace the expression :file:`/dev/diskN` 
+   with the actual identifier of the USB device, e.g., :file:`/dev/disk2`.
+
+#. Insert the USB flash media
+#. To get the current list of disk devices, open a terminal with 
+   :menuselection:`Launchpad --> Other --> Terminal`, and run the command::
+   
+      diskutil list
+
+#. Find the device node assigned to the USB media (e.g. :file:`/dev/diskN`), 
+   which should be last listed device
+#. Unmount the USB drive (where ``N`` is the disk number) with the command::
+   
+      diskutil unmountDisk /dev/diskN
+   
+#. Copy the disk image to the USB device (again ``N`` is the disk number)::
+
+      sudo dd if=~/Documents/{linux.dmg} of=/dev/diskN bs=1m 
+   
+   .. note:: 
+      #. The error "dd: Invalid number '1m'" will appear on Linux. The correct 
+         entries are ``bs=1M`` on Linux and ``bs=1m`` on OS X.
+      #. The error "dd: /dev/diskN: Resource busy" will appear if the USB drive
+         was not unmounted in step 3.
+
+#. Eject the USB device before removing it with the command::
+
+      diskutil eject /dev/diskN
+ 
+---------
 
 .. rubric:: Footnotes
 

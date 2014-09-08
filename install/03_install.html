@@ -138,7 +138,6 @@ of virtualization. Other requirements are as follows:</p>
 <li>Gigabit Ethernet Adapter</li>
 <li>DVD-ROM Drive, <em>required for installation</em></li>
 </ul>
-<p>Our recommended hardware configuration is provided in <a class="reference internal" href="01_hardware.html#hardware"><em>Mac mini Server Hardware</em></a>.</p>
 </div>
 <div class="section" id="hardware-configuration">
 <h2>Hardware Configuration<a class="headerlink" href="#hardware-configuration" title="Permalink to this headline">¶</a></h2>
@@ -222,6 +221,40 @@ and setup the site administrator user.</p>
 &#8220;<tt class="kbd docutils literal"><span class="pre">{hostname}</span></tt>&#8221; and &#8220;<tt class="kbd docutils literal"><span class="pre">{domain}</span></tt>&#8221;. <strong>hostname</strong> and <strong>domain</strong>
 cannot be changed on fully configured systems.</p>
 </div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Selection prompt</th>
+<th class="head">Recommended entry or action</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Primary Network Interface</td>
+<td><em class="menuselection">eth0: ...</em> (PC)</td>
+</tr>
+<tr class="row-odd"><td>Hostname:</td>
+<td><div class="first last line-block">
+<div class="line">either <tt class="kbd docutils literal"><span class="pre">{hostname}.local</span></tt></div>
+<div class="line">or <tt class="kbd docutils literal"><span class="pre">{hostname}.local.{domain}</span></tt></div>
+<div class="line">or <tt class="kbd docutils literal"><span class="pre">{hostname}.local.aaltsys.net</span></tt></div>
+<div class="line">or :kbd: <cite>aaltsysserver</cite> for local&#8217;</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td>Administrator username</td>
+<td><tt class="kbd docutils literal"><span class="pre">admin1</span></tt> (if registering with AAltsys)</td>
+</tr>
+<tr class="row-odd"><td>Password</td>
+<td><tt class="kbd docutils literal"><span class="pre">{password}</span></tt></td>
+</tr>
+<tr class="row-even"><td>Use weak password?</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li><p class="first">The network should configure using DHCP. If DHCP does not work, fix your
 network connection.</p>

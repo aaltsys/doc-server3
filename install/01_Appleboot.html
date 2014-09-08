@@ -121,12 +121,14 @@
 <li><p class="first">Open a terminal session, and change directory to the Downloads folder.</p>
 </li>
 <li><p class="first">Unzip the rEFInd download:</p>
-<div class="highlight-python"><pre>unzip refind &lt;Tab&gt; &lt;Enter&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>unzip refind &lt;Tab&gt; &lt;Enter&gt;
+</pre></div>
 </div>
 </li>
 <li><p class="first">install the software:</p>
-<div class="highlight-python"><pre>cd refind &lt;Tab&gt; &lt;Enter&gt;
-./install.sh --alldrivers</pre>
+<div class="highlight-python"><div class="highlight"><pre>cd refind &lt;Tab&gt; &lt;Enter&gt;
+./install.sh --alldrivers
+</pre></div>
 </div>
 </li>
 </ol>
@@ -195,7 +197,8 @@ boot.</li>
 <li><p class="first">Start a terminal from <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em>.</p>
 </li>
 <li><p class="first">Edit the <strong class="program">rEFInd</strong> configuration file with the command:</p>
-<div class="highlight-python"><pre>sudo nano /efi/refind/refind.conf</pre>
+<div class="highlight-python"><div class="highlight"><pre>sudo nano /efi/refind/refind.conf
+</pre></div>
 </div>
 <p>and enter your password when prompted.</p>
 </li>
@@ -218,14 +221,15 @@ folder, as updates to Mac OS X will wipe out the EFI configuration.</p>
 but also capable of being used as a Mac server or workstation when not testing.
 Therefore the server by default would boot Linux with minimal delay, while still
 providing a <tt class="docutils literal"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></tt> boot option. The configuration options used were:</p>
-<div class="highlight-python"><pre>timeout 5
+<div class="highlight-python"><div class="highlight"><pre>timeout 5
 use_graphics_for osx, linux
-dont_scan_volumes "Backup", "Recovery HD"
+dont_scan_volumes &quot;Backup&quot;, &quot;Recovery HD&quot;
 dont_scan_dirs EFI/ubuntu
 dont_scan_files shim.efi, MokManager.efi
 scan_all_linux_kernels
 max_tags 2
-default_selection "vmlinuz"</pre>
+default_selection &quot;vmlinuz&quot;
+</pre></div>
 </div>
 </div>
 </div>
@@ -239,9 +243,10 @@ default_selection "vmlinuz"</pre>
 <li><p class="first">Start a terminal from <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em></p>
 </li>
 <li><p class="first">Reinstall <strong class="program">rEFInd</strong> with the commands:</p>
-<div class="highlight-python"><pre>cd ~/Downloads/refind &lt;Tab&gt; &lt;Enter&gt;
+<div class="highlight-python"><div class="highlight"><pre>cd ~/Downloads/refind &lt;Tab&gt; &lt;Enter&gt;
 ./install.sh
-sudo cp ~/Documents/refind.conf /efi/refind/</pre>
+sudo cp ~/Documents/refind.conf /efi/refind/
+</pre></div>
 </div>
 </li>
 </ol>
@@ -275,7 +280,7 @@ sudo cp ~/Documents/refind.conf /efi/refind/</pre>
     </div>
     <div class="footer">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
     </div>
   </body>
 </html>

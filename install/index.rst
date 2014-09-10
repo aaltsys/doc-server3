@@ -1,12 +1,10 @@
 .. AAltsys Server 3.0 Installation documentation master file, created by
    sphinx-quickstart on Tue Nov 27 17:16:46 2012.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
 .. _index:
 
-AAltsys Server 3.0 Installation Guide
-===========================================================
+Installing an Operating System
+===============================
 
 Contents:
 

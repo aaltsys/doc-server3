@@ -55,9 +55,9 @@ to tell Zentyal how to backup:
 +====================================+==================================+
 | Host or Destination                | ``/home/mnt/backup``             |
 +------------------------------------+----------------------------------+
-| Full backup frequency              | ``Weekly -- on Monday``          |
+| Full backup frequency              | ``Monthly -- on the 1th``        |
 +------------------------------------+----------------------------------+
-| Keep previous full copies          | ``maximum number -- 5``          |
+| Keep previous full copies          | ``maximum number -- 3``          |
 +------------------------------------+----------------------------------+
 
 Below is a screen shot of these settings.

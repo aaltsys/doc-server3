@@ -36,7 +36,7 @@ Go to :menuselection:`Office --> Printer Sharing`, and make sure that the
 
 +  Press :kbd:`<Ctrl-T>` to open a new browser tab.
 +  Enter the web address :kbd:`https://192.168.2.241:631`
-+  If you encounter a connection error, go to core--->module status---> and make sure printers is running. if not, click restart.
++  If you encounter a connection error, go to core--->module status and make sure printers is running. if not, click restart.
 +  If required, follow your browser's instructions to add a security exception.
 
 .. note:: Zentyal 2.2: Below :guilabel:`Printer Sharing`, click the link to the 
@@ -94,7 +94,7 @@ either (1) change the :guilabel:`Default user quota` to :kbd:`Disabled`(Pictured
 LDAP Settings
 ==========================
 
-In the LDAP module :guilabel:`PAM settings`:
+In Office----->Users and Computers------>LDAP Settings :guilabel:`PAM settings`:
 
 +  Set the :guilabel:`Default login shell` to :kbd:`bash`
 +  Click the :guilabel:`Enable PAM:` checkbox to turn on PAM (Pluggable 

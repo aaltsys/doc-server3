@@ -76,7 +76,8 @@ a job with the following command::
 
    date >> /var/log/cron.log; lftp -f /etc/waresedi.conf 1>> /var/log/cron.log 2>> /var/log/cron.log
 
-Add the following at the end of the command::
+For access to work in Zentyal 3.0 and above, add the following at the end of the
+command::
 
    ; chgrp -R wares /W/connect/rcv ; getfacl --access /W | setfacl -M- /W/connect/rcv/*
 

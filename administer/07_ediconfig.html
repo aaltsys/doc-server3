@@ -146,7 +146,8 @@ a job with the following command:</p>
 <div class="highlight-python"><div class="highlight"><pre>date &gt;&gt; /var/log/cron.log; lftp -f /etc/waresedi.conf 1&gt;&gt; /var/log/cron.log 2&gt;&gt; /var/log/cron.log
 </pre></div>
 </div>
-<p>Add the following at the end of the command:</p>
+<p>For access to work in Zentyal 3.0 and above, add the following at the end of the
+command:</p>
 <div class="highlight-python"><div class="highlight"><pre>; chgrp -R wares /W/connect/rcv ; getfacl --access /W | setfacl -M- /W/connect/rcv/*
 </pre></div>
 </div>

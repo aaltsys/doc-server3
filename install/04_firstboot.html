@@ -52,7 +52,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#network-interfaces">Network Interfaces</a></li>
-<li><a class="reference internal" href="#saving-changes">Saving Changes</a><ul>
+<li><a class="reference internal" href="#saving-changes">Saving Changes</a></li>
+<li><a class="reference internal" href="#holding-zentyal">Holding Zentyal</a><ul>
 <li><a class="reference internal" href="#connecting-external-drive">Connecting External Drive</a></li>
 <li><a class="reference internal" href="#installing-aaltsys-vpn">Installing AAltSys VPN</a></li>
 <li><a class="reference internal" href="#restarting-server">Restarting Server</a></li>
@@ -262,6 +263,13 @@ initial installation, such as <em class="guilabel">local.aaltsys.net</em>.</p>
 <p>When finished, click on <em class="guilabel">GO TO THE DASHBOARD</em>.</p>
 <p>To exit Zentyal, choose <em class="guilabel">Logout</em> from the Zentyal top bar, then click
 <em class="guilabel">Exit</em>.</p>
+</div>
+<div class="section" id="holding-zentyal">
+<h2>Holding Zentyal<a class="headerlink" href="#holding-zentyal" title="Permalink to this headline">¶</a></h2>
+<p>In order to keep Zentyal from auto-updating, type the following command:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-mark hold zentyal-core
+</pre></div>
+</div>
 <div class="section" id="connecting-external-drive">
 <h3>Connecting External Drive<a class="headerlink" href="#connecting-external-drive" title="Permalink to this headline">¶</a></h3>
 <p>An external drive should be connected for storing backups, such as the Passport

@@ -27,8 +27,8 @@
     <link rel="next" title="Earlier Server Versions" href="10_legacy.html" />
     <link rel="prev" title="Automount Drive Setup" href="05_backupdrive.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -58,12 +58,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="10_legacy.html"
                         title="next chapter">Earlier Server Versions</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/09_udevmount.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/09_udevmount.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -82,7 +84,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="mounting-devices-with-udev">
 <h1>Mounting Devices with udev<a class="headerlink" href="#mounting-devices-with-udev" title="Permalink to this headline">¶</a></h1>
@@ -91,11 +93,11 @@
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This guide registers a <strong>BUFFALO External</strong> drive and mounts it at
-<tt class="file docutils literal"><span class="pre">/home/mnt/backup</span></tt>.</p>
+<code class="file docutils literal"><span class="pre">/home/mnt/backup</span></code>.</p>
 </div>
 <ol class="arabic">
 <li><p class="first">The permanent logical mount point for the backup device will be
-<tt class="file docutils literal"><span class="pre">/home/mnt/backup</span></tt>.</p>
+<code class="file docutils literal"><span class="pre">/home/mnt/backup</span></code>.</p>
 </li>
 <li><p class="first">Display a terminal command line on the server console, or <strong class="command">ssh</strong> to
 a server command shell.</p>
@@ -149,7 +151,7 @@ section. Note the subsystem, model, and state:</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Add a <strong>udev</strong> rule in directory <tt class="file docutils literal"><span class="pre">/etc/udev/rules.d/</span></tt> to establish a
+<li><p class="first">Add a <strong>udev</strong> rule in directory <code class="file docutils literal"><span class="pre">/etc/udev/rules.d/</span></code> to establish a
 mount for the device. We chose the filename:</p>
 <div class="highlight-python"><div class="highlight"><pre>/etc/udev/rules.d/20-buffalo.rules
 </pre></div>
@@ -257,7 +259,7 @@ written, as the following table shows.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -269,9 +271,9 @@ written, as the following table shows.</p>
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

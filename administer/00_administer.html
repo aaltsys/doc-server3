@@ -27,8 +27,8 @@
     <link rel="next" title="ConVirt 2.0 Administration" href="02_convirt.html" />
     <link rel="prev" title="Administering an AAltsys Server" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server Administration 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -65,12 +65,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="02_convirt.html"
                         title="next chapter">ConVirt 2.0 Administration</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/00_administer.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/00_administer.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -89,7 +91,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="aaltsys-server-administration">
 <h1>AAltSys Server Administration<a class="headerlink" href="#aaltsys-server-administration" title="Permalink to this headline">¶</a></h1>
@@ -218,7 +220,7 @@ already, and if you are not an expert, you should not be using Webmin.</p>
 <div class="section" id="using-webmin-with-zentyal">
 <h3>Using Webmin with Zentyal<a class="headerlink" href="#using-webmin-with-zentyal" title="Permalink to this headline">¶</a></h3>
 <p>Using Webmin is tricky in combination with Zentyal. Webmin directly modifies the
-standard Linux configuration files in <tt class="file docutils literal"><span class="pre">/etc</span></tt>, while Zentyal makes
+standard Linux configuration files in <code class="file docutils literal"><span class="pre">/etc</span></code>, while Zentyal makes
 configuration changes by overwriting these files with its own private copy of
 configuration data. In general, these two approaches to server administration
 are incompatible and attempts to combine them will likely result in server
@@ -240,7 +242,7 @@ you are not adept at Linux administration.)</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -252,9 +254,9 @@ you are not adept at Linux administration.)</p>
         <li><a href="index.html">AAltsys Server Administration 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

@@ -55,9 +55,9 @@ to tell Zentyal how to backup:
 +====================================+==================================+
 | Host or Destination                | ``/home/mnt/backup``             |
 +------------------------------------+----------------------------------+
-| Full backup frequency              | ``Monthly -- on the 1th``        |
+| Full backup frequency              | ``Weekly -- on Monday``          |
 +------------------------------------+----------------------------------+
-| Keep previous full copies          | ``maximum number -- 3``          |
+| Keep previous full copies          | ``maximum number -- 5``          |
 +------------------------------------+----------------------------------+
 
 Below is a screen shot of these settings.
@@ -112,7 +112,7 @@ Network Gateway
 
 When ``eth0`` is an external interface configured to obtain its IP address 
 through DHCP, Zentyal should configure the Internet gateway for your system as 
-the following example in core-->network-->Gateways shows.
+the following example shows.
 
 .. image:: _images/zentyal_08_gateway.png
 
@@ -153,7 +153,7 @@ Software Management
 
 At menu selection :menuselection:`Core --> Software Management --> Settings`: 
 for the setting :guilabel:`Perform automatic security updates`, choose 
-``disabled``, and remember to click ``Change``, as shown following.
+``Enabled``, and remember to click ``Change``, as shown following.
 
 .. image:: _images/zentyal_23_settings.png
 

@@ -27,8 +27,8 @@
     <link rel="next" title="Backing Up Server Data" href="07_backup.html" />
     <link rel="prev" title="Zentyal Configuration" href="05_zentyal.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -61,12 +61,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="07_backup.html"
                         title="next chapter">Backing Up Server Data</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/06_office.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/06_office.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -85,7 +87,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="office-file-sharing">
 <span id="installoffice"></span><h1>Office File Sharing<a class="headerlink" href="#office-file-sharing" title="Permalink to this headline">¶</a></h1>
@@ -102,12 +104,12 @@ and share them through the server. To begin, make a list of network-attached
 printers, their manufacturers, models, and IP addresses.</p>
 <p>Then open Zentyal by one of the following approaches:</p>
 <ul class="simple">
-<li>On the host console, open a Firefox session at <tt class="kbd docutils literal"><span class="pre">https://localhost</span></tt></li>
-<li>At a local workstation, browse to address <tt class="kbd docutils literal"><span class="pre">https://__hostname__</span></tt></li>
-<li>At a local workstation, browse to address <tt class="kbd docutils literal"><span class="pre">https://192.168.2.241</span></tt></li>
+<li>On the host console, open a Firefox session at <code class="kbd docutils literal"><span class="pre">https://localhost</span></code></li>
+<li>At a local workstation, browse to address <code class="kbd docutils literal"><span class="pre">https://__hostname__</span></code></li>
+<li>At a local workstation, browse to address <code class="kbd docutils literal"><span class="pre">https://192.168.2.241</span></code></li>
 </ul>
 <p>Go to <em class="menuselection">Office ‣ Printer Sharing</em>, and make sure that the
-<tt class="docutils literal"><span class="pre">Listen</span></tt> checkbox is checked for each active interface, as shown following.</p>
+<code class="docutils literal"><span class="pre">Listen</span></code> checkbox is checked for each active interface, as shown following.</p>
 <img alt="_images/office_45.1_printersharing.png" src="_images/office_45.1_printersharing.png" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -118,9 +120,8 @@ CUPS. Accept this certificate; it is perfectly safe to do so. This certificate
 is issued from your local server for use by the server.</p>
 </div>
 <ul class="simple">
-<li>Press <tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-T&gt;</span></tt> to open a new browser tab.</li>
-<li>Enter the web address <tt class="kbd docutils literal"><span class="pre">https://192.168.2.241:631</span></tt></li>
-<li>If you encounter a connection error, go to core&#8212;&gt;module status and make sure printers is running. if not, click restart.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">&lt;Ctrl-T&gt;</span></code> to open a new browser tab.</li>
+<li>Enter the web address <code class="kbd docutils literal"><span class="pre">https://192.168.2.241:631</span></code></li>
 <li>If required, follow your browser&#8217;s instructions to add a security exception.</li>
 </ul>
 <div class="admonition note">
@@ -140,10 +141,10 @@ and password.</p>
 <em class="guilabel">Share printers connected to this system</em> and for
 <em class="guilabel">Allow remote administration</em>.</p>
 </li>
-<li><p class="first">Click <tt class="docutils literal"><span class="pre">Change</span> <span class="pre">Settings</span></tt>. These options are shown following:</p>
+<li><p class="first">Click <code class="docutils literal"><span class="pre">Change</span> <span class="pre">Settings</span></code>. These options are shown following:</p>
 <img alt="_images/office_45.3_cups_server.png" src="_images/office_45.3_cups_server.png" />
 </li>
-<li><p class="first">In section <cite>Printers</cite>, click <tt class="kbd docutils literal"><span class="pre">Add</span> <span class="pre">Printer</span></tt> to enter a new printer queue.</p>
+<li><p class="first">In section <cite>Printers</cite>, click <code class="kbd docutils literal"><span class="pre">Add</span> <span class="pre">Printer</span></code> to enter a new printer queue.</p>
 <img alt="_images/office_45.4_cups_printer.png" src="_images/office_45.4_cups_printer.png" />
 </li>
 </ul>
@@ -169,21 +170,21 @@ through server queues.</p>
 <h2>User Template<a class="headerlink" href="#user-template" title="Permalink to this headline">¶</a></h2>
 <p>By default, Zentyal limits the size of user shares.</p>
 <p>In the <em class="menuselection">Office ‣ Users and Computers ‣ User Template</em> section,
-either (1) change the <em class="guilabel">Default user quota</em> to <tt class="kbd docutils literal"><span class="pre">Disabled`(Pictured</span> <span class="pre">here),</span> <span class="pre">or</span>
-<span class="pre">(2)</span> <span class="pre">Change</span> <span class="pre">the</span> <span class="pre">quota</span> <span class="pre">to</span> <span class="pre">:kbd:`0</span></tt> (unlimited). Then click <tt class="kbd docutils literal"><span class="pre">Change</span></tt>.</p>
+either (1) change the <em class="guilabel">Default user quota</em> to <code class="kbd docutils literal"><span class="pre">Disabled`(Pictured</span> <span class="pre">here),</span> <span class="pre">or</span>
+<span class="pre">(2)</span> <span class="pre">Change</span> <span class="pre">the</span> <span class="pre">quota</span> <span class="pre">to</span> <span class="pre">:kbd:`0</span></code> (unlimited). Then click <code class="kbd docutils literal"><span class="pre">Change</span></code>.</p>
 <img alt="_images/office_41_template.png" src="_images/office_41_template.png" />
 </div>
 <div class="section" id="ldap-settings">
 <h2>LDAP Settings<a class="headerlink" href="#ldap-settings" title="Permalink to this headline">¶</a></h2>
-<p>In Office&#8212;&#8211;&gt;Users and Computers&#8212;&#8212;&gt;LDAP Settings <em class="guilabel">PAM settings</em>:</p>
+<p>In the LDAP module <em class="guilabel">PAM settings</em>:</p>
 <ul class="simple">
-<li>Set the <em class="guilabel">Default login shell</em> to <tt class="kbd docutils literal"><span class="pre">bash</span></tt></li>
+<li>Set the <em class="guilabel">Default login shell</em> to <code class="kbd docutils literal"><span class="pre">bash</span></code></li>
 <li>Click the <em class="guilabel">Enable PAM:</em> checkbox to turn on PAM (Pluggable
 Authentication Module)</li>
-<li>Click <tt class="kbd docutils literal"><span class="pre">Change</span></tt>.</li>
+<li>Click <code class="kbd docutils literal"><span class="pre">Change</span></code>.</li>
 </ul>
 <img alt="_images/office_42_ldap.png" src="_images/office_42_ldap.png" />
-<p>On the Zentyal top bar, click <tt class="docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></tt> and then click the <tt class="docutils literal"><span class="pre">Save</span></tt>
+<p>On the Zentyal top bar, click <code class="docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></code> and then click the <code class="docutils literal"><span class="pre">Save</span></code>
 button to record your changes.</p>
 </div>
 <div class="section" id="users">
@@ -202,12 +203,12 @@ that your initial administrative user is not on the list, as shown below.</p>
 <img alt="_images/office_39.2_users.png" src="_images/office_39.2_users.png" />
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p class="last">For file sharing users, click <tt class="docutils literal"><span class="pre">Add</span></tt> after entering names and
-passwords. For administrative users, click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">and</span> <span class="pre">Edit</span></tt>, then check the
-box for <tt class="docutils literal"><span class="pre">Administration</span> <span class="pre">rights</span></tt> and click <tt class="docutils literal"><span class="pre">Change</span></tt>.</p>
+<p class="last">For file sharing users, click <code class="docutils literal"><span class="pre">Add</span></code> after entering names and
+passwords. For administrative users, click <code class="docutils literal"><span class="pre">Add</span> <span class="pre">and</span> <span class="pre">Edit</span></code>, then check the
+box for <code class="docutils literal"><span class="pre">Administration</span> <span class="pre">rights</span></code> and click <code class="docutils literal"><span class="pre">Change</span></code>.</p>
 </div>
-<p>If any user is entered in error, click the <tt class="docutils literal"><span class="pre">Edit</span></tt> icon on the user&#8217;s line.
-Then click the <tt class="docutils literal"><span class="pre">Delete</span> <span class="pre">user</span></tt> button to remove the user. Similarly, edit a
+<p>If any user is entered in error, click the <code class="docutils literal"><span class="pre">Edit</span></code> icon on the user&#8217;s line.
+Then click the <code class="docutils literal"><span class="pre">Delete</span> <span class="pre">user</span></code> button to remove the user. Similarly, edit a
 user to add or remove administration rights, or to change group memberships.</p>
 <img alt="_images/office_39.3_administer.png" src="_images/office_39.3_administer.png" />
 <div class="admonition note">
@@ -220,9 +221,9 @@ deleted.</p>
 <h2>Groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h2>
 <p>Once all users are entered, select
 <em class="menuselection">Office ‣ Users and Groups ‣ Groups</em>. Enter a group
-<tt class="kbd docutils literal"><span class="pre">fsusers</span></tt> and a group <tt class="kbd docutils literal"><span class="pre">admins</span></tt>, as shown here.</p>
+<code class="kbd docutils literal"><span class="pre">fsusers</span></code> and a group <code class="kbd docutils literal"><span class="pre">admins</span></code>, as shown here.</p>
 <img alt="_images/office_40.1_addgroup.png" src="_images/office_40.1_addgroup.png" />
-<p>Click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">and</span> <span class="pre">edit</span></tt> to complete the group information. For the <tt class="docutils literal"><span class="pre">fsusers</span></tt>
+<p>Click <code class="docutils literal"><span class="pre">Add</span> <span class="pre">and</span> <span class="pre">edit</span></code> to complete the group information. For the <code class="docutils literal"><span class="pre">fsusers</span></code>
 group, click the green plus sign in order to add each user to the users in group list.</p>
 <img alt="_images/office_40.2_groups.png" src="_images/office_40.2_groups.png" />
 <div class="admonition note">
@@ -234,10 +235,10 @@ coming soon.</p>
 <div class="section" id="file-sharing">
 <h2>File Sharing<a class="headerlink" href="#file-sharing" title="Permalink to this headline">¶</a></h2>
 <p>Open the <em class="menuselection">Office ‣ File Sharing</em> link on the left menu. With
-the <em class="guilabel">Shares</em> tab, and then click <tt class="docutils literal"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">new</span></tt>
+the <em class="guilabel">Shares</em> tab, and then click <code class="docutils literal"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">new</span></code>
 to setup new file shares. Enter a <em class="guilabel">share name</em>, a <em class="guilabel">share
-path</em>, and a descriptive <em class="guilabel">comment</em> for a share, and then click <tt class="docutils literal"><span class="pre">Add</span></tt>
-to create the share. The following image shows share <tt class="docutils literal"><span class="pre">backup</span></tt> being added.</p>
+path</em>, and a descriptive <em class="guilabel">comment</em> for a share, and then click <code class="docutils literal"><span class="pre">Add</span></code>
+to create the share. The following image shows share <code class="docutils literal"><span class="pre">backup</span></code> being added.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">DO NOT check Apply ACLs recursively when adding a new share</p>
@@ -246,20 +247,20 @@ to create the share. The following image shows share <tt class="docutils literal
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Most file shares will be defined with <em class="guilabel">Share path:</em>
-<tt class="docutils literal"><span class="pre">Directory</span> <span class="pre">under</span> <span class="pre">Zentyal</span></tt>. As shown, the <tt class="docutils literal"><span class="pre">backup</span></tt> share is an exception
+<code class="docutils literal"><span class="pre">Directory</span> <span class="pre">under</span> <span class="pre">Zentyal</span></code>. As shown, the <code class="docutils literal"><span class="pre">backup</span></code> share is an exception
 to this rule.</p>
 </div>
 <p>Once shares are defined, Access Control entries must be set for each share.
-Entries for groups <tt class="docutils literal"><span class="pre">Users</span></tt> and <tt class="docutils literal"><span class="pre">Admins</span></tt> are permitted at this time. Click
+Entries for groups <code class="docutils literal"><span class="pre">Users</span></code> and <code class="docutils literal"><span class="pre">Admins</span></code> are permitted at this time. Click
 the <em class="guilabel">Access control</em> button next to a share, and then click
-<tt class="docutils literal"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">new</span></tt> to add a permission. Next to <em class="guilabel">User/Group</em>, press the
-dropdown button and choose <tt class="docutils literal"><span class="pre">Group</span></tt>, then press the dropdown to set the group
+<code class="docutils literal"><span class="pre">+</span> <span class="pre">Add</span> <span class="pre">new</span></code> to add a permission. Next to <em class="guilabel">User/Group</em>, press the
+dropdown button and choose <code class="docutils literal"><span class="pre">Group</span></code>, then press the dropdown to set the group
 name. At <em class="guilabel">Permission</em>, press the dropdown and set permissions for the
-selected group. The settings to add <tt class="docutils literal"><span class="pre">Group</span></tt> <tt class="docutils literal"><span class="pre">fsusers</span></tt> to the
-<em class="guilabel">public</em> share with <tt class="docutils literal"><span class="pre">read</span> <span class="pre">and</span> <span class="pre">write</span></tt> permissions are illustrated
+selected group. The settings to add <code class="docutils literal"><span class="pre">Group</span></code> <code class="docutils literal"><span class="pre">fsusers</span></code> to the
+<em class="guilabel">public</em> share with <code class="docutils literal"><span class="pre">read</span> <span class="pre">and</span> <span class="pre">write</span></code> permissions are illustrated
 following.</p>
 <img alt="_images/office_44.3_shares_acl.png" src="_images/office_44.3_shares_acl.png" />
-<p>Click <tt class="docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></tt> in the Zentyal title bar and confirm the save when all
+<p>Click <code class="docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></code> in the Zentyal title bar and confirm the save when all
 shares are defined. Your file sharing server is ready for service.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -275,7 +276,7 @@ reserved for application data, and a share where backups are written.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -287,9 +288,9 @@ reserved for application data, and a share where backups are written.</p>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

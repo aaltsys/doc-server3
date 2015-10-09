@@ -27,8 +27,8 @@
     <link rel="next" title="Remote Secure Shell Sessions" href="03_secureshell.html" />
     <link rel="prev" title="Printing With Zentyal" href="01_printing.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -64,12 +64,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="03_secureshell.html"
                         title="next chapter">Remote Secure Shell Sessions</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/02_filesharing.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/02_filesharing.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -88,7 +90,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="mounting-network-file-systems">
 <h1>Mounting Network File Systems<a class="headerlink" href="#mounting-network-file-systems" title="Permalink to this headline">¶</a></h1>
@@ -148,10 +150,10 @@ automount  <strong>HOSTSERVER</strong> shares. Shares will be unmounted if idle 
 <p><strong>/etc/auto.HOSTSERVER</strong></p>
 <p class="last">A list of share mappings is required for each remote server. Here
 <strong>HOSTSERVER</strong> has two shares, <strong>PUBLIC</strong> and <strong>*</strong>. Entries start with a
-name (e.g., <tt class="docutils literal"><span class="pre">public</span></tt>), followed by configuration parameters:
-<tt class="docutils literal"><span class="pre">-fstype=fuse,rw,...</span></tt>, and user ssh credentials:
-<tt class="docutils literal"><span class="pre">IdentityFile=$HOME/.ssh/id_rsa</span></tt>. Last is the URI for accessing the share:
-<tt class="docutils literal"><span class="pre">:sshfs\#$USER&#64;HOSTSERVER.DOMAIN.TLD\:/.../public</span></tt>.</p>
+name (e.g., <code class="docutils literal"><span class="pre">public</span></code>), followed by configuration parameters:
+<code class="docutils literal"><span class="pre">-fstype=fuse,rw,...</span></code>, and user ssh credentials:
+<code class="docutils literal"><span class="pre">IdentityFile=$HOME/.ssh/id_rsa</span></code>. Last is the URI for accessing the share:
+<code class="docutils literal"><span class="pre">:sshfs\#$USER&#64;HOSTSERVER.DOMAIN.TLD\:/.../public</span></code>.</p>
 </div>
 <p>Assign a mount point (a file directory pointer) for the remote server to use:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo mkdir /mnt/HOSTSERVER/
@@ -181,7 +183,7 @@ provide server-specific information:</p>
 sudo ssh HOSTSERVER.DOMAIN.TLD
 </pre></div>
 </div>
-<p>When prompted for the root password of the remote host, press <tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-C&gt;</span></tt>
+<p>When prompted for the root password of the remote host, press <code class="kbd docutils literal"><span class="pre">&lt;Ctrl-C&gt;</span></code>
 to exit the command.</p>
 </div>
 <div class="section" id="part-3-provide-your-ssh-key">
@@ -244,7 +246,7 @@ session optional        pam_umask.so umask=0000
 </pre></div>
 </div>
 <p>As noted above, actual ssh shell logins on the server will get the default
-<tt class="docutils literal"><span class="pre">umask=022</span></tt> on new files and directories. The following command will change
+<code class="docutils literal"><span class="pre">umask=022</span></code> on new files and directories. The following command will change
 this for all shell logins:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo sed -i s/umask 022/umask 0007/ /etc/profile
 </pre></div>
@@ -264,7 +266,7 @@ this for all shell logins:</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -276,9 +278,9 @@ this for all shell logins:</p>
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

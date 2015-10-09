@@ -27,8 +27,8 @@
     <link rel="next" title="System Task Utilities" href="06_systemtasks.html" />
     <link rel="prev" title="Sysem Rescue CD Boot Options" href="03_bootoptions.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -61,12 +61,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="06_systemtasks.html"
                         title="next chapter">System Task Utilities</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/05_networking.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/05_networking.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -85,7 +87,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="network-options-with-sysrescue">
 <h1>Network Options with SysRescue<a class="headerlink" href="#network-options-with-sysrescue" title="Permalink to this headline">¶</a></h1>
@@ -98,19 +100,19 @@
 <p>If your system has supported hardware, ethernet or wifi network adapters should be automatically detected, and the driver loaded during boot. You will still need to assign an IP address and a default gateway.</p>
 <ul class="simple">
 <li><strong>Network-Manager</strong> provides a graphical interface to configure the network, which makes configuration easier especially for wireless networks. The Network-Manager is available as a small icon in the taskbar just next to the clock. Network-Manager is only available in the graphical environment.</li>
-<li><strong>net-setup</strong> utility, (e.g. <tt class="kbd docutils literal"><span class="pre">net-setup</span> <span class="pre">eth0</span></tt>) should be used on the command line.</li>
+<li><strong>net-setup</strong> utility, (e.g. <code class="kbd docutils literal"><span class="pre">net-setup</span> <span class="pre">eth0</span></code>) should be used on the command line.</li>
 </ul>
 </div>
 <div class="section" id="hand-configuring-networking">
 <h2>Hand-configuring Networking<a class="headerlink" href="#hand-configuring-networking" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">To use command line tools, first stop Network-Manager by running <tt class="kbd docutils literal"><span class="pre">/etc/init.d/NetworkManager</span> <span class="pre">stop</span></tt> in the shell or by booting SystemRescueCd with the <em>nonm</em> boot option. If you are booting SystemRescueCd from the network or if you are using boot options such as <em>ethx</em> or <em>dodhcp</em> the Network-Manager service will automatically be stopped.</p>
+<p class="last">To use command line tools, first stop Network-Manager by running <code class="kbd docutils literal"><span class="pre">/etc/init.d/NetworkManager</span> <span class="pre">stop</span></code> in the shell or by booting SystemRescueCd with the <em>nonm</em> boot option. If you are booting SystemRescueCd from the network or if you are using boot options such as <em>ethx</em> or <em>dodhcp</em> the Network-Manager service will automatically be stopped.</p>
 </div>
 <ul class="simple">
-<li><strong>dhcpd</strong>: To use dynamic configuration, type <tt class="kbd docutils literal"><span class="pre">dhcpcd</span> <span class="pre">eth0</span></tt>. Then use <tt class="kbd docutils literal"><span class="pre">ifconfig</span> <span class="pre">-a</span></tt> to display the IP address the DHCP server leased to the interface.</li>
-<li><strong>ifconfig</strong>: To assign a specific static IP address, enter <tt class="kbd docutils literal"><span class="pre">ifconfig</span> <span class="pre">eth0</span> <span class="pre">192.168.10.17</span></tt> or similar, depending on the ethernet port and IP desired.</li>
-<li><strong>route</strong>: Next configure the default route. For example, to connect to a gateway at 192.168.10.2 enter: <tt class="kbd docutils literal"><span class="pre">route</span> <span class="pre">add</span> <span class="pre">default</span> <span class="pre">gw</span> <span class="pre">192.168.10.2</span></tt>.</li>
+<li><strong>dhcpd</strong>: To use dynamic configuration, type <code class="kbd docutils literal"><span class="pre">dhcpcd</span> <span class="pre">eth0</span></code>. Then use <code class="kbd docutils literal"><span class="pre">ifconfig</span> <span class="pre">-a</span></code> to display the IP address the DHCP server leased to the interface.</li>
+<li><strong>ifconfig</strong>: To assign a specific static IP address, enter <code class="kbd docutils literal"><span class="pre">ifconfig</span> <span class="pre">eth0</span> <span class="pre">192.168.10.17</span></code> or similar, depending on the ethernet port and IP desired.</li>
+<li><strong>route</strong>: Next configure the default route. For example, to connect to a gateway at 192.168.10.2 enter: <code class="kbd docutils literal"><span class="pre">route</span> <span class="pre">add</span> <span class="pre">default</span> <span class="pre">gw</span> <span class="pre">192.168.10.2</span></code>.</li>
 </ul>
 </div>
 <div class="section" id="setting-up-networking-at-boot">
@@ -119,8 +121,8 @@
 </div>
 <div class="section" id="running-an-ssh-server">
 <h2>Running an SSH Server<a class="headerlink" href="#running-an-ssh-server" title="Permalink to this headline">¶</a></h2>
-<p><strong>SSH</strong> allows you to use a shell on another computer (as telnet does), and you can copy files (with <em>scp</em>). If you want to run an SSH server, first change the root password by typing <tt class="kbd docutils literal"><span class="pre">passwd</span> <span class="pre">xxx</span></tt>. You can also use the <tt class="kbd docutils literal"><span class="pre">rootpass=xxx</span></tt> boot option before SystemRescueCd starts to define the root password.</p>
-<p>Although ssh server is automatically started, you can restart it with the command <tt class="kbd docutils literal"><span class="pre">/etc/init.d/sshd</span> <span class="pre">restart</span></tt>, and you can stop it with <tt class="kbd docutils literal"><span class="pre">/etc/init.d/sshd</span> <span class="pre">stop</span></tt>. You can also use SystemRescueCd as an SSH client to connect to an SSH server: just use <tt class="kbd docutils literal"><span class="pre">ssh</span> <span class="pre">login&#64;ssh.server.org</span></tt> or <tt class="kbd docutils literal"><span class="pre">scp</span> <span class="pre">source</span> <span class="pre">dest</span></tt>. Both source and dest may be local or remote. Use <tt class="kbd docutils literal"><span class="pre">login&#64;ssh.server.org:/path/filename</span></tt> for remote files.</p>
+<p><strong>SSH</strong> allows you to use a shell on another computer (as telnet does), and you can copy files (with <em>scp</em>). If you want to run an SSH server, first change the root password by typing <code class="kbd docutils literal"><span class="pre">passwd</span> <span class="pre">xxx</span></code>. You can also use the <code class="kbd docutils literal"><span class="pre">rootpass=xxx</span></code> boot option before SystemRescueCd starts to define the root password.</p>
+<p>Although ssh server is automatically started, you can restart it with the command <code class="kbd docutils literal"><span class="pre">/etc/init.d/sshd</span> <span class="pre">restart</span></code>, and you can stop it with <code class="kbd docutils literal"><span class="pre">/etc/init.d/sshd</span> <span class="pre">stop</span></code>. You can also use SystemRescueCd as an SSH client to connect to an SSH server: just use <code class="kbd docutils literal"><span class="pre">ssh</span> <span class="pre">login&#64;ssh.server.org</span></code> or <code class="kbd docutils literal"><span class="pre">scp</span> <span class="pre">source</span> <span class="pre">dest</span></code>. Both source and dest may be local or remote. Use <code class="kbd docutils literal"><span class="pre">login&#64;ssh.server.org:/path/filename</span></code> for remote files.</p>
 </div>
 <div class="section" id="accessing-a-windows-share">
 <h2>Accessing a Windows Share<a class="headerlink" href="#accessing-a-windows-share" title="Permalink to this headline">¶</a></h2>
@@ -139,7 +141,7 @@ cd /mnt/windows
 </div>
 <div class="section" id="mount-remote-ftp-ssh-shares">
 <h2>Mount remote FTP/SSH shares<a class="headerlink" href="#mount-remote-ftp-ssh-shares" title="Permalink to this headline">¶</a></h2>
-<p>there is a powerful way to access files located on an FTP server as local file systems with the <strong>Userland FileSystem</strong>. You mount the share and work on the remote files just as you would work on any local files, then umount the share with the standard <tt class="kbd docutils literal"><span class="pre">umount</span></tt> command. Here is an example showing how to mount an FTP file system in <em>/mnt/ftp</em> as anonymous (read only):</p>
+<p>there is a powerful way to access files located on an FTP server as local file systems with the <strong>Userland FileSystem</strong>. You mount the share and work on the remote files just as you would work on any local files, then umount the share with the standard <code class="kbd docutils literal"><span class="pre">umount</span></code> command. Here is an example showing how to mount an FTP file system in <em>/mnt/ftp</em> as anonymous (read only):</p>
 <div class="highlight-python"><div class="highlight"><pre>mkdir /mnt/ftp
 lufis fs=ftpfs,host=ftp.kernel.org /mnt/ftp -s
 cd /mnt/ftp
@@ -163,7 +165,7 @@ umount /mnt/ssh
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -175,9 +177,9 @@ umount /mnt/ssh
         <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

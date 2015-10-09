@@ -26,8 +26,8 @@
     <link rel="top" title="AAltsys Server 3.0 Technical 3.0 documentation" href="index.html" />
     <link rel="prev" title="Earlier Server Versions" href="10_legacy.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,7 +36,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -70,12 +70,14 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="10_legacy.html"
                         title="previous chapter">Earlier Server Versions</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/11_upgrade.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/11_upgrade.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -94,7 +96,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="upgrade-server-to-aaltsysserver">
 <h1>Upgrade Server to AAltSysServer<a class="headerlink" href="#upgrade-server-to-aaltsysserver" title="Permalink to this headline">¶</a></h1>
@@ -127,7 +129,7 @@ a later AAltsysServer which uses the Zentyal operating system.</p>
 <td><strong>this is bold text</strong></td>
 </tr>
 <tr class="row-odd"><td>Commands and program listings are monospaced</td>
-<td><tt class="docutils literal"><span class="pre">entries</span> <span class="pre">are</span> <span class="pre">monospaced</span></tt></td>
+<td><code class="docutils literal"><span class="pre">entries</span> <span class="pre">are</span> <span class="pre">monospaced</span></code></td>
 </tr>
 <tr class="row-even"><td>Hyperlinks are underlined</td>
 <td>(no example provided)</td>
@@ -144,12 +146,12 @@ in correct case exactly as shown.</p>
 <h2>Change Network Driver in AREV<a class="headerlink" href="#change-network-driver-in-arev" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>From a workstation, log into WARES using the supervisor level password.</li>
-<li>Press <tt class="kbd docutils literal"><span class="pre">F2</span></tt> to see all menus, choose <strong>STARTUP</strong>.</li>
-<li>Select <em class="menuselection">Application ‣ Open</em>, and enter the account <tt class="docutils literal"><span class="pre">SYSPROG</span></tt>, password ____________.</li>
-<li>In the Commands window, enter <tt class="docutils literal"><span class="pre">RUNMENU</span> <span class="pre">LANPACK</span></tt>.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">F2</span></code> to see all menus, choose <strong>STARTUP</strong>.</li>
+<li>Select <em class="menuselection">Application ‣ Open</em>, and enter the account <code class="docutils literal"><span class="pre">SYSPROG</span></code>, password ____________.</li>
+<li>In the Commands window, enter <code class="docutils literal"><span class="pre">RUNMENU</span> <span class="pre">LANPACK</span></code>.</li>
 <li>Choose <strong>Network Type</strong> from menu <em class="menuselection">Lanpack</em>.</li>
-<li>Press <tt class="kbd docutils literal"><span class="pre">F2</span></tt> for options, and switch to <strong>Microsoft Lan Manager</strong>.</li>
-<li>Press <tt class="kbd docutils literal"><span class="pre">F9</span></tt> to save the setting. (A message will display saying revboot is rebuilt.)</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">F2</span></code> for options, and switch to <strong>Microsoft Lan Manager</strong>.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">F9</span></code> to save the setting. (A message will display saying revboot is rebuilt.)</li>
 <li>Choose <strong>Exit</strong> to exit the application.</li>
 </ol>
 </div>
@@ -184,19 +186,19 @@ in correct case exactly as shown.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">ls</span> <span class="pre">/media/</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">ls</span> <span class="pre">/media/</span></code></td>
 <td>Identify mount point of USB drive</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">mkdir</span> <span class="pre">/media/(usb_drive)/wares</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">/media/(usb_drive)/wares</span></code></td>
 <td>Create a <strong>wares</strong> directory on USB</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">mkdir</span> <span class="pre">/media/(usb_drive)/public</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">/media/(usb_drive)/public</span></code></td>
 <td>Create a <strong>public</strong> directory on USB</td>
 </tr>
-<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/var/opt/arev/.</span> <span class="pre">to</span> <span class="pre">/media/(usb_drive)/wares/</span></tt></td>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/var/opt/arev/.</span> <span class="pre">to</span> <span class="pre">/media/(usb_drive)/wares/</span></code></td>
 <td>Copy <strong>wares</strong> data to USB</td>
 </tr>
-<tr class="row-even"><td><tt class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/home/global/.</span> <span class="pre">to</span> <span class="pre">/media/(usb_drive)/public/</span></tt></td>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/home/global/.</span> <span class="pre">to</span> <span class="pre">/media/(usb_drive)/public/</span></code></td>
 <td>Copy <strong>public</strong> data to USB</td>
 </tr>
 </tbody>
@@ -216,11 +218,11 @@ in correct case exactly as shown.</p>
 <li>Insert a USB drive, and open it in a window on the desktop.</li>
 <li>Create folders <strong>wares</strong> and <strong>public</strong> on the USB drive.</li>
 <li>Open My Computer, and navigate to drive <strong>W:\</strong>.</li>
-<li>Press <tt class="kbd docutils literal"><span class="pre">Ctrl-A</span> <span class="pre">Ctrl-C</span></tt> to copy all contents of drive W:.</li>
-<li>Click in the USB drive window, and double-click to open the <strong>wares</strong> folder. Press <tt class="kbd docutils literal"><span class="pre">Ctrl-V</span></tt> to paste.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">Ctrl-A</span> <span class="pre">Ctrl-C</span></code> to copy all contents of drive W:.</li>
+<li>Click in the USB drive window, and double-click to open the <strong>wares</strong> folder. Press <code class="kbd docutils literal"><span class="pre">Ctrl-V</span></code> to paste.</li>
 <li>Switch back to My Computer, and navigate to drive <strong>S:\</strong>.</li>
-<li>Press <tt class="kbd docutils literal"><span class="pre">Ctrl-A</span> <span class="pre">Ctrl-C</span></tt> to copy all contents of drive S:.</li>
-<li>Click in the USB drive window, and double-click to open the <strong>public</strong> folder. Press <tt class="kbd docutils literal"><span class="pre">Ctrl-V</span></tt> to paste.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">Ctrl-A</span> <span class="pre">Ctrl-C</span></code> to copy all contents of drive S:.</li>
+<li>Click in the USB drive window, and double-click to open the <strong>public</strong> folder. Press <code class="kbd docutils literal"><span class="pre">Ctrl-V</span></code> to paste.</li>
 <li>Once copying is finished, Right-click the USB drive icon and choose <em class="menuselection">Safely Remove</em>.</li>
 </ol>
 </div>
@@ -282,17 +284,17 @@ in correct case exactly as shown.</p>
 <div><ol class="arabic simple">
 <li>Select <em class="menuselection">Office ‣ File Sharing ‣ General Tab</em>.</li>
 <li>If server is in a Windows domain environment, uncheck <em class="guilabel">Enable PDC</em>.</li>
-<li>Set the workgroup or domain for the server (defaults to <tt class="docutils literal"><span class="pre">AALTSYS</span></tt>).</li>
-<li>Set the server description string (defaults to <tt class="docutils literal"><span class="pre">AAltSys</span> <span class="pre">Server</span></tt>).</li>
+<li>Set the workgroup or domain for the server (defaults to <code class="docutils literal"><span class="pre">AALTSYS</span></code>).</li>
+<li>Set the server description string (defaults to <code class="docutils literal"><span class="pre">AAltSys</span> <span class="pre">Server</span></code>).</li>
 <li>Click <em class="guilabel">Change</em> to save settings.</li>
 <li>Select <em class="menuselection">Office ‣ File Sharing ‣ Shares Tab</em>.</li>
 <li>Click <em class="guilabel">add new</em> to define a share.</li>
-<li>Enter share name <tt class="docutils literal"><span class="pre">arev</span></tt>, select <em class="guilabel">Directory under Zentyal</em>, name <tt class="docutils literal"><span class="pre">arev</span></tt></li>
-<li>You may add a comment, <tt class="docutils literal"><span class="pre">WARES</span> <span class="pre">data</span></tt>. Do not check <em class="guilabel">Guest access</em>.</li>
+<li>Enter share name <code class="docutils literal"><span class="pre">arev</span></code>, select <em class="guilabel">Directory under Zentyal</em>, name <code class="docutils literal"><span class="pre">arev</span></code></li>
+<li>You may add a comment, <code class="docutils literal"><span class="pre">WARES</span> <span class="pre">data</span></code>. Do not check <em class="guilabel">Guest access</em>.</li>
 <li>Click <strong>Add</strong> to add the share directory.</li>
 <li>Click <strong>add new</strong> to define a share.</li>
-<li>Enter share name <tt class="docutils literal"><span class="pre">public</span></tt>, select <strong>Directory under Zentyal</strong>, name <tt class="docutils literal"><span class="pre">public</span></tt></li>
-<li>You may add a comment, <tt class="docutils literal"><span class="pre">Shared</span> <span class="pre">files</span></tt>. Do not check <strong>Guest access</strong>.</li>
+<li>Enter share name <code class="docutils literal"><span class="pre">public</span></code>, select <strong>Directory under Zentyal</strong>, name <code class="docutils literal"><span class="pre">public</span></code></li>
+<li>You may add a comment, <code class="docutils literal"><span class="pre">Shared</span> <span class="pre">files</span></code>. Do not check <strong>Guest access</strong>.</li>
 <li>Click <strong>Add</strong> to add the share directory.</li>
 </ol>
 </div></blockquote>
@@ -351,15 +353,15 @@ in correct case exactly as shown.</p>
 <li><p class="first">Copy files to the server, and set user permissions, with the following commands:</p>
 <div class="line-block">
 <div class="line"><br /></div>
-<div class="line"><tt class="docutils literal"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/mnt/usb</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">mount</span> <span class="pre">/dev/sdc1</span> <span class="pre">/mnt/usb</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">cd</span> <span class="pre">/home/samba/shares</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/mnt/usb/wares/.</span> <span class="pre">./arev/</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/mnt/usb/public/.</span> <span class="pre">./public/</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">chmod</span> <span class="pre">-R</span> <span class="pre">777</span> <span class="pre">./arev</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">chmod</span> <span class="pre">-R</span> <span class="pre">777</span> <span class="pre">./public</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">rm</span> <span class="pre">-f</span> <span class="pre">/etc/udev/rules.d/70*</span></tt></div>
-<div class="line"><tt class="docutils literal"><span class="pre">shutdown</span> <span class="pre">-h</span> <span class="pre">now</span></tt></div>
+<div class="line"><code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/mnt/usb</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">mount</span> <span class="pre">/dev/sdc1</span> <span class="pre">/mnt/usb</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">cd</span> <span class="pre">/home/samba/shares</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/mnt/usb/wares/.</span> <span class="pre">./arev/</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/mnt/usb/public/.</span> <span class="pre">./public/</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">chmod</span> <span class="pre">-R</span> <span class="pre">777</span> <span class="pre">./arev</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">chmod</span> <span class="pre">-R</span> <span class="pre">777</span> <span class="pre">./public</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">rm</span> <span class="pre">-f</span> <span class="pre">/etc/udev/rules.d/70*</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">shutdown</span> <span class="pre">-h</span> <span class="pre">now</span></code></div>
 </div>
 </li>
 </ol>
@@ -385,7 +387,7 @@ in correct case exactly as shown.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -394,9 +396,9 @@ in correct case exactly as shown.</p>
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

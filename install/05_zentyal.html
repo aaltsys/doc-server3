@@ -27,8 +27,8 @@
     <link rel="next" title="Office File Sharing" href="06_office.html" />
     <link rel="prev" title="First Boot Configuration" href="04_firstboot.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -67,12 +67,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="06_office.html"
                         title="next chapter">Office File Sharing</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/05_zentyal.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/05_zentyal.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -91,7 +93,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="zentyal-configuration">
 <span id="configure"></span><h1>Zentyal Configuration<a class="headerlink" href="#zentyal-configuration" title="Permalink to this headline">¶</a></h1>
@@ -111,15 +113,15 @@ cannot be used to administer Zentyal.</p>
 or</li>
 <li>At a local workstation, go to browser address <a class="reference external" href="https://__hostname__">https://__hostname__</a>.</li>
 </ul>
-<p>Login to Zentyal using your administrator <tt class="kbd docutils literal"><span class="pre">__username__</span></tt> and
-<tt class="kbd docutils literal"><span class="pre">__password__</span></tt> to perform the following initial configuration steps.</p>
+<p>Login to Zentyal using your administrator <code class="kbd docutils literal"><span class="pre">__username__</span></code> and
+<code class="kbd docutils literal"><span class="pre">__password__</span></code> to perform the following initial configuration steps.</p>
 <div class="section" id="module-status">
 <h2>Module Status<a class="headerlink" href="#module-status" title="Permalink to this headline">¶</a></h2>
 <p>On the Zentyal menu, select <em class="menuselection">Core ‣ Module Status</em>. Check that
 all installed modules are active; that is, that their statuses are checked. The
 following image from a new install shows the DHCP module unchecked. (DHCP
 should be checked only on servers used as network gateways.)  After activating
-modules, click on <tt class="docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></tt> in the top bar, and then click <tt class="docutils literal"><span class="pre">Save</span></tt> to
+modules, click on <code class="docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></code> in the top bar, and then click <code class="docutils literal"><span class="pre">Save</span></code> to
 finalize the change.</p>
 <img alt="_images/zentyal_02_module.png" src="_images/zentyal_02_module.png" />
 </div>
@@ -150,13 +152,13 @@ to tell Zentyal how to backup:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Host or Destination</td>
-<td><tt class="docutils literal"><span class="pre">/home/mnt/backup</span></tt></td>
+<td><code class="docutils literal"><span class="pre">/home/mnt/backup</span></code></td>
 </tr>
 <tr class="row-odd"><td>Full backup frequency</td>
-<td><tt class="docutils literal"><span class="pre">Monthly</span> <span class="pre">--</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">1th</span></tt></td>
+<td><code class="docutils literal"><span class="pre">Weekly</span> <span class="pre">--</span> <span class="pre">on</span> <span class="pre">Monday</span></code></td>
 </tr>
 <tr class="row-even"><td>Keep previous full copies</td>
-<td><tt class="docutils literal"><span class="pre">maximum</span> <span class="pre">number</span> <span class="pre">--</span> <span class="pre">3</span></tt></td>
+<td><code class="docutils literal"><span class="pre">maximum</span> <span class="pre">number</span> <span class="pre">--</span> <span class="pre">5</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -177,16 +179,16 @@ from the bottom of this list:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Include Path</td>
-<td><tt class="docutils literal"><span class="pre">/etc/cups</span></tt></td>
+<td><code class="docutils literal"><span class="pre">/etc/cups</span></code></td>
 </tr>
 <tr class="row-odd"><td>Include Path</td>
-<td><tt class="docutils literal"><span class="pre">/home</span></tt></td>
+<td><code class="docutils literal"><span class="pre">/home</span></code></td>
 </tr>
 <tr class="row-even"><td>Exclude Path</td>
-<td><tt class="docutils literal"><span class="pre">/home/mnt</span></tt></td>
+<td><code class="docutils literal"><span class="pre">/home/mnt</span></code></td>
 </tr>
 <tr class="row-odd"><td>Exclude Path</td>
-<td><tt class="docutils literal"><span class="pre">/</span></tt></td>
+<td><code class="docutils literal"><span class="pre">/</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -197,17 +199,17 @@ displayed in the following image:</p>
 <div class="section" id="network-interfaces">
 <h2>Network Interfaces<a class="headerlink" href="#network-interfaces" title="Permalink to this headline">¶</a></h2>
 <p>At <em class="menuselection">Core ‣ Network ‣ Interfaces</em>, There are two possible
-configurations for the network interface <tt class="docutils literal"><span class="pre">eth0</span></tt> depending on whether the
+configurations for the network interface <code class="docutils literal"><span class="pre">eth0</span></code> depending on whether the
 server will be used as a network gateway or as a peer on a LAN.</p>
-<p>For network gateways, we recommend configuring <tt class="docutils literal"><span class="pre">eth0</span></tt> with method <tt class="kbd docutils literal"><span class="pre">DHCP</span></tt>,
+<p>For network gateways, we recommend configuring <code class="docutils literal"><span class="pre">eth0</span></code> with method <code class="kbd docutils literal"><span class="pre">DHCP</span></code>,
 and the <em class="guilabel">External (WAN):</em> box must be checked.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">When a gateway server is reconfigured from <tt class="kbd docutils literal"><span class="pre">DHCP</span></tt> to
-<tt class="kbd docutils literal"><span class="pre">static</span></tt>, a default gateway record must be added as well. Changing from
-<tt class="kbd docutils literal"><span class="pre">static</span></tt> to <tt class="kbd docutils literal"><span class="pre">DHCP</span></tt> requires deleting the default gateway first.</p>
+<p class="last">When a gateway server is reconfigured from <code class="kbd docutils literal"><span class="pre">DHCP</span></code> to
+<code class="kbd docutils literal"><span class="pre">static</span></code>, a default gateway record must be added as well. Changing from
+<code class="kbd docutils literal"><span class="pre">static</span></code> to <code class="kbd docutils literal"><span class="pre">DHCP</span></code> requires deleting the default gateway first.</p>
 </div>
-<p>Where a server is a LAN peer, only <tt class="docutils literal"><span class="pre">eth0</span></tt> should be connected. The interface
+<p>Where a server is a LAN peer, only <code class="docutils literal"><span class="pre">eth0</span></code> should be connected. The interface
 should be set to a static IP address, and the <em class="guilabel">External (WAN):</em> box
 must not be checked. An example of this configuration is illustrated following.</p>
 <img alt="_images/zentyal_07_interfaces.png" src="_images/zentyal_07_interfaces.png" />
@@ -215,16 +217,16 @@ must not be checked. An example of this configuration is illustrated following.<
 </div>
 <div class="section" id="network-gateway">
 <h2>Network Gateway<a class="headerlink" href="#network-gateway" title="Permalink to this headline">¶</a></h2>
-<p>When <tt class="docutils literal"><span class="pre">eth0</span></tt> is an external interface configured to obtain its IP address
+<p>When <code class="docutils literal"><span class="pre">eth0</span></code> is an external interface configured to obtain its IP address
 through DHCP, Zentyal should configure the Internet gateway for your system as
-the following example in core&#8211;&gt;network&#8211;&gt;Gateways shows.</p>
+the following example shows.</p>
 <img alt="_images/zentyal_08_gateway.png" src="_images/zentyal_08_gateway.png" />
 </div>
 <div class="section" id="network-services">
 <h2>Network Services<a class="headerlink" href="#network-services" title="Permalink to this headline">¶</a></h2>
 <p>In section <em class="menuselection">Core ‣ Network ‣ Services</em>, a Network Service
 definition must be added so that firewall rules can be created later. First
-click <tt class="kbd docutils literal"><span class="pre">add</span> <span class="pre">new</span></tt> to add the following service:</p>
+click <code class="kbd docutils literal"><span class="pre">add</span> <span class="pre">new</span></code> to add the following service:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="37%" />
@@ -237,12 +239,12 @@ click <tt class="kbd docutils literal"><span class="pre">add</span> <span class=
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>webmin</td>
-<td><tt class="docutils literal"><span class="pre">AAltsys</span> <span class="pre">webmin</span> <span class="pre">service</span></tt></td>
+<td><code class="docutils literal"><span class="pre">AAltsys</span> <span class="pre">webmin</span> <span class="pre">service</span></code></td>
 </tr>
 </tbody>
 </table>
 <p>Once the new service is added to the list, click the <em class="guilabel">Configuration</em>
-button for <tt class="docutils literal"><span class="pre">webmin</span></tt> and add a configuration for:</p>
+button for <code class="docutils literal"><span class="pre">webmin</span></code> and add a configuration for:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="31%" />
@@ -250,13 +252,13 @@ button for <tt class="docutils literal"><span class="pre">webmin</span></tt> and
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Protocol:</td>
-<td><tt class="docutils literal"><span class="pre">TCP/UDP</span></tt></td>
+<td><code class="docutils literal"><span class="pre">TCP/UDP</span></code></td>
 </tr>
 <tr class="row-even"><td>Source port:</td>
-<td><tt class="docutils literal"><span class="pre">any</span></tt></td>
+<td><code class="docutils literal"><span class="pre">any</span></code></td>
 </tr>
 <tr class="row-odd"><td>Destination:</td>
-<td><tt class="docutils literal"><span class="pre">Single</span> <span class="pre">port</span> <span class="pre">--&gt;</span> <span class="pre">10000</span></tt></td>
+<td><code class="docutils literal"><span class="pre">Single</span> <span class="pre">port</span> <span class="pre">--&gt;</span> <span class="pre">10000</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -264,7 +266,7 @@ button for <tt class="docutils literal"><span class="pre">webmin</span></tt> and
 <img alt="_images/zentyal_11_webmin.png" src="_images/zentyal_11_webmin.png" />
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Remember to click <tt class="kbd docutils literal"><span class="pre">Change</span></tt> when making configuration changes.And always save your changes.</p>
+<p class="last">Remember to click <code class="kbd docutils literal"><span class="pre">Change</span></code> when making configuration changes.And always save your changes.</p>
 </div>
 <img alt="_images/Savechanges.png" src="_images/Savechanges.png" />
 </div>
@@ -272,7 +274,7 @@ button for <tt class="docutils literal"><span class="pre">webmin</span></tt> and
 <h2>Software Management<a class="headerlink" href="#software-management" title="Permalink to this headline">¶</a></h2>
 <p>At menu selection <em class="menuselection">Core ‣ Software Management ‣ Settings</em>:
 for the setting <em class="guilabel">Perform automatic security updates</em>, choose
-<tt class="docutils literal"><span class="pre">disabled</span></tt>, and remember to click <tt class="docutils literal"><span class="pre">Change</span></tt>, as shown following.</p>
+<code class="docutils literal"><span class="pre">Enabled</span></code>, and remember to click <code class="docutils literal"><span class="pre">Change</span></code>, as shown following.</p>
 <img alt="_images/zentyal_23_settings.png" src="_images/zentyal_23_settings.png" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -284,9 +286,9 @@ as <em class="guilabel">UTM</em>.</p>
 <h2>Firewall Packet Filter<a class="headerlink" href="#firewall-packet-filter" title="Permalink to this headline">¶</a></h2>
 <p>Select <em class="menuselection">Gateway ‣ Firewall ‣ Packet Filter ‣ internal networks
 to Zentyal</em> on the Zentyal menu to insert a new firewall rule for the Network
-Service defined previously. Click the <tt class="docutils literal"><span class="pre">Configure</span> <span class="pre">rules</span></tt> link below
+Service defined previously. Click the <code class="docutils literal"><span class="pre">Configure</span> <span class="pre">rules</span></code> link below
 <em class="guilabel">Filtering rules from internal networks to Zentyal.</em> Then click
-<tt class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></tt> to enter this rule:</p>
+<code class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></code> to enter this rule:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="22%" />
@@ -320,28 +322,28 @@ for <em class="guilabel">eth0</em> in the <em class="guilabel">Intrusion Detecti
 </div>
 <div class="section" id="dns">
 <h2>DNS<a class="headerlink" href="#dns" title="Permalink to this headline">¶</a></h2>
-<p>At <em class="menuselection">Infrastructure ‣ DNS</em>, click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></tt> under
+<p>At <em class="menuselection">Infrastructure ‣ DNS</em>, click <code class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></code> under
 <em class="guilabel">Forwarders</em> to add your ISP&#8217;s forwarding DNS entries, or enter IP
 addresses for known good DNS servers. (Google DNS servers are shown here.)</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Zentyal 2.2: Click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></tt> under <em class="guilabel">Domains</em> to add a new
-local domain, <tt class="kbd docutils literal"><span class="pre">local.aaltsys.net</span></tt>, but do not enter an IP address.</p>
+<p class="last">Zentyal 2.2: Click <code class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></code> under <em class="guilabel">Domains</em> to add a new
+local domain, <code class="kbd docutils literal"><span class="pre">local.aaltsys.net</span></code>, but do not enter an IP address.</p>
 </div>
 <p>The following image shows the resulting DNS page:</p>
 <img alt="_images/zentyal_34.1_dns.png" src="_images/zentyal_34.1_dns.png" />
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The <em class="guilabel">local.aaltsys.net</em> domain is not checked as
-<em class="guilabel">Dynamic</em>. This feature will be configured in the <tt class="docutils literal"><span class="pre">DHCP</span></tt> section
+<em class="guilabel">Dynamic</em>. This feature will be configured in the <code class="docutils literal"><span class="pre">DHCP</span></code> section
 to follow.</p>
 </div>
 <ul class="simple">
 <li>Click the configuration icon below <em class="guilabel">Hostnames</em> on the
 <em class="guilabel">local.aaltsys.net</em> domain.</li>
 <li>Click the configuration icon below <em class="guilabel">Alias</em> on the
-<tt class="kbd docutils literal"><span class="pre">__hostname__</span></tt> host, then click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></tt> to add a new alias.</li>
-<li>Type a new alias <tt class="kbd docutils literal"><span class="pre">aaltsysserver</span></tt> for this host, then click <tt class="kbd docutils literal"><span class="pre">add</span></tt> to
+<code class="kbd docutils literal"><span class="pre">__hostname__</span></code> host, then click <code class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></code> to add a new alias.</li>
+<li>Type a new alias <code class="kbd docutils literal"><span class="pre">aaltsysserver</span></code> for this host, then click <code class="kbd docutils literal"><span class="pre">add</span></code> to
 accept it.</li>
 </ul>
 </div>
@@ -352,7 +354,7 @@ accept it.</li>
 <p class="last">Skip this section if you are not configuring a network gateway server.</p>
 </div>
 <p>Use section <em class="menuselection">Infrastructure DHCP</em> to configure interface
-<tt class="docutils literal"><span class="pre">eth1</span></tt>. (Only static internal interfaces provide DHCP services.) Settings
+<code class="docutils literal"><span class="pre">eth1</span></code>. (Only static internal interfaces provide DHCP services.) Settings
 for the <em class="guilabel">Common options</em> follow:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -366,22 +368,22 @@ for the <em class="guilabel">Common options</em> follow:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Default gateway</td>
-<td><tt class="docutils literal"><span class="pre">Zentyal</span></tt></td>
+<td><code class="docutils literal"><span class="pre">Zentyal</span></code></td>
 </tr>
 <tr class="row-odd"><td>Search domain</td>
-<td><tt class="docutils literal"><span class="pre">Zentyal</span> <span class="pre">domain</span> <span class="pre">--&gt;</span> <span class="pre">local.aaltsys.net</span></tt></td>
+<td><code class="docutils literal"><span class="pre">Zentyal</span> <span class="pre">domain</span> <span class="pre">--&gt;</span> <span class="pre">local.aaltsys.net</span></code></td>
 </tr>
 <tr class="row-even"><td>Primary name server</td>
-<td><tt class="docutils literal"><span class="pre">local</span> <span class="pre">Zentyal</span> <span class="pre">DNS</span></tt></td>
+<td><code class="docutils literal"><span class="pre">local</span> <span class="pre">Zentyal</span> <span class="pre">DNS</span></code></td>
 </tr>
 <tr class="row-odd"><td>Secondary name server</td>
 <td>(IP of your DSL or cable modem)</td>
 </tr>
 <tr class="row-even"><td>NTP server</td>
-<td><tt class="docutils literal"><span class="pre">local</span> <span class="pre">Zentyal</span> <span class="pre">NTP</span></tt></td>
+<td><code class="docutils literal"><span class="pre">local</span> <span class="pre">Zentyal</span> <span class="pre">NTP</span></code></td>
 </tr>
 <tr class="row-odd"><td>WINS server</td>
-<td><tt class="docutils literal"><span class="pre">none</span></tt></td>
+<td><code class="docutils literal"><span class="pre">none</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -390,12 +392,12 @@ for the <em class="guilabel">Common options</em> follow:</p>
 <p class="last">The <em class="guilabel">Secondary nameserver</em> value should be set to the IP address
 of your DSL or cable interface.</p>
 </div>
-<p>Click <tt class="docutils literal"><span class="pre">Change</span></tt> to save the <em class="guilabel">Common options</em> settings. The following
+<p>Click <code class="docutils literal"><span class="pre">Change</span></code> to save the <em class="guilabel">Common options</em> settings. The following
 screenshot shows a DHCP configuration, where the cable modem uses IP address
-<tt class="kbd docutils literal"><span class="pre">192.168.1.254</span></tt>.</p>
+<code class="kbd docutils literal"><span class="pre">192.168.1.254</span></code>.</p>
 <img alt="_images/zentyal_33.1_common.png" src="_images/zentyal_33.1_common.png" />
 <p>Click the <em class="guilabel">Dynamic DNS Options</em> tab on the DHCP page, and click the
-<em class="guilabel">Enabled:</em> checkbox, and click <tt class="docutils literal"><span class="pre">Change</span></tt>. The settings on this page
+<em class="guilabel">Enabled:</em> checkbox, and click <code class="docutils literal"><span class="pre">Change</span></code>. The settings on this page
 should be:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -412,18 +414,18 @@ should be:</p>
 <td>(Checked)</td>
 </tr>
 <tr class="row-odd"><td>Dynamic domain</td>
-<td><tt class="docutils literal"><span class="pre">local.aaltsys.net</span></tt></td>
+<td><code class="docutils literal"><span class="pre">local.aaltsys.net</span></code></td>
 </tr>
 <tr class="row-even"><td>Static domain</td>
-<td><tt class="docutils literal"><span class="pre">Same</span> <span class="pre">as</span> <span class="pre">Dynamic</span> <span class="pre">Domain</span></tt></td>
+<td><code class="docutils literal"><span class="pre">Same</span> <span class="pre">as</span> <span class="pre">Dynamic</span> <span class="pre">Domain</span></code></td>
 </tr>
 </tbody>
 </table>
 <p>The following screenshot shows <em class="guilabel">Dynamic DNS Options</em> settings:</p>
 <img alt="_images/zentyal_33.2_dynamic.png" src="_images/zentyal_33.2_dynamic.png" />
-<p>Under <em class="guilabel">Ranges</em>, click <tt class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></tt> to add an IP address range for
+<p>Under <em class="guilabel">Ranges</em>, click <code class="docutils literal"><span class="pre">Add</span> <span class="pre">new</span></code> to add an IP address range for
 dynamic IP assignment in your local subnet. We recommend excluding addresses
-above <tt class="docutils literal"><span class="pre">x.x.x.200</span></tt> to provide static IP address space, so our default settings
+above <code class="docutils literal"><span class="pre">x.x.x.200</span></code> to provide static IP address space, so our default settings
 are:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -432,23 +434,23 @@ are:</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>Name:</td>
-<td><tt class="docutils literal"><span class="pre">Local</span> <span class="pre">dynamic</span> <span class="pre">hosts</span></tt></td>
+<td><code class="docutils literal"><span class="pre">Local</span> <span class="pre">dynamic</span> <span class="pre">hosts</span></code></td>
 </tr>
 <tr class="row-even"><td>From:</td>
-<td><tt class="docutils literal"><span class="pre">192.168.2.1</span></tt></td>
+<td><code class="docutils literal"><span class="pre">192.168.2.1</span></code></td>
 </tr>
 <tr class="row-odd"><td>To:</td>
-<td><tt class="docutils literal"><span class="pre">192.168.2.200</span></tt></td>
+<td><code class="docutils literal"><span class="pre">192.168.2.200</span></code></td>
 </tr>
 </tbody>
 </table>
-<p>Click <tt class="docutils literal"><span class="pre">Add</span></tt> to complete the change. The result is displayed following:</p>
+<p>Click <code class="docutils literal"><span class="pre">Add</span></code> to complete the change. The result is displayed following:</p>
 <img alt="_images/zentyal_33.3_ranges.png" src="_images/zentyal_33.3_ranges.png" />
 </div>
 <div class="section" id="save-changes">
 <h2>Save Changes<a class="headerlink" href="#save-changes" title="Permalink to this headline">¶</a></h2>
-<p>Click <tt class="docutils literal"><span class="pre">Save</span> <span class="pre">changes</span></tt> in the Zentyal title bar, and under <em class="guilabel">Save
-configuration</em>, click <tt class="docutils literal"><span class="pre">Save</span></tt>. Your server functions are configured, and now
+<p>Click <code class="docutils literal"><span class="pre">Save</span> <span class="pre">changes</span></code> in the Zentyal title bar, and under <em class="guilabel">Save
+configuration</em>, click <code class="docutils literal"><span class="pre">Save</span></code>. Your server functions are configured, and now
 office use can be set up.</p>
 </div>
 </div>
@@ -459,7 +461,7 @@ office use can be set up.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -471,9 +473,9 @@ office use can be set up.</p>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

@@ -27,8 +27,8 @@
     <link rel="next" title="Replacing a Current Server" href="04_replaceserver.html" />
     <link rel="prev" title="Mac mini Server Connections" href="02_connectserver.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server Deployment 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -59,12 +59,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="04_replaceserver.html"
                         title="next chapter">Replacing a Current Server</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/03_upgradeserver.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/03_upgradeserver.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -83,7 +85,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="upgrading-a-zentyal-server">
 <span id="upgradeserver"></span><h1>Upgrading a Zentyal Server<a class="headerlink" href="#upgrading-a-zentyal-server" title="Permalink to this headline">¶</a></h1>
@@ -94,10 +96,10 @@ following instructions.</p>
 <h2>Copy shares from old server<a class="headerlink" href="#copy-shares-from-old-server" title="Permalink to this headline">¶</a></h2>
 <p>At a workstation, use the command line to create directories for each server
 share, and then copy the shared files into the new local directories. Open the
-command line by clicking <em class="guilabel">Start</em> and entering <tt class="kbd docutils literal"><span class="pre">cmd.exe</span></tt> in the
+command line by clicking <em class="guilabel">Start</em> and entering <code class="kbd docutils literal"><span class="pre">cmd.exe</span></code> in the
 the search window, then selecting <strong class="program">cmd.exe</strong> from the search results.</p>
-<p>Copy files from share <tt class="file docutils literal"><span class="pre">\\AAltsysserver\shared</span></tt>, mapped to drive
-<tt class="file docutils literal"><span class="pre">S:</span></tt>, by typing the commands:</p>
+<p>Copy files from share <code class="file docutils literal"><span class="pre">\\AAltsysserver\shared</span></code>, mapped to drive
+<code class="file docutils literal"><span class="pre">S:</span></code>, by typing the commands:</p>
 <div class="highlight-python"><div class="highlight"><pre>md \shared
 cd \shared
 xcopy S:\*.* . /s/e
@@ -105,8 +107,8 @@ xcopy S:\*.* . /s/e
 </div>
 <p>Use the preceding commands as a template for copying other server shares to a
 workstation. For example, copy a user&#8217;s server private home directory, mapped to
-drive <tt class="file docutils literal"><span class="pre">H:</span></tt>, by replacing <tt class="file docutils literal"><span class="pre">shared</span></tt> with <tt class="file docutils literal"><span class="pre">home</span></tt> and <tt class="file docutils literal"><span class="pre">S:</span></tt>
-with <tt class="file docutils literal"><span class="pre">H:</span></tt> in the preceding commands.</p>
+drive <code class="file docutils literal"><span class="pre">H:</span></code>, by replacing <code class="file docutils literal"><span class="pre">shared</span></code> with <code class="file docutils literal"><span class="pre">home</span></code> and <code class="file docutils literal"><span class="pre">S:</span></code>
+with <code class="file docutils literal"><span class="pre">H:</span></code> in the preceding commands.</p>
 </div>
 <div class="section" id="swap-to-new-server">
 <h2>Swap to new server<a class="headerlink" href="#swap-to-new-server" title="Permalink to this headline">¶</a></h2>
@@ -123,17 +125,17 @@ printers, and users and groups.</p>
 <h2>Copy shares to new server<a class="headerlink" href="#copy-shares-to-new-server" title="Permalink to this headline">¶</a></h2>
 <p>For each share directory saved on a workstation, first map the share to its
 corresponding drive letter. In Windows 7, shares are mapped to drives by opening
-<em class="guilabel">Computer</em>, pressing <tt class="kbd docutils literal"><span class="pre">[F10]</span></tt> to display the menu, and selecting
+<em class="guilabel">Computer</em>, pressing <code class="kbd docutils literal"><span class="pre">[F10]</span></code> to display the menu, and selecting
 <em class="menuselection">Tools ‣ Map Network Drive</em>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Download script <a class="reference download internal" href="_downloads/netshare.bat"><tt class="xref download docutils literal"><span class="pre">NETSHARE.BAT</span></tt></a>
+<p class="last">Download script <a class="reference download internal" href="_downloads/netshare.bat"><code class="xref download docutils literal"><span class="pre">NETSHARE.BAT</span></code></a>
 to the workstation desktop as an alternative to mapping drives. Then edit the
 batch script to reference the new server, and run the script to map drives.</p>
 </div>
 <p>After mapping a share to a drive letter, open the command line, then use the
 following commands to copy the share files back to the server, remembering to
-replace <tt class="file docutils literal"><span class="pre">S:</span></tt> and <tt class="file docutils literal"><span class="pre">shared</span></tt> with the respective share drive letter and
+replace <code class="file docutils literal"><span class="pre">S:</span></code> and <code class="file docutils literal"><span class="pre">shared</span></code> with the respective share drive letter and
 directory name for a share:</p>
 <div class="highlight-python"><div class="highlight"><pre>cd \shared
 xcopy . S:\ /s/e
@@ -148,7 +150,7 @@ xcopy . S:\ /s/e
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -160,9 +162,9 @@ xcopy . S:\ /s/e
         <li><a href="index.html">AAltsys Server Deployment 1.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

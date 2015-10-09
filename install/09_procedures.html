@@ -27,8 +27,8 @@
     <link rel="next" title="Redundant Server Setup" href="10_redundanthost.html" />
     <link rel="prev" title="AAD Server Terminal Services" href="08_aadserver.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -56,12 +56,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="10_redundanthost.html"
                         title="next chapter">Redundant Server Setup</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/09_procedures.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/09_procedures.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -80,7 +82,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="procedures-of-operation">
 <h1>Procedures of Operation<a class="headerlink" href="#procedures-of-operation" title="Permalink to this headline">¶</a></h1>
@@ -91,17 +93,17 @@
 <p class="last">This procedure applies to Zentyal 2.0 through 2.2, but not to 3.0.</p>
 </div>
 <p>First, go to menu item <em class="menuselection">Office ‣ Users and Groups ‣ LDAP
-Settings</em>. Remove the checkmark at <em class="guilabel">Enable PAM</em>, and click <tt class="docutils literal"><span class="pre">Change</span></tt>
+Settings</em>. Remove the checkmark at <em class="guilabel">Enable PAM</em>, and click <code class="docutils literal"><span class="pre">Change</span></code>
 to save the setting. <em class="guilabel">PAM settings</em> are illustrated below.</p>
 <img alt="_images/office_42_ldap.png" src="_images/office_42_ldap.png" />
 <p>Now go to <em class="menuselection">Core ‣ System ‣ General</em>. Enter the username and
 the current password, and then enter a new password and confirm the password.
-Click <tt class="docutils literal"><span class="pre">Change</span></tt> to complete the password change. The <em class="guilabel">Change
+Click <code class="docutils literal"><span class="pre">Change</span></code> to complete the password change. The <em class="guilabel">Change
 Password</em> page is shown following.</p>
 <img alt="_images/procedure_03.1_change_password.png" src="_images/procedure_03.1_change_password.png" />
 <p>Return to page <em class="menuselection">Office ‣ Users and Groups ‣ LDAP Settings</em>
 after the password is changed. Add a checkmark at <em class="guilabel">Enable PAM</em>, and
-click <tt class="docutils literal"><span class="pre">Change</span></tt> to save the setting.</p>
+click <code class="docutils literal"><span class="pre">Change</span></code> to save the setting.</p>
 </div>
 </div>
 
@@ -111,7 +113,7 @@ click <tt class="docutils literal"><span class="pre">Change</span></tt> to save 
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -123,9 +125,9 @@ click <tt class="docutils literal"><span class="pre">Change</span></tt> to save 
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

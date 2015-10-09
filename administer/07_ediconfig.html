@@ -26,8 +26,8 @@
     <link rel="top" title="AAltsys Server Administration 3.0 documentation" href="index.html" />
     <link rel="prev" title="Fixing locales:" href="06_procedures.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,11 +36,13 @@
         <li><a href="index.html">AAltsys Server Administration 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Configuring EDI Communication</a><ul>
+<li><a class="reference internal" href="#configure-file-access">Configure File Access</a></li>
+<li><a class="reference internal" href="#configure-server-ftp">Configure Server FTP</a></li>
 <li><a class="reference internal" href="#schedule-exchange-in-webmin">Schedule Exchange in Webmin</a></li>
 </ul>
 </li>
@@ -49,12 +51,14 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="06_procedures.html"
                         title="previous chapter">Fixing locales:</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/07_ediconfig.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/07_ediconfig.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -73,7 +77,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="configuring-edi-communication">
 <span id="ediconfig"></span><h1>Configuring EDI Communication<a class="headerlink" href="#configuring-edi-communication" title="Permalink to this headline">¶</a></h1>
@@ -81,22 +85,43 @@
 manipulation and archival, document translation, and database mapping. This
 document will describe configuring a Linux machine to exchange data with an ftp
 server on the web for EDI.</p>
-<ol class="arabic">
-<li><p class="first">First, the Linux machine must have a competent ftp client. Install lftp with
-the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install lftp
-</pre></div>
-</div>
-</li>
-<li><p class="first">Second, change owner permissions on the WARES program files with the
-commands:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo chgrp -R __USERS__ /home/samba/shares/arev
+<div class="section" id="configure-file-access">
+<h2>Configure File Access<a class="headerlink" href="#configure-file-access" title="Permalink to this headline">¶</a></h2>
+<p>Starting with version 3.0, Zentyal uses Samba 4.0 to provide ACL-based file
+access permissions for MS-Windows clients. EDI file exchange is handled by a
+Linux process in the server and not a Windows client, which introduces file
+access issues.</p>
+<p>First, access privileges must be set correctly on the file shares. To verify
+this, login to Zentyal administration in a browser. On the left menu, select
+<em class="menuselection">OFFICE ‣ File Sharing</em>. Check the boxes for
+<em class="guilabel">Apply ACLs Recursively</em> as shown here:</p>
+<img alt="_images/EDI_access.png" src="_images/EDI_access.png" />
+<p>Save changes after this step.</p>
+<p>Next change access privileges for the WARES group:</p>
+<img alt="_images/EDI_acl.png" src="_images/EDI_acl.png" />
+<p>Again, save changes after this step. If file access is confused here, it may
+be necessary to remove the WARES Access Control and save changes, then re-add
+the corrected Access Control. From a Windows station, test file access by
+running the WARES program.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>In Zentyal prior to 3.0, use the following console commands to set
+access permissions on the WARES share:</p>
+<div class="last highlight-python"><div class="highlight"><pre>sudo chgrp -R __USERS__ /home/samba/shares/arev
 sudo chmod -R g+s /home/samba/shares/arev
 </pre></div>
 </div>
-</li>
-<li><p class="first">Third, lftp will run in non-interactive mode, taking its commands from a
-script file. The script file should be saved as <tt class="file docutils literal"><span class="pre">/etc/waresedi.conf</span></tt>,
+</div>
+</div>
+<div class="section" id="configure-server-ftp">
+<h2>Configure Server FTP<a class="headerlink" href="#configure-server-ftp" title="Permalink to this headline">¶</a></h2>
+<p>The Linux server must have a competent ftp client. Open a console session on the
+server, and install lftp with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install lftp
+</pre></div>
+</div>
+<p>The lftp program will run in non-interactive mode, taking its commands from a
+script file. The script file should be saved as <code class="file docutils literal"><span class="pre">/etc/waresedi.conf</span></code>,
 with owner <strong>root:root</strong> and permissions <strong>600</strong>. The text of a sample file
 follows:</p>
 <div class="highlight-python"><div class="highlight"><pre>lcd /home/samba/shares/arev/connect
@@ -106,13 +131,23 @@ mget -c -E ./{INBOX}/* -O ./rcv
 quit
 </pre></div>
 </div>
-</li>
-</ol>
+</div>
 <div class="section" id="schedule-exchange-in-webmin">
 <h2>Schedule Exchange in Webmin<a class="headerlink" href="#schedule-exchange-in-webmin" title="Permalink to this headline">¶</a></h2>
-<p>Using <em>Webmin</em>, <em class="menuselection">System ‣ Schedule</em> cron jobs, make a job with
-the following command:</p>
+<p>For convenience, remap data shares for the <cite>root</cite> user. Open a console session
+on the server, and type the following commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo ln -s /home/samba/shares/shared /S
+sudo ln -s /home/samba/shares/wares /W
+</pre></div>
+</div>
+<p>Next use the browser to login to <em>Webmin</em> at <a class="reference external" href="https://officeserver:1000">https://officeserver:1000</a>. From
+the left menu, select <em class="menuselection">System ‣ Schedule</em> cron jobs, and make
+a job with the following command:</p>
 <div class="highlight-python"><div class="highlight"><pre>date &gt;&gt; /var/log/cron.log; lftp -f /etc/waresedi.conf 1&gt;&gt; /var/log/cron.log 2&gt;&gt; /var/log/cron.log
+</pre></div>
+</div>
+<p>Add the following at the end of the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>; chgrp -R /W/connect/rcv ; getfacl --access /W | setfacl -M- /W/connect/rcv/*
 </pre></div>
 </div>
 <p>Schedule the job to run every 15 minutes between 7 am and 7 pm. Test run the
@@ -133,7 +168,7 @@ file to rotate. Accept the default management options for the new log.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -142,9 +177,9 @@ file to rotate. Accept the default management options for the new log.</p>
         <li><a href="index.html">AAltsys Server Administration 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

@@ -27,8 +27,8 @@
     <link rel="next" title="Network Options with SysRescue" href="05_networking.html" />
     <link rel="prev" title="SysRescue First Steps" href="02_firststeps.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -77,12 +77,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="05_networking.html"
                         title="next chapter">Network Options with SysRescue</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/03_bootoptions.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/03_bootoptions.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -101,7 +103,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="sysem-rescue-cd-boot-options">
 <h1>Sysem Rescue CD Boot Options<a class="headerlink" href="#sysem-rescue-cd-boot-options" title="Permalink to this headline">¶</a></h1>
@@ -169,29 +171,29 @@ These kernels are available:
 <p class="first admonition-title">Note</p>
 <p class="last">To boot from a CD-ROM ensure that the BIOS is configured to boot from a CD drive before the hard disk. To start SystemRescueCd, insert the CD in the drive, and power on or reset your computer.</p>
 </div>
-<p>Move up and down the SystemRescueCD menu with the cursor keys. To change the options for a selection, press <tt class="kbd docutils literal"><span class="pre">&lt;Tab&gt;</span></tt>; press <tt class="kbd docutils literal"><span class="pre">&lt;Esc&gt;</span></tt> to return to the menu from the options entry line. Press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> at any time to start the highlighted selection.</p>
+<p>Move up and down the SystemRescueCD menu with the cursor keys. To change the options for a selection, press <code class="kbd docutils literal"><span class="pre">&lt;Tab&gt;</span></code>; press <code class="kbd docutils literal"><span class="pre">&lt;Esc&gt;</span></code> to return to the menu from the options entry line. Press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code> at any time to start the highlighted selection.</p>
 <p>As the system begins to load, if you did not disable this option, the map for your keyboard will be requested. Next, the kernel will continue to load, and the hardware configuration will be autodetected. Boot scripts will load kernel modules required for all detected hardware automatically. Boot will end with a shell prompt, where you have several linux consoles available. You can change between them by pressing Alt+F1 for the first one, Alt+F2 for the second, ...</p>
 </div>
 <div class="section" id="boot-options">
 <h2>Boot options<a class="headerlink" href="#boot-options" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="general-boot-options">
 <h3>General boot options<a class="headerlink" href="#general-boot-options" title="Permalink to this headline">¶</a></h3>
-<p>Press <tt class="kbd docutils literal"><span class="pre">&lt;Tab&gt;</span></tt> to add additional options.</p>
+<p>Press <code class="kbd docutils literal"><span class="pre">&lt;Tab&gt;</span></code> to add additional options.</p>
 <ul class="simple">
 <li><strong>docache</strong>: causes the CD-ROM to be fully loaded into memory. A slower start but once complete, programs start faster and the CD drive will be released allowing normal access to other CDs. This requires 400MB of memory to cache everything (including the bootdisks and isolinux directories). Add lowmem if you have less that 400MB of memory of to prevent these directories from being copied.</li>
-<li><strong>setkmap=kk</strong>: defines the keymap to load (example: <tt class="kbd docutils literal"><span class="pre">setkmap=de</span></tt> for German keyboards). This way you will not be prompted for the keyboard configuration during the boot.</li>
-<li><strong>root=/dev/xdnp</strong>: the <em>root=&lt;device&gt;</em> option boots an existing linux system. For example, if you have linux Gentoo installed on <em>/dev/sda6</em>, use <tt class="kbd docutils literal"><span class="pre">rescuecd</span> <span class="pre">root=/dev/sda6</span></tt> to start it. Keep in mind that you must use a 64bit kernel if your system is made of 64bit programs. This option works with LVM volumes, e.g., <tt class="kbd docutils literal"><span class="pre">rescuecd</span> <span class="pre">root=/dev/VolGroup00/LogVol00</span></tt>. The option <tt class="kbd docutils literal"><span class="pre">root=auto</span></tt> will scan all the block devices for a linux system; the first linux system found will be started. So <em>root=auto</em> lets you start the system installed from the CD-ROM in case you have problem with your boot loader or kernel. If the label of the partition where linux is installed is <em>mylinux</em>, then boot it using rescuecd <tt class="kbd docutils literal"><span class="pre">root=LABEL=mylinux</span></tt>. Similarly specify a partition using its uuid: <tt class="kbd docutils literal"><span class="pre">root=UUID=b3d3bec5-997a-413e-8449-0d0ec41ccba7</span></tt>.</li>
-<li><strong>initscript=service:action</strong>: This option allows one to start/stop a service at boot time. For instance if you need the samba service to be started, you can boot with: <tt class="kbd docutils literal"><span class="pre">initscript=samba:start</span></tt>. This does the same thing as <em>/etc/init.d/samba start</em>. Use this option a multiple of times for different services. All the actions that are supported by an initscript can be used.</li>
-<li><strong>backstore=xxx</strong>: SystemRescueCd comes with support for the backing-stores. A backing-store saves all the changes you can make, so that you keep these changes the next time you boot. By default, sysresccd automatically scan removable devices (eg: USB sticks) at boot time and uses the first backing-store it finds. A backing-store is not mandatory and if the scan fails, it will store the files which have changed in memory. To disable the disks scan at boot time specify <tt class="kbd docutils literal"><span class="pre">backstore=off</span></tt> on the boot command line. If you want to save your backing-store file on a harddisk, boot with <tt class="kbd docutils literal"><span class="pre">backstore=alldev</span></tt> to scan all devices (not just removable devices). The default location for a backing-stores file is any file named <em>sysrcd.bs</em> located at the root of a disk which is often a USB stick. Change the path by using <tt class="kbd docutils literal"><span class="pre">backstore=/sysrcd/mybackstore.bs</span></tt>.</li>
-<li><strong>isoloop=xxx</strong>: Grub2 will boot from an ISO image which is stored on the hard disk. If you put a copy of <em>systemrescuecd.iso</em> on a partition that Grub2 can read then you can boot SystemRescueCd directly from the ISO image stored on your hard drive. When booting an image, SystemRescueCd must be aware that its <em>sysrcd.dat</em> file is in an ISO and not directly on the partition. For that reason, this <tt class="kbd docutils literal"><span class="pre">isoloop=xxx</span></tt> boot option is required in your <em>grub.cfg</em>. This option specifies the path of the ISO image in the partition that grub considers as its root partition. The path of the ISO image may be different from the path on your linux system. If you have a separate boot partition mounted on <em>/boot</em> and if you copy this ISO image to <em>/boot/sysrcd/systemrescuecd-x86.iso</em> then the option has to be <tt class="kbd docutils literal"><span class="pre">isoloop=/sysrcd/systemrescuecd-x86.iso</span></tt>. This is because the boot partition is what Grub2 will consider as its root partition during the boot process.</li>
+<li><strong>setkmap=kk</strong>: defines the keymap to load (example: <code class="kbd docutils literal"><span class="pre">setkmap=de</span></code> for German keyboards). This way you will not be prompted for the keyboard configuration during the boot.</li>
+<li><strong>root=/dev/xdnp</strong>: the <em>root=&lt;device&gt;</em> option boots an existing linux system. For example, if you have linux Gentoo installed on <em>/dev/sda6</em>, use <code class="kbd docutils literal"><span class="pre">rescuecd</span> <span class="pre">root=/dev/sda6</span></code> to start it. Keep in mind that you must use a 64bit kernel if your system is made of 64bit programs. This option works with LVM volumes, e.g., <code class="kbd docutils literal"><span class="pre">rescuecd</span> <span class="pre">root=/dev/VolGroup00/LogVol00</span></code>. The option <code class="kbd docutils literal"><span class="pre">root=auto</span></code> will scan all the block devices for a linux system; the first linux system found will be started. So <em>root=auto</em> lets you start the system installed from the CD-ROM in case you have problem with your boot loader or kernel. If the label of the partition where linux is installed is <em>mylinux</em>, then boot it using rescuecd <code class="kbd docutils literal"><span class="pre">root=LABEL=mylinux</span></code>. Similarly specify a partition using its uuid: <code class="kbd docutils literal"><span class="pre">root=UUID=b3d3bec5-997a-413e-8449-0d0ec41ccba7</span></code>.</li>
+<li><strong>initscript=service:action</strong>: This option allows one to start/stop a service at boot time. For instance if you need the samba service to be started, you can boot with: <code class="kbd docutils literal"><span class="pre">initscript=samba:start</span></code>. This does the same thing as <em>/etc/init.d/samba start</em>. Use this option a multiple of times for different services. All the actions that are supported by an initscript can be used.</li>
+<li><strong>backstore=xxx</strong>: SystemRescueCd comes with support for the backing-stores. A backing-store saves all the changes you can make, so that you keep these changes the next time you boot. By default, sysresccd automatically scan removable devices (eg: USB sticks) at boot time and uses the first backing-store it finds. A backing-store is not mandatory and if the scan fails, it will store the files which have changed in memory. To disable the disks scan at boot time specify <code class="kbd docutils literal"><span class="pre">backstore=off</span></code> on the boot command line. If you want to save your backing-store file on a harddisk, boot with <code class="kbd docutils literal"><span class="pre">backstore=alldev</span></code> to scan all devices (not just removable devices). The default location for a backing-stores file is any file named <em>sysrcd.bs</em> located at the root of a disk which is often a USB stick. Change the path by using <code class="kbd docutils literal"><span class="pre">backstore=/sysrcd/mybackstore.bs</span></code>.</li>
+<li><strong>isoloop=xxx</strong>: Grub2 will boot from an ISO image which is stored on the hard disk. If you put a copy of <em>systemrescuecd.iso</em> on a partition that Grub2 can read then you can boot SystemRescueCd directly from the ISO image stored on your hard drive. When booting an image, SystemRescueCd must be aware that its <em>sysrcd.dat</em> file is in an ISO and not directly on the partition. For that reason, this <code class="kbd docutils literal"><span class="pre">isoloop=xxx</span></code> boot option is required in your <em>grub.cfg</em>. This option specifies the path of the ISO image in the partition that grub considers as its root partition. The path of the ISO image may be different from the path on your linux system. If you have a separate boot partition mounted on <em>/boot</em> and if you copy this ISO image to <em>/boot/sysrcd/systemrescuecd-x86.iso</em> then the option has to be <code class="kbd docutils literal"><span class="pre">isoloop=/sysrcd/systemrescuecd-x86.iso</span></code>. This is because the boot partition is what Grub2 will consider as its root partition during the boot process.</li>
 </ul>
 </div>
 <div class="section" id="hardware-drivers-and-troubleshooting-options">
 <h3>Hardware, drivers and troubleshooting options<a class="headerlink" href="#hardware-drivers-and-troubleshooting-options" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><strong>dodebug</strong>: Enables verbose messages in linuxrc.</li>
-<li><strong>doload=xxx</strong>: loads needed kernel modules, multiple comma separated occurrences are permitted (example: <tt class="kbd docutils literal"><span class="pre">doload=3c59x,e1000</span></tt>).</li>
-<li><strong>noload=xxx</strong>: prevents loading kernel modules, multiple comma separated occurrences are permitted (example: <tt class="kbd docutils literal"><span class="pre">noload=3c59x,e1000</span></tt>). Use this option if you have a problem when the system loads a particular module.</li>
+<li><strong>doload=xxx</strong>: loads needed kernel modules, multiple comma separated occurrences are permitted (example: <code class="kbd docutils literal"><span class="pre">doload=3c59x,e1000</span></code>).</li>
+<li><strong>noload=xxx</strong>: prevents loading kernel modules, multiple comma separated occurrences are permitted (example: <code class="kbd docutils literal"><span class="pre">noload=3c59x,e1000</span></code>). Use this option if you have a problem when the system loads a particular module.</li>
 <li><strong>nonet</strong>: this will disable the network auto detection at startup.</li>
 <li><strong>scandelay=x</strong>: pauses x seconds during the startup to allow slow devices to initialize. This is required when you boot a USB device. A delay of only few seconds should be enough.</li>
 <li><strong>doxdetect</strong>: This option forces the system to run the <em>mkxf86config</em> startup script and to run the hardware auto-detection from this script. Use this option if you have problems with the graphical environment configuration. This option replaces the option noxdetect that was useful in previous versions.</li>
@@ -199,19 +201,19 @@ These kernels are available:
 <li><strong>nomodeset</strong>: Do not load the Kernel-Mode-Setting video driver. You can use that option if you are experiencing problems with your screen during the boot process (just after modules are being loaded).</li>
 <li><strong>dostartx</strong>: load the X.Org graphical environment.</li>
 <li><strong>forcevesa</strong>: Forces X.Org to use the safe VESA driver instead of the best video driver detected for your video card. Use this option if you cannot get the graphical environment working with the default options.</li>
-<li><strong>forcevesa=xxx</strong>: The startx command will load the Xvesa server instead of Xorg, and use the screen resolution given as parameter (e.g. <tt class="kbd docutils literal"><span class="pre">1024x768</span></tt>, <tt class="kbd docutils literal"><span class="pre">1280x1024x32</span></tt>).</li>
-<li><strong>all-generic-ide</strong>: In case of problems related to your hard disk, try to enable this option (e.g. <tt class="kbd docutils literal"><span class="pre">rescuecd</span> <span class="pre">all-generic-ide</span></tt>).</li>
+<li><strong>forcevesa=xxx</strong>: The startx command will load the Xvesa server instead of Xorg, and use the screen resolution given as parameter (e.g. <code class="kbd docutils literal"><span class="pre">1024x768</span></code>, <code class="kbd docutils literal"><span class="pre">1280x1024x32</span></code>).</li>
+<li><strong>all-generic-ide</strong>: In case of problems related to your hard disk, try to enable this option (e.g. <code class="kbd docutils literal"><span class="pre">rescuecd</span> <span class="pre">all-generic-ide</span></code>).</li>
 <li><strong>nodmraid</strong>: Disable dmraid, for some motherboards with built-in RAID controller.</li>
 <li><strong>nomdadm</strong>: Disable mdadm, for software RAID.</li>
 <li><strong>acpi-off / noapic / irqpool</strong>: use these options if, during boot, the kernel hangs on a driver, or if it crashes, ...</li>
 <li><strong>lowmem</strong>: For systems with smaller memory, some daemons are not started including <em>sshd</em> and <em>nfsd</em>.</li>
-<li><strong>skipmount=/dev/xxx</strong>: The system mounts all the storage devices at boot time to find the <em>sysrcd.dat</em> file. If your hard disk is broken it should not be mounted. Boot with <tt class="kbd docutils literal"><span class="pre">skipmount=/dev/sda1</span> <span class="pre">skipmount=/dev/sda2</span></tt> to ignore these two partitions, for example.</li>
+<li><strong>skipmount=/dev/xxx</strong>: The system mounts all the storage devices at boot time to find the <em>sysrcd.dat</em> file. If your hard disk is broken it should not be mounted. Boot with <code class="kbd docutils literal"><span class="pre">skipmount=/dev/sda1</span> <span class="pre">skipmount=/dev/sda2</span></code> to ignore these two partitions, for example.</li>
 </ul>
 </div>
 <div class="section" id="network-configuration-and-remote-access">
 <h3>Network configuration and remote access<a class="headerlink" href="#network-configuration-and-remote-access" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first"><strong>nonm</strong>: Use this option to disable the Network-Manager service that conflicts with the standard network command line tools such as <tt class="kbd docutils literal"><span class="pre">ifconfig</span></tt> and <tt class="kbd docutils literal"><span class="pre">ip</span></tt>. This option is not necessary when SystemRescueCd is booting from the network since the service is automatically stopped in that case.</p>
+<li><p class="first"><strong>nonm</strong>: Use this option to disable the Network-Manager service that conflicts with the standard network command line tools such as <code class="kbd docutils literal"><span class="pre">ifconfig</span></code> and <code class="kbd docutils literal"><span class="pre">ip</span></code>. This option is not necessary when SystemRescueCd is booting from the network since the service is automatically stopped in that case.</p>
 </li>
 <li><p class="first"><strong>dodhcp</strong>: will request a DHCP server provide network attributes including IP address, gateway, and so forth. If there are multiple interfaces on the computer it will run the dhcp client on all of them by default, when no argument is specified with this option. Optionally specify which interfaces should be configured with dhcp to combine static and dynamic addresses in the automatic Ethernet configuration. For example, to use dhcp for <em>eth0</em> and <em>eth2</em> and a static address on <em>eth1</em>, you can use options like:</p>
 <div class="highlight-python"><div class="highlight"><pre>dodhcp=eth0,eth2 eth1=192.168.128.1/24.
@@ -220,21 +222,21 @@ These kernels are available:
 </li>
 <li><p class="first"><strong>nodhcp</strong>: never run the dhcp client in the initramfs boot script. May be useful if you use PXE boot on a computer with several ethernet interfaces.</p>
 </li>
-<li><p class="first"><strong>ethx=ipaddr/cidr</strong>: Sets the static IP address of all the ethernet interfaces on the system. The <tt class="kbd docutils literal"><span class="pre">/cidr</span></tt> extension is optional. For instance, if you use option <tt class="kbd docutils literal"><span class="pre">ethx=192.168.0.1</span></tt> on a machine with two ethernet adapters, both <em>eth0</em> and <em>eth1</em> will be configured with <em>192.168.0.1</em>. You can use the format <tt class="kbd docutils literal"><span class="pre">ethx=10.0.0.1/24</span></tt> (using the cidr notation) if you do not use the default netmask.</p>
+<li><p class="first"><strong>ethx=ipaddr/cidr</strong>: Sets the static IP address of all the ethernet interfaces on the system. The <code class="kbd docutils literal"><span class="pre">/cidr</span></code> extension is optional. For instance, if you use option <code class="kbd docutils literal"><span class="pre">ethx=192.168.0.1</span></code> on a machine with two ethernet adapters, both <em>eth0</em> and <em>eth1</em> will be configured with <em>192.168.0.1</em>. You can use the format <code class="kbd docutils literal"><span class="pre">ethx=10.0.0.1/24</span></code> (using the cidr notation) if you do not use the default netmask.</p>
 </li>
-<li><p class="first"><strong>eth0=ipaddr/cidr</strong>: This option is similar to <em>ethx=ipaddr/cidr</em> but it configures only one interface at a time. To configure the network on a server that has two interfaces, use, for example: <tt class="kbd docutils literal"><span class="pre">eth0=192.168.10.1/24</span> <span class="pre">eth1=192.168.20.1</span></tt>.</p>
+<li><p class="first"><strong>eth0=ipaddr/cidr</strong>: This option is similar to <em>ethx=ipaddr/cidr</em> but it configures only one interface at a time. To configure the network on a server that has two interfaces, use, for example: <code class="kbd docutils literal"><span class="pre">eth0=192.168.10.1/24</span> <span class="pre">eth1=192.168.20.1</span></code>.</p>
 </li>
-<li><p class="first"><strong>dns=ipaddr</strong>: Sets the static IP address of the DNS nameserver you want to use to resolve the names. For instance <tt class="kbd docutils literal"><span class="pre">dns=192.168.0.254</span></tt> means that you want to use <em>192.168.0.254</em> as the DNS server.</p>
+<li><p class="first"><strong>dns=ipaddr</strong>: Sets the static IP address of the DNS nameserver you want to use to resolve the names. For instance <code class="kbd docutils literal"><span class="pre">dns=192.168.0.254</span></code> means that you want to use <em>192.168.0.254</em> as the DNS server.</p>
 </li>
-<li><p class="first"><strong>gateway=ipaddr</strong>: Sets the static IP address of the default route on your network. For instance <tt class="kbd docutils literal"><span class="pre">gateway=192.168.0.254</span></tt> means that the computer can connect to a computer outside of the local network via <em>192.168.0.254</em>.</p>
+<li><p class="first"><strong>gateway=ipaddr</strong>: Sets the static IP address of the default route on your network. For instance <code class="kbd docutils literal"><span class="pre">gateway=192.168.0.254</span></code> means that the computer can connect to a computer outside of the local network via <em>192.168.0.254</em>.</p>
 </li>
 <li><p class="first"><strong>dhcphostname=myhost</strong>: Sets the hostname that the DHCP client will send to the DHCP server. This may be required if the default hostname cannot be used with your DHCP configuration.</p>
 </li>
 <li><p class="first"><strong>rootpass=123456</strong>: Sets the root password of the system running on the livecd to <em>123456</em>. That way you can connect from the network and ssh on the livecd and give <em>123456</em> password as the root password.</p>
 </li>
-<li><p class="first"><strong>vncserver=x:123456</strong>: This options forces the system to configure the VNC-server and to start it automatically at boot time. You have to replace <em>x</em> with the number of displays you want, and <em>123456</em> with your password. The password must be between 5 and 12 characters, else the boot option will be ignored. In other words the command option <tt class="kbd docutils literal"><span class="pre">vncserver=2:MyPaSsWd</span></tt> will give you access to two displays, display=1 on tcp/5901 and display=2 on tcp/5902 (Display 0 is reserved for X.Org).</p>
+<li><p class="first"><strong>vncserver=x:123456</strong>: This options forces the system to configure the VNC-server and to start it automatically at boot time. You have to replace <em>x</em> with the number of displays you want, and <em>123456</em> with your password. The password must be between 5 and 12 characters, else the boot option will be ignored. In other words the command option <code class="kbd docutils literal"><span class="pre">vncserver=2:MyPaSsWd</span></code> will give you access to two displays, display=1 on tcp/5901 and display=2 on tcp/5902 (Display 0 is reserved for X.Org).</p>
 </li>
-<li><p class="first"><strong>nameif=xxx</strong>: You can specify what interface name to give to a particular interface using the mac address. Here is how you can specify which interface is using which mac address on a machine with two network interfaces: <tt class="kbd docutils literal"><span class="pre">nameif=eth0!00:0C:29:57:D0:6E,eth1!00:0C:29:57:D0:64</span></tt>. Be careful, you have to respect the separator (comma between the interfaces and exclamation marks between the name and the mac address). You can also use the magic keyword <tt class="kbd docutils literal"><span class="pre">BOOTIF</span></tt> when you boot from pxelinux. The pxeboot loader will set <em>BOOTIF</em> to the name of the interface used to boot. You can then use something like <tt class="kbd docutils literal"><span class="pre">nameif=eth0!BOOTIF</span></tt> if you want the boot interface to be called <em>eth0</em> on a computer with several Ethernet interfaces.</p>
+<li><p class="first"><strong>nameif=xxx</strong>: You can specify what interface name to give to a particular interface using the mac address. Here is how you can specify which interface is using which mac address on a machine with two network interfaces: <code class="kbd docutils literal"><span class="pre">nameif=eth0!00:0C:29:57:D0:6E,eth1!00:0C:29:57:D0:64</span></code>. Be careful, you have to respect the separator (comma between the interfaces and exclamation marks between the name and the mac address). You can also use the magic keyword <code class="kbd docutils literal"><span class="pre">BOOTIF</span></code> when you boot from pxelinux. The pxeboot loader will set <em>BOOTIF</em> to the name of the interface used to boot. You can then use something like <code class="kbd docutils literal"><span class="pre">nameif=eth0!BOOTIF</span></code> if you want the boot interface to be called <em>eth0</em> on a computer with several Ethernet interfaces.</p>
 </li>
 </ul>
 </div>
@@ -256,7 +258,7 @@ Several protocols are available.</p>
 <h2>Options provided for autorun<a class="headerlink" href="#options-provided-for-autorun" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><strong>ar_source=xxx</strong>: place where the autorun are stored. It may be the root directory of a partition (<em>/dev/sda1</em>), an nfs share (<em>nfs://192.168.1.1:/path/to/scripts</em>), a samba share (<em>smb://192.168.1.1/path/to/scripts</em>), or an http directory (<em>http://192.168.1.1/path/to/scripts</em>).</li>
-<li><strong>autoruns=[0-9]</strong>: comma separated list of the autorun script to be run. For example, the option <tt class="kbd docutils literal"><span class="pre">autoruns=0,2,7</span></tt> will run the scripts <em>autorun0</em>, <em>autorun2</em>, and <em>autorun7</em>. Use <tt class="kbd docutils literal"><span class="pre">autoruns=no</span></tt> to disable all the autorun scripts with a number.</li>
+<li><strong>autoruns=[0-9]</strong>: comma separated list of the autorun script to be run. For example, the option <code class="kbd docutils literal"><span class="pre">autoruns=0,2,7</span></code> will run the scripts <em>autorun0</em>, <em>autorun2</em>, and <em>autorun7</em>. Use <code class="kbd docutils literal"><span class="pre">autoruns=no</span></code> to disable all the autorun scripts with a number.</li>
 <li><strong>ar_ignorefail</strong>: continue to execute the scripts chain even if a script failed (returned a non-zero status).</li>
 <li><strong>ar_nodel</strong>: do not delete the temporary copy of the autorun scripts located in <em>/var/autorun/tmp</em> after execution.</li>
 <li><strong>ar_disable</strong>: completely disable autorun, the simple autorun script will not be executed.</li>
@@ -298,7 +300,7 @@ Several protocols are available.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -310,9 +312,9 @@ Several protocols are available.</p>
         <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

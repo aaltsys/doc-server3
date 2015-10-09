@@ -27,8 +27,8 @@
     <link rel="next" title="Sysem Rescue CD Boot Options" href="03_bootoptions.html" />
     <link rel="prev" title="System Rescue CD Overview" href="01_overview.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -66,12 +66,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="03_bootoptions.html"
                         title="next chapter">Sysem Rescue CD Boot Options</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/02_firststeps.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/02_firststeps.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -90,7 +92,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="sysrescue-first-steps">
 <h1>SysRescue First Steps<a class="headerlink" href="#sysrescue-first-steps" title="Permalink to this headline">¶</a></h1>
@@ -102,14 +104,14 @@
 <h2>Booting from SystemRescueCd<a class="headerlink" href="#booting-from-systemrescuecd" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Insert the SystemRescueCd and boot your system.</li>
-<li>Use <tt class="kbd docutils literal"><span class="pre">Up</span></tt> or <tt class="kbd docutils literal"><span class="pre">Down</span></tt> cursor keys to move the menu highlight.</li>
-<li>Press <tt class="kbd docutils literal"><span class="pre">F2/F3/F4/F5/F6</span></tt> to read advanced boot instructions.</li>
-<li>Press <tt class="kbd docutils literal"><span class="pre">&lt;Tab&gt;</span></tt> to edit options on any line.</li>
-<li>Press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> to boot the currently selected item.</li>
+<li>Use <code class="kbd docutils literal"><span class="pre">Up</span></code> or <code class="kbd docutils literal"><span class="pre">Down</span></code> cursor keys to move the menu highlight.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">F2/F3/F4/F5/F6</span></code> to read advanced boot instructions.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">&lt;Tab&gt;</span></code> to edit options on any line.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code> to boot the currently selected item.</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">A boot command has two parts: the boot image name, and the boot options. When editing a command, use spaces to separate options. For example you may want to boot with <em>rescue64</em> as boot-image and <em>docache setkmap=us</em> as boot-options. The resulting command would be <tt class="kbd docutils literal"><span class="pre">rescue64</span> <span class="pre">docache</span> <span class="pre">setkmap=us</span></tt>.</p>
+<p class="last">A boot command has two parts: the boot image name, and the boot options. When editing a command, use spaces to separate options. For example you may want to boot with <em>rescue64</em> as boot-image and <em>docache setkmap=us</em> as boot-options. The resulting command would be <code class="kbd docutils literal"><span class="pre">rescue64</span> <span class="pre">docache</span> <span class="pre">setkmap=us</span></code>.</p>
 </div>
 <div class="section" id="main-boot-images">
 <h3>Main boot images<a class="headerlink" href="#main-boot-images" title="Permalink to this headline">¶</a></h3>
@@ -127,7 +129,7 @@
 <ul class="simple">
 <li><strong>docache</strong>: Copies the SysRescueCD files to RAMfs, which permits the CD to be ejected and which means programs will load faster.</li>
 <li><strong>setkmap=cc</strong>: Specify keyboard: <em>us</em> for USA, <em>uk</em> for british, <em>de</em> for german, ...</li>
-<li><strong>root=/dev/idxn</strong>: the <em>root=&lt;device&gt;</em> option boots an existing linux system. For example, if you have a linux Gentoo installed on <em>/dev/sda6</em>, use <tt class="kbd docutils literal"><span class="pre">rescuecd</span> <span class="pre">root=/dev/sda6</span></tt>.</li>
+<li><strong>root=/dev/idxn</strong>: the <em>root=&lt;device&gt;</em> option boots an existing linux system. For example, if you have a linux Gentoo installed on <em>/dev/sda6</em>, use <code class="kbd docutils literal"><span class="pre">rescuecd</span> <span class="pre">root=/dev/sda6</span></code>.</li>
 <li><strong>ide=nodma</strong> or <strong>all-generic-ide</strong>: Use these options if the kernel boot process hangs on a driver related to storage.</li>
 <li><strong>doxdetect</strong> or <strong>forcevesa</strong>: Use these options if you cannot get the graphical environment to work.</li>
 <li><strong>acpi-off / noapic / irqpool</strong>: Use these options to solve kernel boot problems.</li>
@@ -138,21 +140,21 @@
 <h2>Additional Programs<a class="headerlink" href="#additional-programs" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Some included programs boot from their own floppy image. Choose <tt class="kbd docutils literal"><span class="pre">F)</span> <span class="pre">Run</span> <span class="pre">system</span> <span class="pre">tools</span> <span class="pre">from</span> <span class="pre">floppy</span> <span class="pre">disk</span> <span class="pre">image</span> <span class="pre">...</span></tt> to select from a menu of these programs.</p>
+<p class="last">Some included programs boot from their own floppy image. Choose <code class="kbd docutils literal"><span class="pre">F)</span> <span class="pre">Run</span> <span class="pre">system</span> <span class="pre">tools</span> <span class="pre">from</span> <span class="pre">floppy</span> <span class="pre">disk</span> <span class="pre">image</span> <span class="pre">...</span></code> to select from a menu of these programs.</p>
 </div>
 <div class="section" id="working-in-the-console-mode">
 <h3>Working in the console mode<a class="headerlink" href="#working-in-the-console-mode" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Mount disk partitions in order to troubleshoot an installed Linux or a Windows system. You can mount linux filesystems (ext2fs, ext3fs, reiserfs, reiser4, jfs, xfs) and FAT and NTFS partitions used by MS Windows (eg: <tt class="kbd docutils literal"><span class="pre">ntfs-3g</span> <span class="pre">/dev/sda1</span> <span class="pre">/mnt/windows</span></tt>).</li>
+<li>Mount disk partitions in order to troubleshoot an installed Linux or a Windows system. You can mount linux filesystems (ext2fs, ext3fs, reiserfs, reiser4, jfs, xfs) and FAT and NTFS partitions used by MS Windows (eg: <code class="kbd docutils literal"><span class="pre">ntfs-3g</span> <span class="pre">/dev/sda1</span> <span class="pre">/mnt/windows</span></code>).</li>
 <li>You can backup/restore data or operating system files.</li>
-<li>Midnight Commander (type <tt class="kbd docutils literal"><span class="pre">mc</span></tt>) is able to copy/move/delete/edit files and directories.</li>
+<li>Midnight Commander (type <code class="kbd docutils literal"><span class="pre">mc</span></code>) is able to copy/move/delete/edit files and directories.</li>
 <li><strong>vim</strong> and <strong>qemacs</strong> editors can be used to edit files.</li>
-<li>Six virtual consoles are available. Press <tt class="kbd docutils literal"><span class="pre">Alt+F1</span></tt> for the first virtual console, <tt class="kbd docutils literal"><span class="pre">Alt+F2</span></tt> for the second one, ...</li>
+<li>Six virtual consoles are available. Press <code class="kbd docutils literal"><span class="pre">Alt+F1</span></code> for the first virtual console, <code class="kbd docutils literal"><span class="pre">Alt+F2</span></code> for the second one, ...</li>
 </ul>
 </div>
 <div class="section" id="working-in-the-graphical-environment">
 <h3>Working in the graphical environment<a class="headerlink" href="#working-in-the-graphical-environment" title="Permalink to this headline">¶</a></h3>
-<p>To use graphical tools (such as <em>GParted</em>), start the graphical environment by typing <tt class="kbd docutils literal"><span class="pre">wizard</span></tt>. There are two graphical environments: <em>Xorg</em> and <em>Xvesa</em>. Try <em>Xorg</em> first, but if it fails to start, run <tt class="kbd docutils literal"><span class="pre">wizard</span></tt> again and choose <em>Xvesa</em> which should always work. The drawback is that <em>Xvesa</em> is not optimized for your hardware and it requires a 32bit kernel (<em>rescuecd</em> or <em>altker32</em>); it is not available on 64bit kernels (<em>rescue64</em> and <em>altker64</em>).</p>
+<p>To use graphical tools (such as <em>GParted</em>), start the graphical environment by typing <code class="kbd docutils literal"><span class="pre">wizard</span></code>. There are two graphical environments: <em>Xorg</em> and <em>Xvesa</em>. Try <em>Xorg</em> first, but if it fails to start, run <code class="kbd docutils literal"><span class="pre">wizard</span></code> again and choose <em>Xvesa</em> which should always work. The drawback is that <em>Xvesa</em> is not optimized for your hardware and it requires a 32bit kernel (<em>rescuecd</em> or <em>altker32</em>); it is not available on 64bit kernels (<em>rescue64</em> and <em>altker64</em>).</p>
 <p>The graphical environment allows you to work with <em>GParted</em> (partition manager), to use graphical editors (<em>Geany</em> or <em>GVim</em>), to browse the web with <em>Firefox</em> and use terminals like <em>xfce-terminal</em> or <em>mrxvt</em>.</p>
 </div>
 </div>
@@ -165,13 +167,13 @@
 <blockquote>
 <div><div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">To configure the network by hand using <em>dhcp</em>, <em>net-setup</em>, or <em>ifconfig</em>, first you must stop the <em>Network-Manager</em> service: <tt class="kbd docutils literal"><span class="pre">/etc/init.d/NetworkManager</span> <span class="pre">stop</span></tt>.</p>
+<p class="last">To configure the network by hand using <em>dhcp</em>, <em>net-setup</em>, or <em>ifconfig</em>, first you must stop the <em>Network-Manager</em> service: <code class="kbd docutils literal"><span class="pre">/etc/init.d/NetworkManager</span> <span class="pre">stop</span></code>.</p>
 </div>
 </div></blockquote>
 <ul class="simple">
-<li><strong>dhcpd</strong>: To use dynamic configuration, at the command shell type <tt class="kbd docutils literal"><span class="pre">dhcpcd</span> <span class="pre">eth0</span></tt>. Use <tt class="kbd docutils literal"><span class="pre">ifconfig</span> <span class="pre">-a</span></tt> to display the IP address which the DHCP server leased to the interface.</li>
-<li><strong>net-setup</strong>: To configure the network by hand from text mode, type <tt class="kbd docutils literal"><span class="pre">net-setup</span></tt> at the shell prompt.</li>
-<li><strong>ifconfig</strong>, <strong>route</strong>: You can also use shell commands to configure a network interface, assigning an IP address and a default gateway. To assign a specific static IP address, enter something such as: <tt class="kbd docutils literal"><span class="pre">ifconfig</span> <span class="pre">eth0</span> <span class="pre">192.168.10.17</span></tt>. Next configure the default route gateway. For example, for an interface at address 192.168.10.17 connected to a gateway at 192.168.10.2, enter <tt class="kbd docutils literal"><span class="pre">route</span> <span class="pre">add</span> <span class="pre">default</span> <span class="pre">gw</span> <span class="pre">192.168.10.2</span></tt>.</li>
+<li><strong>dhcpd</strong>: To use dynamic configuration, at the command shell type <code class="kbd docutils literal"><span class="pre">dhcpcd</span> <span class="pre">eth0</span></code>. Use <code class="kbd docutils literal"><span class="pre">ifconfig</span> <span class="pre">-a</span></code> to display the IP address which the DHCP server leased to the interface.</li>
+<li><strong>net-setup</strong>: To configure the network by hand from text mode, type <code class="kbd docutils literal"><span class="pre">net-setup</span></code> at the shell prompt.</li>
+<li><strong>ifconfig</strong>, <strong>route</strong>: You can also use shell commands to configure a network interface, assigning an IP address and a default gateway. To assign a specific static IP address, enter something such as: <code class="kbd docutils literal"><span class="pre">ifconfig</span> <span class="pre">eth0</span> <span class="pre">192.168.10.17</span></code>. Next configure the default route gateway. For example, for an interface at address 192.168.10.17 connected to a gateway at 192.168.10.2, enter <code class="kbd docutils literal"><span class="pre">route</span> <span class="pre">add</span> <span class="pre">default</span> <span class="pre">gw</span> <span class="pre">192.168.10.2</span></code>.</li>
 </ul>
 </div>
 </div>
@@ -182,7 +184,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -194,9 +196,9 @@
         <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

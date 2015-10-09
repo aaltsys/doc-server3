@@ -27,8 +27,8 @@
     <link rel="next" title="SysRescue First Steps" href="02_firststeps.html" />
     <link rel="prev" title="Using SysRescue Utilities" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -58,12 +58,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="02_firststeps.html"
                         title="next chapter">SysRescue First Steps</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/01_overview.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/01_overview.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -82,7 +84,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="system-rescue-cd-overview">
 <h1>System Rescue CD Overview<a class="headerlink" href="#system-rescue-cd-overview" title="Permalink to this headline">¶</a></h1>
@@ -122,14 +124,14 @@
 <li>System messages are important. Read the text of messages for information about your system.</li>
 <li>You can login on another console.</li>
 <li>The root password is empty.</li>
-<li>To auto-configure networking, type <tt class="kbd docutils literal"><span class="pre">dhcpcd</span> <span class="pre">eth0</span></tt> (or similar). To set network addresses by hand, use the command <tt class="kbd docutils literal"><span class="pre">net-setup</span> <span class="pre">eth0</span></tt>.</li>
-<li>To start an ssh server on this system, type <tt class="kbd docutils literal"><span class="pre">/etc/init.d/sshd</span> <span class="pre">start</span></tt>. If you need to log in remotely as root, type <tt class="kbd docutils literal"><span class="pre">passwd</span> <span class="pre">root</span></tt> to reset the root password to a known value.</li>
-<li>To use graphical tools such as <em>GParted</em>, you can use a graphical environment by typing <tt class="kbd docutils literal"><span class="pre">wizard</span></tt> in the console. You will have the choice between two graphical environments: <em>Xorg</em> and <em>Xvesa</em>. Try Xorg first, but if it fails to start, run <tt class="kbd docutils literal"><span class="pre">wizard</span></tt> again and choose <em>Xvesa</em>. <em>Xvesa</em> should always work, provided you are using a 32bit kernel. (Xvesa does not work on 64bits kernels <em>rescue64</em> and <em>altker64</em>.)</li>
+<li>To auto-configure networking, type <code class="kbd docutils literal"><span class="pre">dhcpcd</span> <span class="pre">eth0</span></code> (or similar). To set network addresses by hand, use the command <code class="kbd docutils literal"><span class="pre">net-setup</span> <span class="pre">eth0</span></code>.</li>
+<li>To start an ssh server on this system, type <code class="kbd docutils literal"><span class="pre">/etc/init.d/sshd</span> <span class="pre">start</span></code>. If you need to log in remotely as root, type <code class="kbd docutils literal"><span class="pre">passwd</span> <span class="pre">root</span></code> to reset the root password to a known value.</li>
+<li>To use graphical tools such as <em>GParted</em>, you can use a graphical environment by typing <code class="kbd docutils literal"><span class="pre">wizard</span></code> in the console. You will have the choice between two graphical environments: <em>Xorg</em> and <em>Xvesa</em>. Try Xorg first, but if it fails to start, run <code class="kbd docutils literal"><span class="pre">wizard</span></code> again and choose <em>Xvesa</em>. <em>Xvesa</em> should always work, provided you are using a 32bit kernel. (Xvesa does not work on 64bits kernels <em>rescue64</em> and <em>altker64</em>.)</li>
 <li>Available editors include: <em>vim</em>, <em>nano</em>, <em>qemacs</em> in console mode. You can also use <em>gvim</em> and <em>leafpad</em> in the graphical environment.</li>
 </ul>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Mounting anything on <em>/mnt</em> will freeze the system! Use <tt class="kbd docutils literal"><span class="pre">mkdir</span> <span class="pre">/mnt/mydir</span></tt> and <tt class="kbd docutils literal"><span class="pre">mount</span> <span class="pre">xxx</span> <span class="pre">/mnt/mydir</span></tt> instead.</p>
+<p class="last">Mounting anything on <em>/mnt</em> will freeze the system! Use <code class="kbd docutils literal"><span class="pre">mkdir</span> <span class="pre">/mnt/mydir</span></code> and <code class="kbd docutils literal"><span class="pre">mount</span> <span class="pre">xxx</span> <span class="pre">/mnt/mydir</span></code> instead.</p>
 </div>
 </div>
 </div>
@@ -140,7 +142,7 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -152,9 +154,9 @@
         <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

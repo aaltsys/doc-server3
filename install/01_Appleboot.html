@@ -24,15 +24,15 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
-    <link rel="next" title="Use of Diskutil" href="02_diskutil.html" />
+    <link rel="next" title="Dual-Booting Mac Servers" href="02_macserver.html" />
     <link rel="prev" title="Installing an Operating System" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_diskutil.html" title="Use of Diskutil"
+          <a href="02_macserver.html" title="Dual-Booting Mac Servers"
              accesskey="N">next</a></li>
         <li class="right" >
           <a href="index.html" title="Installing an Operating System"
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -67,14 +67,16 @@
   <p class="topless"><a href="index.html"
                         title="previous chapter">Installing an Operating System</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="02_diskutil.html"
-                        title="next chapter">Use of Diskutil</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/01_Appleboot.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <p class="topless"><a href="02_macserver.html"
+                        title="next chapter">Dual-Booting Mac Servers</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/01_Appleboot.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -93,21 +95,24 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="apple-first-boot-instructions">
 <span id="appleboot"></span><h1>Apple First Boot Instructions<a class="headerlink" href="#apple-first-boot-instructions" title="Permalink to this headline">¶</a></h1>
-<p>Before installing Xentyal on your machine, there are several steps you should take in the apple OS first.</p>
+<p>The Apple OS-X should be minimally configured prior to installing an additional
+OS on the machine. These include installing the Google Chrome browser and the
+rEFInd boot manager.</p>
 <div class="section" id="installing-google-chrome">
 <h2>Installing Google Chrome<a class="headerlink" href="#installing-google-chrome" title="Permalink to this headline">¶</a></h2>
-<p>You&#8217;ll want to install Google Chrome for your server, as it will be useful later on.</p>
-<p>This is a quick step by step instructional on how to install Google Chrome on a mac.</p>
+<p>Follow these step by step instructions to install Google Chrome on OS-X:</p>
 <ol class="arabic simple">
-<li>First you&#8217;ll need to download the installer file at <a class="reference external" href="https://www.google.com/chrome?brand=CHMO#eula">https://www.google.com/chrome?brand=CHMO#eula</a></li>
-<li>Next, open the file called Google Chrome.dmg once it&#8217;s finished downloading.</li>
+<li>Download the installer file at <a class="reference external" href="https://www.google.com/chrome/browser">https://www.google.com/chrome/browser</a></li>
+<li>Launch file <code class="file docutils literal"><span class="pre">Google</span> <span class="pre">Chrome.dmg</span></code> from the downloads.</li>
 <li>In the window that opens, drag the Chrome icon into the Application folder.</li>
-<li>When you first open Chrome, the finder will ask if you want to open the Application downloaded from the internet. click open.</li>
-<li>Unmount the Google Chrome disk image on your Desktop by right clicking it and choosing &#8220;Eject&#8221;</li>
+<li>When first opening Chrome, the Finder will ask if you want to open the
+Application downloaded from the Internet. Click open.</li>
+<li>Unmount the Google Chrome disk image on your Desktop by right clicking it and
+choosing &#8220;Eject&#8221;.</li>
 </ol>
 </div>
 <div class="section" id="install-refind-and-linux">
@@ -136,10 +141,10 @@
 <div class="section" id="make-free-space-on-drive">
 <h3>Make free space on drive<a class="headerlink" href="#make-free-space-on-drive" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Open <em class="menuselection">Launchpad ‣ Other ‣ Disk Utility</em></li>
+<li>Open <em class="menuselection">Launchpad ‣ Other ‣ Disk Utility</em>.</li>
 <li>Choose a media drive to repartition, and select <em class="menuselection">Partition</em>
 from the dialog border menu. We recommend installing on /dev/disk02, aka
-&#8220;Recovery HD&#8221;</li>
+&#8220;Recovery HD&#8221;.</li>
 <li>Remove Apple HFS data partitions on the drive, leaving only the EFI partition
 and the remainder as free space.</li>
 </ol>
@@ -153,14 +158,14 @@ Please refer to separate Zentyal server installation instructions for a
 detailed procedure specific to that operating system.</p>
 </div>
 <ol class="arabic simple">
-<li>Restart the Mac, holding down the <tt class="kbd docutils literal"><span class="pre">alt/option</span></tt> key to choose the
+<li>Restart the Mac, holding down the <code class="kbd docutils literal"><span class="pre">alt/option</span></code> key to choose the
 boot device, either the USB drive or the Superdrive.</li>
 <li>Choose the boot media, which Apple humorously refers to as &#8220;Windows&#8221;.</li>
 <li>Boot the Linux installation, select the installation language, and then
 choose to install by <em class="menuselection">(expert mode)</em>.</li>
 <li>Use manual partitioning option, and in the free space created previously,
-first create an 8 Gb swap partition and then an install partition of type
-<tt class="docutils literal"><span class="pre">ext4</span></tt> mounted as <tt class="docutils literal"><span class="pre">/</span></tt>.</li>
+first create a 1`6 Gb swap partition and then an install partition of type
+<code class="docutils literal"><span class="pre">ext4</span></code> mounted as <code class="docutils literal"><span class="pre">/</span></code>.</li>
 <li>Continue with Linux installation in the newly-created partitions.</li>
 <li>Reboot when installation is finished, removing the USB flash drive or media.
 The <strong class="program">rEFInd</strong> boot selector should now contain options to boot Linux.</li>
@@ -169,7 +174,7 @@ The <strong class="program">rEFInd</strong> boot selector should now contain opt
 <p class="first admonition-title">Note</p>
 <p class="last">Either Linux will ask for a location to install the Grub boot loader, or a
 boot loader installation error will be thrown at the end of the install.
-Grub is not needed because we are using <strong class="program">rEFInd</strong> to manage booting.</p>
+Grub is not needed if we are using <strong class="program">rEFInd</strong> to manage booting.</p>
 </div>
 </div>
 </div>
@@ -185,7 +190,7 @@ Linux-y approach to editing the <strong class="program">rEFInd</strong> configur
 <div class="section" id="diagnose-refind-behavior">
 <h3>Diagnose rEFInd behavior<a class="headerlink" href="#diagnose-refind-behavior" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Restart the server, and press <tt class="kbd docutils literal"><span class="pre">right-arrow</span></tt> in <strong class="program">rEFInd</strong> to stop
+<li>Restart the server, and press <code class="kbd docutils literal"><span class="pre">right-arrow</span></code> in <strong class="program">rEFInd</strong> to stop
 boot.</li>
 <li>Write down each main boot option to decide which should be displayed.</li>
 <li>Determine configuration options to change. <a class="footnote-reference" href="#id2" id="id1">[1]</a></li>
@@ -202,7 +207,7 @@ boot.</li>
 </div>
 <p>and enter your password when prompted.</p>
 </li>
-<li><p class="first">Modify the configuration options as desired, then press <tt class="kbd docutils literal"><span class="pre">control-X</span></tt> to
+<li><p class="first">Modify the configuration options as desired, then press <code class="kbd docutils literal"><span class="pre">control-X</span></code> to
 save changes.</p>
 </li>
 <li><p class="first">Exit all programs and restart the server to test the new configuration.</p>
@@ -211,7 +216,7 @@ save changes.</p>
 <p>Repeat these instructions until desired results are achieved.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Save a copy of <tt class="file docutils literal"><span class="pre">refind.conf</span></tt> in your <tt class="file docutils literal"><span class="pre">~/Documents</span></tt>
+<p class="last">Save a copy of <code class="file docutils literal"><span class="pre">refind.conf</span></code> in your <code class="file docutils literal"><span class="pre">~/Documents</span></code>
 folder, as updates to Mac OS X will wipe out the EFI configuration.</p>
 </div>
 </div>
@@ -220,7 +225,7 @@ folder, as updates to Mac OS X will wipe out the EFI configuration.</p>
 <p>The goal for this installation was to provide a testing server running Ubuntu,
 but also capable of being used as a Mac server or workstation when not testing.
 Therefore the server by default would boot Linux with minimal delay, while still
-providing a <tt class="docutils literal"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></tt> boot option. The configuration options used were:</p>
+providing a <code class="docutils literal"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></code> boot option. The configuration options used were:</p>
 <div class="highlight-python"><div class="highlight"><pre>timeout 5
 use_graphics_for osx, linux
 dont_scan_volumes &quot;Backup&quot;, &quot;Recovery HD&quot;
@@ -236,8 +241,8 @@ default_selection &quot;vmlinuz&quot;
 <div class="section" id="restoring-refind-installation">
 <h2>Restoring rEFInd installation<a class="headerlink" href="#restoring-refind-installation" title="Permalink to this headline">¶</a></h2>
 <p>The efi directory is cleared and rewritten when updating Mac OS X. Keep program
-<strong class="program">rEFInd</strong> in your <tt class="file docutils literal"><span class="pre">~/Downloads</span></tt> folder, and keep a copy of
-<tt class="file docutils literal"><span class="pre">refind.conf</span></tt> in your <tt class="file docutils literal"><span class="pre">~/Documents</span></tt> folder. Restore a lost
+<strong class="program">rEFInd</strong> in your <code class="file docutils literal"><span class="pre">~/Downloads</span></code> folder, and keep a copy of
+<code class="file docutils literal"><span class="pre">refind.conf</span></code> in your <code class="file docutils literal"><span class="pre">~/Documents</span></code> folder. Restore a lost
 <strong class="program">rEFInd</strong> installation in Mac OS X as follows:</p>
 <ol class="arabic">
 <li><p class="first">Start a terminal from <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em></p>
@@ -266,11 +271,11 @@ sudo cp ~/Documents/refind.conf /efi/refind/
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="02_diskutil.html" title="Use of Diskutil"
+          <a href="02_macserver.html" title="Dual-Booting Mac Servers"
              >next</a></li>
         <li class="right" >
           <a href="index.html" title="Installing an Operating System"
@@ -278,9 +283,9 @@ sudo cp ~/Documents/refind.conf /efi/refind/
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

@@ -27,8 +27,8 @@
     <link rel="next" title="AAD Server Terminal Services" href="08_aadserver.html" />
     <link rel="prev" title="Office File Sharing" href="06_office.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -65,12 +65,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="08_aadserver.html"
                         title="next chapter">AAD Server Terminal Services</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/07_backup.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/07_backup.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -89,7 +91,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="backing-up-server-data">
 <span id="backup"></span><h1>Backing Up Server Data<a class="headerlink" href="#backing-up-server-data" title="Permalink to this headline">¶</a></h1>
@@ -113,8 +115,8 @@ duplicity [action] --help
 <div class="highlight-python"><div class="highlight"><pre>duplicity -v info --no-encryption {protocol://path-to-backup-files} {full-path-to-restore}
 </pre></div>
 </div>
-<p>For example, say the backup drive is mounted at <tt class="file docutils literal"><span class="pre">/home/mnt/backup</span></tt> and the
-data directory to restore is <tt class="file docutils literal"><span class="pre">/home/samba/shares/shared</span></tt>. Then the restore
+<p>For example, say the backup drive is mounted at <code class="file docutils literal"><span class="pre">/home/mnt/backup</span></code> and the
+data directory to restore is <code class="file docutils literal"><span class="pre">/home/samba/shares/shared</span></code>. Then the restore
 command could be:</p>
 <div class="highlight-python"><div class="highlight"><pre>duplicity -v info --no-encryption file:///home/mnt/backup /home/samba/shares/shared/.
 </pre></div>
@@ -158,8 +160,8 @@ required in most situations.</p>
 <ul class="simple">
 <li>Open Zentyal, and navigate to tab
 <em class="menuselection">Core ‣ Backup ‣ Configuration and Status</em></li>
-<li>Set the backup path to <tt class="kbd docutils literal"><span class="pre">/home/mnt/backup</span></tt></li>
-<li>Leave prompts <tt class="docutils literal"><span class="pre">User:</span></tt> and <tt class="docutils literal"><span class="pre">Password:</span></tt> blank</li>
+<li>Set the backup path to <code class="kbd docutils literal"><span class="pre">/home/mnt/backup</span></code></li>
+<li>Leave prompts <code class="docutils literal"><span class="pre">User:</span></code> and <code class="docutils literal"><span class="pre">Password:</span></code> blank</li>
 <li>Fill in a schedule for full and incremental backups as shown following:</li>
 </ul>
 <img alt="_images/backup_config.png" src="_images/backup_config.png" />
@@ -272,7 +274,7 @@ your backup drive.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -284,9 +286,9 @@ your backup drive.</p>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

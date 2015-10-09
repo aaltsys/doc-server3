@@ -27,8 +27,8 @@
     <link rel="next" title="Procedures of Operation" href="09_procedures.html" />
     <link rel="prev" title="Backing Up Server Data" href="07_backup.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -75,12 +75,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="09_procedures.html"
                         title="next chapter">Procedures of Operation</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/08_aadserver.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/08_aadserver.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -99,7 +101,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="aad-server-terminal-services">
 <span id="aadserver"></span><h1>AAD Server Terminal Services<a class="headerlink" href="#aad-server-terminal-services" title="Permalink to this headline">¶</a></h1>
@@ -228,7 +230,7 @@ when the computer boots. Set user <strong>STARTUP</strong> to login at boot as f
 <li>Uncheck the box for <em class="guilabel">Users must enter a username and password to
 use this computer</em>, and then click button <em class="guilabel">Apply</em>.</li>
 <li>In the resulting <em class="guilabel">Automatically log on</em> dialog, Enter user name
-<tt class="kbd docutils literal"><span class="pre">STARTUP</span></tt>, the user&#8217;s password, confirm the password, and then click
+<code class="kbd docutils literal"><span class="pre">STARTUP</span></code>, the user&#8217;s password, confirm the password, and then click
 <em class="guilabel">OK</em>. Click <em class="guilabel">OK</em> again to close the main control panel.</li>
 <li>Login as user <strong>STARTUP</strong>. Copy the Hamachi start file into the user&#8217;s start
 menu folder, <em class="menuselection">Start ‣ All Programs ‣ Startup</em>.</li>
@@ -243,14 +245,14 @@ of <strong class="program">AADServer</strong>.</p>
 </div>
 <div class="section" id="add-program-fles">
 <h2>Add Program Fles<a class="headerlink" href="#add-program-fles" title="Permalink to this headline">¶</a></h2>
-<p>Add folder <tt class="file docutils literal"><span class="pre">WARES</span></tt> inside <tt class="file docutils literal"><span class="pre">C:\Users\Public</span></tt>. In the
-<tt class="file docutils literal"><span class="pre">WARES</span></tt> folder, add the following files, downloadable from links at
+<p>Add folder <code class="file docutils literal"><span class="pre">WARES</span></code> inside <code class="file docutils literal"><span class="pre">C:\Users\Public</span></code>. In the
+<code class="file docutils literal"><span class="pre">WARES</span></code> folder, add the following files, downloadable from links at
 <a class="reference external" href="http://doswares.aaltsys.info/resources/">DOS WARES Resources</a>:</p>
 <div class="line-block">
-<div class="line"><tt class="file docutils literal"><span class="pre">NETPRINT.BAT</span></tt></div>
-<div class="line"><tt class="file docutils literal"><span class="pre">NETSHARE.BAT</span></tt></div>
-<div class="line"><tt class="file docutils literal"><span class="pre">WARES.BAT</span></tt></div>
-<div class="line"><tt class="file docutils literal"><span class="pre">WARES.pif</span></tt></div>
+<div class="line"><code class="file docutils literal"><span class="pre">NETPRINT.BAT</span></code></div>
+<div class="line"><code class="file docutils literal"><span class="pre">NETSHARE.BAT</span></code></div>
+<div class="line"><code class="file docutils literal"><span class="pre">WARES.BAT</span></code></div>
+<div class="line"><code class="file docutils literal"><span class="pre">WARES.pif</span></code></div>
 </div>
 </div>
 <div class="section" id="install-aads-server">
@@ -333,8 +335,8 @@ enter the following programs and assign them to group <strong>WARES</strong>:</p
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The path <tt class="file docutils literal"><span class="pre">C:\Users\Public</span></tt> on Windows 7 replaced the folder
-<tt class="file docutils literal"><span class="pre">C:\Documents</span> <span class="pre">and</span> <span class="pre">Settings\All</span> <span class="pre">Users\Desktop</span></tt> used by Windows XP.</p>
+<p class="last">The path <code class="file docutils literal"><span class="pre">C:\Users\Public</span></code> on Windows 7 replaced the folder
+<code class="file docutils literal"><span class="pre">C:\Documents</span> <span class="pre">and</span> <span class="pre">Settings\All</span> <span class="pre">Users\Desktop</span></code> used by Windows XP.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -350,19 +352,19 @@ as <strong>Lucida Console 20</strong>.</p>
 <h2>Customize Batch Programs<a class="headerlink" href="#customize-batch-programs" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="netshare-bat">
 <h3>NETSHARE.BAT<a class="headerlink" href="#netshare-bat" title="Permalink to this headline">¶</a></h3>
-<p>Edit the <tt class="file docutils literal"><span class="pre">NETSHARE.BAT</span></tt> program to use either the correct IP address
-or NETBIOS name of the server, such as <tt class="kbd docutils literal"><span class="pre">192.168.2.241</span></tt> or
-<tt class="kbd docutils literal"><span class="pre">AAltsysServer</span></tt>.</p>
+<p>Edit the <code class="file docutils literal"><span class="pre">NETSHARE.BAT</span></code> program to use either the correct IP address
+or NETBIOS name of the server, such as <code class="kbd docutils literal"><span class="pre">192.168.2.241</span></code> or
+<code class="kbd docutils literal"><span class="pre">AAltsysServer</span></code>.</p>
 </div>
 <div class="section" id="rdpprint-bat">
 <h3>RDPPRINT.BAT<a class="headerlink" href="#rdpprint-bat" title="Permalink to this headline">¶</a></h3>
-<p>The default <tt class="file docutils literal"><span class="pre">NETPRINT.BAT</span></tt> is intended to work for local printers,
+<p>The default <code class="file docutils literal"><span class="pre">NETPRINT.BAT</span></code> is intended to work for local printers,
 and it will not work for remote users. Instead, the remote users must share
 their printers. Before printing can work, a table of remote workstation names,
 VPN addresses, TS users and printer sharenames is required. A sample table for
 this information is provided in the authentication section following.</p>
 <p>Substituting for {workstationIP} and {sharename} in the following script,
-Create a new <tt class="file docutils literal"><span class="pre">RDPPRINT.BAT</span></tt> program as follows:</p>
+Create a new <code class="file docutils literal"><span class="pre">RDPPRINT.BAT</span></code> program as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre>@ECHO OFF
 NET USE LPT1 /DELETE
 rem NET USE LPT2 /DELETE
@@ -387,8 +389,8 @@ IF %ERRORLEVEL% NEQ 0 PAUSE
 :EXIT
 </pre></div>
 </div>
-<p>Sample batch file <a class="reference download internal" href="_downloads/rdpprint.bat"><tt class="xref download docutils literal"><span class="pre">RDPPRINT.BAT</span></tt></a>
-is provided; download it to <tt class="file docutils literal"><span class="pre">C:\Users\Public\WARES\RDPPRINT.BAT</span></tt> on
+<p>Sample batch file <a class="reference download internal" href="_downloads/rdpprint.bat"><code class="xref download docutils literal"><span class="pre">RDPPRINT.BAT</span></code></a>
+is provided; download it to <code class="file docutils literal"><span class="pre">C:\Users\Public\WARES\RDPPRINT.BAT</span></code> on
 the TS machine. Then edit the file as described above.</p>
 <p class="rubric">References</p>
 <ul class="simple">
@@ -569,7 +571,7 @@ once complete, so that recovery from an OS failure would be possible.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -581,9 +583,9 @@ once complete, so that recovery from an OS failure would be possible.</p>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

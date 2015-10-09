@@ -25,14 +25,14 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="AAltsys Server 3.0 Technical 3.0 documentation" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -45,12 +45,14 @@
 </li>
 </ul>
 
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/bios--scm_x9scm-o.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/bios--scm_x9scm-o.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -69,80 +71,80 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="supermicro-mbd-x9scm-o-bios">
 <span id="bios-x9scm-o"></span><h1>SuperMicro MBD-X9SCM-O BIOS<a class="headerlink" href="#supermicro-mbd-x9scm-o-bios" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="first-bios-boot">
 <h2>First BIOS Boot<a class="headerlink" href="#first-bios-boot" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Boot the system, pressing <tt class="kbd docutils literal"><span class="pre">&lt;Del&gt;</span></tt> multiple times to enter the BIOS
+<li>Boot the system, pressing <code class="kbd docutils literal"><span class="pre">&lt;Del&gt;</span></code> multiple times to enter the BIOS
 setup.</li>
 <li>At <em class="menuselection">Exit ‣ Restore Defaults ‣ Load Optomized Defaults</em>
-on the menu, press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> for <em class="guilabel">Yes</em>.</li>
+on the menu, press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code> for <em class="guilabel">Yes</em>.</li>
 <li>At <em class="menuselection">Advanced ‣ Boot Feature ‣ Power Button Function</em>
-on the menu, press <tt class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></tt> to select <em class="guilabel">4 Seconds Override</em>.</li>
+on the menu, press <code class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></code> to select <em class="guilabel">4 Seconds Override</em>.</li>
 <li>At <em class="menuselection">Advanced ‣ IDE/SATA Configuration</em>,<ol class="arabic">
-<li>At <em class="menuselection">SATA Mode</em>, press <tt class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></tt> to select
+<li>At <em class="menuselection">SATA Mode</em>, press <code class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></code> to select
 <em class="guilabel">RAID Mode</em>.</li>
-<li>At :menuselection: <cite>PCH RAID Codebase</cite>, press <tt class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></tt> to select
+<li>At :menuselection: <cite>PCH RAID Codebase</cite>, press <code class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></code> to select
 <em class="guilabel">Intel</em>.</li>
-<li>At <em class="menuselection">Serial ATA Port 0 ‣ Hot Plug</em>, press <tt class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></tt>
+<li>At <em class="menuselection">Serial ATA Port 0 ‣ Hot Plug</em>, press <code class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></code>
 to select <em class="guilabel">Disabled</em> (should show first RAID drive).</li>
-<li>At <em class="menuselection">Serial ATA Port 0 ‣ Hot Plug</em>, press <tt class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></tt>
+<li>At <em class="menuselection">Serial ATA Port 0 ‣ Hot Plug</em>, press <code class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></code>
 to select <em class="guilabel">Disabled</em> (should show second RAID drive).</li>
-<li>At <em class="menuselection">Serial ATA Port 0 ‣ Hot Plug</em>, press <tt class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></tt>
+<li>At <em class="menuselection">Serial ATA Port 0 ‣ Hot Plug</em>, press <code class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></code>
 to select <em class="guilabel">Disabled</em> (should show DVD-RW drive).</li>
 </ol>
 </li>
-<li>At <em class="menuselection">Exit ‣ Save Changes and Reset</em>, press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt>
+<li>At <em class="menuselection">Exit ‣ Save Changes and Reset</em>, press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code>
 to save changes, and answer the question
-<em class="guilabel">Save configuration and reset?</em> with <tt class="kbd docutils literal"><span class="pre">Yes</span></tt>.</li>
+<em class="guilabel">Save configuration and reset?</em> with <code class="kbd docutils literal"><span class="pre">Yes</span></code>.</li>
 </ol>
 </div>
 <div class="section" id="second-bios-boot">
 <h2>Second BIOS Boot<a class="headerlink" href="#second-bios-boot" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Press <tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-I&gt;</span></tt> multiple times to enter the <em class="guilabel">Intel RAID</em>
+<li>Press <code class="kbd docutils literal"><span class="pre">&lt;Ctrl-I&gt;</span></code> multiple times to enter the <em class="guilabel">Intel RAID</em>
 utility.</li>
-<li>Press <tt class="kbd docutils literal"><span class="pre">3</span></tt> for <em class="guilabel">Reset Disks to non-RAID</em>. Press <tt class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></tt>
-to select disks, then press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> to finish the operation.</li>
-<li>Press <tt class="kbd docutils literal"><span class="pre">1</span></tt> for <em class="guilabel">Create RAID volume</em>.<ol class="arabic">
-<li>At <em class="guilabel">Name:</em>, enter <tt class="kbd docutils literal"><span class="pre">aaltsys</span> <span class="pre">&lt;Enter&gt;</span></tt>.</li>
-<li>At <em class="guilabel">RAID Level:</em>, press <tt class="kbd docutils literal"><span class="pre">&lt;Down&gt;</span></tt> to display
+<li>Press <code class="kbd docutils literal"><span class="pre">3</span></code> for <em class="guilabel">Reset Disks to non-RAID</em>. Press <code class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></code>
+to select disks, then press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code> to finish the operation.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">1</span></code> for <em class="guilabel">Create RAID volume</em>.<ol class="arabic">
+<li>At <em class="guilabel">Name:</em>, enter <code class="kbd docutils literal"><span class="pre">aaltsys</span> <span class="pre">&lt;Enter&gt;</span></code>.</li>
+<li>At <em class="guilabel">RAID Level:</em>, press <code class="kbd docutils literal"><span class="pre">&lt;Down&gt;</span></code> to display
 <em class="guilabel">RAID1(Mirror)</em>.</li>
-<li>At <em class="guilabel">Capacity</em>, press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> to select the entire drive.</li>
-<li>Respond to the <em class="guilabel">Create Volume</em> prompt with <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt>, and
-confirm the <em class="guilabel">Are you sure ...?</em> question with <tt class="kbd docutils literal"><span class="pre">Y</span></tt>.</li>
+<li>At <em class="guilabel">Capacity</em>, press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code> to select the entire drive.</li>
+<li>Respond to the <em class="guilabel">Create Volume</em> prompt with <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code>, and
+confirm the <em class="guilabel">Are you sure ...?</em> question with <code class="kbd docutils literal"><span class="pre">Y</span></code>.</li>
 </ol>
 </li>
-<li>Press <tt class="kbd docutils literal"><span class="pre">6</span></tt> to <em class="guilabel">Exit</em> the RAID utility, and confirm the
-<em class="guilabel">Are you sure ...?</em> question with <tt class="kbd docutils literal"><span class="pre">Y</span></tt>.</li>
+<li>Press <code class="kbd docutils literal"><span class="pre">6</span></code> to <em class="guilabel">Exit</em> the RAID utility, and confirm the
+<em class="guilabel">Are you sure ...?</em> question with <code class="kbd docutils literal"><span class="pre">Y</span></code>.</li>
 </ol>
 </div>
 <div class="section" id="third-bios-boot">
 <h2>Third BIOS Boot<a class="headerlink" href="#third-bios-boot" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Boot the system, pressing <tt class="kbd docutils literal"><span class="pre">&lt;Del&gt;</span></tt> multiple times to enter the BIOS
+<li>Boot the system, pressing <code class="kbd docutils literal"><span class="pre">&lt;Del&gt;</span></code> multiple times to enter the BIOS
 setup.</li>
 <li>At <em class="menuselection">Advanced ‣ IDE/SATA Configuration ‣ SATA Mode</em>, press
-<tt class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></tt> to select <em class="guilabel">AHCI Mode</em>.</li>
-<li>At <em class="menuselection">Exit ‣ Save Changes and Reset</em>, press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt>
+<code class="kbd docutils literal"><span class="pre">&lt;Space&gt;</span></code> to select <em class="guilabel">AHCI Mode</em>.</li>
+<li>At <em class="menuselection">Exit ‣ Save Changes and Reset</em>, press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code>
 to save changes, and answer the question
-<em class="guilabel">Save configuration and reset?</em> with <tt class="kbd docutils literal"><span class="pre">Yes</span></tt>.</li>
+<em class="guilabel">Save configuration and reset?</em> with <code class="kbd docutils literal"><span class="pre">Yes</span></code>.</li>
 </ol>
 </div>
 <div class="section" id="fourth-bios-boot">
 <h2>Fourth BIOS Boot<a class="headerlink" href="#fourth-bios-boot" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
-<li>Boot the system, pressing <tt class="kbd docutils literal"><span class="pre">&lt;Del&gt;</span></tt> multiple times to enter the BIOS
+<li>Boot the system, pressing <code class="kbd docutils literal"><span class="pre">&lt;Del&gt;</span></code> multiple times to enter the BIOS
 setup.</li>
 <li>At <em class="menuselection">Boot ‣ Boot Option Priorities ‣ Boot Option #1</em>,
-press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> and then select <em class="guilabel">P2: HL-DT-ST DVDRAM ...</em>.</li>
+press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code> and then select <em class="guilabel">P2: HL-DT-ST DVDRAM ...</em>.</li>
 <li>At <em class="menuselection">Boot Option #2</em>, select <em class="guilabel">P0: WDC WD5000 ...</em>.</li>
-<li>At <em class="menuselection">Exit ‣ Save Changes and Reset</em>, press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt>
+<li>At <em class="menuselection">Exit ‣ Save Changes and Reset</em>, press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code>
 to save changes, and answer the question
-<em class="guilabel">Save configuration and reset?</em> with <tt class="kbd docutils literal"><span class="pre">Yes</span></tt>.</li>
+<em class="guilabel">Save configuration and reset?</em> with <code class="kbd docutils literal"><span class="pre">Yes</span></code>.</li>
 </ol>
 <p>The system will now boot from the DVD drive, and install an OS on the RAID
 drive set.</p>
@@ -157,15 +159,15 @@ drive set.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

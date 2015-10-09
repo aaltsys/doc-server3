@@ -27,8 +27,8 @@
     <link rel="next" title="SysRescue Boot Utilities" href="08_bootutils.html" />
     <link rel="prev" title="Network Options with SysRescue" href="05_networking.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -65,12 +65,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="08_bootutils.html"
                         title="next chapter">SysRescue Boot Utilities</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/06_systemtasks.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/06_systemtasks.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -89,7 +91,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="system-task-utilities">
 <h1>System Task Utilities<a class="headerlink" href="#system-task-utilities" title="Permalink to this headline">¶</a></h1>
@@ -229,7 +231,7 @@ if, for example, you just want to backup several files, or read a document.</p>
 </pre></div>
 </div>
 <p>In this example, we suppose the device name of the NTFS partition is
-<tt class="file docutils literal"><span class="pre">/dev/sda1</span></tt> and the mount point is <tt class="file docutils literal"><span class="pre">/mnt/windows</span></tt>. If you do not
+<code class="file docutils literal"><span class="pre">/dev/sda1</span></code> and the mount point is <code class="file docutils literal"><span class="pre">/mnt/windows</span></code>. If you do not
 know the device name, you may list partitions with
 <strong class="command">cat /proc/partitions</strong> or use <strong class="program">GParted</strong>.</p>
 </div>
@@ -242,7 +244,7 @@ know the device name, you may list partitions with
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -254,9 +256,9 @@ know the device name, you may list partitions with
         <li><a href="index.html">AAltsys Server 3.0 Rescue 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

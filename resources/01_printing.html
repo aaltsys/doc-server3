@@ -27,8 +27,8 @@
     <link rel="next" title="Mounting Network File Systems" href="02_filesharing.html" />
     <link rel="prev" title="AAltsys Server Technical Resources" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -62,12 +62,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="02_filesharing.html"
                         title="next chapter">Mounting Network File Systems</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/01_printing.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/01_printing.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -86,7 +88,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="printing-with-zentyal">
 <span id="printing"></span><h1>Printing With Zentyal<a class="headerlink" href="#printing-with-zentyal" title="Permalink to this headline">¶</a></h1>
@@ -120,13 +122,13 @@ can install the absolute latest version of HPLIP as a download from:</p>
 <li><p class="first">On this webpage, right-click the <em class="guilabel">download &gt;</em> button, and choose
 <em class="menuselection">Copy link address</em>.</p>
 </li>
-<li><p class="first">Open a command prompt, and type <tt class="kbd docutils literal"><span class="pre">wget</span> <span class="pre">-O</span> <span class="pre">hplip.run</span> <span class="pre">&lt;space&gt;&lt;ctrl-v&gt;</span></tt>
+<li><p class="first">Open a command prompt, and type <code class="kbd docutils literal"><span class="pre">wget</span> <span class="pre">-O</span> <span class="pre">hplip.run</span> <span class="pre">&lt;space&gt;&lt;ctrl-v&gt;</span></code>
 Your resulting command, except for version, should look like the following:</p>
 <div class="highlight-python"><div class="highlight"><pre>wget -O hplip.run http://prdownloads.sourceforge.net/hplip/hplip-3.13.2.run
 </pre></div>
 </div>
 </li>
-<li><p class="first">Press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt> to execute the download.</p>
+<li><p class="first">Press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code> to execute the download.</p>
 </li>
 <li><p class="first">Compile and make this version of hplip with the command:</p>
 <div class="highlight-python"><div class="highlight"><pre>sh hplip.run
@@ -135,7 +137,7 @@ Your resulting command, except for version, should look like the following:</p>
 </li>
 <li><p class="first">Enter your password when asked, and answer other prompts as appropriate.</p>
 </li>
-<li><p class="first">Press <tt class="kbd docutils literal"><span class="pre">q</span></tt> to quit when you see the section titled:</p>
+<li><p class="first">Press <code class="kbd docutils literal"><span class="pre">q</span></code> to quit when you see the section titled:</p>
 <div class="highlight-python"><div class="highlight"><pre>RESTART OR RE-PLUG IS REQUIRED
 ------------------------------
 </pre></div>
@@ -174,7 +176,7 @@ console, or over <strong class="command">ssh</strong>.</p>
 </pre></div>
 </div>
 <p>For a list of HP commands, type <strong class="command">hp-</strong> at the command prompt, then
-press <tt class="kbd docutils literal"><span class="pre">&lt;tab&gt;&lt;tab&gt;</span></tt>.</p>
+press <code class="kbd docutils literal"><span class="pre">&lt;tab&gt;&lt;tab&gt;</span></code>.</p>
 </div>
 <div class="section" id="cups">
 <h2>CUPS<a class="headerlink" href="#cups" title="Permalink to this headline">¶</a></h2>
@@ -188,13 +190,13 @@ with print queues in the server. Server print queues are managed with CUPS.</p>
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>at the server console:</td>
-<td><tt class="docutils literal"><span class="pre">https://localhost:631</span></tt></td>
+<td><code class="docutils literal"><span class="pre">https://localhost:631</span></code></td>
 </tr>
 <tr class="row-even"><td>from an attached workstation:</td>
-<td><tt class="docutils literal"><span class="pre">https://192.168.2.241:631</span></tt></td>
+<td><code class="docutils literal"><span class="pre">https://192.168.2.241:631</span></code></td>
 </tr>
 <tr class="row-odd"><td>if you know your server&#8217;s hostname:</td>
-<td><tt class="docutils literal"><span class="pre">https://{serverhostname}:631</span></tt></td>
+<td><code class="docutils literal"><span class="pre">https://{serverhostname}:631</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -210,7 +212,7 @@ printer using the <strong class="command">hp-makeuri {printer_IP_address}</stron
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -222,9 +224,9 @@ printer using the <strong class="command">hp-makeuri {printer_IP_address}</stron
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

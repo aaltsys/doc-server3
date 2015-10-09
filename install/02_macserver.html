@@ -25,22 +25,22 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
     <link rel="next" title="Installation Instructions" href="03_install.html" />
-    <link rel="prev" title="Use of Diskutil" href="02_diskutil.html" /> 
+    <link rel="prev" title="Apple First Boot Instructions" href="01_Appleboot.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="03_install.html" title="Installation Instructions"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="02_diskutil.html" title="Use of Diskutil"
+          <a href="01_Appleboot.html" title="Apple First Boot Instructions"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -74,17 +74,19 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="02_diskutil.html"
-                        title="previous chapter">Use of Diskutil</a></p>
+  <p class="topless"><a href="01_Appleboot.html"
+                        title="previous chapter">Apple First Boot Instructions</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="03_install.html"
                         title="next chapter">Installation Instructions</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/02_macserver.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/02_macserver.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -103,7 +105,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="dual-booting-mac-servers">
 <span id="macserver"></span><h1>Dual-Booting Mac Servers<a class="headerlink" href="#dual-booting-mac-servers" title="Permalink to this headline">¶</a></h1>
@@ -140,10 +142,10 @@ footnote. <a class="footnote-reference" href="#id10" id="id4">[4]</a></p>
 <h2>Make a Linux installer DVD<a class="headerlink" href="#make-a-linux-installer-dvd" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Throughout this section, replace the token <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> with the
+<p class="last">Throughout this section, replace the token <code class="docutils literal"><span class="pre">{linux.iso}</span></code> with the
 actual download filename of the Linux being installed.</p>
 </div>
-<p>Download a Linux install <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> disk image, then burn the image to a
+<p>Download a Linux install <code class="docutils literal"><span class="pre">{linux.iso}</span></code> disk image, then burn the image to a
 DVD using the Apple Superdrive.</p>
 <ol class="arabic simple">
 <li>Open <strong class="program">Disk Utility</strong> from <em class="menuselection">Launchpad ‣ Other</em>.</li>
@@ -205,14 +207,14 @@ Please refer to separate <a class="reference internal" href="03_install.html#ins
 specific to that operating system.</p>
 </div>
 <ol class="arabic simple">
-<li>Restart the Mac, holding down the <tt class="kbd docutils literal"><span class="pre">alt/option</span></tt> key to choose the
+<li>Restart the Mac, holding down the <code class="kbd docutils literal"><span class="pre">alt/option</span></code> key to choose the
 boot device, either the USB drive or the Superdrive.</li>
 <li>Choose the boot media, which Apple humorously refers to as &#8220;Windows&#8221;.</li>
 <li>Boot the Linux installation, select the installation language, and then
 choose to install by <em class="menuselection">(expert mode)</em>.</li>
 <li>Use manual partitioning option, and in the free space created previously,
 first create an 8 Gb swap partition and then an install partition of type
-<tt class="docutils literal"><span class="pre">ext4</span></tt> mounted as <tt class="docutils literal"><span class="pre">/</span></tt>.</li>
+<code class="docutils literal"><span class="pre">ext4</span></code> mounted as <code class="docutils literal"><span class="pre">/</span></code>.</li>
 <li>Continue with Linux installation in the newly-created partitions.</li>
 <li>Reboot when installation is finished, removing the USB flash drive or media.
 The <strong class="program">rEFInd</strong> boot selector should now contain options to boot Linux.</li>
@@ -236,7 +238,7 @@ Linux-y approach to editing the <strong class="program">rEFInd</strong> configur
 <div class="section" id="diagnose-refind-behavior">
 <h3>Diagnose rEFInd behavior<a class="headerlink" href="#diagnose-refind-behavior" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Restart the server, and press <tt class="kbd docutils literal"><span class="pre">right-arrow</span></tt> in <strong class="program">rEFInd</strong> to stop
+<li>Restart the server, and press <code class="kbd docutils literal"><span class="pre">right-arrow</span></code> in <strong class="program">rEFInd</strong> to stop
 boot.</li>
 <li>Write down each main boot option to decide which should be displayed.</li>
 <li>Determine configuration options to change. <a class="footnote-reference" href="#id12" id="id6">[6]</a></li>
@@ -253,7 +255,7 @@ boot.</li>
 </div>
 <p>and enter your password when prompted.</p>
 </li>
-<li><p class="first">Modify the configuration options as desired, then press <tt class="kbd docutils literal"><span class="pre">control-X</span></tt> to
+<li><p class="first">Modify the configuration options as desired, then press <code class="kbd docutils literal"><span class="pre">control-X</span></code> to
 save changes.</p>
 </li>
 <li><p class="first">Exit all programs and restart the server to test the new configuration.</p>
@@ -262,7 +264,7 @@ save changes.</p>
 <p>Repeat these instructions until desired results are achieved.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Save a copy of <tt class="file docutils literal"><span class="pre">refind.conf</span></tt> in your <tt class="file docutils literal"><span class="pre">~/Documents</span></tt>
+<p class="last">Save a copy of <code class="file docutils literal"><span class="pre">refind.conf</span></code> in your <code class="file docutils literal"><span class="pre">~/Documents</span></code>
 folder, as updates to Mac OS X will wipe out the EFI configuration.</p>
 </div>
 </div>
@@ -271,7 +273,7 @@ folder, as updates to Mac OS X will wipe out the EFI configuration.</p>
 <p>The goal for this installation was to provide a testing server running Ubuntu,
 but also capable of being used as a Mac server or workstation when not testing.
 Therefore the server by default would boot Linux with minimal delay, while still
-providing a <tt class="docutils literal"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></tt> boot option. The configuration options used were:</p>
+providing a <code class="docutils literal"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></code> boot option. The configuration options used were:</p>
 <div class="highlight-python"><div class="highlight"><pre>timeout 5
 use_graphics_for osx, linux
 dont_scan_volumes &quot;Backup&quot;, &quot;Recovery HD&quot;
@@ -287,8 +289,8 @@ default_selection &quot;vmlinuz&quot;
 <div class="section" id="restoring-refind-installation">
 <h2>Restoring rEFInd installation<a class="headerlink" href="#restoring-refind-installation" title="Permalink to this headline">¶</a></h2>
 <p>The efi directory is cleared and rewritten when updating Mac OS X. Keep program
-<strong class="program">rEFInd</strong> in your <tt class="file docutils literal"><span class="pre">~/Downloads</span></tt> folder, and keep a copy of
-<tt class="file docutils literal"><span class="pre">refind.conf</span></tt> in your <tt class="file docutils literal"><span class="pre">~/Documents</span></tt> folder. Restore a lost
+<strong class="program">rEFInd</strong> in your <code class="file docutils literal"><span class="pre">~/Downloads</span></code> folder, and keep a copy of
+<code class="file docutils literal"><span class="pre">refind.conf</span></code> in your <code class="file docutils literal"><span class="pre">~/Documents</span></code> folder. Restore a lost
 <strong class="program">rEFInd</strong> installation in Mac OS X as follows:</p>
 <ol class="arabic">
 <li><p class="first">Start a terminal from <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em></p>
@@ -312,7 +314,7 @@ created with the following directions.</p>
 <ol class="arabic">
 <li><p class="first">Select <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em> to open a terminal.</p>
 </li>
-<li><p class="first">Convert the downloaded <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> to a mac disk image with the
+<li><p class="first">Convert the downloaded <code class="docutils literal"><span class="pre">{linux.iso}</span></code> to a mac disk image with the
 command:</p>
 <div class="highlight-python"><div class="highlight"><pre>hdiutil convert -format UDRW -o ~/Documents/{linux} ~/Downloads/{linux.iso}
 </pre></div>
@@ -324,14 +326,14 @@ command:</p>
 <p>For the terminal phobic, the following instructions could replace the
 preceding command:</p>
 <ol class="last arabic simple">
-<li>Open a <strong class="program">Finder</strong> window, and display the <tt class="file docutils literal"><span class="pre">Downloads</span></tt> folder.</li>
-<li>Right-Click the <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> image file, and choose
+<li>Open a <strong class="program">Finder</strong> window, and display the <code class="file docutils literal"><span class="pre">Downloads</span></code> folder.</li>
+<li>Right-Click the <code class="docutils literal"><span class="pre">{linux.iso}</span></code> image file, and choose
 <em class="menuselection">Open With ‣ Disk Utility</em>.</li>
-<li>In <strong class="program">Disk Utility</strong>, Right-Click the <tt class="docutils literal"><span class="pre">{linux.iso}</span></tt> file
+<li>In <strong class="program">Disk Utility</strong>, Right-Click the <code class="docutils literal"><span class="pre">{linux.iso}</span></code> file
 and choose <em class="menuselection">Convert ``{linux_.iso}``</em>.</li>
 <li>In the <em class="guilabel">Convert</em> dialog, use the default name and location
-<tt class="file docutils literal"><span class="pre">Documents</span></tt>, and click <em class="guilabel">Save</em> to write.
-<tt class="docutils literal"><span class="pre">{linux.dmg}</span></tt> (The <tt class="file docutils literal"><span class="pre">.dmg</span></tt> extension is added automatically.)</li>
+<code class="file docutils literal"><span class="pre">Documents</span></code>, and click <em class="guilabel">Save</em> to write.
+<code class="docutils literal"><span class="pre">{linux.dmg}</span></code> (The <code class="file docutils literal"><span class="pre">.dmg</span></code> extension is added automatically.)</li>
 </ol>
 </div>
 </div>
@@ -339,8 +341,8 @@ and choose <em class="menuselection">Convert ``{linux_.iso}``</em>.</li>
 <h2>Copy Linux image to USB<a class="headerlink" href="#copy-linux-image-to-usb" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Throughout these instructions, replace the expression <tt class="file docutils literal"><span class="pre">/dev/diskN</span></tt>
-with the actual identifier of the USB device, e.g., <tt class="file docutils literal"><span class="pre">/dev/disk2</span></tt>.</p>
+<p class="last">Throughout these instructions, replace the expression <code class="file docutils literal"><span class="pre">/dev/diskN</span></code>
+with the actual identifier of the USB device, e.g., <code class="file docutils literal"><span class="pre">/dev/disk2</span></code>.</p>
 </div>
 <ol class="arabic">
 <li><p class="first">Insert the USB flash media</p>
@@ -351,15 +353,15 @@ with the actual identifier of the USB device, e.g., <tt class="file docutils lit
 </pre></div>
 </div>
 </li>
-<li><p class="first">Find the device node assigned to the USB media (e.g. <tt class="file docutils literal"><span class="pre">/dev/diskN</span></tt>),
+<li><p class="first">Find the device node assigned to the USB media (e.g. <code class="file docutils literal"><span class="pre">/dev/diskN</span></code>),
 which should be last listed device</p>
 </li>
-<li><p class="first">Unmount the USB drive (where <tt class="docutils literal"><span class="pre">N</span></tt> is the disk number) with the command:</p>
+<li><p class="first">Unmount the USB drive (where <code class="docutils literal"><span class="pre">N</span></code> is the disk number) with the command:</p>
 <div class="highlight-python"><div class="highlight"><pre>diskutil unmountDisk /dev/diskN
 </pre></div>
 </div>
 </li>
-<li><p class="first">Copy the disk image to the USB device (again <tt class="docutils literal"><span class="pre">N</span></tt> is the disk number):</p>
+<li><p class="first">Copy the disk image to the USB device (again <code class="docutils literal"><span class="pre">N</span></code> is the disk number):</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo dd if=~/Documents/{linux.dmg} of=/dev/diskN bs=1m
 </pre></div>
 </div>
@@ -367,7 +369,7 @@ which should be last listed device</p>
 <p class="first admonition-title">Note</p>
 <ol class="last arabic simple">
 <li>The error &#8220;dd: Invalid number &#8216;1m&#8217;&#8221; will appear on Linux. The correct
-entries are <tt class="docutils literal"><span class="pre">bs=1M</span></tt> on Linux and <tt class="docutils literal"><span class="pre">bs=1m</span></tt> on OS X.</li>
+entries are <code class="docutils literal"><span class="pre">bs=1M</span></code> on Linux and <code class="docutils literal"><span class="pre">bs=1m</span></code> on OS X.</li>
 <li>The error &#8220;dd: /dev/diskN: Resource busy&#8221; will appear if the USB drive
 was not unmounted in step 3.</li>
 </ol>
@@ -427,21 +429,21 @@ Server.</td></tr>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
           <a href="03_install.html" title="Installation Instructions"
              >next</a></li>
         <li class="right" >
-          <a href="02_diskutil.html" title="Use of Diskutil"
+          <a href="01_Appleboot.html" title="Apple First Boot Instructions"
              >previous</a> |</li>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

@@ -26,8 +26,8 @@
     <link rel="top" title="AAltsys Server 3.0 Workstation 3.0 documentation" href="index.html" />
     <link rel="prev" title="Workstation User Management" href="02_workstation-management.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,7 +36,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Workstation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -62,12 +62,14 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="02_workstation-management.html"
                         title="previous chapter">Workstation User Management</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/03_command-line-utilities.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/03_command-line-utilities.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -86,7 +88,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="command-utilities">
 <h1>Command Utilities<a class="headerlink" href="#command-utilities" title="Permalink to this headline">¶</a></h1>
@@ -107,8 +109,8 @@ no matter what.</p>
 <h2>CMD.EXE and COMMAND.EXE<a class="headerlink" href="#cmd-exe-and-command-exe" title="Permalink to this headline">¶</a></h2>
 <p>Display the command line window as follows: In Windows XP, select
 <em class="menuselection">Start ‣ Run...</em> from the taskbar menu, then type
-<tt class="kbd docutils literal"><span class="pre">cmd</span> <span class="pre">&lt;Enter&gt;</span></tt>. In Windows 7, display the <em class="menuselection">Start</em> menu, and
-type <tt class="kbd docutils literal"><span class="pre">cmd</span></tt> in the <em class="guilabel">Search</em> box, then press <tt class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></tt>. To
+<code class="kbd docutils literal"><span class="pre">cmd</span> <span class="pre">&lt;Enter&gt;</span></code>. In Windows 7, display the <em class="menuselection">Start</em> menu, and
+type <code class="kbd docutils literal"><span class="pre">cmd</span></code> in the <em class="guilabel">Search</em> box, then press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code>. To
 run <strong class="program">cmd.exe</strong> as administrator, &lt;right-click&gt; the program name and
 select <em class="menuselection">Run as Administrator</em> from the menu.</p>
 <p>Following are selected commands which may be helpful in reviewing settings and
@@ -118,26 +120,26 @@ diagnosing installation problems. <a class="footnote-reference" href="#id2" id="
 <blockquote>
 <div><p><strong>ipconfig</strong> reports or changes IP settings for a workstation:</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">ipconfig</span> <span class="pre">/all</span></tt> &#8211; <em>report the current IP configuration</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">ipconfig</span> <span class="pre">/release</span></tt> &#8211; <em>clear the current IP configuration</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">ipconfig</span> <span class="pre">/renew</span></tt> &#8211; <em>obtain new IP settings through DHCP</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">ipconfig</span> <span class="pre">/flushdns</span></tt> &#8211; <em>clear cached dns entries</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">ipconfig</span> <span class="pre">/all</span></code> &#8211; <em>report the current IP configuration</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">ipconfig</span> <span class="pre">/release</span></code> &#8211; <em>clear the current IP configuration</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">ipconfig</span> <span class="pre">/renew</span></code> &#8211; <em>obtain new IP settings through DHCP</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">ipconfig</span> <span class="pre">/flushdns</span></code> &#8211; <em>clear cached dns entries</em></div>
 </div>
 <p><strong>ping</strong> queries an IP address or DNS name and reports the result:</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">ping</span> <span class="pre">127.0.0.1</span></tt> &#8211; <em>queries the network interface in the workstation itself</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">ping</span> <span class="pre">192.168.2.241</span></tt> &#8211; <em>queries the LAN interface eth1 in the AAltSys server</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">ping</span> <span class="pre">192.168.1.1</span> <span class="pre">or</span> <span class="pre">ping</span> <span class="pre">192.168.1.254</span></tt> &#8211; <em>queries probable addresses
+<div class="line"><code class="docutils literal"><span class="pre">ping</span> <span class="pre">127.0.0.1</span></code> &#8211; <em>queries the network interface in the workstation itself</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">ping</span> <span class="pre">192.168.2.241</span></code> &#8211; <em>queries the LAN interface eth1 in the AAltSys server</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">ping</span> <span class="pre">192.168.1.1</span> <span class="pre">or</span> <span class="pre">ping</span> <span class="pre">192.168.1.254</span></code> &#8211; <em>queries probable addresses
 for the WAN gateway</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">ping</span> <span class="pre">google.com</span></tt> &#8211; <em>performs a DNS lookup on and queries a remote IP</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">ping</span> <span class="pre">google.com</span></code> &#8211; <em>performs a DNS lookup on and queries a remote IP</em></div>
 </div>
 <p><strong>nslookup</strong> queries a DNS name and returns its corresponding IP address:</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">nslookup</span> <span class="pre">google.com</span></tt> &#8211; <em>queries DNS services, not actual IP addresses</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">nslookup</span> <span class="pre">google.com</span></code> &#8211; <em>queries DNS services, not actual IP addresses</em></div>
 </div>
 <p><strong>netsh</strong> queries and diagnoses networking issues on a workstation:</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">netsh</span> <span class="pre">diag</span> <span class="pre">gui</span></tt> &#8211; <em>displays networking diagnostics in a gui window</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">netsh</span> <span class="pre">diag</span> <span class="pre">gui</span></code> &#8211; <em>displays networking diagnostics in a gui window</em></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -154,7 +156,7 @@ DNS name resolution issues.&#8221;)</p>
 <h3>File system management<a class="headerlink" href="#file-system-management" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">sfc</span> <span class="pre">/scannow</span></tt> &#8211; <em>scan and repair protected system files</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">sfc</span> <span class="pre">/scannow</span></code> &#8211; <em>scan and repair protected system files</em></div>
 </div>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -162,12 +164,12 @@ DNS name resolution issues.&#8221;)</p>
 folder ownership.</p>
 </div>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">cacls</span> <span class="pre">*.*</span> <span class="pre">/E</span> <span class="pre">/R</span> <span class="pre">(username):F</span></tt> &#8211; <em>adds full permissions to files</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">cacls</span> <span class="pre">*.*</span> <span class="pre">/T</span> <span class="pre">/E</span> <span class="pre">/P</span> <span class="pre">(username):F</span></tt> &#8211; <em>adds full permissions to all files
+<div class="line"><code class="docutils literal"><span class="pre">cacls</span> <span class="pre">*.*</span> <span class="pre">/E</span> <span class="pre">/R</span> <span class="pre">(username):F</span></code> &#8211; <em>adds full permissions to files</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">cacls</span> <span class="pre">*.*</span> <span class="pre">/T</span> <span class="pre">/E</span> <span class="pre">/P</span> <span class="pre">(username):F</span></code> &#8211; <em>adds full permissions to all files
 and special files</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">cacls</span> <span class="pre">__filename__</span> <span class="pre">/G</span> <span class="pre">(username):F</span></tt> &#8211; grants full rights to file*</div>
-<div class="line"><tt class="docutils literal"><span class="pre">takeown</span> <span class="pre">/f</span> <span class="pre">__filename__</span></tt> &#8211; change ownership (Unix chown)</div>
-<div class="line"><tt class="docutils literal"><span class="pre">takeown</span> <span class="pre">/f</span> <span class="pre">__directory__</span> <span class="pre">/r</span></tt> &#8211; change ownership of directory tree</div>
+<div class="line"><code class="docutils literal"><span class="pre">cacls</span> <span class="pre">__filename__</span> <span class="pre">/G</span> <span class="pre">(username):F</span></code> &#8211; grants full rights to file*</div>
+<div class="line"><code class="docutils literal"><span class="pre">takeown</span> <span class="pre">/f</span> <span class="pre">__filename__</span></code> &#8211; change ownership (Unix chown)</div>
+<div class="line"><code class="docutils literal"><span class="pre">takeown</span> <span class="pre">/f</span> <span class="pre">__directory__</span> <span class="pre">/r</span></code> &#8211; change ownership of directory tree</div>
 </div>
 </div></blockquote>
 </div>
@@ -175,7 +177,7 @@ and special files</em></div>
 <h3>System controls<a class="headerlink" href="#system-controls" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">mmc</span></tt> &#8211; <em>an alternative way to open system control panels</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">mmc</span></code> &#8211; <em>an alternative way to open system control panels</em></div>
 </div>
 </div></blockquote>
 </div>
@@ -195,10 +197,10 @@ installation problems.</p>
 <blockquote>
 <div><p>This command reports or changes the IP settings for a Mac OS X workstation:</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">ifconfig</span></tt> &#8211; <em>report the current IP configuration</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">ifconfig</span> <span class="pre">en0</span></tt> &#8211; <em>report the current IP configuration for the ethernet
+<div class="line"><code class="docutils literal"><span class="pre">ifconfig</span></code> &#8211; <em>report the current IP configuration</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">ifconfig</span> <span class="pre">en0</span></code> &#8211; <em>report the current IP configuration for the ethernet
 adapter</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">ifconfig</span> <span class="pre">en1</span></tt> &#8211; <em>report the current IP configuration for the airport
+<div class="line"><code class="docutils literal"><span class="pre">ifconfig</span> <span class="pre">en1</span></code> &#8211; <em>report the current IP configuration for the airport
 adaptor in some models</em></div>
 </div>
 </div></blockquote>
@@ -208,10 +210,10 @@ adaptor in some models</em></div>
 <blockquote>
 <div><p>This command executes a network query to an IP address and reports the result:</p>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">ping</span> <span class="pre">127.0.0.1</span></tt> &#8211; <em>queries the workstation network interface itself</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">ping</span> <span class="pre">192.168.2.241</span></tt> &#8211; <em>queries LAN interface eth1 in the AAltSys server</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">ping</span> <span class="pre">192.168.1.1</span> <span class="pre">or</span> <span class="pre">ping</span> <span class="pre">192.168.1.254</span></tt> &#8211; <em>queries likely WAN gateways</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">ping</span> <span class="pre">google.com</span></tt> &#8211; <em>performs a DNS lookup on the Internet and queries a
+<div class="line"><code class="docutils literal"><span class="pre">ping</span> <span class="pre">127.0.0.1</span></code> &#8211; <em>queries the workstation network interface itself</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">ping</span> <span class="pre">192.168.2.241</span></code> &#8211; <em>queries LAN interface eth1 in the AAltSys server</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">ping</span> <span class="pre">192.168.1.1</span> <span class="pre">or</span> <span class="pre">ping</span> <span class="pre">192.168.1.254</span></code> &#8211; <em>queries likely WAN gateways</em></div>
+<div class="line"><code class="docutils literal"><span class="pre">ping</span> <span class="pre">google.com</span></code> &#8211; <em>performs a DNS lookup on the Internet and queries a
 remote server</em></div>
 </div>
 </div></blockquote>
@@ -225,9 +227,9 @@ remote server</em></div>
 ownership and permissions.</p>
 </div>
 <div class="line-block">
-<div class="line"><tt class="docutils literal"><span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">(username)</span> <span class="pre">*</span></tt> &#8211; <em>makes (username) the owner of all files,
+<div class="line"><code class="docutils literal"><span class="pre">chown</span> <span class="pre">-R</span> <span class="pre">(username)</span> <span class="pre">*</span></code> &#8211; <em>makes (username) the owner of all files,
 folders, subdirectories, and sub files</em></div>
-<div class="line"><tt class="docutils literal"><span class="pre">chmod</span> <span class="pre">-R</span> <span class="pre">777</span> <span class="pre">./*</span></tt> &#8211; <em>makes all files have read, write, and execute
+<div class="line"><code class="docutils literal"><span class="pre">chmod</span> <span class="pre">-R</span> <span class="pre">777</span> <span class="pre">./*</span></code> &#8211; <em>makes all files have read, write, and execute
 permissions set for all users</em></div>
 </div>
 </div></blockquote>
@@ -249,7 +251,7 @@ permissions set for all users</em></div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -258,9 +260,9 @@ permissions set for all users</em></div>
         <li><a href="index.html">AAltsys Server 3.0 Workstation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

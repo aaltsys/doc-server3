@@ -25,14 +25,14 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -55,12 +55,14 @@
 </li>
 </ul>
 
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/Appleboot.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Appleboot.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -79,7 +81,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="apple-first-boot-instructions">
 <h1>Apple First Boot Instructions<a class="headerlink" href="#apple-first-boot-instructions" title="Permalink to this headline">¶</a></h1>
@@ -139,14 +141,14 @@ Please refer to separate Zentyal server installation instructions for a
 detailed procedure specific to that operating system.</p>
 </div>
 <ol class="arabic simple">
-<li>Restart the Mac, holding down the <tt class="kbd docutils literal"><span class="pre">alt/option</span></tt> key to choose the
+<li>Restart the Mac, holding down the <code class="kbd docutils literal"><span class="pre">alt/option</span></code> key to choose the
 boot device, either the USB drive or the Superdrive.</li>
 <li>Choose the boot media, which Apple humorously refers to as &#8220;Windows&#8221;.</li>
 <li>Boot the Linux installation, select the installation language, and then
 choose to install by <em class="menuselection">(expert mode)</em>.</li>
 <li>Use manual partitioning option, and in the free space created previously,
 first create an 8 Gb swap partition and then an install partition of type
-<tt class="docutils literal"><span class="pre">ext4</span></tt> mounted as <tt class="docutils literal"><span class="pre">/</span></tt>.</li>
+<code class="docutils literal"><span class="pre">ext4</span></code> mounted as <code class="docutils literal"><span class="pre">/</span></code>.</li>
 <li>Continue with Linux installation in the newly-created partitions.</li>
 <li>Reboot when installation is finished, removing the USB flash drive or media.
 The <strong class="program">rEFInd</strong> boot selector should now contain options to boot Linux.</li>
@@ -171,7 +173,7 @@ Linux-y approach to editing the <strong class="program">rEFInd</strong> configur
 <div class="section" id="diagnose-refind-behavior">
 <h3>Diagnose rEFInd behavior<a class="headerlink" href="#diagnose-refind-behavior" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Restart the server, and press <tt class="kbd docutils literal"><span class="pre">right-arrow</span></tt> in <strong class="program">rEFInd</strong> to stop
+<li>Restart the server, and press <code class="kbd docutils literal"><span class="pre">right-arrow</span></code> in <strong class="program">rEFInd</strong> to stop
 boot.</li>
 <li>Write down each main boot option to decide which should be displayed.</li>
 <li>Determine configuration options to change. <a class="footnote-reference" href="#id2" id="id1">[1]</a></li>
@@ -188,7 +190,7 @@ boot.</li>
 </div>
 <p>and enter your password when prompted.</p>
 </li>
-<li><p class="first">Modify the configuration options as desired, then press <tt class="kbd docutils literal"><span class="pre">control-X</span></tt> to
+<li><p class="first">Modify the configuration options as desired, then press <code class="kbd docutils literal"><span class="pre">control-X</span></code> to
 save changes.</p>
 </li>
 <li><p class="first">Exit all programs and restart the server to test the new configuration.</p>
@@ -197,7 +199,7 @@ save changes.</p>
 <p>Repeat these instructions until desired results are achieved.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Save a copy of <tt class="file docutils literal"><span class="pre">refind.conf</span></tt> in your <tt class="file docutils literal"><span class="pre">~/Documents</span></tt>
+<p class="last">Save a copy of <code class="file docutils literal"><span class="pre">refind.conf</span></code> in your <code class="file docutils literal"><span class="pre">~/Documents</span></code>
 folder, as updates to Mac OS X will wipe out the EFI configuration.</p>
 </div>
 </div>
@@ -206,7 +208,7 @@ folder, as updates to Mac OS X will wipe out the EFI configuration.</p>
 <p>The goal for this installation was to provide a testing server running Ubuntu,
 but also capable of being used as a Mac server or workstation when not testing.
 Therefore the server by default would boot Linux with minimal delay, while still
-providing a <tt class="docutils literal"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></tt> boot option. The configuration options used were:</p>
+providing a <code class="docutils literal"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></code> boot option. The configuration options used were:</p>
 <div class="highlight-python"><div class="highlight"><pre>timeout 5
 use_graphics_for osx, linux
 dont_scan_volumes &quot;Backup&quot;, &quot;Recovery HD&quot;
@@ -222,8 +224,8 @@ default_selection &quot;vmlinuz&quot;
 <div class="section" id="restoring-refind-installation">
 <h2>Restoring rEFInd installation<a class="headerlink" href="#restoring-refind-installation" title="Permalink to this headline">¶</a></h2>
 <p>The efi directory is cleared and rewritten when updating Mac OS X. Keep program
-<strong class="program">rEFInd</strong> in your <tt class="file docutils literal"><span class="pre">~/Downloads</span></tt> folder, and keep a copy of
-<tt class="file docutils literal"><span class="pre">refind.conf</span></tt> in your <tt class="file docutils literal"><span class="pre">~/Documents</span></tt> folder. Restore a lost
+<strong class="program">rEFInd</strong> in your <code class="file docutils literal"><span class="pre">~/Downloads</span></code> folder, and keep a copy of
+<code class="file docutils literal"><span class="pre">refind.conf</span></code> in your <code class="file docutils literal"><span class="pre">~/Documents</span></code> folder. Restore a lost
 <strong class="program">rEFInd</strong> installation in Mac OS X as follows:</p>
 <ol class="arabic">
 <li><p class="first">Start a terminal from <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em></p>
@@ -252,15 +254,15 @@ sudo cp ~/Documents/refind.conf /efi/refind/
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

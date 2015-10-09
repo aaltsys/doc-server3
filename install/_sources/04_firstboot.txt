@@ -10,8 +10,8 @@ administration console. First, in Firefox
 :guilabel:`Remember passwords for sites`. Then login to Zentyal for the first 
 boot configuration::
 
-   :guilabel:`Username:`  :kbd:`__username__`
-   :guilabel:`Password:`  :kbd:`__password__`
+   Username:  __username__
+   Password:  __password__
 
 .. note::
    Following section titles correspond to items on the Zentyal 
@@ -118,13 +118,6 @@ When finished, click on :guilabel:`GO TO THE DASHBOARD`.
 
 To exit Zentyal, choose :guilabel:`Logout` from the Zentyal top bar, then click 
 :guilabel:`Exit`.
-
-Holding Zentyal
----------------------------
-
-In order to keep Zentyal from auto-updating, type the following command: ::
-
-  sudo apt-mark hold zentyal-core
 
 Connecting External Drive
 =============================

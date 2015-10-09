@@ -27,8 +27,8 @@
     <link rel="next" title="Automount Drive Setup" href="05_backupdrive.html" />
     <link rel="prev" title="Remote Secure Shell Sessions" href="03_secureshell.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -79,12 +79,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="05_backupdrive.html"
                         title="next chapter">Automount Drive Setup</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/04_network.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/04_network.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -103,7 +105,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="server-network-setup">
 <span id="network"></span><h1>Server Network Setup<a class="headerlink" href="#server-network-setup" title="Permalink to this headline">¶</a></h1>
@@ -111,8 +113,8 @@
 roles, and they are configured either by DHCP or through static settings. The
 AAltsys Server uses either one or two network interfaces, with assigned roles
 and configuration settings based on interface connections. The first, or primary
-network interface on a system is assigned to device <tt class="docutils literal"><span class="pre">eth0</span></tt>, and an additional,
-or secondary interface will be <tt class="docutils literal"><span class="pre">eth1</span></tt>.</p>
+network interface on a system is assigned to device <code class="docutils literal"><span class="pre">eth0</span></code>, and an additional,
+or secondary interface will be <code class="docutils literal"><span class="pre">eth1</span></code>.</p>
 <p>Servers with two interfaces may act as gateway computers, routing traffic
 between an external WAN or the Internet and a local network or LAN. Servers with
 only one network interface can only act as peers on a LAN. WAN connections are
@@ -256,11 +258,11 @@ your server type, and then click <em class="guilabel">Next</em>:</p>
 <td>&nbsp;</td>
 <td><strong>Configure Interface types:</strong></td>
 </tr>
-<tr class="row-odd"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">External</span></tt></td>
+<tr class="row-odd"><td>eth0 &#8211;&gt; <code class="docutils literal"><span class="pre">External</span></code></td>
 <td>&nbsp;</td>
-<td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">Internal</span></tt></td>
+<td>eth0 &#8211;&gt; <code class="docutils literal"><span class="pre">Internal</span></code></td>
 </tr>
-<tr class="row-even"><td>eth1 &#8211;&gt; <tt class="docutils literal"><span class="pre">Internal</span></tt></td>
+<tr class="row-even"><td>eth1 &#8211;&gt; <code class="docutils literal"><span class="pre">Internal</span></code></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
@@ -286,7 +288,7 @@ for a LAN peer server.</p>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">DHCP</span></tt></td>
+<tr class="row-odd"><td>eth0 &#8211;&gt; <code class="docutils literal"><span class="pre">DHCP</span></code></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
@@ -298,15 +300,15 @@ for a LAN peer server.</p>
 <td>&nbsp;</td>
 <td><strong>Configure network for internal...</strong></td>
 </tr>
-<tr class="row-even"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">Static</span></tt></td>
+<tr class="row-even"><td>eth0 &#8211;&gt; <code class="docutils literal"><span class="pre">Static</span></code></td>
 <td>&nbsp;</td>
-<td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">DHCP</span></tt></td>
+<td>eth0 &#8211;&gt; <code class="docutils literal"><span class="pre">DHCP</span></code></td>
 </tr>
-<tr class="row-odd"><td>IP address &#8211;&gt; <tt class="docutils literal"><span class="pre">192.1658.2.241</span></tt></td>
+<tr class="row-odd"><td>IP address &#8211;&gt; <code class="docutils literal"><span class="pre">192.1658.2.241</span></code></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>Netmask &#8211;&gt; <tt class="docutils literal"><span class="pre">255.255.255.0</span></tt></td>
+<tr class="row-even"><td>Netmask &#8211;&gt; <code class="docutils literal"><span class="pre">255.255.255.0</span></code></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
@@ -355,10 +357,10 @@ https://192.168.2.241
 menu.</p>
 <ol class="arabic simple">
 <li>On the <em class="guilabel">eth0</em> tab:</li>
-<li>Change Method to <tt class="kbd docutils literal"><span class="pre">Static</span></tt></li>
-<li>Enter your static IP address in <tt class="kbd docutils literal"><span class="pre">IP</span> <span class="pre">Address</span></tt></li>
-<li>Select your subnet mask in <tt class="kbd docutils literal"><span class="pre">Netmask</span></tt> (255.255.255.0 or similar)</li>
-<li>Click <tt class="kbd docutils literal"><span class="pre">Change</span></tt></li>
+<li>Change Method to <code class="kbd docutils literal"><span class="pre">Static</span></code></li>
+<li>Enter your static IP address in <code class="kbd docutils literal"><span class="pre">IP</span> <span class="pre">Address</span></code></li>
+<li>Select your subnet mask in <code class="kbd docutils literal"><span class="pre">Netmask</span></code> (255.255.255.0 or similar)</li>
+<li>Click <code class="kbd docutils literal"><span class="pre">Change</span></code></li>
 </ol>
 </li>
 <li><p class="first">Navigate to <em class="menuselection">Core ‣ Network ‣ Gateways</em>.</p>
@@ -367,11 +369,11 @@ menu.</p>
 <li>Enter a descriptive name</li>
 <li>In IP Address, enter the WAN router gateway address</li>
 <li>Select eth0 in <em class="guilabel">Interface</em></li>
-<li>Check the <tt class="kbd docutils literal"><span class="pre">Default</span></tt> box</li>
-<li>Click <tt class="kbd docutils literal"><span class="pre">Add</span></tt></li>
+<li>Check the <code class="kbd docutils literal"><span class="pre">Default</span></code> box</li>
+<li>Click <code class="kbd docutils literal"><span class="pre">Add</span></code></li>
 </ol>
 </li>
-<li><p class="first">Click <tt class="kbd docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></tt> in the Zentyal title bar, and then <tt class="kbd docutils literal"><span class="pre">Save</span></tt>.</p>
+<li><p class="first">Click <code class="kbd docutils literal"><span class="pre">Save</span> <span class="pre">Changes</span></code> in the Zentyal title bar, and then <code class="kbd docutils literal"><span class="pre">Save</span></code>.</p>
 </li>
 </ul>
 </div>
@@ -395,17 +397,17 @@ https://192.168.2.241/
 </li>
 <li><p class="first">Navigate to <em class="menuselection">Core ‣ Network ‣ Gateways</em>.</p>
 <ul class="simple">
-<li>Click <tt class="kbd docutils literal"><span class="pre">Delete</span></tt> (Trash Can) next to the gateway entry</li>
+<li>Click <code class="kbd docutils literal"><span class="pre">Delete</span></code> (Trash Can) next to the gateway entry</li>
 </ul>
 </li>
 <li><p class="first">Navigate to <em class="menuselection">Core ‣ Network ‣ Interfaces ‣ eth0</em>.</p>
 <ul class="simple">
-<li>Change <em class="guilabel">Method</em> to <tt class="kbd docutils literal"><span class="pre">DHCP</span></tt></li>
-<li>Click <tt class="kbd docutils literal"><span class="pre">Change</span></tt></li>
+<li>Change <em class="guilabel">Method</em> to <code class="kbd docutils literal"><span class="pre">DHCP</span></code></li>
+<li>Click <code class="kbd docutils literal"><span class="pre">Change</span></code></li>
 </ul>
 </li>
 <li><p class="first">Click <em class="guilabel">Save Changes</em> on the Zentyal title bar, and then click
-<tt class="kbd docutils literal"><span class="pre">Save</span></tt>.</p>
+<code class="kbd docutils literal"><span class="pre">Save</span></code>.</p>
 </li>
 </ul>
 </div>
@@ -418,21 +420,21 @@ To allow a static gateway setting when eth0 uses DHCP:</p>
 <div><ul>
 <li><p class="first">Open a console on the server</p>
 </li>
-<li><p class="first">Login <tt class="docutils literal"><span class="pre">__Administrator__</span></tt>, <tt class="docutils literal"><span class="pre">__Password__</span></tt>.</p>
+<li><p class="first">Login <code class="docutils literal"><span class="pre">__Administrator__</span></code>, <code class="docutils literal"><span class="pre">__Password__</span></code>.</p>
 </li>
 <li><p class="first">Enter the command:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo nano -w /usr/share/perl5/EBox/Network/Model/GatewayTable.pm
 </pre></div>
 </div>
 </li>
-<li><p class="first">Press <tt class="kbd docutils literal"><span class="pre">Ctrl-w</span></tt>, search for <tt class="docutils literal"><span class="pre">gatewayReachable</span></tt>.</p>
+<li><p class="first">Press <code class="kbd docutils literal"><span class="pre">Ctrl-w</span></code>, search for <code class="docutils literal"><span class="pre">gatewayReachable</span></code>.</p>
 </li>
-<li><p class="first">Comment the line, adding <tt class="docutils literal"><span class="pre">#</span></tt> in front:</p>
+<li><p class="first">Comment the line, adding <code class="docutils literal"><span class="pre">#</span></code> in front:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># $network-&gt;gatewayReachable($params{&#39;ip&#39;}, &#39;LaunchException&#39;);</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Press <tt class="kbd docutils literal"><span class="pre">Ctrl-x</span></tt> to exit and save.</p>
+<li><p class="first">Press <code class="kbd docutils literal"><span class="pre">Ctrl-x</span></code> to exit and save.</p>
 </li>
 </ul>
 </div></blockquote>
@@ -443,11 +445,11 @@ To allow a static gateway setting when eth0 uses DHCP:</p>
 <li>Navigate to <em class="menuselection">Core ‣ Network ‣ Gateways</em>.</li>
 <li>Click <em class="guilabel">(+) Add</em> next to the gateway entry:<ul>
 <li>Enter the gateway IP address</li>
-<li>Select Interface <tt class="kbd docutils literal"><span class="pre">eth0</span></tt></li>
-<li>Check the box for <tt class="kbd docutils literal"><span class="pre">Default</span></tt></li>
+<li>Select Interface <code class="kbd docutils literal"><span class="pre">eth0</span></code></li>
+<li>Check the box for <code class="kbd docutils literal"><span class="pre">Default</span></code></li>
 </ul>
 </li>
-<li><em class="guilabel">Save Changes</em> in the Zentyal title bar, and click <tt class="kbd docutils literal"><span class="pre">Save</span></tt>.</li>
+<li><em class="guilabel">Save Changes</em> in the Zentyal title bar, and click <code class="kbd docutils literal"><span class="pre">Save</span></code>.</li>
 </ul>
 </div>
 </div>
@@ -533,7 +535,7 @@ nslookup -query=hinfo fb.com
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -545,9 +547,9 @@ nslookup -query=hinfo fb.com
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

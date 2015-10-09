@@ -26,8 +26,8 @@
     <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
     <link rel="prev" title="Procedures of Operation" href="09_procedures.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,7 +36,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -58,12 +58,14 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="09_procedures.html"
                         title="previous chapter">Procedures of Operation</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/10_redundanthost.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/10_redundanthost.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -82,7 +84,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="redundant-server-setup">
 <h1>Redundant Server Setup<a class="headerlink" href="#redundant-server-setup" title="Permalink to this headline">¶</a></h1>
@@ -214,16 +216,16 @@ the preceding table. Substitute values according to your network IP.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Core &gt; System &gt; General &gt; Hostname</td>
-<td><tt class="docutils literal"><span class="pre">backupserver.local.aaltsys.net</span></tt></td>
+<td><code class="docutils literal"><span class="pre">backupserver.local.aaltsys.net</span></code></td>
 </tr>
 <tr class="row-odd"><td>Office &gt; File Sharing &gt; General Settings &gt; Netbios Name</td>
-<td><tt class="docutils literal"><span class="pre">backupserver</span></tt></td>
+<td><code class="docutils literal"><span class="pre">backupserver</span></code></td>
 </tr>
 <tr class="row-even"><td>Core &gt; Network &gt; Interfaces &gt; eth1</td>
-<td><tt class="docutils literal"><span class="pre">192.168.2.242</span></tt></td>
+<td><code class="docutils literal"><span class="pre">192.168.2.242</span></code></td>
 </tr>
 <tr class="row-odd"><td>Infrastructure &gt; DHCP &gt; eth1 &gt; Ranges &gt; default</td>
-<td><tt class="docutils literal"><span class="pre">(delete</span> <span class="pre">the</span> <span class="pre">default</span> <span class="pre">range)</span></tt></td>
+<td><code class="docutils literal"><span class="pre">(delete</span> <span class="pre">the</span> <span class="pre">default</span> <span class="pre">range)</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -320,9 +322,9 @@ rebooting.</p>
 time. Here is a brief outline of the steps for this to work:</p>
 <ul class="simple">
 <li>On the primary server, make sure that a configuration backup has run.</li>
-<li>On the primary server, run the cron job <tt class="docutils literal"><span class="pre">rsync-config</span></tt> to propagate the backup.</li>
+<li>On the primary server, run the cron job <code class="docutils literal"><span class="pre">rsync-config</span></code> to propagate the backup.</li>
 <li>Disconnect the redundant server from the network.</li>
-<li>On the redundant server, set the backup directory to <tt class="docutils literal"><span class="pre">/home/mnt/backup/source_config</span></tt>.</li>
+<li>On the redundant server, set the backup directory to <code class="docutils literal"><span class="pre">/home/mnt/backup/source_config</span></code>.</li>
 <li>Perform a services restore on the redundant server.</li>
 <li>Reset the redundant server settings as described previously.</li>
 <li>Shutdown the redundant server, reconnect it to the network, and restart.</li>
@@ -344,7 +346,7 @@ reinstalled. Directions for using Linux-HA are available at
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -353,9 +355,9 @@ reinstalled. Directions for using Linux-HA are available at
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

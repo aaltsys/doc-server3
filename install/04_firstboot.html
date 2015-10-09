@@ -27,8 +27,8 @@
     <link rel="next" title="Zentyal Configuration" href="05_zentyal.html" />
     <link rel="prev" title="Installation Instructions" href="03_install.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -52,8 +52,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#network-interfaces">Network Interfaces</a></li>
-<li><a class="reference internal" href="#saving-changes">Saving Changes</a></li>
-<li><a class="reference internal" href="#holding-zentyal">Holding Zentyal</a><ul>
+<li><a class="reference internal" href="#saving-changes">Saving Changes</a><ul>
 <li><a class="reference internal" href="#connecting-external-drive">Connecting External Drive</a></li>
 <li><a class="reference internal" href="#installing-aaltsys-vpn">Installing AAltSys VPN</a></li>
 <li><a class="reference internal" href="#restarting-server">Restarting Server</a></li>
@@ -69,12 +68,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="05_zentyal.html"
                         title="next chapter">Zentyal Configuration</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/04_firstboot.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/04_firstboot.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -93,7 +94,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="first-boot-configuration">
 <span id="firstboot"></span><h1>First Boot Configuration<a class="headerlink" href="#first-boot-configuration" title="Permalink to this headline">¶</a></h1>
@@ -102,8 +103,8 @@ administration console. First, in Firefox
 <em class="menuselection">Edit ‣ Preferences ‣ Security</em>, uncheck item
 <em class="guilabel">Remember passwords for sites</em>. Then login to Zentyal for the first
 boot configuration:</p>
-<div class="highlight-python"><div class="highlight"><pre>:guilabel:`Username:`  :kbd:`__username__`
-:guilabel:`Password:`  :kbd:`__password__`
+<div class="highlight-python"><div class="highlight"><pre>Username:  __username__
+Password:  __password__
 </pre></div>
 </div>
 <div class="admonition note">
@@ -178,11 +179,11 @@ your server type:</p>
 <td>&nbsp;</td>
 <td><strong>Configure Interface types:</strong></td>
 </tr>
-<tr class="row-odd"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">External</span></tt></td>
+<tr class="row-odd"><td>eth0 &#8211;&gt; <code class="docutils literal"><span class="pre">External</span></code></td>
 <td>&nbsp;</td>
-<td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">Internal</span></tt></td>
+<td>eth0 &#8211;&gt; <code class="docutils literal"><span class="pre">Internal</span></code></td>
 </tr>
-<tr class="row-even"><td>eth1 &#8211;&gt; <tt class="docutils literal"><span class="pre">Internal</span></tt></td>
+<tr class="row-even"><td>eth1 &#8211;&gt; <code class="docutils literal"><span class="pre">Internal</span></code></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
@@ -209,7 +210,7 @@ your server type:</p>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-odd"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">DHCP</span></tt></td>
+<tr class="row-odd"><td>eth0 &#8211;&gt; <code class="docutils literal"><span class="pre">DHCP</span></code></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
@@ -221,15 +222,15 @@ your server type:</p>
 <td>&nbsp;</td>
 <td><strong>Configure network for internal...</strong></td>
 </tr>
-<tr class="row-even"><td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">Static</span></tt></td>
+<tr class="row-even"><td>eth0 &#8211;&gt; <code class="docutils literal"><span class="pre">Static</span></code></td>
 <td>&nbsp;</td>
-<td>eth0 &#8211;&gt; <tt class="docutils literal"><span class="pre">DHCP</span></tt></td>
+<td>eth0 &#8211;&gt; <code class="docutils literal"><span class="pre">DHCP</span></code></td>
 </tr>
-<tr class="row-odd"><td>IP address &#8211;&gt; <tt class="docutils literal"><span class="pre">192.168.2.241</span></tt></td>
+<tr class="row-odd"><td>IP address &#8211;&gt; <code class="docutils literal"><span class="pre">192.168.2.241</span></code></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
-<tr class="row-even"><td>Netmask &#8211;&gt; <tt class="docutils literal"><span class="pre">255.255.255.0</span></tt></td>
+<tr class="row-even"><td>Netmask &#8211;&gt; <code class="docutils literal"><span class="pre">255.255.255.0</span></code></td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
@@ -261,13 +262,6 @@ initial installation, such as <em class="guilabel">local.aaltsys.net</em>.</p>
 <p>When finished, click on <em class="guilabel">GO TO THE DASHBOARD</em>.</p>
 <p>To exit Zentyal, choose <em class="guilabel">Logout</em> from the Zentyal top bar, then click
 <em class="guilabel">Exit</em>.</p>
-</div>
-<div class="section" id="holding-zentyal">
-<h2>Holding Zentyal<a class="headerlink" href="#holding-zentyal" title="Permalink to this headline">¶</a></h2>
-<p>In order to keep Zentyal from auto-updating, type the following command:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo apt-mark hold zentyal-core
-</pre></div>
-</div>
 <div class="section" id="connecting-external-drive">
 <h3>Connecting External Drive<a class="headerlink" href="#connecting-external-drive" title="Permalink to this headline">¶</a></h3>
 <p>An external drive should be connected for storing backups, such as the Passport
@@ -277,7 +271,7 @@ initial installation, such as <em class="guilabel">local.aaltsys.net</em>.</p>
 <div class="section" id="installing-aaltsys-vpn">
 <h3>Installing AAltSys VPN<a class="headerlink" href="#installing-aaltsys-vpn" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">Download this <a class="reference download internal" href="_downloads/aas.sh"><tt class="xref download docutils literal"><span class="pre">registration</span> <span class="pre">script</span></tt></a></p>
+<li><p class="first">Download this <a class="reference download internal" href="_downloads/aas.sh"><code class="xref download docutils literal"><span class="pre">registration</span> <span class="pre">script</span></code></a></p>
 </li>
 <li><p class="first">Double-click the <em class="guilabel">Console</em> icon from the server desktop.</p>
 </li>
@@ -288,7 +282,7 @@ rm aas.sh
 </pre></div>
 </div>
 </li>
-<li><p class="first">Type in your <tt class="kbd docutils literal"><span class="pre">__password__</span></tt>.When prompted for it.</p>
+<li><p class="first">Type in your <code class="kbd docutils literal"><span class="pre">__password__</span></code>.When prompted for it.</p>
 </li>
 <li><p class="first">Additional packages may be installed now (10-20 minutes).</p>
 </li>
@@ -321,7 +315,7 @@ should restart.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -333,9 +327,9 @@ should restart.</p>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

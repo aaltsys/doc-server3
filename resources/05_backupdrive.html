@@ -27,8 +27,8 @@
     <link rel="next" title="Mounting Devices with udev" href="09_udevmount.html" />
     <link rel="prev" title="Server Network Setup" href="04_network.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -60,12 +60,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="09_udevmount.html"
                         title="next chapter">Mounting Devices with udev</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/05_backupdrive.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/05_backupdrive.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -84,7 +86,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="automount-drive-setup">
 <span id="backupdrive"></span><h1>Automount Drive Setup<a class="headerlink" href="#automount-drive-setup" title="Permalink to this headline">¶</a></h1>
@@ -179,7 +181,7 @@ followed by the automount steps below before autofs can mount the drive.</p>
 <p class="first admonition-title">Note</p>
 <p>Once a drive is formatted, a bash script is provided to perform Parts
 2 and 3 of this document. From the web browser on the server, download
-<a class="reference download internal" href="_downloads/backupdrive.sh"><tt class="xref download docutils literal"><span class="pre">this</span> <span class="pre">script</span></tt></a> and save it
+<a class="reference download internal" href="_downloads/backupdrive.sh"><code class="xref download docutils literal"><span class="pre">this</span> <span class="pre">script</span></code></a> and save it
 in your home folder. Then execute the script with the commands:</p>
 <div class="last highlight-python"><div class="highlight"><pre>cd ~/Downloads
 bash backupdrive.sh BACKUP
@@ -188,7 +190,7 @@ rm backupdrive.sh
 </div>
 </div>
 <p>The drive device will be discovered and then mounted to logical mount point
-<tt class="docutils literal"><span class="pre">/home/mnt/backup</span></tt>. <a class="footnote-reference" href="#id6" id="id3">[3]</a></p>
+<code class="docutils literal"><span class="pre">/home/mnt/backup</span></code>. <a class="footnote-reference" href="#id6" id="id3">[3]</a></p>
 <ol class="arabic">
 <li><p class="first">Plug in the hot-pluggable device on a <strong>USB</strong> port (eSATA is risky).</p>
 </li>
@@ -212,8 +214,8 @@ rm backupdrive.sh
 </div>
 </li>
 </ol>
-<p>This example shows block device <tt class="docutils literal"><span class="pre">/dev/sdc5</span></tt>, UUID <tt class="docutils literal"><span class="pre">363404743404397F</span></tt>, of
-<tt class="docutils literal"><span class="pre">TYPE=&quot;ntfs&quot;</span></tt>.</p>
+<p>This example shows block device <code class="docutils literal"><span class="pre">/dev/sdc5</span></code>, UUID <code class="docutils literal"><span class="pre">363404743404397F</span></code>, of
+<code class="docutils literal"><span class="pre">TYPE=&quot;ntfs&quot;</span></code>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">In the following commands, replace <strong>$UUID</strong> with the identifier
@@ -253,8 +255,8 @@ touch /home/mnt/backup/@@external@@
 <p class="first admonition-title">Note</p>
 <p class="last">This procedure created a file directory on the local drive as well as
 the target directory on the external drive. When the external drive is
-disconnected, turned off, or failed, the file <tt class="docutils literal"><span class="pre">&#64;&#64;external&#64;&#64;</span></tt> will not
-display with the command <tt class="docutils literal"><span class="pre">ls</span> <span class="pre">/home/mnt/backup/&#64;&#64;*</span></tt>.</p>
+disconnected, turned off, or failed, the file <code class="docutils literal"><span class="pre">&#64;&#64;external&#64;&#64;</span></code> will not
+display with the command <code class="docutils literal"><span class="pre">ls</span> <span class="pre">/home/mnt/backup/&#64;&#64;*</span></code>.</p>
 </div>
 </div>
 <div class="section" id="disconnect-automounted-drive">
@@ -296,7 +298,7 @@ sudo service autofs restart
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -308,9 +310,9 @@ sudo service autofs restart
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

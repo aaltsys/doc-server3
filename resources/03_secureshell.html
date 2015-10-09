@@ -27,8 +27,8 @@
     <link rel="next" title="Server Network Setup" href="04_network.html" />
     <link rel="prev" title="Mounting Network File Systems" href="02_filesharing.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,7 +40,7 @@
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
@@ -66,12 +66,14 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="04_network.html"
                         title="next chapter">Server Network Setup</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/03_secureshell.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/03_secureshell.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -90,7 +92,7 @@
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="remote-secure-shell-sessions">
 <h1>Remote Secure Shell Sessions<a class="headerlink" href="#remote-secure-shell-sessions" title="Permalink to this headline">¶</a></h1>
@@ -147,7 +149,7 @@ key. To address the problem for a terminal icon, open a terminal shell prompt:</
 <div class="highlight-python"><div class="highlight"><pre>ssh://[registration].servers.aaltsys.net/
 </pre></div>
 </div>
-<p>The line number in your <tt class="file docutils literal"><span class="pre">~/.ssh/known_hosts</span></tt> file which is wrong will be
+<p>The line number in your <code class="file docutils literal"><span class="pre">~/.ssh/known_hosts</span></code> file which is wrong will be
 displayed. Delete this line with the command:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo sed -i c\[linenumber] ~/.ssh/known_hosts
 </pre></div>
@@ -173,16 +175,16 @@ of course) prevent <strong class="program">ssh</strong> from attempting IPV6:</p
 sudo service ssh reload
 </pre></div>
 </div>
-<p>If <tt class="file docutils literal"><span class="pre">/etc/hosts</span></tt> configures <tt class="docutils literal"><span class="pre">localhost</span></tt> under <tt class="docutils literal"><span class="pre">ip6</span></tt>, then the following
+<p>If <code class="file docutils literal"><span class="pre">/etc/hosts</span></code> configures <code class="docutils literal"><span class="pre">localhost</span></code> under <code class="docutils literal"><span class="pre">ip6</span></code>, then the following
 command might fix this configuration:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo sed -ie &quot;/localhost ip6/c\::1\tip6-localhost\tip6-loopback&quot; /etc/hosts
 </pre></div>
 </div>
-<p>Check to see that the <tt class="docutils literal"><span class="pre">127.0.0.1</span></tt> line includes <tt class="docutils literal"><span class="pre">localhost</span></tt> afterwards.</p>
+<p>Check to see that the <code class="docutils literal"><span class="pre">127.0.0.1</span></code> line includes <code class="docutils literal"><span class="pre">localhost</span></code> afterwards.</p>
 </div>
 <div class="section" id="x11-forwarding-turned-off">
 <h3>X11 Forwarding turned off<a class="headerlink" href="#x11-forwarding-turned-off" title="Permalink to this headline">¶</a></h3>
-<p>File <tt class="file docutils literal"><span class="pre">/etc/ssh/sshd_config</span></tt> should have 3 option lines for X11 Forwarding
+<p>File <code class="file docutils literal"><span class="pre">/etc/ssh/sshd_config</span></code> should have 3 option lines for X11 Forwarding
 as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre>X11Forwarding yes
 X11DisplayOffset 10
@@ -201,8 +203,8 @@ sudo service ssh reload
 <h2>Accessing Servers over SSH<a class="headerlink" href="#accessing-servers-over-ssh" title="Permalink to this headline">¶</a></h2>
 <p>In this example, an administrator wishes to connect to a remote Windows session
 running as a virtual machine on a Linux server. The Linux server is accessed at
-the domain name <tt class="docutils literal"><span class="pre">https://remoteserver.support.aaltsys.com</span></tt>. Both the Windows
-session and the Linux server authenticate <tt class="docutils literal"><span class="pre">username</span></tt> and <tt class="docutils literal"><span class="pre">password</span></tt> for
+the domain name <code class="docutils literal"><span class="pre">https://remoteserver.support.aaltsys.com</span></code>. Both the Windows
+session and the Linux server authenticate <code class="docutils literal"><span class="pre">username</span></code> and <code class="docutils literal"><span class="pre">password</span></code> for
 logins.</p>
 <p>First display a terminal window on the local machine, then ssh to the remote
 server:</p>
@@ -215,7 +217,7 @@ commands are:</p>
 smbtree
 </pre></div>
 </div>
-<p>These commands identify the virtualized windows session as <tt class="docutils literal"><span class="pre">XPUNLIMITED</span></tt>. Now
+<p>These commands identify the virtualized windows session as <code class="docutils literal"><span class="pre">XPUNLIMITED</span></code>. Now
 find the IP for this machine using either of the commands:</p>
 <div class="highlight-python"><div class="highlight"><pre>net lookup XPUNLIMITED
 nmblookup XPUNLIMITED
@@ -223,7 +225,7 @@ nmblookup XPUNLIMITED
 </div>
 <p>Suppose the remote Windows terminal server <strong>XPUNLIMITED</strong> uses IP
 <strong>192.168.2.243</strong> in its local network. Display the PuTTY menu with
-<tt class="kbd docutils literal"><span class="pre">&lt;Ctrl-RightClick&gt;</span></tt>, and choose <em class="menuselection">Change Settings...</em>.
+<code class="kbd docutils literal"><span class="pre">&lt;Ctrl-RightClick&gt;</span></code>, and choose <em class="menuselection">Change Settings...</em>.
 Then select Category: <em class="menuselection">Connection &gt; SSH &gt; Tunnels</em> and enter:</p>
 <div class="highlight-python"><div class="highlight"><pre>Source port -- 3389
 Destination -- 192.168.2.243:3389
@@ -232,7 +234,7 @@ Click -- Apply
 </pre></div>
 </div>
 <p>Finally, open the KRDC Remote Desktop client on the KDE Desktop, and connect
-to: <em class="guilabel">rdp</em> :kbd:<tt class="docutils literal"><span class="pre">localhost</span></tt>. A remote Windows RDP session will
+to: <em class="guilabel">rdp</em> :kbd:<code class="docutils literal"><span class="pre">localhost</span></code>. A remote Windows RDP session will
 display as if it were local, being redirected to you over SSH.</p>
 </div>
 </div>
@@ -243,7 +245,7 @@ display as if it were local, being redirected to you over SSH.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -255,9 +257,9 @@ display as if it were local, being redirected to you over SSH.</p>
         <li><a href="index.html">AAltsys Server 3.0 Technical 3.0 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012, Gerald Lovel.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3b1.
     </div>
   </body>
 </html>

@@ -119,6 +119,13 @@ When finished, click on :guilabel:`GO TO THE DASHBOARD`.
 To exit Zentyal, choose :guilabel:`Logout` from the Zentyal top bar, then click 
 :guilabel:`Exit`.
 
+Holding Zentyal
+---------------------------
+
+In order to keep Zentyal from auto-updating, type the following command: ::
+
+  sudo apt-mark hold zentyal-core
+
 Connecting External Drive
 =============================
 

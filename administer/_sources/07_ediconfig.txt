@@ -22,13 +22,13 @@ this, login to Zentyal administration in a browser. On the left menu, select
 :menuselection:`OFFICE --> File Sharing`. Check the boxes for
 :guilabel:`Apply ACLs Recursively` as shown here:
 
-.. image:: ./_images/EDI_access.png
+.. image:: _images/EDI_access.png
 
 Save changes after this step.
 
 Next change access privileges for the WARES group:
 
-.. image:: ./_images/EDI_acl.png
+.. image:: _images/EDI_acl.png
 
 Again, save changes after this step. If file access is confused here, it may 
 be necessary to remove the WARES Access Control and save changes, then re-add 
@@ -78,7 +78,7 @@ a job with the following command::
 
 Add the following at the end of the command::
 
-   ; chgrp -R /W/connect/rcv ; getfacl --access /W | setfacl -M- /W/connect/rcv/*
+   ; chgrp -R wares /W/connect/rcv ; getfacl --access /W | setfacl -M- /W/connect/rcv/*
 
 Schedule the job to run every 15 minutes between 7 am and 7 pm. Test run the 
 job, and check the output with the command::

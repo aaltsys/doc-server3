@@ -10,8 +10,8 @@ administration console. First, in Firefox
 :guilabel:`Remember passwords for sites`. Then login to Zentyal for the first 
 boot configuration::
 
-   :guilabel:`Username:`  :kbd:`__username__`
-   :guilabel:`Password:`  :kbd:`__password__`
+   Username:  __username__
+   Password:  __password__
 
 .. note::
    Following section titles correspond to items on the Zentyal 

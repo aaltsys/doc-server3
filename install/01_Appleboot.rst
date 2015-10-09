@@ -4,25 +4,23 @@
 Apple First Boot Instructions
 ###############################
 
-Before installing Xentyal on your machine, there are several steps you should take in the apple OS first.
+The Apple OS-X should be minimally configured prior to installing an additional 
+OS on the machine. These include installing the Google Chrome browser and the 
+rEFInd boot manager.
 
 
 Installing Google Chrome
 ============================
 
-You'll want to install Google Chrome for your server, as it will be useful later on.
+Follow these step by step instructions to install Google Chrome on OS-X: 
 
-This is a quick step by step instructional on how to install Google Chrome on a mac.
-
-#. First you'll need to download the installer file at https://www.google.com/chrome?brand=CHMO#eula
-
-#. Next, open the file called Google Chrome.dmg once it's finished downloading.
-   
+#. Download the installer file at https://www.google.com/chrome/browser
+#. Launch file :file:`Google Chrome.dmg` from the downloads.
 #. In the window that opens, drag the Chrome icon into the Application folder.
-   
-#. When you first open Chrome, the finder will ask if you want to open the Application downloaded from the internet. click open.
-   
-#. Unmount the Google Chrome disk image on your Desktop by right clicking it and choosing "Eject"
+#. When first opening Chrome, the Finder will ask if you want to open the 
+   Application downloaded from the Internet. Click open.
+#. Unmount the Google Chrome disk image on your Desktop by right clicking it and 
+   choosing "Eject".
 
 Install rEFInd and Linux
 =============================
@@ -45,10 +43,10 @@ Install rEFInd software
 Make free space on drive
 -----------------------------
 
-#. Open :menuselection:`Launchpad --> Other --> Disk Utility`
+#. Open :menuselection:`Launchpad --> Other --> Disk Utility`.
 #. Choose a media drive to repartition, and select :menuselection:`Partition`
    from the dialog border menu. We recommend installing on /dev/disk02, aka
-   "Recovery HD"
+   "Recovery HD".
 #. Remove Apple HFS data partitions on the drive, leaving only the EFI partition 
    and the remainder as free space. 
 
@@ -66,7 +64,7 @@ Install Linux from USB
 #. Boot the Linux installation, select the installation language, and then 
    choose to install by :menuselection:`(expert mode)`.
 #. Use manual partitioning option, and in the free space created previously, 
-   first create an 8 Gb swap partition and then an install partition of type 
+   first create a 1`6 Gb swap partition and then an install partition of type 
    ``ext4`` mounted as ``/``.
 #. Continue with Linux installation in the newly-created partitions.
 #. Reboot when installation is finished, removing the USB flash drive or media. 
@@ -75,7 +73,7 @@ Install Linux from USB
 .. note::
    Either Linux will ask for a location to install the Grub boot loader, or a 
    boot loader installation error will be thrown at the end of the install. 
-   Grub is not needed because we are using :program:`rEFInd` to manage booting.
+   Grub is not needed if we are using :program:`rEFInd` to manage booting.
 
 Configure rEFInd
 =============================

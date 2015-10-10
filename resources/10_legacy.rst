@@ -30,3 +30,17 @@ Update server packages::
 Install packages::
 
    sudo aptitude install lftp mc
+
+AAltsys Server Hardware BIOS
+=============================
+
+Use the following links to review BIOS settings for old (that is, obsolete) 
+motherboards once used for AAltsys servers:
+
+:ref:`bios-p5bv-c`
+
+:ref:`bios-x9scm-o`
+
+:ref:`bios-fi90hd`
+
+:ref:`bios-955x7aa`

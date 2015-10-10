@@ -1,7 +1,11 @@
 # files which should not be included in any repository
 
-# OS hidden files
+# OS directory files
 .directory
+*/.directory
+
+# cloud9 revision tracking
+.c9revisions/*
 
 # editor backup files
 *~

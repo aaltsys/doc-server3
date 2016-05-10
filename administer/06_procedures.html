@@ -46,6 +46,7 @@
   <ul>
 <li><a class="reference internal" href="#">Fixing locales:</a></li>
 <li><a class="reference internal" href="#removing-old-kernels">Removing Old Kernels</a></li>
+<li><a class="reference internal" href="#changing-password-expiry">Changing Password Expiry</a></li>
 </ul>
 
   <h4>Previous topic</h4>
@@ -112,6 +113,35 @@ kernel images stored on it. Clear old images with the command:</p>
 <div class="highlight-python"><div class="highlight"><pre>dpkg -l &#39;linux-*&#39; | sed &#39;/^ii/!d;/&#39;&quot;$(uname -r | sed &quot;s/\(.*\)-\([^0-9]\+\)/\1/&quot;)&quot;&#39;/d;s/^[^ ]* [^ ]* \([^ ]*\).*/\1/;/[0-9]/!d&#39; | xargs sudo apt-get -y purge
 </pre></div>
 </div>
+</div>
+<div class="section" id="changing-password-expiry">
+<h1>Changing Password Expiry<a class="headerlink" href="#changing-password-expiry" title="Permalink to this headline">¶</a></h1>
+<p>Zentyal 3.x: In a console session on the host server, use the following
+<strong class="command">samba-tool</strong> command to view the password expiry:</p>
+<div class="highlight-python"><div class="highlight"><pre>root@zentyal3:~# samba-tool domain passwordsettings show
+</pre></div>
+</div>
+<p>which shows:</p>
+<div class="highlight-python"><div class="highlight"><pre>Password informations for domain &#39;DC=zentyal-domain,DC=lan&#39;
+
+Password complexity: off
+Store plaintext passwords: off
+Password history length: 24
+Minimum password length: 0
+Minimum password age (days): 0
+Maximum password age (days): 365
+</pre></div>
+</div>
+<p>To change the password expiry so that passwords do not expire, use the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo samba-tool domain passwordsettings set –max-pwd-age=0
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <strong class="command">--max-pwd-age</strong> parameter must be preceded by <strong>two</strong> hyphens.</p>
+</div>
+<p>After changing settings, show the settings again to demonstrate that the
+<em>Maximum password age</em> has been changed.</p>
 </div>
 
 

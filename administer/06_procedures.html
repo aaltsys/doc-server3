@@ -118,7 +118,7 @@ kernel images stored on it. Clear old images with the command:</p>
 <h1>Changing Password Expiry<a class="headerlink" href="#changing-password-expiry" title="Permalink to this headline">¶</a></h1>
 <p>Zentyal 3.x: In a console session on the host server, use the following
 <strong class="command">samba-tool</strong> command to view the password expiry:</p>
-<div class="highlight-python"><div class="highlight"><pre>root@zentyal3:~# samba-tool domain passwordsettings show
+<div class="highlight-python"><div class="highlight"><pre>~$ sudo samba-tool domain passwordsettings show
 </pre></div>
 </div>
 <p>which shows:</p>
@@ -133,7 +133,7 @@ Maximum password age (days): 365
 </pre></div>
 </div>
 <p>To change the password expiry so that passwords do not expire, use the command:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo samba-tool domain passwordsettings set –max-pwd-age=0
+<div class="highlight-python"><div class="highlight"><pre>~$ sudo samba-tool domain passwordsettings set –max-pwd-age=0
 </pre></div>
 </div>
 <div class="admonition note">

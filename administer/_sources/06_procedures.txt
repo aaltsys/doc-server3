@@ -37,7 +37,7 @@ Changing Password Expiry
 Zentyal 3.x: In a console session on the host server, use the following 
 :command:`samba-tool` command to view the password expiry::
 
-   root@zentyal3:~# samba-tool domain passwordsettings show
+   ~$ sudo samba-tool domain passwordsettings show
 
 which shows::
 
@@ -52,7 +52,7 @@ which shows::
    
 To change the password expiry so that passwords do not expire, use the command::
 
-   sudo samba-tool domain passwordsettings set –max-pwd-age=0
+   ~$ sudo samba-tool domain passwordsettings set –max-pwd-age=0
 
 .. note::
    The :command:`--max-pwd-age` parameter must be preceded by **two** hyphens.

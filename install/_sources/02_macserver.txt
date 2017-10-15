@@ -197,7 +197,7 @@ A sample :program:`rEFInd` configuration file for a dual-boot Linux/Macintosh sy
    showtools "+,csr_rotate"
    csr_values 10,77
 
-Download :download:`refind.conf <./_downloads/refind.conf` to directory 
+Download :download:`refind.conf <./_downloads/refind.conf>` to directory 
 :file:`refind`, overwriting the default configuration, to install this set of 
 options.
 

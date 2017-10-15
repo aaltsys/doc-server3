@@ -66,7 +66,7 @@ Network Interfaces
 
 *  Check the :guilabel:`Configure interface types` radio buttons according to 
    your server type:
-   
+
    +--------------------------------------+-+--------------------------------------+
    | NETWORK GATEWAY SERVER               | | LAN PEER SERVER                      |
    +======================================+=+======================================+
@@ -79,7 +79,7 @@ Network Interfaces
 
 *  Click :guilabel:`Next`
 *  Configure network internal and external interfaces as shown below:
-   
+
    +--------------------------------------+-+--------------------------------------+
    | NETWORK GATEWAY SERVER               | | LAN PEER SERVER                      |
    +======================================+=+======================================+
@@ -90,18 +90,18 @@ Network Interfaces
    +--------------------------------------+-+--------------------------------------+
    | **Configure network for internal...**| | **Configure network for internal...**|
    +--------------------------------------+-+--------------------------------------+
-   | eth0 --> ``Static``                  | | eth0 --> ``DHCP``                    |
+   | eth1 --> ``Static``                  | | eth0 --> ``DHCP``                    |
    +--------------------------------------+-+--------------------------------------+
    | IP address --> ``192.168.2.241``     | |                                      |
    +--------------------------------------+-+--------------------------------------+
    | Netmask --> ``255.255.255.0``        | |                                      |
    +--------------------------------------+-+--------------------------------------+
-   
+
    .. note::
       Interfaces are configured according to the server function. For more 
       explanation of network setup, see :ref:`resources:network`. During 
       initial setup, use DHCP to configure a LAN peer server network interface.
-   
+
 *  Click :guilabel:`Next`
 *  The :guilabel:`Host domain name` prompt displays the domain name from the 
    initial installation, such as :guilabel:`local.aaltsys.net`.
@@ -122,7 +122,7 @@ To exit Zentyal, choose :guilabel:`Logout` from the Zentyal top bar, then click
 Holding Zentyal
 ---------------------------
 
-In order to keep Zentyal from auto-updating, type the following command: ::
+In order to keep Zentyal from auto-updating, type the following command::
 
   sudo apt-mark hold zentyal-core
 

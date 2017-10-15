@@ -31,12 +31,25 @@ Software
    Earlier Linux kernels, before 3.3.0, can be installed as documented in this
    footnote. [#]_
 
-Make a Linux installer DVD
+Installing Linux
 =============================
 
 .. tip:: 
    Throughout this section, replace the token ``{linux.iso}`` with the
    actual download filename of the Linux being installed.
+
+Free up Space on Spare Drive
+-----------------------------
+
+#. Open :menuselection:`Launchpad --> Other --> Disk Utility`
+#. Choose a media drive to repartition, and select :menuselection:`Partition`
+   from the dialog border menu. We recommend installing on /dev/disk02, aka
+   "Recovery HD"
+#. Remove Apple HFS data partitions on the drive, leaving only the EFI partition 
+   and the remainder as free space. 
+
+Make a Linux installer DVD
+-----------------------------
 
 Download a Linux install ``{linux.iso}`` disk image, then burn the image to a 
 DVD using the Apple Superdrive.
@@ -49,90 +62,106 @@ DVD using the Apple Superdrive.
 .. note::
    #. As an alternative to the Apple Superdrive, :ref:`bootableusb` describes 
       writing a device image file to a bootable USB thumb drive.
-   
+
    #. This section is based on official Ubuntu documentation [#]_
 
-----------
-
-Install rEFInd and Linux
-=============================
-
-Install rEFInd software
+Install Linux from USB or DVD
 -----------------------------
-
-#. Download the binary zip of rEFInd software from 
-   http://www.rodsbooks.com/refind/getting.html.
-#. Open a terminal session, and change directory to the Downloads folder.
-#. Unzip the rEFInd download:: 
-
-      unzip refind <Tab> <Enter>
-
-#. install the software::
-
-      cd refind <Tab> <Enter>
-      ./install.sh --alldrivers
-
-Make free space on drive
------------------------------
-
-#. Open :menuselection:`Launchpad --> Other --> Disk Utility`
-#. Choose a media drive to repartition, and select :menuselection:`Partition`
-   from the dialog border menu. We recommend installing on /dev/disk02, aka
-   "Recovery HD"
-#. Remove Apple HFS data partitions on the drive, leaving only the EFI partition 
-   and the remainder as free space. 
-
-Install Linux from USB
-=============================
 
 .. note::
    These instructions create a multi-boot machine based on the Mac mini Server.
    Please refer to separate :ref:`install` instructions for a detailed procedure 
-   specific to that operating system.
+   specific to the Linux/Zentyal operating system.
 
 #. Restart the Mac, holding down the :kbd:`alt/option` key to choose the 
    boot device, either the USB drive or the Superdrive.
 #. Choose the boot media, which Apple humorously refers to as "Windows".
-#. Boot the Linux installation, select the installation language, and then 
-   choose to install by :menuselection:`(expert mode)`.
+#. Boot the Linux installation drive, and install by menu selection or Grub 
+   option :menuselection:`(expert mode)`.
 #. Use manual partitioning option, and in the free space created previously, 
-   first create an 8 Gb swap partition and then an install partition of type 
-   ``ext4`` mounted as ``/``.
+   first create a 16 Gb swap partition and then an install partition of type 
+   ``ext4`` mounted as ``/`` in the remaining space.
 #. Continue with Linux installation in the newly-created partitions.
-#. Reboot when installation is finished, removing the USB flash drive or media. 
-   The :program:`rEFInd` boot selector should now contain options to boot Linux.
+#. When installation is finished, remove the USB flash drive or media and 
+   reboot, holding down :kbd:`alt/option` to choose a boot device.
 
 .. note::
-   Linux will ask for a location to install the Grub boot loader, or a boot 
-   loader installation error will be thrown at the end of the install. 
-   Grub is not needed because we are using :program:`rEFInd` to manage booting.
+   Linux will probably install the :program:`Grub` boot loader and perform a 
+   `Boot Coup <http://www.rodsbooks.com/refind/bootcoup.html>`_, taking over 
+   boot management from :program:`OS-X`. Next we will bypass both the Mac boot 
+   and Linux :program:`Grub` by installing multi-OS loader :program:`REFInd`.
 
-Configure rEFInd
+----------
+
+Download and Install rEFInd 
 =============================
 
-.. note::
-   The Mac approach of displaying files in the Finder and then editing 
-   configuration text in :program:`TextEdit` seems not to work here. But then,
-   our intention is to use Linux in place of the Mac OS. This section uses a
-   Linux-y approach to editing the :program:`rEFInd` configuration instead.
+Programmer **Roderick Smith** has written an excellent boot manager supporting 
+multiple hardware platforms and various operating systems, particularly 
+:program:`Linux` and Macintosh :program:`OS-X`. Further, he maintains an 
+extensive `book <http://www.rodsbooks.com/refind/>`_ on the subject of boot loaders. These brief instructions are based on Rod's book, which is the actual 
+authoritative documentation of this subject.
 
-Diagnose rEFInd behavior
+Install rEFInd software
 -----------------------------
 
-#. Restart the server, and press :kbd:`right-arrow` in :program:`rEFInd` to stop
-   boot.
+#. From `Rod's Books website <http://www.rodsbooks.com/refind/getting.html>`_,
+   download the latest version of :program:`REFInd` to your :file:`Downloads` 
+   folder.
+#. On later Macs with **SIP** [#]_, press :kbd:`alt/option` to reboot to the 
+   :file:`Recovery HD` volume and then disable **SIP** with the command::
+
+      csrutil disable
+
+   Then reboot to the Mac OS-X system on volume :file:`Macintosh HD`.
+#. Open a terminal session, change directory to the :file:`Downloads` folder,
+   and unzip and install :program:`Refind` with the commands::
+
+      cd ~/Downloads
+      unzip refind <Tab> <Enter>
+      cd refind <Tab> <Enter>
+      ./refind.install
+
+#. Read the installation messages to see where :program:`REFInd` is installed. 
+   For message ``Installing rEFInd to the partition mounted at /Volumes/ESP``,
+   bless :program:`REFInd` with the command::
+
+      sudo bless --mount /Volumes/ESP --setBoot --file /Volumes/ESP/efi/refind/refind_x64.efi --shortform
+
+   Otherwise for :program:`REFInd` installed in folder :file:`\EFI`, use::
+
+      sudo bless --setBoot --folder /efi/refind --file /efi/refind/refind_x64.efi
+
+Configure rEFInd
+-----------------------------
+
+#. After installing :program:`rEFInd`, copy or rename the default 
+   :file:`refind.conf` configuration file to preserve it. 
+#. Restart the server, and press :kbd:`right-arrow` in :program:`rEFInd` to 
+   stop booting.
 #. Write down each main boot option to decide which should be displayed.
-#. Determine configuration options to change. [#]_
+#. Determine any other configuration options to change. [#]_
 
 Edit rEFInd configuration
 -----------------------------
 
 #. Start a terminal from :menuselection:`Launchpad --> Other --> Terminal`.
 #. Edit the :program:`rEFInd` configuration file with the command::
-   
+
+      sudo nano /Volumes/ESP/efi/refind/refind.conf
+
+   or for older Macs with an :file:`EFI` folder and no :file:`ESP` volume, ::
+
       sudo nano /efi/refind/refind.conf
-   
+
    and enter your password when prompted.
+
+   .. note::
+      The Mac approach of displaying files in the Finder and then editing 
+      configuration text in :program:`TextEdit` will not to work here. But then,
+      our intention is to use Linux in place of the Mac OS. This section used a
+      Linux-y approach to editing the :program:`rEFInd` configuration instead.
+
 #. Modify the configuration options as desired, then press :kbd:`control-X` to
    save changes.
 #. Exit all programs and restart the server to test the new configuration.
@@ -140,39 +169,53 @@ Edit rEFInd configuration
 Repeat these instructions until desired results are achieved. 
 
 .. tip:: 
-   Save a copy of :file:`refind.conf` in your :file:`~/Documents`
-   folder, as updates to Mac OS X will wipe out the EFI configuration.
+   Save a copy of the modified :file:`refind.conf` in your :file:`~/Documents`
+   folder, as updates to Mac OS X might wipe out the EFI configuration.
 
-Example configuration
+Example Refind Configuration
 -----------------------------
 
-The goal for this installation was to provide a testing server running Ubuntu,
-but also capable of being used as a Mac server or workstation when not testing. 
-Therefore the server by default would boot Linux with minimal delay, while still 
-providing a ``Mac OS X`` boot option. The configuration options used were::
+A sample :program:`rEFInd` configuration file for a dual-boot Linux/Macintosh system is shown below::
 
    timeout 5
    use_graphics_for osx, linux
-   dont_scan_volumes "Backup", "Recovery HD"
+   # skip recovery and backup (time machine) drives
+   dont_scan_volumes "Recovery HD","Backup"
+   # skip ubuntu optional drivers, shimx64.efi and mmx64.efi
    dont_scan_dirs EFI/ubuntu
-   dont_scan_files shim.efi, MokManager.efi
+   dont_scan_files shim.efi,MokManager.efi,mmx64.efi
+   # report linux installations, one kernel per install
    scan_all_linux_kernels
-   max_tags 2
+   fold_linux_kernels
+   # show first 3 options as primary choices, default to vmlinuz, 
+   max_tags 3
    default_selection "vmlinuz"
+   # Allow refind to disable/enable SIP so boot reconfiguration is possible
+   csr_values 10,77
+   showtools shell,memtest,gdisk,apple_recovery,about,shutdown,reboot
+   showtools "+,csr_rotate"
+   csr_values 10,77
 
-Restoring rEFInd installation
+Download :download:`refind.conf <../_downloads/refind.conf` to directory 
+:file:`refind`, overwriting the default configuration, to install this set of 
+options.
+
+#. Change boot order to put vmlinuz first
+#. Boot to the Recover HD to re-enable SIP
+
+Recovering from a Boot Coup
 =============================
  
-The efi directory is cleared and rewritten when updating Mac OS X. Keep program
-:program:`rEFInd` in your :file:`~/Downloads` folder, and keep a copy of 
-:file:`refind.conf` in your :file:`~/Documents` folder. Restore a lost
+The :file:`efi` directory is cleared and rewritten when updating Mac OS-X. Keep 
+program :program:`rEFInd` in your :file:`~/Downloads` folder, and keep a copy 
+of :file:`refind.conf` in your :file:`~/Documents` folder. Restore a lost
 :program:`rEFInd` installation in Mac OS X as follows:
 
 #. Start a terminal from :menuselection:`Launchpad --> Other --> Terminal`
 #. Reinstall :program:`rEFInd` with the commands::
 
       cd ~/Downloads/refind <Tab> <Enter>
-      ./install.sh
+      ./install.refind
       sudo cp ~/Documents/refind.conf /efi/refind/ 
 
 .. _bootableusb:

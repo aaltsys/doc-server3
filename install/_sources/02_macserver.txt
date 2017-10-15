@@ -96,10 +96,11 @@ Install Linux from USB or DVD
 Download and Install rEFInd 
 =============================
 
-Programmer **Roderick Smith** has written an excellent boot manager supporting 
-multiple hardware platforms and various operating systems, particularly 
-:program:`Linux` and Macintosh :program:`OS-X`. Further, he maintains an 
-extensive `book <http://www.rodsbooks.com/refind/>`_ on the subject of boot loaders. These brief instructions are based on Rod's book, which is the actual 
+**Roderick Smith** has written an excellent boot manager supporting multiple 
+hardware platforms and various operating systems, particularly :program:`Linux` 
+and Macintosh :program:`OS-X`. Further, he maintains an extensive on-line 
+`book <http://www.rodsbooks.com/refind/>`_ on the subject of boot loaders. 
+These brief instructions are based on Rod's book, which is the actual 
 authoritative documentation of this subject.
 
 Install rEFInd software
@@ -196,7 +197,7 @@ A sample :program:`rEFInd` configuration file for a dual-boot Linux/Macintosh sy
    showtools "+,csr_rotate"
    csr_values 10,77
 
-Download :download:`refind.conf <../_downloads/refind.conf` to directory 
+Download :download:`refind.conf <./_downloads/refind.conf` to directory 
 :file:`refind`, overwriting the default configuration, to install this set of 
 options.
 
@@ -289,12 +290,15 @@ Copy Linux image to USB
 .. [#] See http://www.macminiserver.com/ for more information on the Mac mini 
    Server.
 
-.. [#] https://help.ubuntu.com/community/MactelSupportTeam/AppleIntelInstallation
-
 .. [#] http://www.apple.com/mac-mini/server/ 
 
 .. [#] http://www.rodsbooks.com/refind/getting.html
 
 .. [#] http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx
 
-.. [#] Refer to http://www.rodsbooks.com/refind/configfile.html for guidance
+.. [#] https://help.ubuntu.com/community/MactelSupportTeam/AppleIntelInstallation
+
+.. [#] http://www.rodsbooks.com/refind/sip.html
+
+.. [#] http://www.rodsbooks.com/refind/configfile.html 
+

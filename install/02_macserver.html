@@ -50,20 +50,20 @@
 <li><a class="reference internal" href="#software">Software</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#installing-linux">Installing Linux</a><ul>
+<li><a class="reference internal" href="#free-up-space-on-spare-drive">Free up Space on Spare Drive</a></li>
 <li><a class="reference internal" href="#make-a-linux-installer-dvd">Make a Linux installer DVD</a></li>
-<li><a class="reference internal" href="#install-refind-and-linux">Install rEFInd and Linux</a><ul>
+<li><a class="reference internal" href="#install-linux-from-usb-or-dvd">Install Linux from USB or DVD</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#download-and-install-refind">Download and Install rEFInd</a><ul>
 <li><a class="reference internal" href="#install-refind-software">Install rEFInd software</a></li>
-<li><a class="reference internal" href="#make-free-space-on-drive">Make free space on drive</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#install-linux-from-usb">Install Linux from USB</a></li>
-<li><a class="reference internal" href="#configure-refind">Configure rEFInd</a><ul>
-<li><a class="reference internal" href="#diagnose-refind-behavior">Diagnose rEFInd behavior</a></li>
+<li><a class="reference internal" href="#configure-refind">Configure rEFInd</a></li>
 <li><a class="reference internal" href="#edit-refind-configuration">Edit rEFInd configuration</a></li>
-<li><a class="reference internal" href="#example-configuration">Example configuration</a></li>
+<li><a class="reference internal" href="#example-refind-configuration">Example Refind Configuration</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#restoring-refind-installation">Restoring rEFInd installation</a></li>
+<li><a class="reference internal" href="#recovering-from-a-boot-coup">Recovering from a Boot Coup</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#make-a-mac-bootable-usb">Make a Mac-Bootable USB</a><ul>
@@ -112,13 +112,13 @@
 <p>The Mac mini Server is a modern alternative to the large desktop tower server.
 With the addition of a thunderbolt to ethernet port, needed for gateway
 operation, and a USB connected optical drive, this computer provides every
-server hardware feature required for Zentyal. <a class="footnote-reference" href="#id7" id="id1">[1]</a></p>
+server hardware feature required for Zentyal. <a class="footnote-reference" href="#id8" id="id1">[1]</a></p>
 <div class="section" id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="hardware">
 <h3>Hardware<a class="headerlink" href="#hardware" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Mac mini Server with OS X Server <a class="footnote-reference" href="#id8" id="id2">[2]</a></li>
+<li>Mac mini Server with OS X Server <a class="footnote-reference" href="#id9" id="id2">[2]</a></li>
 <li>8 Gb 1600MHz DDR3 memory SODIMM netbook (single stick)</li>
 <li>Thunderbolt to Gigabit Ethernet Adapter</li>
 <li>Apple USB SuperDrive CD / DVD /DVD-RW (used for OS installation only)</li>
@@ -127,24 +127,37 @@ server hardware feature required for Zentyal. <a class="footnote-reference" href
 <div class="section" id="software">
 <h3>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>rEFInd boot manager for Mac <a class="footnote-reference" href="#id9" id="id3">[3]</a></li>
+<li>rEFInd boot manager for Mac <a class="footnote-reference" href="#id10" id="id3">[3]</a></li>
 <li>Current Mac OS X</li>
 <li>Linux with EFI stub loader support (e.g., Ubuntu 12.10 and later)</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Earlier Linux kernels, before 3.3.0, can be installed as documented in this
-footnote. <a class="footnote-reference" href="#id10" id="id4">[4]</a></p>
+footnote. <a class="footnote-reference" href="#id11" id="id4">[4]</a></p>
 </div>
 </div>
 </div>
-<div class="section" id="make-a-linux-installer-dvd">
-<h2>Make a Linux installer DVD<a class="headerlink" href="#make-a-linux-installer-dvd" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-linux">
+<h2>Installing Linux<a class="headerlink" href="#installing-linux" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">Throughout this section, replace the token <code class="docutils literal"><span class="pre">{linux.iso}</span></code> with the
 actual download filename of the Linux being installed.</p>
 </div>
+<div class="section" id="free-up-space-on-spare-drive">
+<h3>Free up Space on Spare Drive<a class="headerlink" href="#free-up-space-on-spare-drive" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Open <em class="menuselection">Launchpad ‣ Other ‣ Disk Utility</em></li>
+<li>Choose a media drive to repartition, and select <em class="menuselection">Partition</em>
+from the dialog border menu. We recommend installing on /dev/disk02, aka
+&#8220;Recovery HD&#8221;</li>
+<li>Remove Apple HFS data partitions on the drive, leaving only the EFI partition
+and the remainder as free space.</li>
+</ol>
+</div>
+<div class="section" id="make-a-linux-installer-dvd">
+<h3>Make a Linux installer DVD<a class="headerlink" href="#make-a-linux-installer-dvd" title="Permalink to this headline">¶</a></h3>
 <p>Download a Linux install <code class="docutils literal"><span class="pre">{linux.iso}</span></code> disk image, then burn the image to a
 DVD using the Apple Superdrive.</p>
 <ol class="arabic simple">
@@ -158,90 +171,93 @@ from the icon bar.</li>
 <ol class="last arabic simple">
 <li>As an alternative to the Apple Superdrive, <a class="reference internal" href="#bootableusb"><em>Make a Mac-Bootable USB</em></a> describes
 writing a device image file to a bootable USB thumb drive.</li>
-<li>This section is based on official Ubuntu documentation <a class="footnote-reference" href="#id11" id="id5">[5]</a></li>
+<li>This section is based on official Ubuntu documentation <a class="footnote-reference" href="#id12" id="id5">[5]</a></li>
 </ol>
 </div>
 </div>
-<hr class="docutils" />
-<div class="section" id="install-refind-and-linux">
-<h2>Install rEFInd and Linux<a class="headerlink" href="#install-refind-and-linux" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="install-refind-software">
-<h3>Install rEFInd software<a class="headerlink" href="#install-refind-software" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic">
-<li><p class="first">Download the binary zip of rEFInd software from
-<a class="reference external" href="http://www.rodsbooks.com/refind/getting.html">http://www.rodsbooks.com/refind/getting.html</a>.</p>
-</li>
-<li><p class="first">Open a terminal session, and change directory to the Downloads folder.</p>
-</li>
-<li><p class="first">Unzip the rEFInd download:</p>
-<div class="highlight-python"><div class="highlight"><pre>unzip refind &lt;Tab&gt; &lt;Enter&gt;
-</pre></div>
-</div>
-</li>
-<li><p class="first">install the software:</p>
-<div class="highlight-python"><div class="highlight"><pre>cd refind &lt;Tab&gt; &lt;Enter&gt;
-./install.sh --alldrivers
-</pre></div>
-</div>
-</li>
-</ol>
-</div>
-<div class="section" id="make-free-space-on-drive">
-<h3>Make free space on drive<a class="headerlink" href="#make-free-space-on-drive" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li>Open <em class="menuselection">Launchpad ‣ Other ‣ Disk Utility</em></li>
-<li>Choose a media drive to repartition, and select <em class="menuselection">Partition</em>
-from the dialog border menu. We recommend installing on /dev/disk02, aka
-&#8220;Recovery HD&#8221;</li>
-<li>Remove Apple HFS data partitions on the drive, leaving only the EFI partition
-and the remainder as free space.</li>
-</ol>
-</div>
-</div>
-<div class="section" id="install-linux-from-usb">
-<h2>Install Linux from USB<a class="headerlink" href="#install-linux-from-usb" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-linux-from-usb-or-dvd">
+<h3>Install Linux from USB or DVD<a class="headerlink" href="#install-linux-from-usb-or-dvd" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">These instructions create a multi-boot machine based on the Mac mini Server.
 Please refer to separate <a class="reference internal" href="03_install.html#install"><em>Installation Instructions</em></a> instructions for a detailed procedure
-specific to that operating system.</p>
+specific to the Linux/Zentyal operating system.</p>
 </div>
 <ol class="arabic simple">
 <li>Restart the Mac, holding down the <code class="kbd docutils literal"><span class="pre">alt/option</span></code> key to choose the
 boot device, either the USB drive or the Superdrive.</li>
 <li>Choose the boot media, which Apple humorously refers to as &#8220;Windows&#8221;.</li>
-<li>Boot the Linux installation, select the installation language, and then
-choose to install by <em class="menuselection">(expert mode)</em>.</li>
+<li>Boot the Linux installation drive, and install by menu selection or Grub
+option <em class="menuselection">(expert mode)</em>.</li>
 <li>Use manual partitioning option, and in the free space created previously,
-first create an 8 Gb swap partition and then an install partition of type
-<code class="docutils literal"><span class="pre">ext4</span></code> mounted as <code class="docutils literal"><span class="pre">/</span></code>.</li>
+first create a 16 Gb swap partition and then an install partition of type
+<code class="docutils literal"><span class="pre">ext4</span></code> mounted as <code class="docutils literal"><span class="pre">/</span></code> in the remaining space.</li>
 <li>Continue with Linux installation in the newly-created partitions.</li>
-<li>Reboot when installation is finished, removing the USB flash drive or media.
-The <strong class="program">rEFInd</strong> boot selector should now contain options to boot Linux.</li>
+<li>When installation is finished, remove the USB flash drive or media and
+reboot, holding down <code class="kbd docutils literal"><span class="pre">alt/option</span></code> to choose a boot device.</li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Linux will ask for a location to install the Grub boot loader, or a boot
-loader installation error will be thrown at the end of the install.
-Grub is not needed because we are using <strong class="program">rEFInd</strong> to manage booting.</p>
+<p class="last">Linux will probably install the <strong class="program">Grub</strong> boot loader and perform a
+<a class="reference external" href="http://www.rodsbooks.com/refind/bootcoup.html">Boot Coup</a>, taking over
+boot management from <strong class="program">OS-X</strong>. Next we will bypass both the Mac boot
+and Linux <strong class="program">Grub</strong> by installing multi-OS loader <strong class="program">REFInd</strong>.</p>
 </div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="download-and-install-refind">
+<h2>Download and Install rEFInd<a class="headerlink" href="#download-and-install-refind" title="Permalink to this headline">¶</a></h2>
+<p>Programmer <strong>Roderick Smith</strong> has written an excellent boot manager supporting
+multiple hardware platforms and various operating systems, particularly
+<strong class="program">Linux</strong> and Macintosh <strong class="program">OS-X</strong>. Further, he maintains an
+extensive <a class="reference external" href="http://www.rodsbooks.com/refind/">book</a> on the subject of boot loaders. These brief instructions are based on Rod&#8217;s book, which is the actual
+authoritative documentation of this subject.</p>
+<div class="section" id="install-refind-software">
+<h3>Install rEFInd software<a class="headerlink" href="#install-refind-software" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">From <a class="reference external" href="http://www.rodsbooks.com/refind/getting.html">Rod&#8217;s Books website</a>,
+download the latest version of <strong class="program">REFInd</strong> to your <code class="file docutils literal"><span class="pre">Downloads</span></code>
+folder.</p>
+</li>
+<li><p class="first">On later Macs with <strong>SIP</strong> <a class="footnote-reference" href="#id13" id="id6">[6]</a>, press <code class="kbd docutils literal"><span class="pre">alt/option</span></code> to reboot to the
+<code class="file docutils literal"><span class="pre">Recovery</span> <span class="pre">HD</span></code> volume and then disable <strong>SIP</strong> with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>csrutil disable
+</pre></div>
+</div>
+<p>Then reboot to the Mac OS-X system on volume <code class="file docutils literal"><span class="pre">Macintosh</span> <span class="pre">HD</span></code>.</p>
+</li>
+<li><p class="first">Open a terminal session, change directory to the <code class="file docutils literal"><span class="pre">Downloads</span></code> folder,
+and unzip and install <strong class="program">Refind</strong> with the commands:</p>
+<div class="highlight-python"><div class="highlight"><pre>cd ~/Downloads
+unzip refind &lt;Tab&gt; &lt;Enter&gt;
+cd refind &lt;Tab&gt; &lt;Enter&gt;
+./refind.install
+</pre></div>
+</div>
+</li>
+<li><p class="first">Read the installation messages to see where <strong class="program">REFInd</strong> is installed.
+For message <code class="docutils literal"><span class="pre">Installing</span> <span class="pre">rEFInd</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">partition</span> <span class="pre">mounted</span> <span class="pre">at</span> <span class="pre">/Volumes/ESP</span></code>,
+bless <strong class="program">REFInd</strong> with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo bless --mount /Volumes/ESP --setBoot --file /Volumes/ESP/efi/refind/refind_x64.efi --shortform
+</pre></div>
+</div>
+<p>Otherwise for <strong class="program">REFInd</strong> installed in folder <code class="file docutils literal"><span class="pre">EFI</span></code>, use:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo bless --setBoot --folder /efi/refind --file /efi/refind/refind_x64.efi
+</pre></div>
+</div>
+</li>
+</ol>
 </div>
 <div class="section" id="configure-refind">
-<h2>Configure rEFInd<a class="headerlink" href="#configure-refind" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The Mac approach of displaying files in the Finder and then editing
-configuration text in <strong class="program">TextEdit</strong> seems not to work here. But then,
-our intention is to use Linux in place of the Mac OS. This section uses a
-Linux-y approach to editing the <strong class="program">rEFInd</strong> configuration instead.</p>
-</div>
-<div class="section" id="diagnose-refind-behavior">
-<h3>Diagnose rEFInd behavior<a class="headerlink" href="#diagnose-refind-behavior" title="Permalink to this headline">¶</a></h3>
+<h3>Configure rEFInd<a class="headerlink" href="#configure-refind" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li>Restart the server, and press <code class="kbd docutils literal"><span class="pre">right-arrow</span></code> in <strong class="program">rEFInd</strong> to stop
-boot.</li>
+<li>After installing <strong class="program">rEFInd</strong>, copy or rename the default
+<code class="file docutils literal"><span class="pre">refind.conf</span></code> configuration file to preserve it.</li>
+<li>Restart the server, and press <code class="kbd docutils literal"><span class="pre">right-arrow</span></code> in <strong class="program">rEFInd</strong> to
+stop booting.</li>
 <li>Write down each main boot option to decide which should be displayed.</li>
-<li>Determine configuration options to change. <a class="footnote-reference" href="#id12" id="id6">[6]</a></li>
+<li>Determine any other configuration options to change. <a href="#id14"><span class="problematic" id="id15"><span id="id7"></span>[#]_</span></a></li>
 </ol>
 </div>
 <div class="section" id="edit-refind-configuration">
@@ -250,10 +266,21 @@ boot.</li>
 <li><p class="first">Start a terminal from <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em>.</p>
 </li>
 <li><p class="first">Edit the <strong class="program">rEFInd</strong> configuration file with the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo nano /Volumes/ESP/efi/refind/refind.conf
+</pre></div>
+</div>
+<p>or for older Macs with an <code class="file docutils literal"><span class="pre">EFI</span></code> folder and no <code class="file docutils literal"><span class="pre">ESP</span></code> volume,</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo nano /efi/refind/refind.conf
 </pre></div>
 </div>
 <p>and enter your password when prompted.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The Mac approach of displaying files in the Finder and then editing
+configuration text in <strong class="program">TextEdit</strong> will not to work here. But then,
+our intention is to use Linux in place of the Mac OS. This section used a
+Linux-y approach to editing the <strong class="program">rEFInd</strong> configuration instead.</p>
+</div>
 </li>
 <li><p class="first">Modify the configuration options as desired, then press <code class="kbd docutils literal"><span class="pre">control-X</span></code> to
 save changes.</p>
@@ -264,40 +291,54 @@ save changes.</p>
 <p>Repeat these instructions until desired results are achieved.</p>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Save a copy of <code class="file docutils literal"><span class="pre">refind.conf</span></code> in your <code class="file docutils literal"><span class="pre">~/Documents</span></code>
-folder, as updates to Mac OS X will wipe out the EFI configuration.</p>
+<p class="last">Save a copy of the modified <code class="file docutils literal"><span class="pre">refind.conf</span></code> in your <code class="file docutils literal"><span class="pre">~/Documents</span></code>
+folder, as updates to Mac OS X might wipe out the EFI configuration.</p>
 </div>
 </div>
-<div class="section" id="example-configuration">
-<h3>Example configuration<a class="headerlink" href="#example-configuration" title="Permalink to this headline">¶</a></h3>
-<p>The goal for this installation was to provide a testing server running Ubuntu,
-but also capable of being used as a Mac server or workstation when not testing.
-Therefore the server by default would boot Linux with minimal delay, while still
-providing a <code class="docutils literal"><span class="pre">Mac</span> <span class="pre">OS</span> <span class="pre">X</span></code> boot option. The configuration options used were:</p>
+<div class="section" id="example-refind-configuration">
+<h3>Example Refind Configuration<a class="headerlink" href="#example-refind-configuration" title="Permalink to this headline">¶</a></h3>
+<p>A sample <strong class="program">rEFInd</strong> configuration file for a dual-boot Linux/Macintosh system is shown below:</p>
 <div class="highlight-python"><div class="highlight"><pre>timeout 5
 use_graphics_for osx, linux
-dont_scan_volumes &quot;Backup&quot;, &quot;Recovery HD&quot;
+# skip recovery and backup (time machine) drives
+dont_scan_volumes &quot;Recovery HD&quot;,&quot;Backup&quot;
+# skip ubuntu optional drivers, shimx64.efi and mmx64.efi
 dont_scan_dirs EFI/ubuntu
-dont_scan_files shim.efi, MokManager.efi
+dont_scan_files shim.efi,MokManager.efi,mmx64.efi
+# report linux installations, one kernel per install
 scan_all_linux_kernels
-max_tags 2
+fold_linux_kernels
+# show first 3 options as primary choices, default to vmlinuz,
+max_tags 3
 default_selection &quot;vmlinuz&quot;
+# Allow refind to disable/enable SIP so boot reconfiguration is possible
+csr_values 10,77
+showtools shell,memtest,gdisk,apple_recovery,about,shutdown,reboot
+showtools &quot;+,csr_rotate&quot;
+csr_values 10,77
 </pre></div>
 </div>
+<p>Download <code class="xref download docutils literal"><span class="pre">refind.conf</span> <span class="pre">&lt;../_downloads/refind.conf</span></code> to directory
+<code class="file docutils literal"><span class="pre">refind</span></code>, overwriting the default configuration, to install this set of
+options.</p>
+<ol class="arabic simple">
+<li>Change boot order to put vmlinuz first</li>
+<li>Boot to the Recover HD to re-enable SIP</li>
+</ol>
 </div>
 </div>
-<div class="section" id="restoring-refind-installation">
-<h2>Restoring rEFInd installation<a class="headerlink" href="#restoring-refind-installation" title="Permalink to this headline">¶</a></h2>
-<p>The efi directory is cleared and rewritten when updating Mac OS X. Keep program
-<strong class="program">rEFInd</strong> in your <code class="file docutils literal"><span class="pre">~/Downloads</span></code> folder, and keep a copy of
-<code class="file docutils literal"><span class="pre">refind.conf</span></code> in your <code class="file docutils literal"><span class="pre">~/Documents</span></code> folder. Restore a lost
+<div class="section" id="recovering-from-a-boot-coup">
+<h2>Recovering from a Boot Coup<a class="headerlink" href="#recovering-from-a-boot-coup" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="file docutils literal"><span class="pre">efi</span></code> directory is cleared and rewritten when updating Mac OS-X. Keep
+program <strong class="program">rEFInd</strong> in your <code class="file docutils literal"><span class="pre">~/Downloads</span></code> folder, and keep a copy
+of <code class="file docutils literal"><span class="pre">refind.conf</span></code> in your <code class="file docutils literal"><span class="pre">~/Documents</span></code> folder. Restore a lost
 <strong class="program">rEFInd</strong> installation in Mac OS X as follows:</p>
 <ol class="arabic">
 <li><p class="first">Start a terminal from <em class="menuselection">Launchpad ‣ Other ‣ Terminal</em></p>
 </li>
 <li><p class="first">Reinstall <strong class="program">rEFInd</strong> with the commands:</p>
 <div class="highlight-python"><div class="highlight"><pre>cd ~/Downloads/refind &lt;Tab&gt; &lt;Enter&gt;
-./install.sh
+./install.refind
 sudo cp ~/Documents/refind.conf /efi/refind/
 </pre></div>
 </div>
@@ -383,38 +424,38 @@ was not unmounted in step 3.</li>
 </ol>
 <hr class="docutils" />
 <p class="rubric">Footnotes</p>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
+<table class="docutils footnote" frame="void" id="id8" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>See <a class="reference external" href="http://www.macminiserver.com/">http://www.macminiserver.com/</a> for more information on the Mac mini
 Server.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://help.ubuntu.com/community/MactelSupportTeam/AppleIntelInstallation">https://help.ubuntu.com/community/MactelSupportTeam/AppleIntelInstallation</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
+<table class="docutils footnote" frame="void" id="id10" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><a class="reference external" href="http://www.apple.com/mac-mini/server/">http://www.apple.com/mac-mini/server/</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
+<table class="docutils footnote" frame="void" id="id11" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="http://www.rodsbooks.com/refind/getting.html">http://www.rodsbooks.com/refind/getting.html</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id11" rules="none">
+<table class="docutils footnote" frame="void" id="id12" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td><a class="reference external" href="http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx">http://www.ubuntu.com/download/desktop/create-a-usb-stick-on-mac-osx</a></td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id12" rules="none">
+<table class="docutils footnote" frame="void" id="id13" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td>Refer to <a class="reference external" href="http://www.rodsbooks.com/refind/configfile.html">http://www.rodsbooks.com/refind/configfile.html</a> for guidance</td></tr>

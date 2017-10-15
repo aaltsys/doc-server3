@@ -26,7 +26,7 @@ Before starting this procedure, you should have the following information::
    {Activation code}:     __________________________________
    {Administrator email}: __________________________________
 
-Some of this information can be found at manage.aaltsys.net   
+Some of this information can be found at https:\\manage.aaltsys.net.
 For servers used as LAN peers instead of network gateways, additional 
 information is required::
 
@@ -78,7 +78,7 @@ Installer options
 *  **Choose the second option on the Installation menu**, 
    :guilabel:`Install Zentyal (expert mode)`.
 *  Make the following selections, or press :kbd:`<Enter>` for defaults:
-   
+
    +----------------------+-----------------+---------------------------------+
    | Selection name       | Default         | Suggested action                |
    +======================+=================+=================================+
@@ -99,7 +99,7 @@ Configure the Network
 
 *  Choose the Primary Network Interface, enter the fully-qualified host name, 
    and setup the site administrator user.
-    
+
    .. warning:: Use your site hostname and domain in the following entry, not 
       ":kbd:`{hostname}`" and ":kbd:`{domain}`". **hostname** and **domain** 
       cannot be changed on fully configured systems.
@@ -166,7 +166,7 @@ Partition disks (Mac)
 *  Select :guilabel:`Partitioning method` as :kbd:`Manual`.
 *  Partition drive :guilabel:`SCSI2 (0.0.0) (sdb)` for installation, creating 
    partitions for EFI boot, swap, and ext4 ZENTYAL as shown following:
-   
+
    +---------+------------+-------+---------------+-------------------+-------+
    | Area    | Size       | Flags | Type          | Label             | Mount |
    +=========+============+=======+===============+===================+=======+
@@ -180,7 +180,7 @@ Partition disks (Mac)
    +---------+------------+-------+---------------+-------------------+-------+
    |         |  728.6 KB  |       | FREE SPACE    |                   |       |
    +---------+------------+-------+---------------+-------------------+-------+
-   
+
    .. note::
       The ``ZENTYAL`` partition does not have to be set :kbd:`bootable`, as 
       :program:`rEFInd` will act as boot manager. An empty EFIboot partition is
@@ -189,17 +189,15 @@ Partition disks (Mac)
 *  Select :guilabel:`Finish partitioning and write changes to disk`. 
 
    .. note::
-      Zentyal wants to use Grub in place of Apple's EFI boot partition, and so a
-      question appears regarding a "separate partition for boot loader code". 
+      Zentyal wants to use Grub in place of Apple's EFI boot partition, and so 
+      a question appears regarding a "separate partition for boot loader code". 
 
 *  At the prompt :guilabel:`Go back to the menu and correct this problem?`, 
    enter :kbd:`<No>`.
-   
-* If you see a prompt :guilabel: `do you want to return to the partitioner` select 
-  :kbd: `<No>`
-   
-* At the prompt :guilabel: `Write changes to the disks?`,
-  Enter :kbd: `<Yes>`.
+*  If you see a prompt :guilabel:`do you want to return to the partitioner`, 
+   select :kbd:`<No>`.
+*  At the prompt :guilabel:`Write changes to the disks?`,
+   Enter :kbd:`<Yes>`.
 
 Finish Installation
 =============================

@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
     <link rel="next" title="Installation Instructions" href="03_install.html" />
-    <link rel="prev" title="Apple First Boot Instructions" href="01_Appleboot.html" /> 
+    <link rel="prev" title="Configuring a Mac Mini Server" href="01_Appleboot.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -35,7 +35,7 @@
           <a href="03_install.html" title="Installation Instructions"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="01_Appleboot.html" title="Apple First Boot Instructions"
+          <a href="01_Appleboot.html" title="Configuring a Mac Mini Server"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
@@ -75,7 +75,7 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="01_Appleboot.html"
-                        title="previous chapter">Apple First Boot Instructions</a></p>
+                        title="previous chapter">Configuring a Mac Mini Server</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="03_install.html"
                         title="next chapter">Installation Instructions</a></p>
@@ -278,9 +278,8 @@ stop booting.</li>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The Mac approach of displaying files in the Finder and then editing
-configuration text in <strong class="program">TextEdit</strong> will not to work here. But then,
-our intention is to use Linux in place of the Mac OS. This section used a
-Linux-y approach to editing the <strong class="program">rEFInd</strong> configuration instead.</p>
+configuration text in <strong class="program">TextEdit</strong> will not to work with boot
+manager files. This section uses a Linux-y approach to editing the <strong class="program">rEFInd</strong> configuration instead.</p>
 </div>
 </li>
 <li><p class="first">Modify the configuration options as desired, then press <code class="kbd docutils literal"><span class="pre">control-X</span></code> to
@@ -295,37 +294,23 @@ save changes.</p>
 <p class="last">Save a copy of the modified <code class="file docutils literal"><span class="pre">refind.conf</span></code> in your <code class="file docutils literal"><span class="pre">~/Documents</span></code>
 folder, as updates to Mac OS X might wipe out the EFI configuration.</p>
 </div>
+<p>After achieving a good <strong class="program">rEFInd</strong> configuration, turn SIP back on with
+either:</p>
+<ul class="simple">
+<li>Rebooting from a <strong class="program">rEFInd</strong> CD and selecting <strong class="command">SIP Policy</strong>
+from the tools,</li>
+<li>Rebooting from the Apple Recovery partition and executing the command
+<strong class="command">csrutil enable</strong>,</li>
+<li>Rebooting and selecting <strong class="command">SIP Policy</strong> from the <strong class="program">rEFInd</strong>
+tools, provided you have enabled tool <strong class="program">csr_rotate</strong>.</li>
+</ul>
 </div>
 <div class="section" id="example-refind-configuration">
 <h3>Example Refind Configuration<a class="headerlink" href="#example-refind-configuration" title="Permalink to this headline">¶</a></h3>
-<p>A sample <strong class="program">rEFInd</strong> configuration file for a dual-boot Linux/Macintosh system is shown below:</p>
-<div class="highlight-python"><div class="highlight"><pre>timeout 5
-use_graphics_for osx, linux
-# skip recovery and backup (time machine) drives
-dont_scan_volumes &quot;Recovery HD&quot;,&quot;Backup&quot;
-# skip ubuntu optional drivers, shimx64.efi and mmx64.efi
-dont_scan_dirs EFI/ubuntu
-dont_scan_files shim.efi,MokManager.efi,mmx64.efi
-# report linux installations, one kernel per install
-scan_all_linux_kernels
-fold_linux_kernels
-# show first 3 options as primary choices, default to vmlinuz,
-max_tags 3
-default_selection &quot;vmlinuz&quot;
-# Allow refind to disable/enable SIP so boot reconfiguration is possible
-csr_values 10,77
-showtools shell,memtest,gdisk,apple_recovery,about,shutdown,reboot
-showtools &quot;+,csr_rotate&quot;
-csr_values 10,77
-</pre></div>
-</div>
+<p>A sample <strong class="program">rEFInd</strong> configuration file for a dual-boot Linux/Macintosh system which defaults to booting Linux is shown below:</p>
 <p>Download <a class="reference download internal" href="_downloads/refind.conf"><code class="xref download docutils literal"><span class="pre">refind.conf</span></code></a> to directory
 <code class="file docutils literal"><span class="pre">refind</span></code>, overwriting the default configuration, to install this set of
 options.</p>
-<ol class="arabic simple">
-<li>Change boot order to put vmlinuz first</li>
-<li>Boot to the Recover HD to re-enable SIP</li>
-</ol>
 </div>
 </div>
 <div class="section" id="recovering-from-a-boot-coup">
@@ -484,7 +469,7 @@ Server.</td></tr>
           <a href="03_install.html" title="Installation Instructions"
              >next</a></li>
         <li class="right" >
-          <a href="01_Appleboot.html" title="Apple First Boot Instructions"
+          <a href="01_Appleboot.html" title="Configuring a Mac Mini Server"
              >previous</a> |</li>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>

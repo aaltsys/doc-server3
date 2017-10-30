@@ -159,9 +159,8 @@ Edit rEFInd configuration
 
    .. note::
       The Mac approach of displaying files in the Finder and then editing 
-      configuration text in :program:`TextEdit` will not to work here. But then,
-      our intention is to use Linux in place of the Mac OS. This section used a
-      Linux-y approach to editing the :program:`rEFInd` configuration instead.
+      configuration text in :program:`TextEdit` will not to work with boot 
+      manager files. This section uses a Linux-y approach to editing the :program:`rEFInd` configuration instead.
 
 #. Modify the configuration options as desired, then press :kbd:`control-X` to
    save changes.
@@ -173,36 +172,26 @@ Repeat these instructions until desired results are achieved.
    Save a copy of the modified :file:`refind.conf` in your :file:`~/Documents`
    folder, as updates to Mac OS X might wipe out the EFI configuration.
 
+After achieving a good :program:`rEFInd` configuration, turn SIP back on with 
+either:
+
+*  Rebooting from a :program:`rEFInd` CD and selecting :command:`SIP Policy` 
+   from the tools, 
+*  Rebooting from the Apple Recovery partition and executing the command
+   :command:`csrutil enable`, 
+*  Rebooting and selecting :command:`SIP Policy` from the :program:`rEFInd` 
+   tools, provided you have enabled tool :program:`csr_rotate`. 
+
 Example Refind Configuration
 -----------------------------
 
-A sample :program:`rEFInd` configuration file for a dual-boot Linux/Macintosh system is shown below::
+A sample :program:`rEFInd` configuration file for a dual-boot Linux/Macintosh system which defaults to booting Linux is shown below:
 
-   timeout 5
-   use_graphics_for osx, linux
-   # skip recovery and backup (time machine) drives
-   dont_scan_volumes "Recovery HD","Backup"
-   # skip ubuntu optional drivers, shimx64.efi and mmx64.efi
-   dont_scan_dirs EFI/ubuntu
-   dont_scan_files shim.efi,MokManager.efi,mmx64.efi
-   # report linux installations, one kernel per install
-   scan_all_linux_kernels
-   fold_linux_kernels
-   # show first 3 options as primary choices, default to vmlinuz, 
-   max_tags 3
-   default_selection "vmlinuz"
-   # Allow refind to disable/enable SIP so boot reconfiguration is possible
-   csr_values 10,77
-   showtools shell,memtest,gdisk,apple_recovery,about,shutdown,reboot
-   showtools "+,csr_rotate"
-   csr_values 10,77
+.. include:: ./downloads/refind.conf
 
 Download :download:`refind.conf <./_downloads/refind.conf>` to directory 
 :file:`refind`, overwriting the default configuration, to install this set of 
 options.
-
-#. Change boot order to put vmlinuz first
-#. Boot to the Recover HD to re-enable SIP
 
 Recovering from a Boot Coup
 =============================

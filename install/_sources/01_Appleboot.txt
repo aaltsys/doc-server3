@@ -1,106 +1,166 @@
 .. _appleboot:
  
 ###############################
-Apple First Boot Instructions
+Configuring a Mac Mini Server
 ###############################
 
-The Apple OS-X should be minimally configured prior to installing an additional 
-OS on the machine. These include installing the Google Chrome browser and the 
-rEFInd boot manager.
+AAltsys Server Introduction
+===============================
 
+Desktop and tower computers are bulky, inefficient, and expensive. These 
+computers are undesirable for office servers, which is why we recommend the 
+Apple Mac mini, which is powerful, unobtrusive, and reliable. 
+
+We use Apple Mac mini hardware as a server running the Zentyal office server 
+operating system. (Zentyal is based on the popular Linux OS Ubuntu.) An added 
+SSD storage drive will be used for Zentyal server and data, and the original 
+Apple OS-X installation will be retained on the internal drive. A boot selector 
+program, rEFInd, will be used to permit operating system selection.
+
+Mac mini Configuration
+=============================
+
+The components of the Mac mini, and the available accessories for it, change 
+over time. Older Mac minis include the Mac mini Server, now discontinued, which 
+offered two internal drives and a quad-core i7 hyper-threaded processor. Newer 
+Mac minis have dual-core i5 processors with hyper threading, providing a 
+maximum of four execution threads. This is adequate for an office server.
+
+As of 10-15-2017, Apple's Mac mini configuration [#]_ used for this server is: 
+
+*  2.6GHz Intel Dual-Core i5 (Turbo Boost up to 3.1GHz)
+*  16GB 1600MHz LPDDR3 SDRAM
+*  1TB Serial ATA Drive @ 5400 rpm
+
+The following additional components convert the Mac mini to a server:
+
+*  Samsung T5 256 GB SSD drive w/ USB 3.1 to 3.0 cable (for server storage),
+*  Thunderbolt to Gigabit Ethernet adapter (for Internet gateway function),
+*  Zentyal - windows-compatible office server operating system replaces OS-X,
+*  rEFInd - multi-boot program for EFI and UEFI systems, particularly Macs,
+*  Chrome - Google's browser is installed in OS-X as part of initial setup.
+
+Additional generic hardware components will be used during system configuration 
+or are required for site setup and administration:
+
+*  Superdrive - or any USB-connected CD-ROM drive (during installation only),
+*  USB Keyboard and mouse, HDMI-connected 1080p monitor (for administration),
 
 Installing Google Chrome
-============================
+=============================
 
 Follow these step by step instructions to install Google Chrome on OS-X: 
 
-#. Download the installer file at https://www.google.com/chrome/browser
-#. Launch file :file:`Google Chrome.dmg` from the downloads.
-#. In the window that opens, drag the Chrome icon into the Application folder.
+#. Launch the Safari browser fror the Activity task bar
+#. `Download the Chrome installer <https://www.google.com/chrome/browser>`_ 
+#. Launch file :file:`Google Chrome.dmg` from the downloads
+#. In the window that opens, drag the Chrome icon into the Application folder
 #. When first opening Chrome, the Finder will ask if you want to open the 
    Application downloaded from the Internet. Click open.
 #. Unmount the Google Chrome disk image on your Desktop by right clicking it and 
    choosing "Eject".
 
-Install rEFInd and Linux
+Download and Install rEFInd 
 =============================
+
+Apple replaced BIOS booting with EFI (Extensible Firmware Interface), allowing 
+software to control the computer boot process. Apple offers :program:`BootCamp` 
+software to boot Windows on Macs, but this only works with Windows. 
+
+**Roderick Smith** has written an excellent boot manager supporting multiple 
+hardware platforms and various operating systems, particularly :program:`Linux` 
+and Macintosh :program:`OS-X`. Further, he maintains a reference book on EFI 
+booting using his `rEFInd program <http://www.rodsbooks.com/refind/>`_.
 
 Install rEFInd software
 -----------------------------
 
-#. Download the binary zip of rEFInd software from 
-   http://www.rodsbooks.com/refind/getting.html.
-#. Open a terminal session, and change directory to the Downloads folder.
-#. Unzip the rEFInd download:: 
+#. `Download rEFInd software <http://www.rodsbooks.com/refind/getting.html>`_
+   to your :file:`Downloads` folder. [#]_
 
-      unzip refind <Tab> <Enter>
+#. On later Macs with **SIP**, press :kbd:`alt/option` to reboot to the 
+   :file:`Recovery HD` volume and then disable **SIP** with the command::
 
-#. install the software::
+      csrutil disable
 
-      cd refind <Tab> <Enter>
-      ./install.sh --alldrivers
+   Then reboot to the Mac OS-X system on volume :file:`Macintosh HD`. 
+   (As an alternative, use Rod's guide to install :program:`rEFInd` from the 
+   Recovery boot [#]_ in place of this step and the next step.)
+#. Open a terminal session, change directory to the :file:`Downloads` folder,
+   and unzip and install :program:`Refind` with the commands::
 
-Make free space on drive
------------------------------
+   cd ~/Downloads
+   unzip refind <Tab> <Enter>
+   cd refind <Tab> <Enter>
+   ./refind.install
 
-#. Open :menuselection:`Launchpad --> Other --> Disk Utility`.
-#. Choose a media drive to repartition, and select :menuselection:`Partition`
-   from the dialog border menu. We recommend installing on /dev/disk02, aka
-   "Recovery HD".
-#. Remove Apple HFS data partitions on the drive, leaving only the EFI partition 
-   and the remainder as free space. 
+#. Read the installation messages to see where :program:`REFInd` is installed. 
+   For message ``Installing rEFInd to the partition mounted at /Volumes/ESP``,
+   bless :program:`REFInd` with the command::
 
-Install Linux from USB
------------------------------
+      sudo bless --mount /Volumes/ESP --setBoot --file /Volumes/ESP/efi/refind/refind_x64.efi --shortform
 
-.. note::
-   These instructions create a multi-boot machine based on the Mac mini Server.
-   Please refer to separate Zentyal server installation instructions for a 
-   detailed procedure specific to that operating system.
+   Otherwise for :program:`REFInd` installed in folder :file:`\EFI`, use::
 
-#. Restart the Mac, holding down the :kbd:`alt/option` key to choose the 
-   boot device, either the USB drive or the Superdrive.
-#. Choose the boot media, which Apple humorously refers to as "Windows".
-#. Boot the Linux installation, select the installation language, and then 
-   choose to install by :menuselection:`(expert mode)`.
-#. Use manual partitioning option, and in the free space created previously, 
-   first create a 1`6 Gb swap partition and then an install partition of type 
-   ``ext4`` mounted as ``/``.
-#. Continue with Linux installation in the newly-created partitions.
-#. Reboot when installation is finished, removing the USB flash drive or media. 
-   The :program:`rEFInd` boot selector should now contain options to boot Linux.
+      sudo bless --setBoot --folder /efi/refind --file /efi/refind/refind_x64.efi
 
-.. note::
-   Either Linux will ask for a location to install the Grub boot loader, or a 
-   boot loader installation error will be thrown at the end of the install. 
-   Grub is not needed if we are using :program:`rEFInd` to manage booting.
+#. After installing :program:`rEFInd`, copy or rename the default configuration
+   file :file:`refind.conf` to preserve it. This file should be in one of the 
+   following locations::
 
-Configure rEFInd
+   /Volumes/ESP/efi/refind/
+   /efi/refind/
+
+#. To boot Zentyal by default, download the customized refind configuration 
+   :download:`refind.conf <./_downloads/refind.conf>` to folder :file:`refind`. 
+
+#. For Macs with SIP, reboot and press a cursor key to stop :program:`rEFInd`. 
+   Use the mouse or cursor keys to select small icons items::
+
+   *i* -- the info icon will say whether SIP is off or on
+   *shield* -- toggles the SIP state off and on
+   *circle-arrows* -- reboot the system after any changes
+
+Reconfiguring rEFInd 
 =============================
 
-.. note::
-   The Mac approach of displaying files in the Finder and then editing 
-   configuration text in :program:`TextEdit` seems not to work here. But then,
-   our intention is to use Linux in place of the Mac OS. This section uses a
-   Linux-y approach to editing the :program:`rEFInd` configuration instead.
+The :program:`rEFInd` configuration which defaults to booting Linux, as used in 
+this guide, is shown below:
 
-Diagnose rEFInd behavior
+.. include:: ./downloads/refind.conf
+
+Use the instructions in this section if you wish to change boot configuration 
+options. 
+
+Configure rEFInd
 -----------------------------
 
-#. Restart the server, and press :kbd:`right-arrow` in :program:`rEFInd` to stop
-   boot.
+#. After installing :program:`rEFInd`, copy or rename the default 
+   :file:`refind.conf` configuration file to preserve it. 
+#. Restart the server, and press :kbd:`right-arrow` in :program:`rEFInd` to 
+   stop booting.
 #. Write down each main boot option to decide which should be displayed.
-#. Determine configuration options to change. [#]_
+#. Determine any other configuration options to change. [#]_
 
 Edit rEFInd configuration
 -----------------------------
 
 #. Start a terminal from :menuselection:`Launchpad --> Other --> Terminal`.
 #. Edit the :program:`rEFInd` configuration file with the command::
-   
+
+      sudo nano /Volumes/ESP/efi/refind/refind.conf
+
+   or for older Macs with an :file:`EFI` folder and no :file:`ESP` volume, ::
+
       sudo nano /efi/refind/refind.conf
-   
+
    and enter your password when prompted.
+
+   .. note::
+      The Mac approach of displaying files in the Finder and then editing 
+      configuration text in :program:`TextEdit` will not to work with boot 
+      manager files. This section uses a Linux-y approach to editing the :program:`rEFInd` configuration instead.
+
 #. Modify the configuration options as desired, then press :kbd:`control-X` to
    save changes.
 #. Exit all programs and restart the server to test the new configuration.
@@ -108,43 +168,44 @@ Edit rEFInd configuration
 Repeat these instructions until desired results are achieved. 
 
 .. tip:: 
-   Save a copy of :file:`refind.conf` in your :file:`~/Documents`
-   folder, as updates to Mac OS X will wipe out the EFI configuration.
+   Save a copy of the modified :file:`refind.conf` in your :file:`~/Documents`
+   folder, as updates to Mac OS X might wipe out the EFI configuration.
 
-Example configuration
------------------------------
+After achieving a good :program:`rEFInd` configuration, turn SIP back on with 
+either:
 
-The goal for this installation was to provide a testing server running Ubuntu,
-but also capable of being used as a Mac server or workstation when not testing. 
-Therefore the server by default would boot Linux with minimal delay, while still 
-providing a ``Mac OS X`` boot option. The configuration options used were::
+*  Rebooting from a :program:`rEFInd` CD and selecting :command:`SIP Policy` 
+   from the tools, 
+*  Rebooting from the Apple Recovery partition and executing the command
+   :command:`csrutil enable`, 
+*  Rebooting and selecting :command:`SIP Policy` from the :program:`rEFInd` 
+   tools, provided you have enabled tool :program:`csr_rotate`. 
 
-   timeout 5
-   use_graphics_for osx, linux
-   dont_scan_volumes "Backup", "Recovery HD"
-   dont_scan_dirs EFI/ubuntu
-   dont_scan_files shim.efi, MokManager.efi
-   scan_all_linux_kernels
-   max_tags 2
-   default_selection "vmlinuz"
-
-Restoring rEFInd installation
+Recovering from a Boot Coup
 =============================
  
-The efi directory is cleared and rewritten when updating Mac OS X. Keep program
-:program:`rEFInd` in your :file:`~/Downloads` folder, and keep a copy of 
-:file:`refind.conf` in your :file:`~/Documents` folder. Restore a lost
-:program:`rEFInd` installation in Mac OS X as follows:
+The :file:`efi` directory may get rewritten when updating either Mac OS-X or 
+Linux. Keep program :program:`rEFInd` in your :file:`~/Downloads` folder, and 
+keep a copy of :file:`refind.conf` in your :file:`~/Documents` folder. Restore 
+a lost :program:`rEFInd` installation in Mac OS X as follows:
 
 #. Start a terminal from :menuselection:`Launchpad --> Other --> Terminal`
 #. Reinstall :program:`rEFInd` with the commands::
 
       cd ~/Downloads/refind <Tab> <Enter>
-      ./install.sh
+      ./install.refind
       sudo cp ~/Documents/refind.conf /efi/refind/ 
-
+        -- or --
+      sudo cp ~/Documents/refind.conf Volumes/ESP/efi/refind/ 
 ----------
 
-.. rubric: Footnotes
+.. rubric:: Footnotes
 
-.. [#] `rEFInd configuration documentation <http://www.rodsbooks.com/refind/configfile.html>`_.
+.. [#] `Mac mini specifications <https://www.apple.com/mac-mini/specs/>`_. 
+
+.. [#] `How to obtain rEFInd <http://www.rodsbooks.com/refind/getting.html>`_. 
+
+.. [#] `Install rEFInd <http://www.rodsbooks.com/refind/sip.html#recovery>`_.
+
+.. [#] `Configuring rEFInd <http://www.rodsbooks.com/refind/configfile.html>`_. 
+

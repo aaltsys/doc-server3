@@ -1,4 +1,4 @@
-.. _appleboot:
+.. _macserver:
  
 ###############################
 Configuring a Mac Mini Server
@@ -208,4 +208,3 @@ a lost :program:`rEFInd` installation in Mac OS X as follows:
 .. [#] `Install rEFInd <http://www.rodsbooks.com/refind/sip.html#recovery>`_.
 
 .. [#] `Configuring rEFInd <http://www.rodsbooks.com/refind/configfile.html>`_. 
-

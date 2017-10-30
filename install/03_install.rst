@@ -5,10 +5,9 @@
 #############################
 
 .. note::
-   Only the most current version of Zentyal is supported. Some directions may be 
-   out of order or wrong, haaving been written based on previous Zentyal 
-   versions. Mac instructions were written based on Zentyal 3.4, current as of 
-   4/1/2014.
+   These instructions are based on the Zentyal 5.0 LTS developer edition. Some 
+   directions may be out of order or wrong, haaving been written for previous 
+   Zentyal versions. Zentyal 5.0 is based on Ubuntu Server 16.04 LTS.
 
 Purpose and Requirements
 =============================
@@ -75,8 +74,9 @@ Installer options
 
 *  Press :kbd:`<Enter>` at selection :menuselection:`English` to choose the 
    installer language default: ``English``.
+*  For Refind booting to DVD, select **Boot Legacy OS from Whole Disk Volume**
 *  **Choose the second option on the Installation menu**, 
-   :guilabel:`Install Zentyal (expert mode)`.
+   :guilabel:`Install Zentyal x.x.x-development (expert mode)`.
 *  Make the following selections, or press :kbd:`<Enter>` for defaults:
 
    +----------------------+-----------------+---------------------------------+
@@ -120,8 +120,8 @@ Configure the Network
    +-----------------------------+---------------------------------------------+
    | Use weak password?          | Yes                                         |
    +-----------------------------+---------------------------------------------+
-*  The network should configure using DHCP. If DHCP does not work, fix your 
-   network connection.
+*  The network should configure using DHCP. If DHCP does not work, switch 
+   ethernet port selections. If that fails, fix your network connection.
 
 Configure the Clock
 -----------------------------
@@ -144,7 +144,7 @@ Partition disks (BIOS RAID)
    +======================================+====================================+
    | Activate serial ATA RAID devices?    | <Yes>                              |
    +--------------------------------------+------------------------------------+
-   | Partitioning method                  | Guided -- use entire disk          |
+   | Partitioning method                  | Guided, use entire disk            |
    +--------------------------------------+------------------------------------+
    | select the disk to partition         | Serial ATA RAID, isw-------aaltsys |
    +--------------------------------------+------------------------------------+
@@ -152,50 +152,42 @@ Partition disks (BIOS RAID)
    +--------------------------------------+------------------------------------+
    | Write the changes to disks?          | <Yes>                              |
    +--------------------------------------+------------------------------------+
-   
-   .. warning:: 
-      When installing Zentyal 3.0, a bug makes it necessary to write down the
-      ATA RAID identifier, :guilabel:`isw_----------_aaltsys`, for later use. 
 
 .. _partition-mac: 
 
 Partition disks (Mac)
 -----------------------------
 
+*** FIX FOLLOWING TO SHOW ESP, swap, OS partitions ***
+
 *  If asked to :guilabel:`unmount partitions that are in use`, answer :kbd:`No`.
 *  Select :guilabel:`Partitioning method` as :kbd:`Manual`.
-*  Partition drive :guilabel:`SCSI2 (0.0.0) (sdb)` for installation, creating 
+*  Partition drive :guilabel:`nnnn (0.0.0) (sdb)` for installation, creating 
    partitions for EFI boot, swap, and ext4 ZENTYAL as shown following:
 
    +---------+------------+-------+---------------+-------------------+-------+
    | Area    | Size       | Flags | Type          | Label             | Mount |
    +=========+============+=======+===============+===================+=======+
-   |         |    1.0 MB  |       | FREE SPACE    |                   |       |
+   |         |    ??? MB  |       | FREE SPACE    |                   |       |
    +---------+------------+-------+---------------+-------------------+-------+
-   | #1      |  209.7 MB  | B  F  | EFIboot       | EFI system p ...  |       |
+   | #1      |    250 MB  | B  F  | EFIboot       | EFI system p ...  |       |
    +---------+------------+-------+---------------+-------------------+-------+
    | #2      |   16.0 GB  |    F  | swap          |                   | swap  |
    +---------+------------+-------+---------------+-------------------+-------+
-   | #3      |  983.3 GB  |    F  | ext4          | ZENTYAL           | /     |
+   | #3      |  remainder |    F  | ext4          | ZENTYAL           | /     |
    +---------+------------+-------+---------------+-------------------+-------+
-   |         |  728.6 KB  |       | FREE SPACE    |                   |       |
+   |         |    ??? MB  |       | FREE SPACE    |                   |       |
    +---------+------------+-------+---------------+-------------------+-------+
 
-   .. note::
-      The ``ZENTYAL`` partition does not have to be set :kbd:`bootable`, as 
-      :program:`rEFInd` will act as boot manager. An empty EFIboot partition is
-      maintained for possibly restoring the drive to OS X.
+*  Select :guilabel:`Finish partitioning and write changes to disk` after each 
+   partition is defined. 
 
-*  Select :guilabel:`Finish partitioning and write changes to disk`. 
+.. note::
+   *  The ``ZENTYAL`` partition does not have to be set :kbd:`bootable`, as 
+      :program:`rEFInd` will act as boot manager. 
+   *   Zentyal's Boot code goes in the EFI partition and MBR FREESPACE on 
+       **sdb** to avoid interfering with Refind's EFI on **sda**.
 
-   .. note::
-      Zentyal wants to use Grub in place of Apple's EFI boot partition, and so 
-      a question appears regarding a "separate partition for boot loader code". 
-
-*  At the prompt :guilabel:`Go back to the menu and correct this problem?`, 
-   enter :kbd:`<No>`.
-*  If you see a prompt :guilabel:`do you want to return to the partitioner`, 
-   select :kbd:`<No>`.
 *  At the prompt :guilabel:`Write changes to the disks?`,
    Enter :kbd:`<Yes>`.
 
@@ -203,10 +195,6 @@ Finish Installation
 =============================
 
 Answer these questions, each of which involves installation activity:
-
-.. warning::
-   For Zentyal 3.0, question :guilabel:`Device for boot loader installation:`
-   must be answered with :kbd:`/dev/mapper/isw_----------_aaltsys <Tab><Enter>`.
 
 +-----------------------------------------------------+--------------------+
 | Question                                            | Answer             |
@@ -216,7 +204,7 @@ Answer these questions, each of which involves installation activity:
 +-----------------------------------------------------+--------------------+
 | HTTP proxy information (blank for none):            | (blank) <Continue> |
 +-----------------------------------------------------+--------------------+
-| Device for boot loader installation:                | (blank) <Continue> |
+| Device for boot loader installation:                | **sdb** <Continue> |
 +-----------------------------------------------------+--------------------+
 | Is the system clock set to UTC?                     | <Yes>              |
 +-----------------------------------------------------+--------------------+

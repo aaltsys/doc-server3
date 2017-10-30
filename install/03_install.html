@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="AAltsys Server 3.0 Installation 3.0 documentation" href="index.html" />
     <link rel="next" title="First Boot Configuration" href="04_firstboot.html" />
-    <link rel="prev" title="Dual-Booting Mac Servers" href="02_macserver.html" /> 
+    <link rel="prev" title="Make a Mac-Bootable USB" href="02_macserver.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -35,7 +35,7 @@
           <a href="04_firstboot.html" title="First Boot Configuration"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="02_macserver.html" title="Dual-Booting Mac Servers"
+          <a href="02_macserver.html" title="Make a Mac-Bootable USB"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>
@@ -63,7 +63,7 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="02_macserver.html"
-                        title="previous chapter">Dual-Booting Mac Servers</a></p>
+                        title="previous chapter">Make a Mac-Bootable USB</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="04_firstboot.html"
                         title="next chapter">First Boot Configuration</a></p>
@@ -99,10 +99,9 @@
 <span id="install"></span><h1>Installation Instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Only the most current version of Zentyal is supported. Some directions may be
-out of order or wrong, haaving been written based on previous Zentyal
-versions. Mac instructions were written based on Zentyal 3.4, current as of
-4/1/2014.</p>
+<p class="last">These instructions are based on the Zentyal 5.0 LTS developer edition. Some
+directions may be out of order or wrong, haaving been written for previous
+Zentyal versions. Zentyal 5.0 is based on Ubuntu Server 16.04 LTS.</p>
 </div>
 <div class="section" id="purpose-and-requirements">
 <h2>Purpose and Requirements<a class="headerlink" href="#purpose-and-requirements" title="Permalink to this headline">¶</a></h2>
@@ -166,8 +165,10 @@ device.</p>
 <li><p class="first">Press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code> at selection <em class="menuselection">English</em> to choose the
 installer language default: <code class="docutils literal"><span class="pre">English</span></code>.</p>
 </li>
+<li><p class="first">For Refind booting to DVD, select <strong>Boot Legacy OS from Whole Disk Volume</strong></p>
+</li>
 <li><p class="first"><strong>Choose the second option on the Installation menu</strong>,
-<em class="guilabel">Install Zentyal (expert mode)</em>.</p>
+<em class="guilabel">Install Zentyal x.x.x-development (expert mode)</em>.</p>
 </li>
 <li><p class="first">Make the following selections, or press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code> for defaults:</p>
 <table border="1" class="docutils">
@@ -258,8 +259,8 @@ cannot be changed on fully configured systems.</p>
 </tbody>
 </table>
 </li>
-<li><p class="first">The network should configure using DHCP. If DHCP does not work, fix your
-network connection.</p>
+<li><p class="first">The network should configure using DHCP. If DHCP does not work, switch
+ethernet port selections. If that fails, fix your network connection.</p>
 </li>
 </ul>
 </div>
@@ -295,7 +296,7 @@ instructions apply to custom-built PCs with BIOS RAID on the motherboard.</p>
 <td>&lt;Yes&gt;</td>
 </tr>
 <tr class="row-odd"><td>Partitioning method</td>
-<td>Guided &#8211; use entire disk</td>
+<td>Guided, use entire disk</td>
 </tr>
 <tr class="row-even"><td>select the disk to partition</td>
 <td>Serial ATA RAID, isw&#8212;&#8212;-aaltsys</td>
@@ -308,22 +309,18 @@ instructions apply to custom-built PCs with BIOS RAID on the motherboard.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">When installing Zentyal 3.0, a bug makes it necessary to write down the
-ATA RAID identifier, <em class="guilabel">isw_&#8212;&#8212;&#8212;-_aaltsys</em>, for later use.</p>
-</div>
 </li>
 </ul>
 </div>
 <div class="section" id="partition-disks-mac">
 <span id="partition-mac"></span><h3>Partition disks (Mac)<a class="headerlink" href="#partition-disks-mac" title="Permalink to this headline">¶</a></h3>
+<p><strong>* FIX FOLLOWING TO SHOW ESP, swap, OS partitions *</strong></p>
 <ul>
 <li><p class="first">If asked to <em class="guilabel">unmount partitions that are in use</em>, answer <code class="kbd docutils literal"><span class="pre">No</span></code>.</p>
 </li>
 <li><p class="first">Select <em class="guilabel">Partitioning method</em> as <code class="kbd docutils literal"><span class="pre">Manual</span></code>.</p>
 </li>
-<li><p class="first">Partition drive <em class="guilabel">SCSI2 (0.0.0) (sdb)</em> for installation, creating
+<li><p class="first">Partition drive <em class="guilabel">nnnn (0.0.0) (sdb)</em> for installation, creating
 partitions for EFI boot, swap, and ext4 ZENTYAL as shown following:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -345,14 +342,14 @@ partitions for EFI boot, swap, and ext4 ZENTYAL as shown following:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>&nbsp;</td>
-<td>1.0 MB</td>
+<td>??? MB</td>
 <td>&nbsp;</td>
 <td>FREE SPACE</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 </tr>
 <tr class="row-odd"><td>#1</td>
-<td>209.7 MB</td>
+<td>250 MB</td>
 <td>B  F</td>
 <td>EFIboot</td>
 <td>EFI system p ...</td>
@@ -366,14 +363,14 @@ partitions for EFI boot, swap, and ext4 ZENTYAL as shown following:</p>
 <td>swap</td>
 </tr>
 <tr class="row-odd"><td>#3</td>
-<td>983.3 GB</td>
+<td>remainder</td>
 <td>F</td>
 <td>ext4</td>
 <td>ZENTYAL</td>
 <td>/</td>
 </tr>
 <tr class="row-even"><td>&nbsp;</td>
-<td>728.6 KB</td>
+<td>??? MB</td>
 <td>&nbsp;</td>
 <td>FREE SPACE</td>
 <td>&nbsp;</td>
@@ -381,40 +378,29 @@ partitions for EFI boot, swap, and ext4 ZENTYAL as shown following:</p>
 </tr>
 </tbody>
 </table>
+</li>
+<li><p class="first">Select <em class="guilabel">Finish partitioning and write changes to disk</em> after each
+partition is defined.</p>
+</li>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">ZENTYAL</span></code> partition does not have to be set <code class="kbd docutils literal"><span class="pre">bootable</span></code>, as
-<strong class="program">rEFInd</strong> will act as boot manager. An empty EFIboot partition is
-maintained for possibly restoring the drive to OS X.</p>
+<ul class="last simple">
+<li>The <code class="docutils literal"><span class="pre">ZENTYAL</span></code> partition does not have to be set <code class="kbd docutils literal"><span class="pre">bootable</span></code>, as
+<strong class="program">rEFInd</strong> will act as boot manager.</li>
+<li>Zentyal&#8217;s Boot code goes in the EFI partition and MBR FREESPACE on
+<strong>sdb</strong> to avoid interfering with Refind&#8217;s EFI on <strong>sda</strong>.</li>
+</ul>
 </div>
-</li>
-<li><p class="first">Select <em class="guilabel">Finish partitioning and write changes to disk</em>.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Zentyal wants to use Grub in place of Apple&#8217;s EFI boot partition, and so
-a question appears regarding a &#8220;separate partition for boot loader code&#8221;.</p>
-</div>
-</li>
-<li><p class="first">At the prompt <em class="guilabel">Go back to the menu and correct this problem?</em>,
-enter <code class="kbd docutils literal"><span class="pre">&lt;No&gt;</span></code>.</p>
-</li>
-<li><p class="first">If you see a prompt <em class="guilabel">do you want to return to the partitioner</em>,
-select <code class="kbd docutils literal"><span class="pre">&lt;No&gt;</span></code>.</p>
-</li>
-<li><p class="first">At the prompt <em class="guilabel">Write changes to the disks?</em>,
-Enter <code class="kbd docutils literal"><span class="pre">&lt;Yes&gt;</span></code>.</p>
-</li>
+<ul class="simple">
+<li>At the prompt <em class="guilabel">Write changes to the disks?</em>,
+Enter <code class="kbd docutils literal"><span class="pre">&lt;Yes&gt;</span></code>.</li>
 </ul>
 </div>
 </div>
 <div class="section" id="finish-installation">
 <h2>Finish Installation<a class="headerlink" href="#finish-installation" title="Permalink to this headline">¶</a></h2>
 <p>Answer these questions, each of which involves installation activity:</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">For Zentyal 3.0, question <em class="guilabel">Device for boot loader installation:</em>
-must be answered with <code class="kbd docutils literal"><span class="pre">/dev/mapper/isw_----------_aaltsys</span> <span class="pre">&lt;Tab&gt;&lt;Enter&gt;</span></code>.</p>
-</div>
 <table border="1" class="docutils">
 <colgroup>
 <col width="73%" />
@@ -436,7 +422,7 @@ must be answered with <code class="kbd docutils literal"><span class="pre">/dev/
 <td>(blank) &lt;Continue&gt;</td>
 </tr>
 <tr class="row-odd"><td>Device for boot loader installation:</td>
-<td>(blank) &lt;Continue&gt;</td>
+<td><strong>sdb</strong> &lt;Continue&gt;</td>
 </tr>
 <tr class="row-even"><td>Is the system clock set to UTC?</td>
 <td>&lt;Yes&gt;</td>
@@ -461,7 +447,7 @@ must be answered with <code class="kbd docutils literal"><span class="pre">/dev/
           <a href="04_firstboot.html" title="First Boot Configuration"
              >next</a></li>
         <li class="right" >
-          <a href="02_macserver.html" title="Dual-Booting Mac Servers"
+          <a href="02_macserver.html" title="Make a Mac-Bootable USB"
              >previous</a> |</li>
         <li><a href="index.html">AAltsys Server 3.0 Installation 3.0 documentation</a> &raquo;</li> 
       </ul>

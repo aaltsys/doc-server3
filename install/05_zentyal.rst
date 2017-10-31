@@ -40,9 +40,6 @@ General Information
 Check the information on the :menuselection:`System --> General` page 
 for any installation entry errors.
 
-.. Note:: Zentyal 2.2: The password change option on this page requires special 
-  procedures, as described in :ref:`change_password`.
-
 System Backup
 ==========================
 

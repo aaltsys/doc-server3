@@ -126,12 +126,16 @@ as follows:</p>
 boot from the new system (see <a class="reference internal" href="01_Appleboot.html#refind"><em>Download and Install rEFInd</em></a>)</p>
 </li>
 <li><p class="first">Mount the corrupted system partition. for example, to mount sdb3:</p>
-<p>sudo mkdir /mnt/sdb3
-sudo mount -t ext4 /dev/sdb3 /mnt/sdb3</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo mkdir /mnt/sdb3
+sudo mount -t ext4 /dev/sdb3 /mnt/sdb3
+</pre></div>
+</div>
 </li>
 <li><p class="first">Enumerate user folders and shares on the corrupted partition:</p>
-<p>ls -al /mnt/sdb3/home/samba/profiles
-ls -al /mnt/sdb3/home/samba/shares</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ls</span> <span class="o">-</span><span class="n">al</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">sdb3</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">profiles</span>
+<span class="n">ls</span> <span class="o">-</span><span class="n">al</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">sdb3</span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">samba</span><span class="o">/</span><span class="n">shares</span>
+</pre></div>
+</div>
 </li>
 <li><p class="first">Zentyal:
 *  Configure file sharing, users, and other services in the new OS
@@ -139,21 +143,31 @@ ls -al /mnt/sdb3/home/samba/shares</p>
 *  Setup file shares in the new OS for SAMBA shares on the corrupted drive</p>
 </li>
 <li><p class="first">Remove ACLs (Access Control Lists) from profiles on corrupted partition:</p>
-<p>setfacl -bnR /mnt/sdb3/home/samba/profiles/*</p>
+<div class="highlight-python"><div class="highlight"><pre>setfacl -bnR /mnt/sdb3/home/samba/profiles/*
+</pre></div>
+</div>
 </li>
 <li><p class="first">Copy all user data from profiles to corresponding users in new system:</p>
-<p>cp -r /mnt/sdb3/home/samba/profiles/{user1}/* /home/samba/profiles/{user1}/
-...</p>
+<div class="highlight-python"><div class="highlight"><pre>cp -r /mnt/sdb3/home/samba/profiles/{user1}/* /home/samba/profiles/{user1}/
+...
+</pre></div>
+</div>
 </li>
 <li><p class="first">Remove ACLs (Access Control Lists) from profiles on corrupted partition:</p>
-<p>setfacl -bnR /mnt/sdb3/home/samba/shares/*</p>
+<div class="highlight-python"><div class="highlight"><pre>setfacl -bnR /mnt/sdb3/home/samba/shares/*
+</pre></div>
+</div>
 </li>
 <li><p class="first">Copy all SAMBA shares from corrupted partition to new system:</p>
-<p>cp -r /mnt/sdb3/home/samba/shares/{share1}/* /home/samba/shares/{share1}
-...</p>
+<div class="highlight-python"><div class="highlight"><pre>cp -r /mnt/sdb3/home/samba/shares/{share1}/* /home/samba/shares/{share1}
+...
+</pre></div>
+</div>
 </li>
 <li><p class="first">Unmount the corrupted partition:</p>
-<p>umount /mnt/sdb3</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">umount</span> <span class="o">/</span><span class="n">mnt</span><span class="o">/</span><span class="n">sdb3</span>
+</pre></div>
+</div>
 </li>
 <li><p class="first">Reboot system and test access to all shares.</p>
 </li>
@@ -187,10 +201,9 @@ ls -al /dev/sd*
 </pre></div>
 </div>
 <p>where:</p>
-<div class="highlight-python"><div class="highlight"><pre>-a -- Displays the file name, owner, group, and ACL entries of a file or directory
--d -- Displays the file name, owner, group, and default ACL entries for a  file or directory.
-</pre></div>
-</div>
+<blockquote>
+<div>-a &#8211; Displays the file name, owner, group, and ACL entries of a file or directory
+-d &#8211; Displays the file name, owner, group, and default ACL entries for a  file or directory.</div></blockquote>
 </div>
 <div class="section" id="setting-acls">
 <h3>Setting ACLs<a class="headerlink" href="#setting-acls" title="Permalink to this headline">¶</a></h3>

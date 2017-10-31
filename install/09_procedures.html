@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Procedures of Operation &mdash; AAltsys Server 3.0 Installation 3.0 documentation</title>
+    <title>Replacing a Failed Drive &mdash; AAltsys Server 3.0 Installation 3.0 documentation</title>
     
     <link rel="stylesheet" href="_static/aaltsys.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -44,8 +44,22 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Procedures of Operation</a><ul>
-<li><a class="reference internal" href="#change-password">Change Password</a></li>
+<li><a class="reference internal" href="#">Replacing a Failed Drive</a><ul>
+<li><a class="reference internal" href="#fixing-a-broken-system">Fixing a Broken System</a><ul>
+<li><a class="reference internal" href="#using-an-install-boot-disk">Using an Install Boot Disk</a></li>
+<li><a class="reference internal" href="#adding-a-replacement-drive">Adding a Replacement Drive</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#recovering-data-from-drive">Recovering Data from Drive</a></li>
+<li><a class="reference internal" href="#commands-for-recovery">Commands for Recovery</a><ul>
+<li><a class="reference internal" href="#identifying-a-partition">Identifying a Partition</a></li>
+<li><a class="reference internal" href="#reading-and-setting-mode">Reading and setting Mode</a></li>
+<li><a class="reference internal" href="#reading-acls">Reading ACLs</a></li>
+<li><a class="reference internal" href="#setting-acls">Setting ACLs</a></li>
+<li><a class="reference internal" href="#copying-acl-from-another-file">Copying ACL from Another File</a></li>
+<li><a class="reference internal" href="#deleting-acls-from-a-file">Deleting ACLs from a File</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -84,26 +98,113 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="procedures-of-operation">
-<h1>Procedures of Operation<a class="headerlink" href="#procedures-of-operation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="change-password">
-<span id="id1"></span><h2>Change Password<a class="headerlink" href="#change-password" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This procedure applies to Zentyal 2.0 through 2.2, but not to 3.0.</p>
+  <div class="section" id="replacing-a-failed-drive">
+<span id="replacement"></span><h1>Replacing a Failed Drive<a class="headerlink" href="#replacing-a-failed-drive" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fixing-a-broken-system">
+<h2>Fixing a Broken System<a class="headerlink" href="#fixing-a-broken-system" title="Permalink to this headline">¶</a></h2>
+<p>Power outages in particular, and other types of system failure, can result in a
+broken system which cannot be booted, while the hardware is still good.</p>
+<div class="section" id="using-an-install-boot-disk">
+<h3>Using an Install Boot Disk<a class="headerlink" href="#using-an-install-boot-disk" title="Permalink to this headline">¶</a></h3>
+<p>If an installation DVD of the same version as a system is available, then the
+disk may be used to attampt a system repair.</p>
 </div>
-<p>First, go to menu item <em class="menuselection">Office ‣ Users and Groups ‣ LDAP
-Settings</em>. Remove the checkmark at <em class="guilabel">Enable PAM</em>, and click <code class="docutils literal"><span class="pre">Change</span></code>
-to save the setting. <em class="guilabel">PAM settings</em> are illustrated below.</p>
-<img alt="_images/office_42_ldap.png" src="_images/office_42_ldap.png" />
-<p>Now go to <em class="menuselection">Core ‣ System ‣ General</em>. Enter the username and
-the current password, and then enter a new password and confirm the password.
-Click <code class="docutils literal"><span class="pre">Change</span></code> to complete the password change. The <em class="guilabel">Change
-Password</em> page is shown following.</p>
-<img alt="_images/procedure_03.1_change_password.png" src="_images/procedure_03.1_change_password.png" />
-<p>Return to page <em class="menuselection">Office ‣ Users and Groups ‣ LDAP Settings</em>
-after the password is changed. Add a checkmark at <em class="guilabel">Enable PAM</em>, and
-click <code class="docutils literal"><span class="pre">Change</span></code> to save the setting.</p>
+<div class="section" id="adding-a-replacement-drive">
+<h3>Adding a Replacement Drive<a class="headerlink" href="#adding-a-replacement-drive" title="Permalink to this headline">¶</a></h3>
+<p>A replacement SSD drive may be added connected to a USB 3.0, USB 3.1/C, or
+Thunderbolt port. A completely fresh OS install would be performed on the new
+drive, and the Refind boot manager would be added to allow boot selection. See
+<a class="reference internal" href="01_Appleboot.html#macserver"><em>Configuring a Mac Mini Server</em></a> and <a class="reference internal" href="03_install.html#install"><em>Installation Instructions</em></a> for details on these steps.</p>
+</div>
+</div>
+<div class="section" id="recovering-data-from-drive">
+<h2>Recovering Data from Drive<a class="headerlink" href="#recovering-data-from-drive" title="Permalink to this headline">¶</a></h2>
+<p>Once an OS is fully installed on a replacement drive, system recovery proceeds
+as follows:</p>
+<ul class="simple">
+<li>Configure <strong class="program">rEFInd</strong> to boot from the replacement system drive, then
+boot from the new system (see <a class="reference internal" href="01_Appleboot.html#refind"><em>Download and Install rEFInd</em></a>)</li>
+<li>Mount the corrupted system partition. for example, to mount sdb3::
+sudo mkdir /mnt/sdb3
+sudo mount -t ext4 /dev/sdb3 /mnt/sdb3</li>
+<li>Enumerate user folders and shares on the corrupted partition::
+ls -al /mnt/sdb3/home/samba/profiles
+ls -al /mnt/sdb3/home/samba/shares</li>
+<li>Zentyal:
+*  Configure file sharing, users, and other services in the new OS
+*  Enter users to the new OS for SAMBA profiles on the corrupted partition
+*  Setup file shares in the new OS for SAMBA shares on the corrupted drive</li>
+<li>Remove ACLs (Access Control Lists) from profiles on corrupted partition::
+setfacl -bnR /mnt/sdb3/home/samba/profiles/*</li>
+<li>Copy all user data from profiles to corresponding users in new system::
+cp -r /mnt/sdb3/home/samba/profiles/{user1}/* /home/samba/profiles/{user1}/
+...</li>
+<li>Remove ACLs (Access Control Lists) from profiles on corrupted partition::
+setfacl -bnR /mnt/sdb3/home/samba/shares/*</li>
+<li>Copy all SAMBA shares from corrupted partition to new system::
+cp -r /mnt/sdb3/home/samba/shares/{share1}/* /home/samba/shares/{share1}
+...</li>
+<li>Unmount the corrupted partition::
+umount /mnt/sdb3</li>
+<li>Reboot system and test access to all shares.</li>
+</ul>
+</div>
+<div class="section" id="commands-for-recovery">
+<h2>Commands for Recovery<a class="headerlink" href="#commands-for-recovery" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="identifying-a-partition">
+<h3>Identifying a Partition<a class="headerlink" href="#identifying-a-partition" title="Permalink to this headline">¶</a></h3>
+<p>Boot from a new OS, probably on an SSD drive. Open a terminal window, then
+verify the drive volume to mount. The following commands may help identify the
+device to mount:</p>
+<div class="highlight-python"><div class="highlight"><pre>df -h | grep &quot;/sd&quot;
+mount | grep &quot;/sd&quot;
+ls -al /dev/sd*
+</pre></div>
+</div>
+</div>
+<div class="section" id="reading-and-setting-mode">
+<h3>Reading and setting Mode<a class="headerlink" href="#reading-and-setting-mode" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>The long-form file directory listing displays file mode permissions::</dt>
+<dd>ls -al {directory}</dd>
+</dl>
+<p>A plus sign (+) displays to the right of the mode when ACLs apply to an entry.</p>
+</div>
+<div class="section" id="reading-acls">
+<h3>Reading ACLs<a class="headerlink" href="#reading-acls" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>To read or display ACLs on a file, use command::</dt>
+<dd>getfacl [-a | -d] {filename} {...}</dd>
+<dt>where::</dt>
+<dd>-a &#8211; Displays the file name, owner, group, and ACL entries of a file or directory
+-d &#8211; Displays the file name, owner, group, and default ACL entries for a  file or directory.</dd>
+</dl>
+</div>
+<div class="section" id="setting-acls">
+<h3>Setting ACLs<a class="headerlink" href="#setting-acls" title="Permalink to this headline">¶</a></h3>
+<p>Display the <strong class="command">setfacl</strong> manpage for command explanation:</p>
+<div class="highlight-python"><div class="highlight"><pre>setfacl [-bkndRLPvh] [{-m|-x} acl_spec] [{-M|-X} acl_file] file ...
+</pre></div>
+</div>
+<p>The most common use for this command would be when copying or deleting ACLs, as
+described following.</p>
+</div>
+<div class="section" id="copying-acl-from-another-file">
+<h3>Copying ACL from Another File<a class="headerlink" href="#copying-acl-from-another-file" title="Permalink to this headline">¶</a></h3>
+<p>Copy an ACL from one file to another by piping <strong class="command">getfacl</strong> output to
+<strong class="command">setfacl</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>getfacl {filename1} | setfacl -f - {filename2}
+</pre></div>
+</div>
+<p>where {filename1} has the source ACL and {filename2} specifies the destination.</p>
+</div>
+<div class="section" id="deleting-acls-from-a-file">
+<h3>Deleting ACLs from a File<a class="headerlink" href="#deleting-acls-from-a-file" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Delete ACL entries from a file or directory using <strong class="command">setfacl</strong>::</dt>
+<dd>setfacl -d acl-entry-list {filename} {...}</dd>
+</dl>
+</div>
 </div>
 </div>
 

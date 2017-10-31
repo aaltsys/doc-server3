@@ -27,21 +27,18 @@ Package Selection:
 
 At :guilabel:`Choose Zentyal packages to install`, select the following modules::
 
-   Backup
-   Certification Authority
-   DHCP Service
-   DNS Service
-   Firewall
-   IPsec
-   Intrusion Prevention System
-   NTP Service
-   Network Configuration
-   Printer Sharing Service
-   RADIUS
-   Traffic Shaping
-   UPS Management
-   Users and Computers
-   VPN Service
+   
+   Network 
+   Logs 
+   Users and Computers 
+   Domain 
+   File Sharing 
+   DNS 
+   DHCP 
+   Firewall 
+   NTP 
+   Certification Authority 
+   VPN 
 
 Click :guilabel:`Install`.
 

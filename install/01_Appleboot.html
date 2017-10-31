@@ -152,7 +152,7 @@ choosing &#8220;Eject&#8221;.</li>
 </ol>
 </div>
 <div class="section" id="download-and-install-refind">
-<h2>Download and Install rEFInd<a class="headerlink" href="#download-and-install-refind" title="Permalink to this headline">¶</a></h2>
+<span id="refind"></span><h2>Download and Install rEFInd<a class="headerlink" href="#download-and-install-refind" title="Permalink to this headline">¶</a></h2>
 <p>Apple replaced BIOS booting with EFI (Extensible Firmware Interface), allowing
 software to control the computer boot process. Apple offers <strong class="program">BootCamp</strong>
 software to boot Windows on Macs, but this only works with Windows.</p>
@@ -188,29 +188,26 @@ bless <strong class="program">REFInd</strong> with the command:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo bless --mount /Volumes/ESP --setBoot --file /Volumes/ESP/efi/refind/refind_x64.efi --shortform
 </pre></div>
 </div>
-<p>Otherwise for <strong class="program">REFInd</strong> installed in folder <code class="file docutils literal"><span class="pre">EFI</span></code>, use:</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo bless --setBoot --folder /efi/refind --file /efi/refind/refind_x64.efi
-</pre></div>
-</div>
+<dl class="docutils">
+<dt>Otherwise for <strong class="program">REFInd</strong> installed in folder <code class="file docutils literal"><span class="pre">EFI</span></code>, use::</dt>
+<dd><p class="first last">sudo bless &#8211;setBoot &#8211;folder /efi/refind &#8211;file /efi/refind/refind_x64.efi</p>
+</dd>
+</dl>
 </li>
 <li><p class="first">After installing <strong class="program">rEFInd</strong>, copy or rename the default configuration
 file <code class="file docutils literal"><span class="pre">refind.conf</span></code> to preserve it. This file should be in one of the
-following locations:</p>
-<div class="highlight-python"><div class="highlight"><pre>/Volumes/ESP/efi/refind/
-/efi/refind/
-</pre></div>
-</div>
+following locations::
+/Volumes/ESP/efi/refind/
+/efi/refind/</p>
 </li>
 <li><p class="first">To boot Zentyal by default, download the customized refind configuration
 <a class="reference download internal" href="_downloads/refind.conf"><code class="xref download docutils literal"><span class="pre">refind.conf</span></code></a> to folder <code class="file docutils literal"><span class="pre">refind</span></code>.</p>
 </li>
 <li><p class="first">For Macs with SIP, reboot and press a cursor key to stop <strong class="program">rEFInd</strong>.
-Use the mouse or cursor keys to select small icons items:</p>
-<div class="highlight-python"><div class="highlight"><pre>*i* -- the info icon will say whether SIP is off or on
-*shield* -- toggles the SIP state off and on
-*circle-arrows* -- reboot the system after any changes
-</pre></div>
-</div>
+Use the mouse or cursor keys to select small icons items::
+<em>i</em> &#8211; the info icon will say whether SIP is off or on
+<em>shield</em> &#8211; toggles the SIP state off and on
+<em>circle-arrows</em> &#8211; reboot the system after any changes</p>
 </li>
 </ol>
 </div>

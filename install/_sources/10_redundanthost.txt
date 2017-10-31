@@ -1,6 +1,8 @@
-################################
+.. _redundant:
+
+#############################
  Redundant Server Setup
-################################
+#############################
 
 Two AAltSys servers on the same network, a primary server and a backup server, 
 can provide redundant data storage and server functions. In case the primary 
@@ -16,10 +18,10 @@ data are mirrored between primary and backup machines, requires special system
 and device configuration. This procedure creates a filecopy redundant server.
 
 File Copy Backup Server
-==============================
+=============================
 
 Switching to a Backup Server
-""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""
 
 To switch to a backup server, the primary server must first be shutdown. If the 
 primary server is a network gateway machine, then move the external network 

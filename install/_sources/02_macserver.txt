@@ -37,16 +37,16 @@ Copy Linux image to USB
    with the actual identifier of the USB device, e.g., :file:`/dev/disk2`.
 
 #. Insert the USB flash media
-#. To get the current list of disk devices, open a terminal with 
-   :menuselection:`Launchpad --> Other --> Terminal`, and run the command::
+#. To get the current list of disk devices, open a terminal from 
+   :menuselection:`Launchpad --> Other --> Terminal` and run the command::
 
-   diskutil list
+      diskutil list
 
 #. Find the device node assigned to the USB media (e.g. :file:`/dev/diskN`), 
    which should be last listed device
 #. Unmount the USB drive (where ``N`` is the disk number) with the command::
 
-   diskutil unmountDisk /dev/diskN
+      diskutil unmountDisk /dev/diskN
 
 #. Copy the disk image to the USB device (again ``N`` is the disk number)::
 

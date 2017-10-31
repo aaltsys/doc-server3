@@ -128,15 +128,19 @@ with the actual identifier of the USB device, e.g., <code class="file docutils l
 <ol class="arabic">
 <li><p class="first">Insert the USB flash media</p>
 </li>
-<li><p class="first">To get the current list of disk devices, open a terminal with
-<em class="menuselection">Launchpad ‣ Other ‣ Terminal</em>, and run the command:</p>
-<p>diskutil list</p>
+<li><p class="first">To get the current list of disk devices, open a terminal from
+<em class="menuselection">Launchpad ‣ Other ‣ Terminal</em> and run the command:</p>
+<div class="highlight-python"><div class="highlight"><pre>diskutil list
+</pre></div>
+</div>
 </li>
 <li><p class="first">Find the device node assigned to the USB media (e.g. <code class="file docutils literal"><span class="pre">/dev/diskN</span></code>),
 which should be last listed device</p>
 </li>
 <li><p class="first">Unmount the USB drive (where <code class="docutils literal"><span class="pre">N</span></code> is the disk number) with the command:</p>
-<p>diskutil unmountDisk /dev/diskN</p>
+<div class="highlight-python"><div class="highlight"><pre>diskutil unmountDisk /dev/diskN
+</pre></div>
+</div>
 </li>
 <li><p class="first">Copy the disk image to the USB device (again <code class="docutils literal"><span class="pre">N</span></code> is the disk number):</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo dd if=~/Documents/{linux.dmg} of=/dev/diskN bs=1m

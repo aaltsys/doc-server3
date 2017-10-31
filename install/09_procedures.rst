@@ -105,8 +105,8 @@ To read or display ACLs on a file, use command::
 
 where:
 
-   -a -- Displays the file name, owner, group, and ACL entries of a file or directory
-   -d -- Displays the file name, owner, group, and default ACL entries for a  file or directory.
+|  -a -- Displays the file name, owner, group, and ACL entries of a file or directory
+|  -d -- Displays the file name, owner, group, and default ACL entries for a  file or directory.
 
 Setting ACLs
 -----------------------------

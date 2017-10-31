@@ -60,6 +60,8 @@ Follow these step by step instructions to install Google Chrome on OS-X:
 #. Unmount the Google Chrome disk image on your Desktop by right clicking it and 
    choosing "Eject".
 
+.. _refind:
+
 Download and Install rEFInd 
 =============================
 
@@ -97,17 +99,14 @@ Install rEFInd software
 #. Read the installation messages to see where :program:`REFInd` is installed. 
    For message ``Installing rEFInd to the partition mounted at /Volumes/ESP``,
    bless :program:`REFInd` with the command::
-
       sudo bless --mount /Volumes/ESP --setBoot --file /Volumes/ESP/efi/refind/refind_x64.efi --shortform
 
    Otherwise for :program:`REFInd` installed in folder :file:`\EFI`, use::
-
       sudo bless --setBoot --folder /efi/refind --file /efi/refind/refind_x64.efi
 
 #. After installing :program:`rEFInd`, copy or rename the default configuration
    file :file:`refind.conf` to preserve it. This file should be in one of the 
    following locations::
-
    /Volumes/ESP/efi/refind/
    /efi/refind/
 
@@ -116,7 +115,6 @@ Install rEFInd software
 
 #. For Macs with SIP, reboot and press a cursor key to stop :program:`rEFInd`. 
    Use the mouse or cursor keys to select small icons items::
-
    *i* -- the info icon will say whether SIP is off or on
    *shield* -- toggles the SIP state off and on
    *circle-arrows* -- reboot the system after any changes

@@ -91,30 +91,34 @@ Install rEFInd software
 #. Open a terminal session, change directory to the :file:`Downloads` folder,
    and unzip and install :program:`Refind` with the commands::
 
-   cd ~/Downloads
-   unzip refind <Tab> <Enter>
-   cd refind <Tab> <Enter>
-   ./refind.install
+      cd ~/Downloads
+      unzip refind <Tab> <Enter>
+      cd refind <Tab> <Enter>
+      ./refind.install
 
 #. Read the installation messages to see where :program:`REFInd` is installed. 
    For message ``Installing rEFInd to the partition mounted at /Volumes/ESP``,
    bless :program:`REFInd` with the command::
+
       sudo bless --mount /Volumes/ESP --setBoot --file /Volumes/ESP/efi/refind/refind_x64.efi --shortform
 
    Otherwise for :program:`REFInd` installed in folder :file:`\EFI`, use::
+
       sudo bless --setBoot --folder /efi/refind --file /efi/refind/refind_x64.efi
 
 #. After installing :program:`rEFInd`, copy or rename the default configuration
    file :file:`refind.conf` to preserve it. This file should be in one of the 
    following locations::
-   /Volumes/ESP/efi/refind/
-   /efi/refind/
+
+      /Volumes/ESP/efi/refind/
+      /efi/refind/
 
 #. To boot Zentyal by default, download the customized refind configuration 
    :download:`refind.conf <./_downloads/refind.conf>` to folder :file:`refind`. 
 
 #. For Macs with SIP, reboot and press a cursor key to stop :program:`rEFInd`. 
-   Use the mouse or cursor keys to select small icons items::
+   Use the mouse or cursor keys to select small icons items:
+
    *i* -- the info icon will say whether SIP is off or on
    *shield* -- toggles the SIP state off and on
    *circle-arrows* -- reboot the system after any changes
@@ -193,8 +197,11 @@ a lost :program:`rEFInd` installation in Mac OS X as follows:
       cd ~/Downloads/refind <Tab> <Enter>
       ./install.refind
       sudo cp ~/Documents/refind.conf /efi/refind/ 
-        -- or --
+
+   -- or -- ::
+
       sudo cp ~/Documents/refind.conf Volumes/ESP/efi/refind/ 
+
 ----------
 
 .. rubric:: Footnotes

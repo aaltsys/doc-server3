@@ -34,10 +34,12 @@ as follows:
    boot from the new system (see :ref:`refind`)
 
 *  Mount the corrupted system partition. for example, to mount sdb3::
+
    sudo mkdir /mnt/sdb3
    sudo mount -t ext4 /dev/sdb3 /mnt/sdb3
 
 *  Enumerate user folders and shares on the corrupted partition::
+
    ls -al /mnt/sdb3/home/samba/profiles
    ls -al /mnt/sdb3/home/samba/shares
 
@@ -47,20 +49,25 @@ as follows:
    *  Setup file shares in the new OS for SAMBA shares on the corrupted drive
 
 *  Remove ACLs (Access Control Lists) from profiles on corrupted partition::
+
    setfacl -bnR /mnt/sdb3/home/samba/profiles/*
 
 *  Copy all user data from profiles to corresponding users in new system::
+
    cp -r /mnt/sdb3/home/samba/profiles/{user1}/* /home/samba/profiles/{user1}/
    ...
 
 *  Remove ACLs (Access Control Lists) from profiles on corrupted partition::
+
    setfacl -bnR /mnt/sdb3/home/samba/shares/*
    
 *  Copy all SAMBA shares from corrupted partition to new system::
+
    cp -r /mnt/sdb3/home/samba/shares/{share1}/* /home/samba/shares/{share1}
    ...
 
 *  Unmount the corrupted partition::
+
    umount /mnt/sdb3
 
 *  Reboot system and test access to all shares.
@@ -83,15 +90,20 @@ Reading and setting Mode
 -----------------------------
 
 The long-form file directory listing displays file mode permissions::
+
    ls -al {directory} 
+
 A plus sign (+) displays to the right of the mode when ACLs apply to an entry.
 
 Reading ACLs
 -----------------------------
 
 To read or display ACLs on a file, use command::
+
    getfacl [-a | -d] {filename} {...}
+
 where::
+
    -a -- Displays the file name, owner, group, and ACL entries of a file or directory
    -d -- Displays the file name, owner, group, and default ACL entries for a  file or directory.
 
@@ -110,13 +122,16 @@ Copying ACL from Another File
 
 Copy an ACL from one file to another by piping :command:`getfacl` output to
 :command:`setfacl`::
+
    getfacl {filename1} | setfacl -f - {filename2}
+
 where {filename1} has the source ACL and {filename2} specifies the destination.
 
 Deleting ACLs from a File
 -----------------------------
 
 Delete ACL entries from a file or directory using :command:`setfacl`::
+
    setfacl -d acl-entry-list {filename} {...} 
 
 

@@ -114,7 +114,7 @@ Install rEFInd software
       /efi/refind/
 
 #. To boot Zentyal by default, download the customized refind configuration 
-   :download:`refind.conf <./_downloads/refind.conf>` to folder :file:`refind`. 
+   :download:`refind.conf <_downloads/refind.conf>` to folder :file:`refind`. 
 
 #. For Macs with SIP, reboot and press a cursor key to stop :program:`rEFInd`. 
    Use the mouse or cursor keys to select small icons items:

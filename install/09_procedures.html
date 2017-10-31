@@ -121,32 +121,42 @@ drive, and the Refind boot manager would be added to allow boot selection. See
 <h2>Recovering Data from Drive<a class="headerlink" href="#recovering-data-from-drive" title="Permalink to this headline">¶</a></h2>
 <p>Once an OS is fully installed on a replacement drive, system recovery proceeds
 as follows:</p>
-<ul class="simple">
-<li>Configure <strong class="program">rEFInd</strong> to boot from the replacement system drive, then
-boot from the new system (see <a class="reference internal" href="01_Appleboot.html#refind"><em>Download and Install rEFInd</em></a>)</li>
-<li>Mount the corrupted system partition. for example, to mount sdb3::
-sudo mkdir /mnt/sdb3
-sudo mount -t ext4 /dev/sdb3 /mnt/sdb3</li>
-<li>Enumerate user folders and shares on the corrupted partition::
-ls -al /mnt/sdb3/home/samba/profiles
-ls -al /mnt/sdb3/home/samba/shares</li>
-<li>Zentyal:
+<ul>
+<li><p class="first">Configure <strong class="program">rEFInd</strong> to boot from the replacement system drive, then
+boot from the new system (see <a class="reference internal" href="01_Appleboot.html#refind"><em>Download and Install rEFInd</em></a>)</p>
+</li>
+<li><p class="first">Mount the corrupted system partition. for example, to mount sdb3:</p>
+<p>sudo mkdir /mnt/sdb3
+sudo mount -t ext4 /dev/sdb3 /mnt/sdb3</p>
+</li>
+<li><p class="first">Enumerate user folders and shares on the corrupted partition:</p>
+<p>ls -al /mnt/sdb3/home/samba/profiles
+ls -al /mnt/sdb3/home/samba/shares</p>
+</li>
+<li><p class="first">Zentyal:
 *  Configure file sharing, users, and other services in the new OS
 *  Enter users to the new OS for SAMBA profiles on the corrupted partition
-*  Setup file shares in the new OS for SAMBA shares on the corrupted drive</li>
-<li>Remove ACLs (Access Control Lists) from profiles on corrupted partition::
-setfacl -bnR /mnt/sdb3/home/samba/profiles/*</li>
-<li>Copy all user data from profiles to corresponding users in new system::
-cp -r /mnt/sdb3/home/samba/profiles/{user1}/* /home/samba/profiles/{user1}/
-...</li>
-<li>Remove ACLs (Access Control Lists) from profiles on corrupted partition::
-setfacl -bnR /mnt/sdb3/home/samba/shares/*</li>
-<li>Copy all SAMBA shares from corrupted partition to new system::
-cp -r /mnt/sdb3/home/samba/shares/{share1}/* /home/samba/shares/{share1}
-...</li>
-<li>Unmount the corrupted partition::
-umount /mnt/sdb3</li>
-<li>Reboot system and test access to all shares.</li>
+*  Setup file shares in the new OS for SAMBA shares on the corrupted drive</p>
+</li>
+<li><p class="first">Remove ACLs (Access Control Lists) from profiles on corrupted partition:</p>
+<p>setfacl -bnR /mnt/sdb3/home/samba/profiles/*</p>
+</li>
+<li><p class="first">Copy all user data from profiles to corresponding users in new system:</p>
+<p>cp -r /mnt/sdb3/home/samba/profiles/{user1}/* /home/samba/profiles/{user1}/
+...</p>
+</li>
+<li><p class="first">Remove ACLs (Access Control Lists) from profiles on corrupted partition:</p>
+<p>setfacl -bnR /mnt/sdb3/home/samba/shares/*</p>
+</li>
+<li><p class="first">Copy all SAMBA shares from corrupted partition to new system:</p>
+<p>cp -r /mnt/sdb3/home/samba/shares/{share1}/* /home/samba/shares/{share1}
+...</p>
+</li>
+<li><p class="first">Unmount the corrupted partition:</p>
+<p>umount /mnt/sdb3</p>
+</li>
+<li><p class="first">Reboot system and test access to all shares.</p>
+</li>
 </ul>
 </div>
 <div class="section" id="commands-for-recovery">
@@ -164,21 +174,23 @@ ls -al /dev/sd*
 </div>
 <div class="section" id="reading-and-setting-mode">
 <h3>Reading and setting Mode<a class="headerlink" href="#reading-and-setting-mode" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>The long-form file directory listing displays file mode permissions::</dt>
-<dd>ls -al {directory}</dd>
-</dl>
+<p>The long-form file directory listing displays file mode permissions:</p>
+<div class="highlight-python"><div class="highlight"><pre>ls -al {directory}
+</pre></div>
+</div>
 <p>A plus sign (+) displays to the right of the mode when ACLs apply to an entry.</p>
 </div>
 <div class="section" id="reading-acls">
 <h3>Reading ACLs<a class="headerlink" href="#reading-acls" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>To read or display ACLs on a file, use command::</dt>
-<dd>getfacl [-a | -d] {filename} {...}</dd>
-<dt>where::</dt>
-<dd>-a &#8211; Displays the file name, owner, group, and ACL entries of a file or directory
--d &#8211; Displays the file name, owner, group, and default ACL entries for a  file or directory.</dd>
-</dl>
+<p>To read or display ACLs on a file, use command:</p>
+<div class="highlight-python"><div class="highlight"><pre>getfacl [-a | -d] {filename} {...}
+</pre></div>
+</div>
+<p>where:</p>
+<div class="highlight-python"><div class="highlight"><pre>-a -- Displays the file name, owner, group, and ACL entries of a file or directory
+-d -- Displays the file name, owner, group, and default ACL entries for a  file or directory.
+</pre></div>
+</div>
 </div>
 <div class="section" id="setting-acls">
 <h3>Setting ACLs<a class="headerlink" href="#setting-acls" title="Permalink to this headline">¶</a></h3>
@@ -200,10 +212,10 @@ described following.</p>
 </div>
 <div class="section" id="deleting-acls-from-a-file">
 <h3>Deleting ACLs from a File<a class="headerlink" href="#deleting-acls-from-a-file" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>Delete ACL entries from a file or directory using <strong class="command">setfacl</strong>::</dt>
-<dd>setfacl -d acl-entry-list {filename} {...}</dd>
-</dl>
+<p>Delete ACL entries from a file or directory using <strong class="command">setfacl</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>setfacl -d acl-entry-list {filename} {...}
+</pre></div>
+</div>
 </div>
 </div>
 </div>

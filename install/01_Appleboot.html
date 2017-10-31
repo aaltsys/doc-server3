@@ -177,10 +177,12 @@ Recovery boot <a class="footnote-reference" href="#id7" id="id3">[3]</a> in plac
 </li>
 <li><p class="first">Open a terminal session, change directory to the <code class="file docutils literal"><span class="pre">Downloads</span></code> folder,
 and unzip and install <strong class="program">Refind</strong> with the commands:</p>
-<p>cd ~/Downloads
+<div class="highlight-python"><div class="highlight"><pre>cd ~/Downloads
 unzip refind &lt;Tab&gt; &lt;Enter&gt;
 cd refind &lt;Tab&gt; &lt;Enter&gt;
-./refind.install</p>
+./refind.install
+</pre></div>
+</div>
 </li>
 <li><p class="first">Read the installation messages to see where <strong class="program">REFInd</strong> is installed.
 For message <code class="docutils literal"><span class="pre">Installing</span> <span class="pre">rEFInd</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">partition</span> <span class="pre">mounted</span> <span class="pre">at</span> <span class="pre">/Volumes/ESP</span></code>,
@@ -188,24 +190,25 @@ bless <strong class="program">REFInd</strong> with the command:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo bless --mount /Volumes/ESP --setBoot --file /Volumes/ESP/efi/refind/refind_x64.efi --shortform
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>Otherwise for <strong class="program">REFInd</strong> installed in folder <code class="file docutils literal"><span class="pre">EFI</span></code>, use::</dt>
-<dd><p class="first last">sudo bless &#8211;setBoot &#8211;folder /efi/refind &#8211;file /efi/refind/refind_x64.efi</p>
-</dd>
-</dl>
+<p>Otherwise for <strong class="program">REFInd</strong> installed in folder <code class="file docutils literal"><span class="pre">EFI</span></code>, use:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo bless --setBoot --folder /efi/refind --file /efi/refind/refind_x64.efi
+</pre></div>
+</div>
 </li>
 <li><p class="first">After installing <strong class="program">rEFInd</strong>, copy or rename the default configuration
 file <code class="file docutils literal"><span class="pre">refind.conf</span></code> to preserve it. This file should be in one of the
-following locations::
-/Volumes/ESP/efi/refind/
-/efi/refind/</p>
+following locations:</p>
+<div class="highlight-python"><div class="highlight"><pre>/Volumes/ESP/efi/refind/
+/efi/refind/
+</pre></div>
+</div>
 </li>
 <li><p class="first">To boot Zentyal by default, download the customized refind configuration
 <a class="reference download internal" href="_downloads/refind.conf"><code class="xref download docutils literal"><span class="pre">refind.conf</span></code></a> to folder <code class="file docutils literal"><span class="pre">refind</span></code>.</p>
 </li>
 <li><p class="first">For Macs with SIP, reboot and press a cursor key to stop <strong class="program">rEFInd</strong>.
-Use the mouse or cursor keys to select small icons items::
-<em>i</em> &#8211; the info icon will say whether SIP is off or on
+Use the mouse or cursor keys to select small icons items:</p>
+<p><em>i</em> &#8211; the info icon will say whether SIP is off or on
 <em>shield</em> &#8211; toggles the SIP state off and on
 <em>circle-arrows</em> &#8211; reboot the system after any changes</p>
 </li>
@@ -287,8 +290,10 @@ a lost <strong class="program">rEFInd</strong> installation in Mac OS X as follo
 <div class="highlight-python"><div class="highlight"><pre>cd ~/Downloads/refind &lt;Tab&gt; &lt;Enter&gt;
 ./install.refind
 sudo cp ~/Documents/refind.conf /efi/refind/
-  -- or --
-sudo cp ~/Documents/refind.conf Volumes/ESP/efi/refind/
+</pre></div>
+</div>
+<p>&#8211; or &#8211;</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo cp ~/Documents/refind.conf Volumes/ESP/efi/refind/
 </pre></div>
 </div>
 </li>

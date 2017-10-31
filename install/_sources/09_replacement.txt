@@ -24,7 +24,7 @@ Thunderbolt port. A completely fresh OS install would be performed on the new
 drive, and the Refind boot manager would be added to allow boot selection. See 
 :ref:`macserver` and :ref:`install` for details on these steps.
 
-Recovering Data from Drive
+Recovering Partition Data
 =============================
 
 Once an OS is fully installed on a replacement drive, system recovery proceeds 
@@ -33,7 +33,7 @@ as follows:
 *  Configure :program:`rEFInd` to boot from the replacement system drive, then 
    boot from the new system (see :ref:`refind`)
 
-*  Mount the corrupted system partition. for example, to mount sdb3::
+*  Mount the corrupted system partition. For example, to mount sdb3::
 
       sudo mkdir /mnt/sdb3
       sudo mount -t ext4 /dev/sdb3 /mnt/sdb3
@@ -95,6 +95,10 @@ The long-form file directory listing displays file mode permissions::
    ls -al {directory} 
 
 A plus sign (+) displays to the right of the mode when ACLs apply to an entry.
+
+The :command:`chmod` changes the permissions mode for a file or directory::
+
+   chmod ~/Downloads/
 
 Reading ACLs
 -----------------------------

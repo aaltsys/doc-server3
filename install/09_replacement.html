@@ -50,7 +50,7 @@
 <li><a class="reference internal" href="#adding-a-replacement-drive">Adding a Replacement Drive</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#recovering-data-from-drive">Recovering Data from Drive</a></li>
+<li><a class="reference internal" href="#recovering-partition-data">Recovering Partition Data</a></li>
 <li><a class="reference internal" href="#commands-for-recovery">Commands for Recovery</a><ul>
 <li><a class="reference internal" href="#identifying-a-partition">Identifying a Partition</a></li>
 <li><a class="reference internal" href="#reading-and-setting-mode">Reading and setting Mode</a></li>
@@ -73,7 +73,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/09_procedures.txt"
+      <li><a href="_sources/09_replacement.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -117,15 +117,15 @@ drive, and the Refind boot manager would be added to allow boot selection. See
 <a class="reference internal" href="01_Appleboot.html#macserver"><em>Configuring a Mac Mini Server</em></a> and <a class="reference internal" href="03_install.html#install"><em>Installation Instructions</em></a> for details on these steps.</p>
 </div>
 </div>
-<div class="section" id="recovering-data-from-drive">
-<h2>Recovering Data from Drive<a class="headerlink" href="#recovering-data-from-drive" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="recovering-partition-data">
+<h2>Recovering Partition Data<a class="headerlink" href="#recovering-partition-data" title="Permalink to this headline">¶</a></h2>
 <p>Once an OS is fully installed on a replacement drive, system recovery proceeds
 as follows:</p>
 <ul>
 <li><p class="first">Configure <strong class="program">rEFInd</strong> to boot from the replacement system drive, then
 boot from the new system (see <a class="reference internal" href="01_Appleboot.html#refind"><em>Download and Install rEFInd</em></a>)</p>
 </li>
-<li><p class="first">Mount the corrupted system partition. for example, to mount sdb3:</p>
+<li><p class="first">Mount the corrupted system partition. For example, to mount sdb3:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo mkdir /mnt/sdb3
 sudo mount -t ext4 /dev/sdb3 /mnt/sdb3
 </pre></div>
@@ -195,6 +195,10 @@ ls -al /dev/sd*
 </pre></div>
 </div>
 <p>A plus sign (+) displays to the right of the mode when ACLs apply to an entry.</p>
+<p>The <strong class="command">chmod</strong> changes the permissions mode for a file or directory:</p>
+<div class="highlight-python"><div class="highlight"><pre>chmod ~/Downloads/
+</pre></div>
+</div>
 </div>
 <div class="section" id="reading-acls">
 <h3>Reading ACLs<a class="headerlink" href="#reading-acls" title="Permalink to this headline">¶</a></h3>

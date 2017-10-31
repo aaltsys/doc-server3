@@ -176,7 +176,7 @@ to your <code class="file docutils literal"><span class="pre">Downloads</span></
 Recovery boot <a class="footnote-reference" href="#id7" id="id3">[3]</a> in place of this step and the next step.)</p>
 </li>
 <li><p class="first">Open a terminal session, change directory to the <code class="file docutils literal"><span class="pre">Downloads</span></code> folder,
-and unzip and install <strong class="program">Refind</strong> with the commands:</p>
+and unzip and install <strong class="program">rEFInd</strong> with the commands:</p>
 <div class="highlight-python"><div class="highlight"><pre>cd ~/Downloads
 unzip refind &lt;Tab&gt; &lt;Enter&gt;
 cd refind &lt;Tab&gt; &lt;Enter&gt;
@@ -203,7 +203,7 @@ following locations:</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">To boot Zentyal by default, download the customized refind configuration
+<li><p class="first">To boot Zentyal by default, download the customized rEFInd configuration
 <a class="reference download internal" href="_downloads/refind.conf"><code class="xref download docutils literal"><span class="pre">refind.conf</span></code></a> to folder <code class="file docutils literal"><span class="pre">refind</span></code>.</p>
 </li>
 <li><p class="first">For Macs with SIP, reboot and press a cursor key to stop <strong class="program">rEFInd</strong>.
@@ -266,7 +266,8 @@ stop booting.</li>
 <p class="first admonition-title">Note</p>
 <p class="last">The Mac approach of displaying files in the Finder and then editing
 configuration text in <strong class="program">TextEdit</strong> will not to work with boot
-manager files. This section uses a Linux-y approach to editing the <strong class="program">rEFInd</strong> configuration instead.</p>
+manager files. This section uses a Linux-y approach to editing the
+<strong class="program">rEFInd</strong> configuration instead.</p>
 </div>
 </li>
 <li><p class="first">Modify the configuration options as desired, then press <code class="kbd docutils literal"><span class="pre">control-X</span></code> to
@@ -309,7 +310,9 @@ sudo cp ~/Documents/refind.conf /efi/refind/
 </pre></div>
 </div>
 <p>&#8211; or &#8211;</p>
-<div class="highlight-python"><div class="highlight"><pre>sudo cp ~/Documents/refind.conf Volumes/ESP/efi/refind/
+<div class="highlight-python"><div class="highlight"><pre>cd ~/Downloads/refind &lt;Tab&gt; &lt;Enter&gt;
+./install.refind
+sudo cp ~/Documents/refind.conf Volumes/ESP/efi/refind/
 </pre></div>
 </div>
 </li>

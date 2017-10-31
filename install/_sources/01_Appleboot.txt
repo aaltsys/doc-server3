@@ -1,5 +1,5 @@
 .. _macserver:
- 
+
 ###############################
 Configuring a Mac Mini Server
 ###############################
@@ -89,7 +89,7 @@ Install rEFInd software
    (As an alternative, use Rod's guide to install :program:`rEFInd` from the 
    Recovery boot [#]_ in place of this step and the next step.)
 #. Open a terminal session, change directory to the :file:`Downloads` folder,
-   and unzip and install :program:`Refind` with the commands::
+   and unzip and install :program:`rEFInd` with the commands::
 
       cd ~/Downloads
       unzip refind <Tab> <Enter>
@@ -113,7 +113,7 @@ Install rEFInd software
       /Volumes/ESP/efi/refind/
       /efi/refind/
 
-#. To boot Zentyal by default, download the customized refind configuration 
+#. To boot Zentyal by default, download the customized rEFInd configuration 
    :download:`refind.conf <_downloads/refind.conf>` to folder :file:`refind`. 
 
 #. For Macs with SIP, reboot and press a cursor key to stop :program:`rEFInd`. 
@@ -161,7 +161,8 @@ Edit rEFInd configuration
    .. note::
       The Mac approach of displaying files in the Finder and then editing 
       configuration text in :program:`TextEdit` will not to work with boot 
-      manager files. This section uses a Linux-y approach to editing the :program:`rEFInd` configuration instead.
+      manager files. This section uses a Linux-y approach to editing the 
+      :program:`rEFInd` configuration instead.
 
 #. Modify the configuration options as desired, then press :kbd:`control-X` to
    save changes.
@@ -200,6 +201,8 @@ a lost :program:`rEFInd` installation in Mac OS X as follows:
 
    -- or -- ::
 
+      cd ~/Downloads/refind <Tab> <Enter>
+      ./install.refind
       sudo cp ~/Documents/refind.conf Volumes/ESP/efi/refind/ 
 
 ----------

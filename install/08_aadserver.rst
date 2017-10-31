@@ -266,7 +266,7 @@ TS usernames and passwords
    +----------------------+--------------------+-------------------+
    | Function             | Username           | Password          |
    +======================+====================+===================+
-   | System Installer     | (this information is never published)  |                   
+   | System Installer     | (this information is never published)  |
    +----------------------+--------------------+-------------------+
    | Site Administrator   |                    |                   |
    +----------------------+--------------------+-------------------+
@@ -281,6 +281,7 @@ AAD Server license
 ::
 
    Registration username: ______________________________
+
           License number: ______________________________
 
 Hamachi VPN
@@ -288,8 +289,10 @@ Hamachi VPN
 
 ::
 
-    Hamachi IP: ______________________________
+   .Hamachi IP: ______________________________
+
    Networkname: ______________________________
+
       Password: ______________________________
 
 RDPPRINT.BAT information

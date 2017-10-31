@@ -44,6 +44,7 @@ as follows:
       ls -al /mnt/sdb3/home/samba/shares
 
 *  Zentyal: 
+
    *  Configure file sharing, users, and other services in the new OS
    *  Enter users to the new OS for SAMBA profiles on the corrupted partition
    *  Setup file shares in the new OS for SAMBA shares on the corrupted drive
@@ -60,7 +61,7 @@ as follows:
 *  Remove ACLs (Access Control Lists) from profiles on corrupted partition::
 
       setfacl -bnR /mnt/sdb3/home/samba/shares/*
-   
+
 *  Copy all SAMBA shares from corrupted partition to new system::
 
       cp -r /mnt/sdb3/home/samba/shares/{share1}/* /home/samba/shares/{share1}

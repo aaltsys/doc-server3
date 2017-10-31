@@ -129,7 +129,7 @@ Reconfiguring rEFInd
 The :program:`rEFInd` configuration which defaults to booting Linux, as used in 
 this guide, is shown below:
 
-.. include:: ./downloads/refind.conf
+.. include:: ./_downloads/refind.conf
 
 Use the instructions in this section if you wish to change boot configuration 
 options. 

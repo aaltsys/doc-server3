@@ -137,10 +137,12 @@ sudo mount -t ext4 /dev/sdb3 /mnt/sdb3
 </pre></div>
 </div>
 </li>
-<li><p class="first">Zentyal:
-*  Configure file sharing, users, and other services in the new OS
-*  Enter users to the new OS for SAMBA profiles on the corrupted partition
-*  Setup file shares in the new OS for SAMBA shares on the corrupted drive</p>
+<li><p class="first">Zentyal:</p>
+<ul class="simple">
+<li>Configure file sharing, users, and other services in the new OS</li>
+<li>Enter users to the new OS for SAMBA profiles on the corrupted partition</li>
+<li>Setup file shares in the new OS for SAMBA shares on the corrupted drive</li>
+</ul>
 </li>
 <li><p class="first">Remove ACLs (Access Control Lists) from profiles on corrupted partition:</p>
 <div class="highlight-python"><div class="highlight"><pre>setfacl -bnR /mnt/sdb3/home/samba/profiles/*

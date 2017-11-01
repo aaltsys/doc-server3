@@ -98,7 +98,11 @@ A plus sign (+) displays to the right of the mode when ACLs apply to an entry.
 
 The :command:`chmod` changes the permissions mode for a file or directory::
 
-   chmod ~/Downloads/
+   chmod 744 ~/Downloads
+
+The :command:`chown` changes the owner and group for a file or directory::
+
+   chown admin:__users__ /home/samba/shares/shared
 
 Reading ACLs
 -----------------------------

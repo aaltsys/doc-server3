@@ -56,13 +56,13 @@ documentation, or as required for the specific hardware you are using.
 If your server is intended as a gateway computer, connect the primary Ethernet 
 port ``eth0`` to your Internet gateway or WAN, and the secondary port ``eth1`` 
 to your local LAN. If your server will operate only as a file server on a 
-local LAN, connect ``eth0`` to your LAN and leave other network ports 
-unconnected.
+local LAN, connect ``eth0`` to your LAN, set it to ``internal``, and leave 
+other network ports unconnected.
 
 Installing Zentyal
 =============================
 
-Power on the computer, and boot from the Zentyal Install DVD. 
+Power on the computer, and boot from the Zentyal Install DVD.
 
 .. tip:: 
    A function key press such as :kbd:`[F8]` or :kbd:`[F12]`, or holding down 
@@ -72,9 +72,9 @@ Power on the computer, and boot from the Zentyal Install DVD.
 Installer options
 -----------------------------
 
+*  For Refind booting to DVD, select **Boot Legacy OS from whole disk volume**
 *  Press :kbd:`<Enter>` at selection :menuselection:`English` to choose the 
    installer language default: ``English``.
-*  For Refind booting to DVD, select **Boot Legacy OS from Whole Disk Volume**
 *  **Choose the second option on the Installation menu**, 
    :guilabel:`Install Zentyal x.x.x-development (expert mode)`.
 *  Make the following selections, or press :kbd:`<Enter>` for defaults:

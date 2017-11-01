@@ -147,8 +147,8 @@ documentation, or as required for the specific hardware you are using.</p>
 <p>If your server is intended as a gateway computer, connect the primary Ethernet
 port <code class="docutils literal"><span class="pre">eth0</span></code> to your Internet gateway or WAN, and the secondary port <code class="docutils literal"><span class="pre">eth1</span></code>
 to your local LAN. If your server will operate only as a file server on a
-local LAN, connect <code class="docutils literal"><span class="pre">eth0</span></code> to your LAN and leave other network ports
-unconnected.</p>
+local LAN, connect <code class="docutils literal"><span class="pre">eth0</span></code> to your LAN, set it to <code class="docutils literal"><span class="pre">internal</span></code>, and leave
+other network ports unconnected.</p>
 </div>
 <div class="section" id="installing-zentyal">
 <h2>Installing Zentyal<a class="headerlink" href="#installing-zentyal" title="Permalink to this headline">¶</a></h2>
@@ -162,10 +162,10 @@ device.</p>
 <div class="section" id="installer-options">
 <h3>Installer options<a class="headerlink" href="#installer-options" title="Permalink to this headline">¶</a></h3>
 <ul>
+<li><p class="first">For Refind booting to DVD, select <strong>Boot Legacy OS from whole disk volume</strong></p>
+</li>
 <li><p class="first">Press <code class="kbd docutils literal"><span class="pre">&lt;Enter&gt;</span></code> at selection <em class="menuselection">English</em> to choose the
 installer language default: <code class="docutils literal"><span class="pre">English</span></code>.</p>
-</li>
-<li><p class="first">For Refind booting to DVD, select <strong>Boot Legacy OS from Whole Disk Volume</strong></p>
 </li>
 <li><p class="first"><strong>Choose the second option on the Installation menu</strong>,
 <em class="guilabel">Install Zentyal x.x.x-development (expert mode)</em>.</p>

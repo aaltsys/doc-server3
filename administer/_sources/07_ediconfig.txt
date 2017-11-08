@@ -55,8 +55,9 @@ script file. The script file should be saved as :file:`/etc/waresedi.conf`,
 with owner **root:root** and permissions **600**. The text of a sample file 
 follows::
 
-   lcd /home/samba/shares/arev/connect
-   open -u {uname},{passwd} {ftp://serverURL}
+   set dns:order "inet inet6"
+   lcd /home/samba/shares/wares/connect
+   open -u {uname},{passwd} {hostserverURL}
    mput -c -E ./snd/* -O ./{OUTBOX}
    mget -c -E ./{INBOX}/* -O ./rcv
    quit

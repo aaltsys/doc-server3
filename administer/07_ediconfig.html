@@ -124,8 +124,9 @@ server, and install lftp with the command:</p>
 script file. The script file should be saved as <code class="file docutils literal"><span class="pre">/etc/waresedi.conf</span></code>,
 with owner <strong>root:root</strong> and permissions <strong>600</strong>. The text of a sample file
 follows:</p>
-<div class="highlight-python"><div class="highlight"><pre>lcd /home/samba/shares/arev/connect
-open -u {uname},{passwd} {ftp://serverURL}
+<div class="highlight-python"><div class="highlight"><pre>set dns:order &quot;inet inet6&quot;
+lcd /home/samba/shares/wares/connect
+open -u {uname},{passwd} {hostserverURL}
 mput -c -E ./snd/* -O ./{OUTBOX}
 mget -c -E ./{INBOX}/* -O ./rcv
 quit

@@ -58,7 +58,7 @@ as follows:
       cp -r /mnt/sdb3/home/samba/profiles/{user1}/* /home/samba/profiles/{user1}/
       ...
 
-*  Remove ACLs (Access Control Lists) from profiles on corrupted partition::
+*  Remove ACLs (Access Control Lists) from shares on corrupted partition::
 
       setfacl -bnR /mnt/sdb3/home/samba/shares/*
 
@@ -98,7 +98,7 @@ A plus sign (+) displays to the right of the mode when ACLs apply to an entry.
 
 The :command:`chmod` changes the permissions mode for a file or directory::
 
-   chmod 744 ~/Downloads
+   chmod -Rf 744 ~/Downloads
 
 The :command:`chown` changes the owner and group for a file or directory::
 

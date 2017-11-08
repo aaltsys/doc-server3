@@ -180,7 +180,7 @@ and unzip and install <strong class="program">rEFInd</strong> with the commands:
 <div class="highlight-python"><div class="highlight"><pre>cd ~/Downloads
 unzip refind &lt;Tab&gt; &lt;Enter&gt;
 cd refind &lt;Tab&gt; &lt;Enter&gt;
-./refind.install
+./refind-install
 </pre></div>
 </div>
 </li>
@@ -225,7 +225,7 @@ use_graphics_for osx, linux
 # skip recovery and backup drives; ubuntu options; shimx64.efi and mmx64.efi
 dont_scan_volumes &#8220;Recovery HD&#8221;,&#8221;Backup&#8221;
 dont_scan_dirs EFI/ubuntu
-dont_scan_files shim.efi,MokManager.efi,mmx64.efi
+dont_scan_files shim.efi,MokManager.efi,mmx64.efi,legacy
 # report linux installations, one kernel per install
 scan_all_linux_kernels
 fold_linux_kernels

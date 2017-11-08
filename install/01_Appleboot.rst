@@ -94,7 +94,7 @@ Install rEFInd software
       cd ~/Downloads
       unzip refind <Tab> <Enter>
       cd refind <Tab> <Enter>
-      ./refind.install
+      ./refind-install
 
 #. Read the installation messages to see where :program:`REFInd` is installed. 
    For message ``Installing rEFInd to the partition mounted at /Volumes/ESP``,
@@ -114,7 +114,7 @@ Install rEFInd software
       /efi/refind/
 
 #. To boot Zentyal by default, download the customized rEFInd configuration 
-   :download:`refind.conf <_downloads/refind.conf>` to folder :file:`refind`. 
+   :download:`refind.conf <./_downloads/refind.conf>` to folder :file:`refind`. 
 
 #. For Macs with SIP, reboot and press a cursor key to stop :program:`rEFInd`. 
    Use the mouse or cursor keys to select small icons items:
